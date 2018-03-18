@@ -10,43 +10,33 @@ public class TileController : MonoBehaviour {
     private Transform playerTransform;
 
     //Where to spawn the Z ? 
-    private float spawnZ = -200.0f;
+    private float spawnZ = -117.0f;
 
     //Length of the tiles
-    private float tileLength =200.0f ;
+    private float tileLength =234.0f ;
 
     //Number of tiles on the screen 
-    private int numOfTilesOnScreen = 3;
+    private int numOfTilesOnScreen = 10;
 
     private List<GameObject> activeTiles;
 
-    private float safeZone = 100.0f;
-
-
+    private float safeZone = 300.0f;
 
 
 	// Use this for initialization
 	void Start () {
 
-
+        //Declare array that hold list of gameObject
         activeTiles = new List<GameObject>();
 
         //find Player object 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
-
-        Debug.Log(tileLength);
-
         playerTransform = playerObj.transform;
         for (int i = 0; i < numOfTilesOnScreen; i++)
         {
             SpawnTile();
-
-
         }
-
-
-	
 	}
 	
 	// Update is called once per frame
