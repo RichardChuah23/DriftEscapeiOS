@@ -9,19 +9,28 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 forwardDirection;
 
-    public Transform target; 
+    public Transform target;
+
+    private CharacterController controller; 
 
 
     void Start(){
 
-        forwardDirection = (new Vector3(0.0f,0.0f,1) - transform.position).normalized; 
+        forwardDirection = (new Vector3(0.0f,0.0f,10) - transform.position).normalized; 
+
+        //controller = GetComponent<CharacterController>();
 
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position += forwardDirection * speed * Time.deltaTime;
+
+        //controller.Move(forwardDirection * speed * Time.deltaTime);
+
+
+
     }
 
 }
