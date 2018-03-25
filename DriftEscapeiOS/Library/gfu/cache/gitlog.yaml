@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2018-03-25T22:19:46.8806730+11:00
-  initializedAtString: 2018-03-25T22:05:39.5443040+11:00
+  lastUpdatedAtString: 2018-03-25T23:31:37.7966610+11:00
+  initializedAtString: 2018-03-25T23:31:37.7966610+11:00
   log:
+  - commitID: bd5dcf5538f125d01e5915b8feda839e22769750
+    mergeA: ea304d0d9bde9ab722d656d387372a54ba15833c
+    mergeB: b87fdfe041ab4d0bf04a4a88d2c855f6dbf56965
+    authorName: richardchuah23
+    authorEmail: rcchuah@gmail.com
+    commitEmail: rcchuah@gmail.com
+    commitName: richardchuah23
+    summary: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    description: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    timeString: 2018-03-25T22:20:12.0000000+11:00
+    commitTimeString: 2018-03-25T22:20:12.0000000+11:00
+    changes: []
   - commitID: ea304d0d9bde9ab722d656d387372a54ba15833c
     mergeA: 
     mergeB: 
@@ -1178,6 +1190,85 @@ MonoBehaviour:
       projectPath: Temp/UnityTempFile-9144b94a50fb14f63a1c939676b18605
       originalPath: 
       status: 4
+      staged: 0
+  - commitID: b87fdfe041ab4d0bf04a4a88d2c855f6dbf56965
+    mergeA: 
+    mergeB: 
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: Button
+    description: Button
+    timeString: 2018-03-25T22:14:44.0000000+11:00
+    commitTimeString: 2018-03-25T22:14:44.0000000+11:00
+    changes:
+    - path: DriftEscapeiOS/Assets/Main.unity
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Main.unity
+      projectPath: Assets/Main.unity
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/assetDatabase3
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/assetDatabase3
+      projectPath: Library/assetDatabase3
+      originalPath: 
+      status: 3
+      staged: 0
+  - commitID: 5e7a04b6da0dd5ef725d1ec03f7b03cee367af43
+    mergeA: 
+    mergeB: 
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: t
+    description: t
+    timeString: 2018-03-25T22:11:34.0000000+11:00
+    commitTimeString: 2018-03-25T22:11:34.0000000+11:00
+    changes:
+    - path: DriftEscapeiOS/Assets/Audio.meta
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Audio.meta
+      projectPath: Assets/Audio.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Prefab/New Folder.meta
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Prefab/New
+        Folder.meta
+      projectPath: Assets/Prefab/New Folder.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Shaders.meta
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Shaders.meta
+      projectPath: Assets/Shaders.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Textures.meta
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Textures.meta
+      projectPath: Assets/Textures.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/_Scenes.meta
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes.meta
+      projectPath: Assets/_Scenes.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/assetDatabase3
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/assetDatabase3
+      projectPath: Library/assetDatabase3
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/80/802b995b0557e42f3ab4bf12da50bbea
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/80/802b995b0557e42f3ab4bf12da50bbea
+      projectPath: Library/metadata/80/802b995b0557e42f3ab4bf12da50bbea
+      originalPath: 
+      status: 3
       staged: 0
   - commitID: 50115c8bab68713a7a7254309bf72101325ef4b6
     mergeA: 
