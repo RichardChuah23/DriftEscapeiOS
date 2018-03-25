@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1666186674, guid: bf6b02eea06021d42b25bb18536e3d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cacheType: 2
+  lastUpdatedAtString: 2018-03-25T22:15:19.6581370+11:00
+  initializedAtString: 2018-03-25T22:05:30.7161320+11:00
+  localBranches:
+  - name: ButtonTest
+    tracking: origin/ButtonTest
+    isActive: 0
+  - name: MainMenu
+    tracking: origin/MainMenu
+    isActive: 0
+  - name: master
+    tracking: origin/master
+    isActive: 1
+  remoteBranches:
+  - name: origin/ButtonTest
+    tracking: '[None]'
+    isActive: 0
+  - name: origin/master
+    tracking: '[None]'
+    isActive: 0
+  remotes:
+  - name: origin
+    url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    login: 
+    user: 
+    host: 
+    function: 0
+    token: 
+  localConfigBranches:
+    keys:
+    - ButtonTest
+    - MainMenu
+    - master
+    values:
+    - name: ButtonTest
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    - name: MainMenu
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    - name: master
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+  remoteConfigBranches:
+    keys:
+    - origin
+    subKeys:
+    - Values:
+      - ButtonTest
+      - master
+    subKeyValues:
+    - Values:
+      - name: ButtonTest
+        remote:
+          name: origin
+          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+      - name: master
+        remote:
+          name: origin
+          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+  configRemotes:
+    keys:
+    - origin
+    values:
+    - name: origin
+      url: https://github.com/RichardChuah23/DriftEscapeiOS.git
