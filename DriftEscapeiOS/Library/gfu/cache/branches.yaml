@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
+<<<<<<< HEAD
   lastUpdatedAtString: 2018-03-25T23:35:50.2349340+11:00
   initializedAtString: 2018-03-25T22:38:41.2045390+11:00
   localBranches:
+=======
+  lastUpdatedAtString: 2018-03-25T23:31:37.3872680+11:00
+  initializedAtString: 2018-03-25T23:31:37.3872680+11:00
+  localBranches:
+  - name: ButtonTest
+    tracking: origin/ButtonTest
+    isActive: 0
+  - name: MainMenu
+    tracking: origin/MainMenu
+    isActive: 0
+>>>>>>> 5a60e37baa875a041cc8a857ac8aa70b9c6126ae
   - name: master
     tracking: origin/master
     isActive: 1
@@ -22,9 +34,12 @@ MonoBehaviour:
   - name: origin/ButtonTest
     tracking: '[None]'
     isActive: 0
+<<<<<<< HEAD
   - name: origin/HEAD
     tracking: '[None]'
     isActive: 0
+=======
+>>>>>>> 5a60e37baa875a041cc8a857ac8aa70b9c6126ae
   - name: origin/master
     tracking: '[None]'
     isActive: 0
@@ -38,8 +53,23 @@ MonoBehaviour:
     token: 
   localConfigBranches:
     keys:
+<<<<<<< HEAD
     - master
     values:
+=======
+    - ButtonTest
+    - MainMenu
+    - master
+    values:
+    - name: ButtonTest
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    - name: MainMenu
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+>>>>>>> 5a60e37baa875a041cc8a857ac8aa70b9c6126ae
     - name: master
       remote:
         name: origin
@@ -50,7 +80,10 @@ MonoBehaviour:
     subKeys:
     - Values:
       - ButtonTest
+<<<<<<< HEAD
       - HEAD
+=======
+>>>>>>> 5a60e37baa875a041cc8a857ac8aa70b9c6126ae
       - master
     subKeyValues:
     - Values:
@@ -58,10 +91,13 @@ MonoBehaviour:
         remote:
           name: origin
           url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+<<<<<<< HEAD
       - name: HEAD
         remote:
           name: origin
           url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+=======
+>>>>>>> 5a60e37baa875a041cc8a857ac8aa70b9c6126ae
       - name: master
         remote:
           name: origin
