@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2018-03-26T11:53:24.1768070+11:00
+  lastUpdatedAtString: 2018-03-26T12:02:37.2279030+11:00
   initializedAtString: 2018-03-26T11:41:08.2614510+11:00
   log:
+  - commitID: a8a080aa1164531ba08a6b52555deb946d106f4f
+    mergeA: cd4140764c95f00f864d002aa34fb135fb6376d6
+    mergeB: 9af239b379fb0573a434da262afe1482df7ebaf6
+    authorName: richardchuah23
+    authorEmail: rcchuah@gmail.com
+    commitEmail: rcchuah@gmail.com
+    commitName: richardchuah23
+    summary: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    description: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    timeString: 2018-03-26T11:53:26.0000000+11:00
+    commitTimeString: 2018-03-26T11:53:26.0000000+11:00
+    changes: []
   - commitID: cd4140764c95f00f864d002aa34fb135fb6376d6
     mergeA: 
     mergeB: 
@@ -176,6 +188,141 @@ MonoBehaviour:
       projectPath: Library/metadata/80/802b995b0557e42f3ab4bf12da50bbea.info
       originalPath: 
       status: 3
+      staged: 0
+  - commitID: 9af239b379fb0573a434da262afe1482df7ebaf6
+    mergeA: 3e025333d04011325acfb4ac57d4bf0583eff91c
+    mergeB: f0d59938c5bb466cb0ba88475d9478f5adec95cf
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    description: Merge branch 'master' of https://github.com/RichardChuah23/DriftEscapeiOS
+    timeString: 2018-03-26T11:50:04.0000000+11:00
+    commitTimeString: 2018-03-26T11:50:04.0000000+11:00
+    changes: []
+  - commitID: 3e025333d04011325acfb4ac57d4bf0583eff91c
+    mergeA: 
+    mergeB: 
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: test
+    description: test
+    timeString: 2018-03-26T11:49:03.0000000+11:00
+    commitTimeString: 2018-03-26T11:49:03.0000000+11:00
+    changes:
+    - path: DriftEscapeiOS/Library/gfu/cache/branches.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/branches.yaml
+      projectPath: Library/gfu/cache/branches.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      projectPath: Library/gfu/cache/gitlog.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
+      projectPath: Library/gfu/cache/gitstatusentries.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
+      projectPath: Library/gfu/cache/gittrackingstatus.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+  - commitID: a0336d716c5dd1bbc128f2b0fa9cf9f2e652d6f2
+    mergeA: 
+    mergeB: 
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: added text
+    description: 'added text
+
+
+      test'
+    timeString: 2018-03-26T11:47:51.0000000+11:00
+    commitTimeString: 2018-03-26T11:47:51.0000000+11:00
+    changes:
+    - path: DriftEscapeiOS/Library/EditorInstance.json
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/EditorInstance.json
+      projectPath: Library/EditorInstance.json
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      projectPath: Library/gfu/cache/gitlog.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gituser.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gituser.yaml
+      projectPath: Library/gfu/cache/gituser.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
+      projectPath: Library/gfu/cache/repoinfo.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/1e/1e32d3c24e9f641d8b2561ff23541dc3
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/1e/1e32d3c24e9f641d8b2561ff23541dc3
+      projectPath: Library/metadata/1e/1e32d3c24e9f641d8b2561ff23541dc3
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/34/3489a5475bf1845eb817051018a1ff1b
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/34/3489a5475bf1845eb817051018a1ff1b
+      projectPath: Library/metadata/34/3489a5475bf1845eb817051018a1ff1b
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/4d/4d8290c7755a24186b1d86da7b7dcd25
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/4d/4d8290c7755a24186b1d86da7b7dcd25
+      projectPath: Library/metadata/4d/4d8290c7755a24186b1d86da7b7dcd25
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/71/716185cc7877640d997402e6ae6d9234
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/71/716185cc7877640d997402e6ae6d9234
+      projectPath: Library/metadata/71/716185cc7877640d997402e6ae6d9234
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/ac/ac302cac3630443b7a6e09249b9c094b
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/ac/ac302cac3630443b7a6e09249b9c094b
+      projectPath: Library/metadata/ac/ac302cac3630443b7a6e09249b9c094b
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/c7/c737463260da54176a1bc55e2648d5c9
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/c7/c737463260da54176a1bc55e2648d5c9
+      projectPath: Library/metadata/c7/c737463260da54176a1bc55e2648d5c9
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/e7/e70d4041f4f524507884e1fe163fced0
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/e7/e70d4041f4f524507884e1fe163fced0
+      projectPath: Library/metadata/e7/e70d4041f4f524507884e1fe163fced0
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-9ea07762850204cfd89011396361bc2e
+      fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9ea07762850204cfd89011396361bc2e
+      projectPath: Temp/UnityTempFile-9ea07762850204cfd89011396361bc2e
+      originalPath: 
+      status: 5
       staged: 0
   - commitID: f0d59938c5bb466cb0ba88475d9478f5adec95cf
     mergeA: 1268304ba8645be01f8e09e1367a3be52889f8f2
