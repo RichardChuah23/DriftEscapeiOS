@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         forwardDirection = (new Vector3(0.0f,0.0f,10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
-        Debug.Log(transform.position);
         lastTime = Time.time;
 
 
