@@ -30,4 +30,7 @@ public class CameraController : MonoBehaviour {
         //Camra always stays in center 
         transform.position = new Vector3(0.0f, y, z); 
 	}
+
+
+
 }
