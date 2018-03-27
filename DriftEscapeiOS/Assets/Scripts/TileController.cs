@@ -23,6 +23,8 @@ public class TileController : MonoBehaviour {
     private float safeZone = 300.0f;
 
 
+    private int lastPrefabIndex = 0; 
+
 	// Use this for initialization
 	void Start () {
 
@@ -41,8 +43,7 @@ public class TileController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
+        
         //Repeatly spawn further as the player travel 
         if(playerTransform.position.z - safeZone > (spawnZ - numOfTilesOnScreen * tileLength)){ 
             SpawnTile();
@@ -54,7 +55,7 @@ public class TileController : MonoBehaviour {
     private void SpawnTile(int prefabIndex = -1){
 
         GameObject go;
-        go = Instantiate(tilePrefabs[0]) as GameObject;
+        go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
         //In Hierachy, set it as child for Tile Manager
         go.transform.SetParent((transform));
@@ -66,8 +67,30 @@ public class TileController : MonoBehaviour {
 
     private void DeleteTile(){ 
         Destroy(activeTiles[0]);
-
         activeTiles.RemoveAt(0);
     
     }
+
+    private int RandomPrefabIndex(){ 
+
+        if (tilePrefabs.Length <= 1) {
+            return 0; 
+        }
+
+        int randomIndex = lastPrefabIndex; 
+
+        //Ensure it doesnt repeat
+        while(randomIndex == lastPrefabIndex){
+            randomIndex = Random.Range(0, tilePrefabs.Length);
+            Debug.Log(randomIndex);
+        }
+
+        lastPrefabIndex = randomIndex;
+        return randomIndex; 
+
+    }   
+
+
+
 }
+
