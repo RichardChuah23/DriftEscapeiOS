@@ -64,10 +64,11 @@ public class PlayerController : MonoBehaviour {
     void switchLeft(){ 
         //Move left 
         //transform.position += -horizontalDirection * switchlaneSpeed * Time.deltaTime;
+
+
         transform.position += new Vector3(-40, 0f, 0f);
 
         //turn the car 
-        Debug.Log("SwitchLeft");
         anim.SetTrigger("SwitchLeft");
 
         //Reset user input

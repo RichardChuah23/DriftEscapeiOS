@@ -7,7 +7,11 @@ public class GameController : MonoBehaviour {
 
     public static GameController instance; 
     //public Button btnStart; 
-    private bool startGame; 
+    //private bool startGame;
+
+    GameObject gameOverBar;
+    Collider gameOverCollider; 
+
 
 
 	// Use this for initialization
@@ -16,8 +20,6 @@ public class GameController : MonoBehaviour {
 
         if (instance = this){
             instance = this; 
-
-            startGame = false; 
             //btnStart.onClick.AddListener(StartClicked);
         
         }else if (instance != this){
@@ -29,19 +31,36 @@ public class GameController : MonoBehaviour {
 	}
 
 
-    void StartClicked(){
-
-        startGame = true; 
-        //btnStart.gameObject.SetActive(false);
-        Debug.Log("Done ");
-
-        //Do Something
-    
-    }
-
 	// Update is called once per frame
 	void Update () {
+        /*  
+        gameOverBar = GameObject.FindWithTag("PotHole-Collider");
+        gameOverCollider = gameOverBar.GetComponent<Collider>();
+
+        Debug.Log(gameOverCollider.isTrigger);
+        if(gameOverCollider.isTrigger == true){
+            Debug.Log("Game Over");
+        }
+
+        */
         
 
 	}
+
+
+    void StartClicked()
+    {
+
+        //startGame = true;
+        //btnStart.gameObject.SetActive(false);
+
+        //Do Something
+
+    }
+
+
+    public void GameOver(){
+        Debug.Log("Game Over");
+
+    }
 }

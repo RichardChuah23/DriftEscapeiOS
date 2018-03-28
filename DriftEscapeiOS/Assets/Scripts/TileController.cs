@@ -82,7 +82,6 @@ public class TileController : MonoBehaviour {
         //Ensure it doesnt repeat
         while(randomIndex == lastPrefabIndex){
             randomIndex = Random.Range(0, tilePrefabs.Length);
-            Debug.Log(randomIndex);
         }
 
         lastPrefabIndex = randomIndex;

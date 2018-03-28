@@ -23,12 +23,22 @@ public class CameraController : MonoBehaviour {
 	
 	void LateUpdate () {
 
+
+        /* Camera does not follow the car when switching lane 
         //Get new position 
         z = player.transform.position.z + offset.z; 
         y = player.transform.position.y + offset.y;
 
         //Camra always stays in center 
         transform.position = new Vector3(0.0f, y, z); 
+
+         */
+
+        //Camero follows car switch lane 
+        transform.position = player.transform.position + offset; 
+
+
+
 	}
 
 
