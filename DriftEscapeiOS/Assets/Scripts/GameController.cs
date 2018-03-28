@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public static GameController instance; 
-    public Button btnStart; 
+    //public Button btnStart; 
     private bool startGame; 
 
 
@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
             instance = this; 
 
             startGame = false; 
-            btnStart.onClick.AddListener(StartClicked);
+            //btnStart.onClick.AddListener(StartClicked);
         
         }else if (instance != this){
 
@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
     void StartClicked(){
 
         startGame = true; 
-        btnStart.gameObject.SetActive(false);
+        //btnStart.gameObject.SetActive(false);
         Debug.Log("Done ");
 
         //Do Something
