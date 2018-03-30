@@ -6,61 +6,61 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public static GameController instance; 
-    //public Button btnStart; 
-    //private bool startGame;
+    public Button btnRestart;  
 
     GameObject gameOverBar;
-    Collider gameOverCollider; 
+    Collider gameOverCollider;
+    private GameObject gameObjRestart;
+    private bool gameOver;  
 
 
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
+
+        gameOver = false; 
 
 
-        if (instance = this){
-            instance = this; 
-            //btnStart.onClick.AddListener(StartClicked);
-        
-        }else if (instance != this){
+        //Find Restart button and rewrite the button text and disable it 
+        gameObjRestart = GameObject.Find("btnRestart") ;
+        gameObjRestart.GetComponentInChildren<Text>().text = "Restart ";
+        gameObjRestart.SetActive(false);
 
-            Destroy(gameObject);
-        }
 
+        Button btn = btnRestart.GetComponent<Button>();
+        btn.onClick.AddListener(RestartOnClick);
+
+   
 
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-        /*  
-        gameOverBar = GameObject.FindWithTag("PotHole-Collider");
-        gameOverCollider = gameOverBar.GetComponent<Collider>();
-
-        Debug.Log(gameOverCollider.isTrigger);
-        if(gameOverCollider.isTrigger == true){
-            Debug.Log("Game Over");
-        }
-
-        */
+        
         
 
 	}
 
+    void RestartOnClick(){
+        gameOver = false;
+        gameObjRestart.SetActive(false);
+        Debug.Log("Hi");
+    }
 
-    void StartClicked()
-    {
 
-        //startGame = true;
-        //btnStart.gameObject.SetActive(false);
+    public bool isGameOver(){
 
-        //Do Something
-
+        return gameOver; 
     }
 
 
     public void GameOver(){
-        Debug.Log("Game Over");
+        //Show the button
+        gameObjRestart.SetActive(true);
+        //Set gameOver to true 
+        gameOver = true; 
+
 
     }
 }
