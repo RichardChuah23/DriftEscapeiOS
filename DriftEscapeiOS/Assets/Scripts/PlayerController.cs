@@ -7,14 +7,14 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody rb;
     public float turnSpeed; 
     public float forwardSpeed;
-    public float switchlaneSpeed; 
+    public float switchlaneSpeed;
+    public float swithLaneCoolDown; 
     private Vector3 forwardDirection;
     private Vector3 horizontalDirection;
     private float userInput;
     private float lastTime  ;
     private bool allowLeft;
     private bool allowRight;
-
 
     Animator anim;
 
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
         lastTime = Time.time;
         allowLeft = true;
         allowRight = true;
+
 
         anim = GetComponent<Animator>(); 
 
@@ -48,9 +49,9 @@ public class PlayerController : MonoBehaviour {
         allowRight = checkAllowRight();
 
         //Moving Left and Right 
-        if (userInput == -1.0 && Time.time - lastTime > 0.2f && allowLeft) {
+        if (userInput == -1.0 && Time.time - lastTime > swithLaneCoolDown && allowLeft) {
             switchLeft(); 
-        }else if(userInput == 1 && Time.time - lastTime > 0.2f && allowRight){
+        }else if(userInput == 1 && Time.time - lastTime > swithLaneCoolDown && allowRight){
             switchRight();
         }
 
