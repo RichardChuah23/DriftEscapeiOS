@@ -7,27 +7,50 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody rb;
     public float turnSpeed; 
     public float forwardSpeed;
-    public float switchlaneSpeed; 
+    public float switchlaneSpeed;
+    public float swithLaneCoolDown; 
     private Vector3 forwardDirection;
     private Vector3 horizontalDirection;
     private float userInput;
-    private float lastTime  ;
+    private float lastTime ;
     private bool allowLeft;
     private bool allowRight;
-
+    private bool gameOver;
+ 
+    private GameController gameController;
 
     Animator anim;
 
 
                        
     void Start(){
+
+        //Locate game controller 
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+
+        }
+
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find GameController script");
+
+        }
+
+        //Set up variables 
         forwardDirection = (new Vector3(0.0f,0.0f,10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
         lastTime = Time.time;
         allowLeft = true;
         allowRight = true;
+        anim = GetComponent<Animator>();
+        gameOver = false;
 
-        anim = GetComponent<Animator>(); 
+
+        //Set car location 
+        transform.position = new Vector3(0, 0, 0);
 
 
 
@@ -36,28 +59,48 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-           
-        //Car moving forward 
-        transform.position += forwardDirection * forwardSpeed * Time.deltaTime;
+        
+        //Check if the game is running 
+        gameOver = gameController.isGameOver();
 
-        //Left Right User input 
-        userInput = Input.GetAxisRaw("Horizontal"); 
-
-        //Check user allow to turn left and right 
-        allowLeft  = checkAllowLeft();
-        allowRight = checkAllowRight();
-
-        //Moving Left and Right 
-        if (userInput == -1.0 && Time.time - lastTime > 0.2f && allowLeft) {
-            switchLeft(); 
-        }else if(userInput == 1 && Time.time - lastTime > 0.2f && allowRight){
-            switchRight();
+        if (gameOver == false){
+            //Keep moving forward if game is not over 
+            moveForward();
         }
 
 
 
 
 
+
+
+
+
+    }
+
+
+    void moveForward(){ 
+
+        //Car moving forward 
+        transform.position += forwardDirection * forwardSpeed * Time.deltaTime;
+
+        //Left Right User input 
+        userInput = Input.GetAxisRaw("Horizontal");
+
+        //Check user allow to turn left and right 
+        allowLeft = checkAllowLeft();
+        allowRight = checkAllowRight();
+
+        //Moving Left and Right 
+        if (userInput == -1.0 && Time.time - lastTime > swithLaneCoolDown && allowLeft)
+        {
+            switchLeft();
+        }
+        else if (userInput == 1 && Time.time - lastTime > swithLaneCoolDown && allowRight)
+        {
+            switchRight();
+        }
+    
     }
 
 

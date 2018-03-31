@@ -5,62 +5,91 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public static GameController instance; 
-    //public Button btnStart; 
-    //private bool startGame;
+    public static GameController instance;
+    public GameObject player; 
+    public Button btnRestart;  
+    private GameObject gameObjRestart;
+    private bool gameOver;
+    private bool restart; 
 
-    GameObject gameOverBar;
-    Collider gameOverCollider; 
+
+    private TileController tileController;
 
 
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
+
+        gameOver = false;
+        restart = false; 
 
 
-        if (instance = this){
-            instance = this; 
-            //btnStart.onClick.AddListener(StartClicked);
-        
-        }else if (instance != this){
+        //Locate game controller 
+        GameObject tileControllerObject = GameObject.Find("TileManager");
+        if (tileControllerObject != null)
+        {
+            tileController = tileControllerObject.GetComponent<TileController>();
 
-            Destroy(gameObject);
         }
 
+        if (tileController == null)
+        {
+            Debug.Log("Cannot find GameController script");
+
+        }
+
+
+        //Find Restart button and rewrite the button text and disable it 
+        gameObjRestart = GameObject.Find("btnRestart") ;
+        gameObjRestart.SetActive(false);
+
+        Button btn = btnRestart.GetComponent<Button>();
+        btn.onClick.AddListener(RestartOnClick);
 
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-        /*  
-        gameOverBar = GameObject.FindWithTag("PotHole-Collider");
-        gameOverCollider = gameOverBar.GetComponent<Collider>();
-
-        Debug.Log(gameOverCollider.isTrigger);
-        if(gameOverCollider.isTrigger == true){
-            Debug.Log("Game Over");
-        }
-
-        */
+        
         
 
 	}
 
+    void RestartOnClick(){
+        gameOver = false;
+        restart = true;
+        gameObjRestart.SetActive(false);
 
-    void StartClicked()
-    {
+        //Delete all tile 
+        tileController.DeleteAllTile();
 
-        //startGame = true;
-        //btnStart.gameObject.SetActive(false);
 
-        //Do Something
+        player.transform.position = new Vector3(0, 0, 0);
+
 
     }
 
 
+
+
+    public bool isRestart(){
+        return restart; 
+    }
+
+
+    public bool isGameOver(){
+
+        return gameOver; 
+    }
+
+
     public void GameOver(){
-        Debug.Log("Game Over");
+        //Show the button
+        gameObjRestart.SetActive(true);
+        //Set gameOver to true 
+        gameOver = true; 
+
 
     }
 }

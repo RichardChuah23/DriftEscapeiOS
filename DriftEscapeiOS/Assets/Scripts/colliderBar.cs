@@ -38,7 +38,7 @@ public class colliderBar : MonoBehaviour {
     void OnTriggerEnter(Collider other)
 	{
 
-        Debug.Log("HIT");
+
         gameController.GameOver();
 
 	}
