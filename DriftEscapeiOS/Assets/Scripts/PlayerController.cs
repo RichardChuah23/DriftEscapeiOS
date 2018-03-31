@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour {
     private float lastTime ;
     private bool allowLeft;
     private bool allowRight;
-    private bool gameOver; 
-
+    private bool gameOver;
+ 
     private GameController gameController;
 
     Animator anim;
@@ -62,9 +62,19 @@ public class PlayerController : MonoBehaviour {
         
         //Check if the game is running 
         gameOver = gameController.isGameOver();
+
         if (gameOver == false){
+            //Keep moving forward if game is not over 
             moveForward();
         }
+
+
+
+
+
+
+
+
 
     }
 

@@ -25,8 +25,31 @@ public class TileController : MonoBehaviour {
 
     private int lastPrefabIndex = 0; 
 
+    private GameController gameController;
+
+    private bool restart;
+
+
 	// Use this for initialization
 	void Start () {
+
+
+        restart = false; 
+
+
+        //Locate game controller 
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+
+        }
+
+        if (gameController == null)
+        {
+            Debug.Log("Cannot find GameController script");
+
+        }
 
         //Declare array that hold list of gameObject
         activeTiles = new List<GameObject>();
@@ -39,16 +62,24 @@ public class TileController : MonoBehaviour {
         {
             SpawnTile();
         }
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+
         //Repeatly spawn further as the player travel 
-        if(playerTransform.position.z - safeZone > (spawnZ - numOfTilesOnScreen * tileLength)){ 
+        if (playerTransform.position.z - safeZone > (spawnZ - numOfTilesOnScreen * tileLength))
+        {
             SpawnTile();
             DeleteTile();
         }
+
+        
+
+
         
 	}
 
@@ -69,6 +100,20 @@ public class TileController : MonoBehaviour {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
     
+    }
+
+    public void DeleteAllTile(){
+
+        for (int i = 0; i > activeTiles.Count; i++){
+
+
+            Destroy(activeTiles[i]);
+            activeTiles.RemoveAt(i);
+        }
+
+        //Reset spawnZ value;
+        spawnZ = -117.0f;
+        
     }
 
     private int RandomPrefabIndex(){ 
