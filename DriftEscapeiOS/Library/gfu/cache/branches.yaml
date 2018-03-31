@@ -12,76 +12,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-<<<<<<< HEAD
-  lastUpdatedAtString: 2018-03-31T16:07:22.7673180+11:00
-  initializedAtString: 2018-03-31T16:07:22.7673180+11:00
-=======
-  lastUpdatedAtString: 2018-03-31T14:17:07.7877680+11:00
-  initializedAtString: 2018-03-31T14:17:07.7877680+11:00
->>>>>>> c4db9cb65b4eded4ffb0927184712c9797892856
-  localBranches:
-  - name: ButtonTest
-    tracking: origin/ButtonTest
-    isActive: 0
-  - name: MainMenu
-    tracking: origin/MainMenu
-    isActive: 0
-  - name: master
-    tracking: origin/master
-    isActive: 1
-  remoteBranches:
-  - name: origin/ButtonTest
-    tracking: '[None]'
-    isActive: 0
-  - name: origin/master
-    tracking: '[None]'
-    isActive: 0
-  remotes:
-  - name: origin
-    url: https://github.com/RichardChuah23/DriftEscapeiOS.git
-    login: 
-    user: 
-    host: 
-    function: 0
-    token: 
+  lastUpdatedAtString: 2018-03-31T20:17:03.6882130+11:00
+  initializedAtString: 2018-03-31T20:17:03.6882130+11:00
+  localBranches: []
+  remoteBranches: []
+  remotes: []
   localConfigBranches:
-    keys:
-    - ButtonTest
-    - MainMenu
-    - master
-    values:
-    - name: ButtonTest
-      remote:
-        name: origin
-        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
-    - name: MainMenu
-      remote:
-        name: origin
-        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
-    - name: master
-      remote:
-        name: origin
-        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    keys: []
+    values: []
   remoteConfigBranches:
-    keys:
-    - origin
-    subKeys:
-    - Values:
-      - ButtonTest
-      - master
-    subKeyValues:
-    - Values:
-      - name: ButtonTest
-        remote:
-          name: origin
-          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
-      - name: master
-        remote:
-          name: origin
-          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    keys: []
+    subKeys: []
+    subKeyValues: []
   configRemotes:
-    keys:
-    - origin
-    values:
-    - name: origin
-      url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    keys: []
+    values: []
