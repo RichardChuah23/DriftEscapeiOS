@@ -12,9 +12,274 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2018-03-31T20:40:13.6360660+11:00
-  initializedAtString: 2018-03-31T20:40:13.6360660+11:00
+  lastUpdatedAtString: 2018-04-01T12:28:17.7660300+10:00
+  initializedAtString: 2018-04-01T12:28:17.7660300+10:00
   log:
+  - commitID: ab5efc3ec82067145301b205c33809a907a7735e
+    mergeA: 
+    mergeB: 
+    authorName: PeilingCHAN
+    authorEmail: peilingchan1@gmail.com
+    commitEmail: peilingchan1@gmail.com
+    commitName: PeilingCHAN
+    summary: Added new button on MainMenu.
+    description: 'Added new button on MainMenu.
+
+
+      Added "Find us on Facebook" button.
+
+      Created a new script called "MainMenu". The script is to open the facebook page.
+      The URL for the facebook page needed to be updated.'
+    timeString: 2018-04-01T12:27:04.0000000+10:00
+    commitTimeString: 2018-04-01T12:27:04.0000000+10:00
+    changes:
+    - path: DriftEscapeiOS/Assembly-CSharp.csproj
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assembly-CSharp.csproj
+      projectPath: Assembly-CSharp.csproj
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Assets/FB-FindUsonFacebook-online-114.png
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/FB-FindUsonFacebook-online-114.png
+      projectPath: Assets/FB-FindUsonFacebook-online-114.png
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: "Play Button.png.meta\tDriftEscapeiOS/Assets/FB-FindUsonFacebook-online-114.png.meta"
+      fullPath: "/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/Play Button.png.meta\tDriftEscapeiOS/Assets/FB-FindUsonFacebook-online-114.png.meta"
+      projectPath: "../Play Button.png.meta\tDriftEscapeiOS/Assets/FB-FindUsonFacebook-online-114.png.meta"
+      originalPath: DriftEscapeiOS/Assets/Texture/Red
+      status: 6
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Scripts/MainMenu.cs
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/MainMenu.cs
+      projectPath: Assets/Scripts/MainMenu.cs
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Scripts/MainMenu.cs.meta
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/MainMenu.cs.meta
+      projectPath: Assets/Scripts/MainMenu.cs.meta
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Texture.meta
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Texture.meta
+      projectPath: Assets/Texture.meta
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/Texture/Red Play Button.png
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Texture/Red
+        Play Button.png
+      projectPath: Assets/Texture/Red Play Button.png
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
+      projectPath: Assets/_Scenes/MainMenu.unity
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/CrashedAssetImports.txt
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/CrashedAssetImports.txt
+      projectPath: Library/CrashedAssetImports.txt
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/CurrentLayout.dwlt
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/CurrentLayout.dwlt
+      projectPath: Library/CurrentLayout.dwlt
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/EditorInstance.json
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/EditorInstance.json
+      projectPath: Library/EditorInstance.json
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll
+      projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/ShaderCache/3/3a54b5f5110d178bfca2e637fb6e1cef.bin
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ShaderCache/3/3a54b5f5110d178bfca2e637fb6e1cef.bin
+      projectPath: Library/ShaderCache/3/3a54b5f5110d178bfca2e637fb6e1cef.bin
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Library/ShaderCache/b/b3a60b2de4c710d282924a12a00a1600.bin
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ShaderCache/b/b3a60b2de4c710d282924a12a00a1600.bin
+      projectPath: Library/ShaderCache/b/b3a60b2de4c710d282924a12a00a1600.bin
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Library/assetDatabase3
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/assetDatabase3
+      projectPath: Library/assetDatabase3
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/expandedItems
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/expandedItems
+      projectPath: Library/expandedItems
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/branches.yaml
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/branches.yaml
+      projectPath: Library/gfu/cache/branches.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+      projectPath: Library/gfu/cache/gitlog.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
+      projectPath: Library/gfu/cache/gitstatusentries.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
+      projectPath: Library/gfu/cache/gittrackingstatus.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
+      projectPath: Library/gfu/cache/repoinfo.yaml
+      originalPath: 
+      status: 3
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/03/039a448f072b04cf8bf1856453e836e9.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/03/039a448f072b04cf8bf1856453e836e9.info
+      projectPath: Library/metadata/03/039a448f072b04cf8bf1856453e836e9.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/27/272993bac782342049a9168598da5399.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/27/272993bac782342049a9168598da5399.info
+      projectPath: Library/metadata/27/272993bac782342049a9168598da5399.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/53/534f89c98684944779cbb990f1c84b2e.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/53/534f89c98684944779cbb990f1c84b2e.info
+      projectPath: Library/metadata/53/534f89c98684944779cbb990f1c84b2e.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f
+      projectPath: Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f.info
+      projectPath: Library/metadata/58/588b2bf95f9154befbb92d4e3a6ec33f.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/89/89311c398406a4fb39a9f986f79d2640
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/89/89311c398406a4fb39a9f986f79d2640
+      projectPath: Library/metadata/89/89311c398406a4fb39a9f986f79d2640
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/89/89311c398406a4fb39a9f986f79d2640.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/89/89311c398406a4fb39a9f986f79d2640.info
+      projectPath: Library/metadata/89/89311c398406a4fb39a9f986f79d2640.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/a4/a49376e8b814346ff9e56605f2da265f.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/a4/a49376e8b814346ff9e56605f2da265f.info
+      projectPath: Library/metadata/a4/a49376e8b814346ff9e56605f2da265f.info
+      originalPath: 
+      status: 5
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d
+      projectPath: Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d.info
+      projectPath: Library/metadata/e0/e02ff177b806b45bb86af3b17047dc8d.info
+      originalPath: DriftEscapeiOS/Library/metadata/1e/1e3bc705e76874a2c984aa26766190fd.info
+      status: 6
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f
+      projectPath: Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f.info
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f.info
+      projectPath: Library/metadata/f7/f7f8e1a80a3dc476aae0cd9b3485173f.info
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-0378111b5da1a4174aed8c560f54359c
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-0378111b5da1a4174aed8c560f54359c
+      projectPath: Temp/UnityTempFile-0378111b5da1a4174aed8c560f54359c
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-14c736eadf43d454baf5ef684d660cc8
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-14c736eadf43d454baf5ef684d660cc8
+      projectPath: Temp/UnityTempFile-14c736eadf43d454baf5ef684d660cc8
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-21c0688b8da5e4341bedd66d5f9172b8
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-21c0688b8da5e4341bedd66d5f9172b8
+      projectPath: Temp/UnityTempFile-21c0688b8da5e4341bedd66d5f9172b8
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-6c01a16dbe2824b7eb99ede14e0d38f6
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6c01a16dbe2824b7eb99ede14e0d38f6
+      projectPath: Temp/UnityTempFile-6c01a16dbe2824b7eb99ede14e0d38f6
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-7a6ecab83279243f2add71c5dce40f44
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7a6ecab83279243f2add71c5dce40f44
+      projectPath: Temp/UnityTempFile-7a6ecab83279243f2add71c5dce40f44
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-8a5349b03eea74212b89c45b876ef7cf
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-8a5349b03eea74212b89c45b876ef7cf
+      projectPath: Temp/UnityTempFile-8a5349b03eea74212b89c45b876ef7cf
+      originalPath: 
+      status: 4
+      staged: 0
+    - path: DriftEscapeiOS/Temp/UnityTempFile-e86540ec18c98400ab85943de0c036be
+      fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e86540ec18c98400ab85943de0c036be
+      projectPath: Temp/UnityTempFile-e86540ec18c98400ab85943de0c036be
+      originalPath: 
+      status: 4
+      staged: 0
   - commitID: 11349322a1204bdc17cc417df8132d502d791fac
     mergeA: 
     mergeB: 
