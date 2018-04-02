@@ -10,17 +10,17 @@ public class TileController : MonoBehaviour {
     private Transform playerTransform;
 
     //Where to spawn the Z ? 
-    private float spawnZ = -117.0f;
+    private float spawnZ = -787.0f;
 
     //Length of the tiles
-    private float tileLength =234.0f ;
+    private float tileLength =787.0f ;
 
     //Number of tiles on the screen 
-    private int numOfTilesOnScreen = 10;
+    private int numOfTilesOnScreen = 2;
 
     private List<GameObject> activeTiles;
 
-    private float safeZone = 300.0f;
+    private float safeZone = 700.0f;
 
 
     private int lastPrefabIndex = 0; 
