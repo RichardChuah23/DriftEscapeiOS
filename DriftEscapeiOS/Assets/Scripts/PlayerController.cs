@@ -47,12 +47,8 @@ public class PlayerController : MonoBehaviour {
         allowRight = true;
         anim = GetComponent<Animator>();
         gameOver = false;
-
-
         //Set car location 
         transform.position = new Vector3(0, 0, 0);
-
-
 
     }
 
@@ -67,14 +63,6 @@ public class PlayerController : MonoBehaviour {
             //Keep moving forward if game is not over 
             moveForward();
         }
-
-
-
-
-
-
-
-
 
     }
 
@@ -109,7 +97,7 @@ public class PlayerController : MonoBehaviour {
         //transform.position += -horizontalDirection * switchlaneSpeed * Time.deltaTime;
 
 
-        transform.position += new Vector3(-40, 0f, 0f);
+        transform.position += new Vector3(-50, 0f, 0f);
 
         //turn the car 
         anim.SetTrigger("SwitchLeft");
@@ -124,7 +112,7 @@ public class PlayerController : MonoBehaviour {
         //Move Right 
         //transform.position += -horizontalDirection * switchlaneSpeed * Time.deltaTime;
         anim.SetTrigger("SwitchRight");
-        transform.position += new Vector3(40, 0f, 0f);
+        transform.position += new Vector3(50, 0f, 0f);
 
 
 
@@ -136,7 +124,7 @@ public class PlayerController : MonoBehaviour {
 
     bool checkAllowLeft(){
 
-        if(transform.position.x <= -39.0f){ 
+        if(transform.position.x <= -49.0f){ 
             return false; 
         }else{
             return true; 
@@ -145,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 
     bool checkAllowRight(){ 
 
-        if (transform.position.x >= 39.0f)
+        if (transform.position.x >= 49.0f)
         {
             return false;
         }
