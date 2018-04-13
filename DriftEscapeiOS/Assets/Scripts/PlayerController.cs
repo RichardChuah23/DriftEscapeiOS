@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+
     public float t;
     Animator anim;
 
@@ -65,10 +67,10 @@ public class PlayerController : MonoBehaviour
     {
 
         //Check if the game is running 
-        gameOver = gameController.isGameOver();
+        //gameOver = gameController.isGameOver();
 
 
-
+        //moveForward();
 
     }
 

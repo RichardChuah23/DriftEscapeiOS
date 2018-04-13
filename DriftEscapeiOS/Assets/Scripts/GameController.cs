@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour {
         gameObjRestart.SetActive(false);
 
         //Delete all tile 
-        tileController.DeleteAllTile();
+        //tileController.DeleteAllTile();
 
 
         player.transform.position = new Vector3(0, 0, 0);

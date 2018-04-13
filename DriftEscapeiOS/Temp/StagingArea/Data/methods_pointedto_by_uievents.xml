@@ -1,0 +1,21 @@
+<linker>
+	<assembly fullname="UnityEngine">
+		<type fullname="UnityEngine.GameObject">
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+		</type>
+	</assembly>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="SceneController">
+			<method name="ChangeScene"/>
+		</type>
+		<type fullname="PlayAd">
+			<method name="ShowAd"/>
+		</type>
+		<type fullname="MainMenu">
+			<method name="facebook"/>
+		</type>
+	</assembly>
+</linker>
