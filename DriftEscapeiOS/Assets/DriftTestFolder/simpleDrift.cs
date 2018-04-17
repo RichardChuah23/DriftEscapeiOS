@@ -33,14 +33,23 @@ public class simpleDrift : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        driftmode(); 
 
-        inputHo = Input.GetAxisRaw("Horizontal"); 
 
 
-        if(inputHo == 1 && Time.time - lastTime > coolDown && mode <= 2 ){
-            mode++; 
+
+	}
+
+    void driftmode(){ 
+
+        inputHo = Input.GetAxisRaw("Horizontal");
+
+
+        if (inputHo == 1 && Time.time - lastTime > coolDown && mode <= 2)
+        {
+            mode++;
             lastTime = Time.time;
-            
+
         }
 
 
@@ -51,15 +60,17 @@ public class simpleDrift : MonoBehaviour {
 
         }
 
-        if(mode == 0 ){
+        if (mode == 0)
+        {
             transform.Translate(0, 0, Time.deltaTime * speed); // move forward
 
         }
 
-        
-        if (mode == 1){
 
-            drift(speed,turn1);
+        if (mode == 1)
+        {
+
+            drift(speed, turn1);
         }
 
         if (mode == 2)
@@ -72,8 +83,8 @@ public class simpleDrift : MonoBehaviour {
 
             drift(speed, turn3);
         }
-
-	}
+    
+    }
 
 
     void drift(float speed, float angle){

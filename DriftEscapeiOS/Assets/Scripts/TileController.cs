@@ -13,10 +13,10 @@ public class ObjectList // helper class to ensure we can edit the nested lists i
     public List<GameObject> Type5;
 
 
-    public List<GameObject> Type2r;
-    public List<GameObject> Type3r;
-    public List<GameObject> Type4r;
-    public List<GameObject> Type5r;
+    public List<GameObject> Type6;
+    public List<GameObject> Type7;
+    public List<GameObject> Type8;
+    public List<GameObject> Type9;
 
 
 }
@@ -28,27 +28,29 @@ public class TileController : MonoBehaviour {
 
 
     private Transform playerTransform;
-    //Where to spawn the Z ? 
-    private float spawnZ = -787.0f;
-    //Length of the tiles
-    private float tileLength =787.0f ;
+
     //Number of tiles on the screen 
-    private int numOfTilesOnScreen = 2;
-    private List<GameObject> activeTiles;
-    private float safeZone = 700.0f;
-    private int lastPrefabIndex = 0; 
+    private List<GameObject> activeTilesRoad;
+    private List<List<GameObject>> tilesPrefab;
+    private List<GameObject> activeTileDrift;
+
+
+
+
     private GameController gameController;
     private bool restart;
 
 
-    private string mode;
     public ObjectList tileObjects ;
-    private List<List<GameObject>> tilesPrefab;
+
     private Vector3 currentTilePos;
 
 
-    public float t;
-    public int currentTileIndex; 
+    private float t;
+    private float t2;
+    public int currentTileIndex;
+
+
 
  
 
@@ -57,12 +59,15 @@ public class TileController : MonoBehaviour {
 
         //Set value for variables 
         t = Time.time;
+        t2 = Time.time; 
         restart = false; 
-        mode = "Straight";
         currentTileIndex = 1; 
 
         //Declare List 
         tilesPrefab = new List<List<GameObject>>();
+
+        activeTilesRoad =  new List<GameObject>();
+        activeTileDrift = new List<GameObject>(); 
 
         //Add tiles into the nested-list 
         addIntoList(tileObjects);
@@ -91,7 +96,7 @@ public class TileController : MonoBehaviour {
         tileSpawn.transform.position = new Vector3(0, 0, 0);
         currentTilePos = tileSpawn.transform.position;
 
-
+        activeTilesRoad.Add(tileSpawn); 
 
 
 	}
@@ -100,11 +105,14 @@ public class TileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if(Time.time - t > 1){
-            
+        if(Time.time - t > 5){
             nextTile();
-            t = Time.time; 
+            t = Time.time;
+
         }
+
+
+
 
 	}
 
@@ -118,12 +126,14 @@ public class TileController : MonoBehaviour {
         tilesPrefab.Add(objectlist.Type3);
         tilesPrefab.Add(objectlist.Type4);
         tilesPrefab.Add(objectlist.Type5);
-        tilesPrefab.Add(objectlist.Type2r);
-        tilesPrefab.Add(objectlist.Type3r);
-        tilesPrefab.Add(objectlist.Type4r);
-        tilesPrefab.Add(objectlist.Type5r);
+        tilesPrefab.Add(objectlist.Type6);
+        tilesPrefab.Add(objectlist.Type7);
+        tilesPrefab.Add(objectlist.Type8);
+        tilesPrefab.Add(objectlist.Type9);
 
     }
+
+
 
 
     void nextTile(){
@@ -134,41 +144,59 @@ public class TileController : MonoBehaviour {
          
         //Get next tile index  //Choose which tile to spawn 
         int newTileIndex = nextTileIndex(); 
-        GameObject tileSpawn = tilesPrefab[newTileIndex][0];
+        GameObject tileRoadSpawn = tilesPrefab[newTileIndex][0];
 
         //Does it need a Drift Enter Zone? 
-        bool driftZone = needDriftZone(currentTileIndex, newTileIndex);
+        bool requireDriftZone = needDriftZone(currentTileIndex, newTileIndex);
 
         //Find the position to spawn the tile 
-        Vector3 newPos = findPosTile(dirSpawn, driftZone);
+        Vector3 newPos = findPosTile(dirSpawn, requireDriftZone);
 
-        //Find the position to spawn the drift tile 
-        Vector3 newDPos = findPosDriftZone(dirSpawn); 
 
         //Spawn the tile 
-        tileSpawn = Instantiate(tileSpawn) as GameObject;
+        tileRoadSpawn = Instantiate(tileRoadSpawn) as GameObject;
         //In Hierachy, set it as child for Tile Manager
-        tileSpawn.transform.SetParent((transform));
+        tileRoadSpawn.transform.SetParent((transform));
         //Position the new tile 
-        tileSpawn.transform.position = newPos;
+        tileRoadSpawn.transform.position = newPos;
 
-        //Spawn the drift zone (if needed) 
-        GameObject DriftZone = tilesPrefab[0][0]; 
-        //Spawn Drift Enter Zone 
-        DriftZone = Instantiate(tilesPrefab[0][0]) as GameObject;
-        //In Hierachy, set it as child for Tile Manager
-        DriftZone.transform.SetParent((transform));
-        //Find Direction
-        DriftZone.transform.position = newDPos;
 
+        //Find the position to spawn the drift tile 
+        Vector3 newDPos = findPosDriftZone(dirSpawn);
+
+        //add tile into active tile list. So can destroy when dont need it. 
+        activeTilesRoad.Add(tileRoadSpawn); 
+
+        if (requireDriftZone == true){
+
+            //Spawn the drift zone (if needed) 
+            GameObject tileDriftSpawn = tilesPrefab[0][0];
+            //Spawn Drift Enter Zone 
+            tileDriftSpawn = Instantiate(tilesPrefab[0][0]) as GameObject;
+            //In Hierachy, set it as child for Tile Manager
+            tileDriftSpawn.transform.SetParent((transform));
+            //Position the new Drift zone tile
+            tileDriftSpawn.transform.position = newDPos;
+            //rotate it if needed. 
+            if(dirSpawn == "LEFT" || dirSpawn == "RIGHT"){
+
+                tileDriftSpawn.transform.Rotate(0, 90, 0); 
+            }
+
+            activeTileDrift.Add(tileDriftSpawn); 
+
+
+        }
 
         //Update current tile 
         currentTileIndex = newTileIndex;
-        currentTilePos = tileSpawn.transform.position; 
+        currentTilePos = tileRoadSpawn.transform.position; 
 
     }
 
 
+    //Find the next possible tile to spawn, generate a random number, use it as index and find the tile. 
+    //Return an index 
     int nextTileIndex(){
 
 
@@ -177,8 +205,10 @@ public class TileController : MonoBehaviour {
 
         if (currentTileIndex == 1 ){ 
 
-            //Declare a list of two possible tiles 
-            List<int> a_list = new List<int>(){1,7};
+            //Declare a list of two possible tiles  
+            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+
+            List<int> a_list = new List<int>(){7,7};
             return a_list[index];
 
         }
@@ -252,6 +282,7 @@ public class TileController : MonoBehaviour {
     }
 
 
+
     string findSpawnDirection(int tileIndex)
     {
         string direction = "NA";
@@ -280,37 +311,39 @@ public class TileController : MonoBehaviour {
 
     bool needDriftZone(int tileIndexA, int tileIndexB){
 
-        if(tileIndexA == 2 && tileIndexB == 3){
-            return true; 
+        if(tileIndexA == 1 && tileIndexB ==1 ){
+            return false;    
+        }
+        else if(tileIndexA == 2 && tileIndexB == 3){
+            return false; 
         }else if (tileIndexA == 3 && tileIndexB == 5)
         {
-            return true;
+            return false;
         }
         else if (tileIndexA == 4 && tileIndexB == 2)
         {
-            return true;
-        }else if (tileIndexA == 3 && tileIndexB == 4)
+            return false;
+        }else if (tileIndexA == 5 && tileIndexB == 4)
         {
-            return true;
+            return false;
         }
-        else if (tileIndexA == 2 && tileIndexB == 8)
+        else if (tileIndexA == 6 && tileIndexB == 8)
         {
-            return true;
-        }else if (tileIndexA == 3 && tileIndexB == 6)
+            return false;
+        }else if (tileIndexA == 7 && tileIndexB == 6)
         {
-            return true;
-        }else if (tileIndexA == 4 && tileIndexB == 9)
+            return false;
+        }else if (tileIndexA == 8 && tileIndexB == 9)
         {
-            return true;
-        }else if (tileIndexA == 5 && tileIndexB == 7)
+            return false;
+        }else if (tileIndexA == 9 && tileIndexB == 7)
         {
-            return true;
+            return false;
         }else{
-            return false; 
+            return true; 
         }
 
     }
-
 
 
     Vector3 findPosTile(string dir, bool needDriftZ ){
@@ -358,13 +391,15 @@ public class TileController : MonoBehaviour {
         return newPos; 
     }
 
-    Vector3 findPosDriftZone(string dir){ 
+    Vector3 findPosDriftZone(string dir)
+    {
 
-        Vector3 newPos = new Vector3(0, 0, 0); 
+        Vector3 newPos = new Vector3(0, 0, 0);
 
-        if(dir == "UP"){
-            
-            newPos = currentTilePos + new Vector3(0, 0,(1078/2)+(85/2)); 
+        if (dir == "UP")
+        {
+
+            newPos = currentTilePos + new Vector3(0, 0, (1078 / 2) + (85 / 2));
         }
 
         if (dir == "DOWN")
@@ -387,12 +422,32 @@ public class TileController : MonoBehaviour {
 
 
         return newPos;
+
+
+    }
+
+
+    public void DestroyTileRoad(){
+
+
+
+        Destroy(activeTilesRoad[0]);
+        activeTilesRoad.RemoveAt(0);
+
+
+    }
+
+
+	public void DestroyTileDriftZone(){ 
+        Destroy(activeTileDrift[0]);
+        activeTileDrift.RemoveAt(0);
     
     }
 
 
 
-    /*
+
+	/*
      * 
      * 
     private void SpawnTile(int prefabIndex = -1){

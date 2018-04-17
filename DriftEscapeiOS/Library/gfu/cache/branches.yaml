@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2018-04-12T21:52:30.9352150+10:00
-  initializedAtString: 2018-04-12T21:52:30.9352150+10:00
-  localBranches: []
-  remoteBranches: []
+  lastUpdatedAtString: 2018-04-17T15:08:44.5662170+10:00
+  initializedAtString: 2018-04-17T15:08:44.5662170+10:00
+  localBranches:
+  - name: master
+    tracking: origin/master
+    isActive: 1
+  remoteBranches:
+  - name: origin/master
+    tracking: '[None]'
+    isActive: 0
   remotes:
   - name: origin
     url: https://github.com/RichardChuah23/DriftEscapeiOS.git
@@ -25,15 +31,25 @@ MonoBehaviour:
     function: 0
     token: 
   localConfigBranches:
-    keys: []
-    values: []
+    keys:
+    - master
+    values:
+    - name: master
+      remote:
+        name: origin
+        url: https://github.com/RichardChuah23/DriftEscapeiOS.git
   remoteConfigBranches:
     keys:
     - origin
     subKeys:
-    - Values: []
+    - Values:
+      - master
     subKeyValues:
-    - Values: []
+    - Values:
+      - name: master
+        remote:
+          name: origin
+          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
   configRemotes:
     keys:
     - origin

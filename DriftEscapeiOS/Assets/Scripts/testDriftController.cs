@@ -21,10 +21,8 @@ public class testDriftController : MonoBehaviour {
             return;
         }
 
-
         SetOrbittingObjectPosition();
         StartCoroutine(AnimaterOrbit());
-
 
 	}
 	
@@ -49,7 +47,5 @@ public class testDriftController : MonoBehaviour {
             yield return null; 
         }
 
-
     }
-
 }
