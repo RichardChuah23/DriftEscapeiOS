@@ -51,6 +51,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKAnchorNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKBlendChainNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKBlendNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKBranchNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKPointNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKRotationNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKScaleNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Nodes\SKTriggerNode.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Signals_Internal\ISKSignal_Internal.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Signals_Internal\SKSignal_Internal.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Signals_Internal\SKSignalManager_Internal.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKAnchorNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKBranchNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKCmd.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKColliderRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKInGameRenderer.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKLobGenerator.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKLobPath.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKMath.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKPlane.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKPointNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKRenderer.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKRotationNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKScaleNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSpline.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSpline_Edit.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSpline_Upgrade.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSplineAnimator.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSplineCollider.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSplineManager.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKSplineSignalManager.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\SKTriggerNodeRoot.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Util\SKAnimationCurveContainer.cs" />
+     <Compile Include="Assets\_RelativeMotion\SplineKitPro\Scripts\Util\SKRandomSequence.cs" />
+     <Compile Include="Assets\DriftTestFolder\Ellipse.cs" />
+     <Compile Include="Assets\DriftTestFolder\EllipseRenderer.cs" />
+     <Compile Include="Assets\DriftTestFolder\simpleDrift.cs" />
      <Compile Include="Assets\PlayAd.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\colliderBar.cs" />
@@ -60,6 +99,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
      <Compile Include="Assets\Scripts\SkyDomeController.cs" />
+     <Compile Include="Assets\Scripts\testDriftController.cs" />
      <Compile Include="Assets\Scripts\TileController.cs" />
      <Compile Include="Assets\SimpleSky\nightday.cs" />
      <None Include="Assets\Plugins\GitHub\Editor\CREDITS.txt" />
