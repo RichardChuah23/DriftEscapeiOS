@@ -2,98 +2,465 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ObjectList // helper class to ensure we can edit the nested lists inside the unity editor
+{
+    public List<GameObject> enterDriftPlane;
+    public List<GameObject> Type1;
+    public List<GameObject> Type2; 
+    public List<GameObject> Type3;
+    public List<GameObject> Type4;
+    public List<GameObject> Type5;
+
+
+    public List<GameObject> Type6;
+    public List<GameObject> Type7;
+    public List<GameObject> Type8;
+    public List<GameObject> Type9;
+
+
+}
 
 public class TileController : MonoBehaviour {
 
-    public GameObject[] tilePrefabs;
+    //public  List<GameObject> tilePrefabs;
+
+
 
     private Transform playerTransform;
 
-    //Where to spawn the Z ? 
-    private float spawnZ = -787.0f;
-
-    //Length of the tiles
-    private float tileLength =787.0f ;
-
     //Number of tiles on the screen 
-    private int numOfTilesOnScreen = 2;
-
-    private List<GameObject> activeTiles;
-
-    private float safeZone = 700.0f;
+    private List<GameObject> activeTilesRoad;
+    private List<List<GameObject>> tilesPrefab;
+    private List<GameObject> activeTileDrift;
 
 
-    private int lastPrefabIndex = 0; 
+
 
     private GameController gameController;
-
     private bool restart;
 
+
+    public ObjectList tileObjects ;
+
+    private Vector3 currentTilePos;
+
+
+    private float t;
+    private float t2;
+    public int currentTileIndex;
+
+
+
+ 
 
 	// Use this for initialization
 	void Start () {
 
-
+        //Set value for variables 
+        t = Time.time;
+        t2 = Time.time; 
         restart = false; 
+        currentTileIndex = 1; 
 
+        //Declare List 
+        tilesPrefab = new List<List<GameObject>>();
+
+        activeTilesRoad =  new List<GameObject>();
+        activeTileDrift = new List<GameObject>(); 
+
+        //Add tiles into the nested-list 
+        addIntoList(tileObjects);
 
         //Locate game controller 
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
         {
             gameController = gameControllerObject.GetComponent<GameController>();
-
-        }
-
-        if (gameController == null)
-        {
+        }else{
             Debug.Log("Cannot find GameController script");
-
         }
 
-        //Declare array that hold list of gameObject
-        activeTiles = new List<GameObject>();
 
         //find Player object 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
-        playerTransform = playerObj.transform;
-        for (int i = 0; i < numOfTilesOnScreen; i++)
-        {
-            SpawnTile();
-        }
+
+        //Spawn the first tile 
+        //Find the direction of spawning 
+        GameObject tileSpawn = tilesPrefab[1][0]; 
+        tileSpawn = Instantiate(tileSpawn) as GameObject;
+        //In Hierachy, set it as child for Tile Manager
+        tileSpawn.transform.SetParent((transform));
+        //Position  the new tile 
+        tileSpawn.transform.position = new Vector3(0, 0, 0);
+        currentTilePos = tileSpawn.transform.position;
+
+        activeTilesRoad.Add(tileSpawn); 
 
 
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
+        
+        if(Time.time - t > 5){
+            nextTile();
+            t = Time.time;
 
-
-        //Repeatly spawn further as the player travel 
-        if (playerTransform.position.z - safeZone > (spawnZ - numOfTilesOnScreen * tileLength))
-        {
-            SpawnTile();
-            DeleteTile();
         }
 
-        
 
 
-        
+
 	}
 
+
+    void addIntoList(ObjectList objectlist)
+    {
+        
+        tilesPrefab.Add(objectlist.enterDriftPlane);
+        tilesPrefab.Add(objectlist.Type1);
+        tilesPrefab.Add(objectlist.Type2);
+        tilesPrefab.Add(objectlist.Type3);
+        tilesPrefab.Add(objectlist.Type4);
+        tilesPrefab.Add(objectlist.Type5);
+        tilesPrefab.Add(objectlist.Type6);
+        tilesPrefab.Add(objectlist.Type7);
+        tilesPrefab.Add(objectlist.Type8);
+        tilesPrefab.Add(objectlist.Type9);
+
+    }
+
+
+
+
+    void nextTile(){
+
+
+        //Find the direction of spawning 
+        string dirSpawn = findSpawnDirection(currentTileIndex); 
+         
+        //Get next tile index  //Choose which tile to spawn 
+        int newTileIndex = nextTileIndex(); 
+        GameObject tileRoadSpawn = tilesPrefab[newTileIndex][0];
+
+        //Does it need a Drift Enter Zone? 
+        bool requireDriftZone = needDriftZone(currentTileIndex, newTileIndex);
+
+        //Find the position to spawn the tile 
+        Vector3 newPos = findPosTile(dirSpawn, requireDriftZone);
+
+
+        //Spawn the tile 
+        tileRoadSpawn = Instantiate(tileRoadSpawn) as GameObject;
+        //In Hierachy, set it as child for Tile Manager
+        tileRoadSpawn.transform.SetParent((transform));
+        //Position the new tile 
+        tileRoadSpawn.transform.position = newPos;
+
+
+        //Find the position to spawn the drift tile 
+        Vector3 newDPos = findPosDriftZone(dirSpawn);
+
+        //add tile into active tile list. So can destroy when dont need it. 
+        activeTilesRoad.Add(tileRoadSpawn); 
+
+        if (requireDriftZone == true){
+
+            //Spawn the drift zone (if needed) 
+            GameObject tileDriftSpawn = tilesPrefab[0][0];
+            //Spawn Drift Enter Zone 
+            tileDriftSpawn = Instantiate(tilesPrefab[0][0]) as GameObject;
+            //In Hierachy, set it as child for Tile Manager
+            tileDriftSpawn.transform.SetParent((transform));
+            //Position the new Drift zone tile
+            tileDriftSpawn.transform.position = newDPos;
+            //rotate it if needed. 
+            if(dirSpawn == "LEFT" || dirSpawn == "RIGHT"){
+
+                tileDriftSpawn.transform.Rotate(0, 90, 0); 
+            }
+
+            activeTileDrift.Add(tileDriftSpawn); 
+
+
+        }
+
+        //Update current tile 
+        currentTileIndex = newTileIndex;
+        currentTilePos = tileRoadSpawn.transform.position; 
+
+    }
+
+
+    //Find the next possible tile to spawn, generate a random number, use it as index and find the tile. 
+    //Return an index 
+    int nextTileIndex(){
+
+
+        int index = Random.Range(0, 2);
+
+
+        if (currentTileIndex == 1 ){ 
+
+            //Declare a list of two possible tiles  
+            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+
+            List<int> a_list = new List<int>(){7,7};
+            return a_list[index];
+
+        }
+        if (currentTileIndex == 2)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 3, 9 };
+            return a_list[index];
+
+        }
+        if (currentTileIndex == 3)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 5, 8 };
+            return a_list[index];
+        }
+        if (currentTileIndex == 4)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 2, 7,1 };
+            index = a_list[Random.Range(0, 3)];
+
+
+        }
+        if (currentTileIndex == 5)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 4, 6 };
+            return a_list[index];
+        }
+        if (currentTileIndex == 6)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 8, 5 };
+            return a_list[index];
+        }
+        if (currentTileIndex == 7)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 6, 4 };
+            index = a_list[Random.Range(0, 1)];
+
+        }
+        if (currentTileIndex == 8)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 3, 9 };
+            return a_list[index];
+        }
+        if (currentTileIndex == 9)
+        {
+
+            //Declare a list of two possible tiles 
+            List<int> a_list = new List<int>() { 2, 7,1 };
+            index = a_list[Random.Range(0, 3)];
+
+        }
+
+
+        return index;
+
+
+
+    }
+
+
+
+    string findSpawnDirection(int tileIndex)
+    {
+        string direction = "NA";
+
+        if (tileIndex == 2 || tileIndex == 8)
+        {
+            direction = "RIGHT";
+        }
+        else if (tileIndex == 3 || tileIndex == 6)
+        {
+            direction = "DOWN";
+        }
+        else if (tileIndex == 5 || tileIndex == 7)
+        {
+            direction = "LEFT";
+        }
+        else if (tileIndex == 4 || tileIndex == 9 || tileIndex == 1)
+        {
+            direction = "UP";
+        }
+
+        return direction;
+    }
+
+     
+
+    bool needDriftZone(int tileIndexA, int tileIndexB){
+
+        if(tileIndexA == 1 && tileIndexB ==1 ){
+            return false;    
+        }
+        else if(tileIndexA == 2 && tileIndexB == 3){
+            return false; 
+        }else if (tileIndexA == 3 && tileIndexB == 5)
+        {
+            return false;
+        }
+        else if (tileIndexA == 4 && tileIndexB == 2)
+        {
+            return false;
+        }else if (tileIndexA == 5 && tileIndexB == 4)
+        {
+            return false;
+        }
+        else if (tileIndexA == 6 && tileIndexB == 8)
+        {
+            return false;
+        }else if (tileIndexA == 7 && tileIndexB == 6)
+        {
+            return false;
+        }else if (tileIndexA == 8 && tileIndexB == 9)
+        {
+            return false;
+        }else if (tileIndexA == 9 && tileIndexB == 7)
+        {
+            return false;
+        }else{
+            return true; 
+        }
+
+    }
+
+
+    Vector3 findPosTile(string dir, bool needDriftZ ){
+
+        Vector3 newPos = new Vector3  (0, 0, 0);
+
+        if(dir == "UP"){
+            newPos = currentTilePos + new Vector3(0, 0, 1078) ;
+            if(needDriftZ){
+                newPos += new Vector3(0, 0, 85);
+            }
+
+        }
+
+        if (dir == "DOWN")
+        {
+            newPos = currentTilePos + new Vector3(0, 0, -1078);
+            if (needDriftZ)
+            {
+                newPos += new Vector3(0, 0, -85);
+            }
+
+        }
+
+        if (dir == "RIGHT")
+        {
+            newPos = currentTilePos + new Vector3(1078, 0, 0);
+            if (needDriftZ)
+            {
+                newPos += new Vector3(85, 0, 0);
+            }
+
+        }
+
+        if (dir == "LEFT")
+        {
+            newPos = currentTilePos + new Vector3(-1078, 0, 0);
+            if (needDriftZ)
+            {
+                newPos += new Vector3(-85, 0, 0);
+            }
+
+        }
+
+        return newPos; 
+    }
+
+    Vector3 findPosDriftZone(string dir)
+    {
+
+        Vector3 newPos = new Vector3(0, 0, 0);
+
+        if (dir == "UP")
+        {
+
+            newPos = currentTilePos + new Vector3(0, 0, (1078 / 2) + (85 / 2));
+        }
+
+        if (dir == "DOWN")
+        {
+
+            newPos = currentTilePos + new Vector3(0, 0, -((1078 / 2) + (85 / 2)));
+        }
+
+        if (dir == "RIGHT")
+        {
+
+            newPos = currentTilePos + new Vector3((1078 / 2) + (85 / 2), 0, 0);
+        }
+
+        if (dir == "LEFT")
+        {
+
+            newPos = currentTilePos + new Vector3(-((1078 / 2) + (85 / 2)), 0, 0);
+        }
+
+
+        return newPos;
+
+
+    }
+
+
+    public void DestroyTileRoad(){
+
+
+
+        Destroy(activeTilesRoad[0]);
+        activeTilesRoad.RemoveAt(0);
+
+
+    }
+
+
+	public void DestroyTileDriftZone(){ 
+        Destroy(activeTileDrift[0]);
+        activeTileDrift.RemoveAt(0);
+    
+    }
+
+
+
+
+	/*
+     * 
+     * 
     private void SpawnTile(int prefabIndex = -1){
 
-        GameObject go;
-        go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+        //GameObject go;
+        //go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
 
         //In Hierachy, set it as child for Tile Manager
-        go.transform.SetParent((transform));
-        go.transform.position = Vector3.forward * spawnZ;
+        //go.transform.SetParent((transform));
+        //go.transform.position = Vector3.forward * spawnZ;
         spawnZ += tileLength ; 
 
-        activeTiles.Add(go);
+        //activeTiles.Add(go);
     }
 
     private void DeleteTile(){ 
@@ -118,7 +485,7 @@ public class TileController : MonoBehaviour {
 
     private int RandomPrefabIndex(){ 
 
-        if (tilePrefabs.Length <= 1) {
+        if (tilePrefabs.Count <= 1) {
             return 0; 
         }
 
@@ -126,13 +493,16 @@ public class TileController : MonoBehaviour {
 
         //Ensure it doesnt repeat
         while(randomIndex == lastPrefabIndex){
-            randomIndex = Random.Range(0, tilePrefabs.Length);
+            randomIndex = Random.Range(0, tilePrefabs.Count);
         }
 
         lastPrefabIndex = randomIndex;
         return randomIndex; 
 
     }   
+
+    */
+
 
 
 
