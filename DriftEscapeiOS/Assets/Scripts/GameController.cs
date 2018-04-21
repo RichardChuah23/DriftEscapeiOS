@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 
 
     private TileController tileController;
+    private PlayerController playerController; 
 
 
 
@@ -38,13 +39,28 @@ public class GameController : MonoBehaviour {
 
         }
 
+        //Locate player controller 
+        GameObject playerControllerObject = GameObject.Find("PlayerController");
+        if (playerControllerObject != null)
+        {
+            playerController = playerControllerObject.GetComponent<PlayerController>();
+
+        }
+
+        if (tileController == null)
+        {
+            Debug.Log("Cannot find PLayerController script");
+
+        }
+
 
         //Find Restart button and rewrite the button text and disable it 
         gameObjRestart = GameObject.Find("btnRestart") ;
-        gameObjRestart.SetActive(false);
+        //gameObjRestart.SetActive(false);
 
         Button btn = btnRestart.GetComponent<Button>();
         btn.onClick.AddListener(RestartOnClick);
+
 
 	}
 
@@ -56,16 +72,25 @@ public class GameController : MonoBehaviour {
 
 	}
 
-    void RestartOnClick(){
+    public void RestartOnClick(){
+
+        Debug.Log("CLick ! "); 
         gameOver = false;
         restart = true;
         gameObjRestart.SetActive(false);
 
         //Delete all tile 
-        //tileController.DeleteAllTile();
+        tileController.DestroyAllTiles();
 
+        //Spawn the first two tiles 
+        tileController.spawnFirstTwoTiles(); 
 
+        //Set player back to origin point 
         player.transform.position = new Vector3(0, 0, 0);
+
+        //Move car forward 
+        playerController.setMode("FORWARD"); 
+
 
 
     }

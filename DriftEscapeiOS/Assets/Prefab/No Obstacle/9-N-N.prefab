@@ -51,8 +51,10 @@ GameObject:
   - component: {fileID: 4970852263775088}
   - component: {fileID: 33240530181976834}
   - component: {fileID: 23906487865451550}
+  - component: {fileID: 54324911484123214}
+  - component: {fileID: 65792094380075296}
   m_Layer: 0
-  m_Name: Ground (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +192,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114911667904176}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1939.7462, y: 9645.13, z: 6263.8936}
+  m_LocalPosition: {x: -4293.158, y: 18565.025, z: 826.87384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4155198101862196}
@@ -419,6 +421,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795948188536964}
   m_Mesh: {fileID: 4300000, guid: bda1a50f85f3b489bb3bb2f90203e650, type: 3}
+--- !u!54 &54324911484123214
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281629437300608}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54657953056155170
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -448,3 +465,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: bda1a50f85f3b489bb3bb2f90203e650, type: 3}
+--- !u!65 &65792094380075296
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281629437300608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 787.40155, y: 787.40155, z: 7.8740153}
+  m_Center: {x: 0, y: 0, z: 0}

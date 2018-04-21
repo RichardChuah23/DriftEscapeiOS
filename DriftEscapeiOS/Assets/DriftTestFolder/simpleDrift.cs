@@ -13,11 +13,6 @@ public class simpleDrift : MonoBehaviour {
     private float coolDown;
     private float lastTime; 
 
-
-
-
-
-
 	// Use this for initialization
 	void Start () {
 

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public Rigidbody rb;
+    public float objectGravity; 
     public float turnSpeed;
     public float forwardSpeed;
     public float switchlaneSpeed;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private float turn1;
     private float turn2;
     private float turn3;
-    private int turnGear = 0;
+    private int turnGear ;
     private float inputHo;
     private float coolDown;
     private float lastTime2;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         gameOver = false;
         mode = "FORWARD";
-
+        turnGear = 0; 
 
         //Set car location 
         //transform.position = new Vector3(0, 0, 0);
@@ -100,19 +101,36 @@ public class PlayerController : MonoBehaviour
         //Check if the game is running 
         //gameOver = gameController.isGameOver();
 
+        rb.AddForce(Vector3.down * objectGravity * rb.mass);
+
         if (mode == "FORWARD")
         {
             moveForward();
         }
-        else
+        else if ( mode ==   "LEFT" || mode == "RIGHT")
         {
 
             driftmode(mode);
         }
 
+        else if ( mode == "GAMEOVER"){
+            gameController.GameOver(); 
+        }else{
+            Debug.Log("Variable mode is invalid"); 
+        }
+
+        //Lock X and Z axis 
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
 
     }
 
+
+
+
+    public void setMode(string mode){
+        this.mode = mode; 
+    }
 
     void moveForward()
     {
@@ -196,62 +214,85 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator RemoveTileRoad()
     {
-        yield return new WaitForSeconds(2f);
+        if (mode != "GAMEOVER"){ 
+            yield return new WaitForSeconds(2f);
         tileController.DestroyTileRoad();
+   
+        }
     }
 
     IEnumerator RemoveTileDrift()
     {
-        yield return new WaitForSeconds(2f);
-        tileController.DestroyTileDriftZone();
+        if (mode != "GAMEOVER")
+        {
+            yield return new WaitForSeconds(2f);
+            tileController.DestroyTileDriftZone();
+        }
     }
 
 
     private void OnCollisionExit(Collision collision)
     {
 
-        if(Time.time -  tileDestroyTime > 1 ){ 
 
-            Debug.Log(collision.transform.name);
+        //To prevent multiple calling. 
+        //When player object left the tile 
+        if(Time.time -  tileDestroyTime > 3 ){
+
+            //If its a road.
+
             if (collision.transform.name == "Road" || collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve")
             {
+                
+                tileController.nextTile();
                 StartCoroutine(RemoveTileRoad());
+                tileDestroyTime = Time.time;
 
             }
 
-            tileDestroyTime = Time.time; 
-        
+
+
         }
 
 
         //Tells Tiles Manager to remove tile - Drift Zone 
-            if (collision.transform.name == "DriftZone(Clone)")
-            {
-                StartCoroutine(RemoveTileDrift());
+        if (collision.transform.name == "DriftZone(Clone)")
+        {
+            StartCoroutine(RemoveTileDrift());
 
-            }
+        }
 
 	}
 
+
+    /// When player object contacts with an object 
     void OnCollisionEnter(Collision collision)
     {
-        
-
-        //Straight 
+        Debug.Log("Entering " + collision.transform.name); 
+        //If the contact object is a Straight tile  
         if(collision.transform.name == "Road"){
             mode = "FORWARD";
         }
             
-        //Left
+        //If Right Tile
         else if(collision.transform.name == "R_Road Curve"){
             mode = "RIGHT"; 
-        }
+            transform.Rotate(0, 0, 0); // reset rotation to 0 
 
+        }
+        //If Left tile 
         else if ( collision.transform.name == "L_Road Curve"){
             mode = "LEFT"; 
+            transform.Rotate(0, 0, 0); // reset rotation to 0 
+
+
+        //If the player contact with the ground  
+        }else if(collision.transform.name == "Ground"){
+            mode = "GAMEOVER"; 
         }
 
     }
+
 
     void driftmode(string mode)
     {
@@ -269,26 +310,39 @@ public class PlayerController : MonoBehaviour
         
         }
 
-
         coolDown = 0.5f;
         lastTime = Time.time; 
         inputHo = Input.GetAxisRaw("Horizontal");
 
         //Click Right
-        if (inputHo == 1 && Time.time - lastTime2 > coolDown && turnGear <= 2)
+        if (inputHo == 1 && Time.time - lastTime2 > coolDown && turnGear <= 3)
         {
-            turnGear++;
+            if (mode == "LEFT" && turnGear - 1 >= 0  ){
+                turnGear--;
+            }else if(mode == "RIGHT" && turnGear + 1 <= 3 ){
+                turnGear++; 
+            }
+
             lastTime2 = Time.time;
 
         }
+
 
         //Click Left
-        if (inputHo == -1 && Time.time - lastTime2 > coolDown && turnGear >= 1)
+        if (inputHo == -1 && Time.time - lastTime2 > coolDown && turnGear >= 0)
         {
-            turnGear--;
+            if (mode == "LEFT" && (turnGear + 1)  <= 3 )
+            {
+                turnGear++;
+            }
+            else if (mode == "RIGHT" && turnGear - 1 >= 0  )
+            {
+                turnGear--;
+            }
             lastTime2 = Time.time;
 
         }
+
 
         if (turnGear == 0)
         {
@@ -325,7 +379,6 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
 
 }
 

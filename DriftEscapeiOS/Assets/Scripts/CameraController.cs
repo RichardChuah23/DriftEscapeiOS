@@ -22,14 +22,15 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate () {
         
         //camera follows car switch lane 
-        transform.position = new Vector3(transform.position.x,transform.position.y, player.transform.position.z + offset.z) ;
+        transform.position = new Vector3(player.transform.position.x,transform.position.y, player.transform.position.z + offset.z) ;
 
 
 
-        transform.position = Vector3.Lerp( 
-                                          new Vector3(transform.position.x,transform.position.y,transform.position.z), 
+        /*
+        //move camera when switching lane 
+        transform.position = Vector3.Lerp( new Vector3(transform.position.x,transform.position.y,transform.position.z), 
                                           new Vector3(player.transform.position.x + offset.x,transform.position.y,transform.position.z),
                                           Time.deltaTime * 2.0f);
-        
+        */ 
 	}
 }
