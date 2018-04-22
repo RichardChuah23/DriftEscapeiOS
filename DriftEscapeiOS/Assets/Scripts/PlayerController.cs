@@ -132,6 +132,10 @@ public class PlayerController : MonoBehaviour
         this.mode = mode; 
     }
 
+    public void setPlayerPos(Vector3 pos){
+        transform.position = pos; 
+    }
+
     void moveForward()
     {
         //Car moving forward 
@@ -379,6 +383,8 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+
 
 }
 
