@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour {
 
     public void ChangeScene(int changeTheScene){
 
-        SceneManager.LoadScene(changeTheScene  );
+        SceneManager.LoadScene(changeTheScene);
     
     }
 }
