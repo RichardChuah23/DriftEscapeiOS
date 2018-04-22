@@ -40,10 +40,16 @@ public class GameController : MonoBehaviour {
         }
 
         //Locate player controller 
-        GameObject playerControllerObject = GameObject.Find("PlayerController");
+        GameObject playerControllerObject = GameObject.Find("Player");
+
+
+
+
         if (playerControllerObject != null)
         {
-            playerController = playerControllerObject.GetComponent<PlayerController>();
+            //playerController = playerControllerObject.GetComponent<PlayerController>();
+            playerController = playerControllerObject.GetComponentInChildren<PlayerController>(); 
+
 
         }
 
@@ -74,19 +80,19 @@ public class GameController : MonoBehaviour {
 
     public void RestartOnClick(){
 
-        Debug.Log("CLick ! "); 
         gameOver = false;
         restart = true;
         gameObjRestart.SetActive(false);
+
 
         //Delete all tile 
         tileController.DestroyAllTiles();
 
         //Spawn the first two tiles 
-        tileController.spawnFirstTwoTiles(); 
+        tileController.spawnFirstTwoTiles();
 
         //Set player back to origin point 
-        player.transform.position = new Vector3(0, 0, 0);
+        playerController.setPlayerPos(new Vector3(0, 0, 0));
 
         //Move car forward 
         playerController.setMode("FORWARD"); 

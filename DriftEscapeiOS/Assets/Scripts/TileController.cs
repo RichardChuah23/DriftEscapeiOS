@@ -52,8 +52,6 @@ public class TileController : MonoBehaviour {
 
 
 
- 
-
 	// Use this for initialization
 	void Start () {
 
@@ -125,9 +123,9 @@ public class TileController : MonoBehaviour {
         tileSpawn.transform.position = new Vector3(0, 0, 1078);
         currentTilePos = tileSpawn.transform.position;
 
-        activeTilesRoad.Add(tileSpawn); 
+        activeTilesRoad.Add(tileSpawn);
 
-    
+        currentTileIndex = 1; 
     
     }
 
@@ -461,17 +459,20 @@ public class TileController : MonoBehaviour {
 
 	public void DestroyAllTiles()
 	{
+        Debug.Log("LEFT num " + activeTilesRoad.Count); 
+
         //Remove all road tiles 
-        for (int i = 0; i > activeTilesRoad.Count; i++)
+
+        for (int i = 0; i <= activeTilesRoad.Count; i++)
         {
-
-
+            Debug.Log("DESTROY ONE TILE");
+            Debug.Log("LEFT num " + activeTilesRoad.Count); 
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
         }
 
         //Remove all Drift Tile 
-        for (int i = 0; i > activeTileDrift.Count; i++)
+        for (int i = 0; i <= activeTileDrift.Count; i++)
         {
 
 
