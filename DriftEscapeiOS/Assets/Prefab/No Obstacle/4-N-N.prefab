@@ -21,8 +21,10 @@ GameObject:
   - component: {fileID: 4497041144601516}
   - component: {fileID: 33109462734473830}
   - component: {fileID: 23216164887479404}
+  - component: {fileID: 54610546211667520}
+  - component: {fileID: 65990937621938526}
   m_Layer: 0
-  m_Name: Ground (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +137,7 @@ GameObject:
   - component: {fileID: 64411584158782864}
   - component: {fileID: 54339370957323956}
   m_Layer: 0
-  m_Name: Mesh2
+  m_Name: R_Road Cruve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126478922436908}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 1191.9962, y: 3757.13, z: 6788.5186}
+  m_LocalPosition: {x: -2528.8066, y: 5398.836, z: -517.7721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4762089930893930}
@@ -434,6 +436,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54610546211667520
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068054573157698}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &64411584158782864
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -448,3 +465,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: bda1a50f85f3b489bb3bb2f90203e650, type: 3}
+--- !u!65 &65990937621938526
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068054573157698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 787.4017, y: 787.4017, z: 7.8740153}
+  m_Center: {x: -0.00012207031, y: 0.000030517578, z: 0}

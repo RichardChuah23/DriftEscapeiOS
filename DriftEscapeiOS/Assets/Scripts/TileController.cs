@@ -86,7 +86,24 @@ public class TileController : MonoBehaviour {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
 
-        //Spawn the first tile 
+
+        spawnFirstTwoTiles(); 
+
+	}
+
+	
+	// Update is called once per frame
+	void Update () {
+
+        //Do nothing for now 
+
+	}
+
+
+    public void spawnFirstTwoTiles(){ 
+
+
+         //Spawn the first two tile 
         //Find the direction of spawning 
         GameObject tileSpawn = tilesPrefab[1][0]; 
         tileSpawn = Instantiate(tileSpawn) as GameObject;
@@ -99,22 +116,20 @@ public class TileController : MonoBehaviour {
         activeTilesRoad.Add(tileSpawn); 
 
 
-	}
+        //Find the direction of spawning 
+        tileSpawn = tilesPrefab[1][0]; 
+        tileSpawn = Instantiate(tileSpawn) as GameObject;
+        //In Hierachy, set it as child for Tile Manager
+        tileSpawn.transform.SetParent((transform));
+        //Position  the new tile 
+        tileSpawn.transform.position = new Vector3(0, 0, 1078);
+        currentTilePos = tileSpawn.transform.position;
 
-	
-	// Update is called once per frame
-	void Update () {
-        
-        if(Time.time - t > 5){
-            nextTile();
-            t = Time.time;
+        activeTilesRoad.Add(tileSpawn); 
 
-        }
-
-
-
-
-	}
+    
+    
+    }
 
 
     void addIntoList(ObjectList objectlist)
@@ -136,7 +151,7 @@ public class TileController : MonoBehaviour {
 
 
 
-    void nextTile(){
+    public void nextTile(){
 
 
         //Find the direction of spawning 
@@ -443,6 +458,30 @@ public class TileController : MonoBehaviour {
         activeTileDrift.RemoveAt(0);
     
     }
+
+	public void DestroyAllTiles()
+	{
+        //Remove all road tiles 
+        for (int i = 0; i > activeTilesRoad.Count; i++)
+        {
+
+
+            Destroy(activeTilesRoad[i]);
+            activeTilesRoad.RemoveAt(i);
+        }
+
+        //Remove all Drift Tile 
+        for (int i = 0; i > activeTileDrift.Count; i++)
+        {
+
+
+            Destroy(activeTileDrift[i]);
+            activeTileDrift.RemoveAt(i);
+        }
+
+
+		
+	}
 
 
 

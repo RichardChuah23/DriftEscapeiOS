@@ -81,8 +81,10 @@ GameObject:
   - component: {fileID: 4437209880486602}
   - component: {fileID: 33781177786191524}
   - component: {fileID: 23448106218181708}
+  - component: {fileID: 54589138466887358}
+  - component: {fileID: 65843051438424786}
   m_Layer: 0
-  m_Name: Ground (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +137,7 @@ GameObject:
   - component: {fileID: 64982168539351374}
   - component: {fileID: 54149803076029810}
   m_Layer: 0
-  m_Name: R_Riad Curve
+  m_Name: R_Road Curve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149632454579444}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1563.7462, y: 3962.63, z: 6006.7686}
+  m_LocalPosition: {x: -1829.8441, y: 1996.7904, z: -626.4659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4149220479057800}
@@ -434,6 +436,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54589138466887358
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537006810353494}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &64982168539351374
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -448,3 +465,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: bda1a50f85f3b489bb3bb2f90203e650, type: 3}
+--- !u!65 &65843051438424786
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537006810353494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 787.4017, y: 787.4017, z: 7.8740153}
+  m_Center: {x: 0, y: -0.000030517578, z: 0}
