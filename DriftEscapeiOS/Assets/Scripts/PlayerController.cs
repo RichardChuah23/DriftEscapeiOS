@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private string nextDriftDir; 
 
+    private bool dzTrigger = true; 
+    private bool tileTrigger = true;
+
 
     void Start()
     {
@@ -208,31 +211,36 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator RemoveTileRoad()
     {
+        tileTrigger = false;
         if (mode != "GAMEOVER")
         { 
-            yield return new WaitForSeconds(3f);
+            
+            yield return new WaitForSeconds(1f);
             tileController.DestroyTileRoad();
    
         }
+        tileTrigger = true; 
     }
 
     IEnumerator RemoveTileDrift()
     {
+        dzTrigger = false; 
         if (mode != "GAMEOVER")
         {
             yield return new WaitForSeconds(3f);
             tileController.DestroyTileDriftZone();
         }
+        dzTrigger = true; 
     }
 
 
     private void OnCollisionExit(Collision collision)
     {
-
-
+        /*
+        Debug.Log("Left  " + collision.transform.name);
         //To prevent multiple calling. 
         //When player object left the tile 
-        if(Time.time -  tileDestroyTime > 3 ){
+        if(Time.time -  tileDestroyTime > 2 ){ 
 
             //If its a road.
 
@@ -247,8 +255,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        */
+
         //Tells Tiles Manager to remove tile - Drift Zone 
-        if (collision.transform.name == "DriftZone(Clone)")
+        if (collision.transform.name == "DriftZone(Clone)" && dzTrigger == true)
         {
             StartCoroutine(RemoveTileDrift());
         }
@@ -259,6 +269,8 @@ public class PlayerController : MonoBehaviour
     /// When player object contacts with an object 
     void OnCollisionEnter(Collision collision)
     {
+
+
         /*
         Debug.Log("Entering " + collision.transform.name); 
         //If the contact object is a Straight tile  
@@ -282,6 +294,22 @@ public class PlayerController : MonoBehaviour
 
         */
 
+        Debug.Log(collision.transform.name);
+
+        if (collision.transform.name == "Road" || collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
+        {
+            if (collision.transform.parent.name != "First Tile" && tileTrigger == true) {
+
+
+                tileController.nextTile();
+                StartCoroutine(RemoveTileRoad());
+
+                tileDestroyTime = Time.time;
+            }
+
+
+        }
+
 
         //When player did not react to the driftZone
         //Car keep going straight until game over  
@@ -290,7 +318,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if ( collision.transform.name == "DriftZone(Clone)"){
-            Debug.Log("Set to predrift");
             mode = "PREDRIFT"; 
         }
 

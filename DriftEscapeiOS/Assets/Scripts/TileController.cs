@@ -97,7 +97,6 @@ public class TileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Do nothing for now 
 
 	}
 
@@ -110,6 +109,7 @@ public class TileController : MonoBehaviour {
         //Find the direction of spawning 
         GameObject tileSpawn = tilesPrefab[1][0]; 
         tileSpawn = Instantiate(tileSpawn) as GameObject;
+        tileSpawn.name = "First Tile";
         //In Hierachy, set it as child for Tile Manager
         tileSpawn.transform.SetParent((transform));
         //Position  the new tile 
@@ -119,6 +119,8 @@ public class TileController : MonoBehaviour {
         activeTilesRoad.Add(tileSpawn); 
 
 
+
+        //Second tile 
         //Find the direction of spawning 
         tileSpawn = tilesPrefab[1][0]; 
         tileSpawn = Instantiate(tileSpawn) as GameObject;
@@ -452,16 +454,19 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
-        
+        Debug.Log(activeTilesRoad.Count);
         Destroy(activeTilesRoad[0]);
         activeTilesRoad.RemoveAt(0);
+
+
     }
 
 
 	public void DestroyTileDriftZone(){ 
-        
+        Debug.Log(activeTileDrift.Count);
         Destroy(activeTileDrift[0]);
         activeTileDrift.RemoveAt(0);
+
     
     }
 
@@ -473,7 +478,7 @@ public class TileController : MonoBehaviour {
 
         for (int i = 0; i <= activeTilesRoad.Count; i++)
         {
-            Debug.Log("DESTROY ONE TILE");
+            
             Debug.Log("LEFT num " + activeTilesRoad.Count); 
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
