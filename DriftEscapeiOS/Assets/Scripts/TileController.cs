@@ -44,12 +44,16 @@ public class TileController : MonoBehaviour {
     public ObjectList tileObjects ;
 
     private Vector3 currentTilePos;
+    public float driftTileLength;
+    public float driftZoneLength; 
 
 
     private float t;
     private float t2;
     public int currentTileIndex;
+    public string dirSpawn;
 
+    private int newTileIndex;
 
 
 	// Use this for initialization
@@ -59,7 +63,7 @@ public class TileController : MonoBehaviour {
         t = Time.time;
         t2 = Time.time; 
         restart = false; 
-        currentTileIndex = 1; 
+        currentTileIndex = 1;
 
         //Declare List 
         tilesPrefab = new List<List<GameObject>>();
@@ -93,9 +97,9 @@ public class TileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Do nothing for now 
 
 	}
+
 
 
     public void spawnFirstTwoTiles(){ 
@@ -105,6 +109,7 @@ public class TileController : MonoBehaviour {
         //Find the direction of spawning 
         GameObject tileSpawn = tilesPrefab[1][0]; 
         tileSpawn = Instantiate(tileSpawn) as GameObject;
+        tileSpawn.name = "First Tile";
         //In Hierachy, set it as child for Tile Manager
         tileSpawn.transform.SetParent((transform));
         //Position  the new tile 
@@ -114,6 +119,8 @@ public class TileController : MonoBehaviour {
         activeTilesRoad.Add(tileSpawn); 
 
 
+
+        //Second tile 
         //Find the direction of spawning 
         tileSpawn = tilesPrefab[1][0]; 
         tileSpawn = Instantiate(tileSpawn) as GameObject;
@@ -147,16 +154,14 @@ public class TileController : MonoBehaviour {
     }
 
 
-
-
     public void nextTile(){
 
 
         //Find the direction of spawning 
-        string dirSpawn = findSpawnDirection(currentTileIndex); 
+        dirSpawn = findSpawnDirection(currentTileIndex); 
          
         //Get next tile index  //Choose which tile to spawn 
-        int newTileIndex = nextTileIndex(); 
+        newTileIndex = nextTileIndex(); 
         GameObject tileRoadSpawn = tilesPrefab[newTileIndex][0];
 
         //Does it need a Drift Enter Zone? 
@@ -320,42 +325,50 @@ public class TileController : MonoBehaviour {
         return direction;
     }
 
-     
 
-    bool needDriftZone(int tileIndexA, int tileIndexB){
+    bool needDriftZone(int tileIndexA, int tileIndexB)
+    {
 
-        if(tileIndexA == 1 && tileIndexB ==1 ){
-            return false;    
+        if (tileIndexA == 1 && tileIndexB == 1)
+        {
+            return false;
         }
-        else if(tileIndexA == 2 && tileIndexB == 3){
-            return false; 
-        }else if (tileIndexA == 3 && tileIndexB == 5)
+        else if (tileIndexA == 2 && tileIndexB == 3)
+        {
+            return false;
+        }
+        else if (tileIndexA == 3 && tileIndexB == 5)
         {
             return false;
         }
         else if (tileIndexA == 4 && tileIndexB == 2)
         {
             return false;
-        }else if (tileIndexA == 5 && tileIndexB == 4)
+        }
+        else if (tileIndexA == 5 && tileIndexB == 4)
         {
             return false;
         }
         else if (tileIndexA == 6 && tileIndexB == 8)
         {
             return false;
-        }else if (tileIndexA == 7 && tileIndexB == 6)
-        {
-            return false;
-        }else if (tileIndexA == 8 && tileIndexB == 9)
-        {
-            return false;
-        }else if (tileIndexA == 9 && tileIndexB == 7)
-        {
-            return false;
-        }else{
-            return true; 
         }
-
+        else if (tileIndexA == 7 && tileIndexB == 6)
+        {
+            return false;
+        }
+        else if (tileIndexA == 8 && tileIndexB == 9)
+        {
+            return false;
+        }
+        else if (tileIndexA == 9 && tileIndexB == 7)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
 
@@ -363,40 +376,40 @@ public class TileController : MonoBehaviour {
 
         Vector3 newPos = new Vector3  (0, 0, 0);
 
-        if(dir == "UP"){
-            newPos = currentTilePos + new Vector3(0, 0, 1078) ;
-            if(needDriftZ){
-                newPos += new Vector3(0, 0, 85);
-            }
 
+        if(dir == "UP"){
+            newPos = currentTilePos + new Vector3(0, 0, driftTileLength) ;
+            if(needDriftZ){
+                newPos += new Vector3(0, 0, driftZoneLength);
+            }
         }
 
         if (dir == "DOWN")
         {
-            newPos = currentTilePos + new Vector3(0, 0, -1078);
+            newPos = currentTilePos + new Vector3(0, 0, -driftTileLength);
             if (needDriftZ)
             {
-                newPos += new Vector3(0, 0, -85);
+                newPos += new Vector3(0, 0, -driftZoneLength);
             }
 
         }
 
         if (dir == "RIGHT")
         {
-            newPos = currentTilePos + new Vector3(1078, 0, 0);
+            newPos = currentTilePos + new Vector3(driftTileLength, 0, 0);
             if (needDriftZ)
             {
-                newPos += new Vector3(85, 0, 0);
+                newPos += new Vector3(driftZoneLength, 0, 0);
             }
 
         }
 
         if (dir == "LEFT")
         {
-            newPos = currentTilePos + new Vector3(-1078, 0, 0);
+            newPos = currentTilePos + new Vector3(-driftTileLength, 0, 0);
             if (needDriftZ)
             {
-                newPos += new Vector3(-85, 0, 0);
+                newPos += new Vector3(-driftZoneLength, 0, 0);
             }
 
         }
@@ -412,25 +425,25 @@ public class TileController : MonoBehaviour {
         if (dir == "UP")
         {
 
-            newPos = currentTilePos + new Vector3(0, 0, (1078 / 2) + (85 / 2));
+            newPos = currentTilePos + new Vector3(0, 0, (driftTileLength / 2) + (driftZoneLength / 2));
         }
 
         if (dir == "DOWN")
         {
 
-            newPos = currentTilePos + new Vector3(0, 0, -((1078 / 2) + (85 / 2)));
+            newPos = currentTilePos + new Vector3(0, 0, -((driftTileLength / 2) + (driftZoneLength / 2)));
         }
 
         if (dir == "RIGHT")
         {
 
-            newPos = currentTilePos + new Vector3((1078 / 2) + (85 / 2), 0, 0);
+            newPos = currentTilePos + new Vector3((driftTileLength / 2) + (driftZoneLength / 2), 0, 0);
         }
 
         if (dir == "LEFT")
         {
 
-            newPos = currentTilePos + new Vector3(-((1078 / 2) + (85 / 2)), 0, 0);
+            newPos = currentTilePos + new Vector3(-((driftTileLength / 2) + (driftZoneLength / 2)), 0, 0);
         }
 
 
@@ -441,9 +454,7 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
-
-
-
+        Debug.Log(activeTilesRoad.Count);
         Destroy(activeTilesRoad[0]);
         activeTilesRoad.RemoveAt(0);
 
@@ -452,8 +463,10 @@ public class TileController : MonoBehaviour {
 
 
 	public void DestroyTileDriftZone(){ 
+        Debug.Log(activeTileDrift.Count);
         Destroy(activeTileDrift[0]);
         activeTileDrift.RemoveAt(0);
+
     
     }
 
@@ -465,7 +478,7 @@ public class TileController : MonoBehaviour {
 
         for (int i = 0; i <= activeTilesRoad.Count; i++)
         {
-            Debug.Log("DESTROY ONE TILE");
+            
             Debug.Log("LEFT num " + activeTilesRoad.Count); 
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
@@ -479,10 +492,25 @@ public class TileController : MonoBehaviour {
             Destroy(activeTileDrift[i]);
             activeTileDrift.RemoveAt(i);
         }
-
-
-		
 	}
+
+    public string getDriftDirection(){
+
+        if(newTileIndex == 2 ||newTileIndex ==3 || newTileIndex == 4 || newTileIndex == 5 ){
+            return "RIGHT"; 
+        }else if (newTileIndex == 6 || newTileIndex == 7 || newTileIndex == 8 || newTileIndex == 9)
+        {
+            return "LEFT"; 
+
+        }else if (newTileIndex == 1)
+        {
+            return "FORWARD"; 
+        }
+        else 
+        {
+            return "NA";
+        }
+    }
 
 
 
