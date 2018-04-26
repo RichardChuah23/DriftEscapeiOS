@@ -300,7 +300,7 @@ public class TileController : MonoBehaviour {
     }
 
 
-
+    //Return new tile spawning direction 
     string findSpawnDirection(int tileIndex)
     {
         string direction = "NA";
@@ -417,6 +417,7 @@ public class TileController : MonoBehaviour {
         return newPos; 
     }
 
+
     Vector3 findPosDriftZone(string dir)
     {
 
@@ -494,6 +495,8 @@ public class TileController : MonoBehaviour {
         }
 	}
 
+
+    //Returns Drift Direction 
     public string getDriftDirection(){
 
         if(newTileIndex == 2 ||newTileIndex ==3 || newTileIndex == 4 || newTileIndex == 5 ){
@@ -511,6 +514,8 @@ public class TileController : MonoBehaviour {
             return "NA";
         }
     }
+
+
 
 
 
