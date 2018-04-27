@@ -93,10 +93,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
 
-        nextDriftDir = tileController.getDriftDirection();
+
 
         //Apply downward force on player Object 
         rb.AddForce(Vector3.down * objectGravity * rb.mass);
+        //Lock X and Z axis, prevent player object wooble 
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
         //Check mode 
         if (mode == "FORWARD")
@@ -108,8 +110,10 @@ public class PlayerController : MonoBehaviour
             driftmode(mode);
         }
         else if(mode == "PREDRIFT"){
+
+            nextDriftDir = tileController.getDriftDirection();
             //check next tile 
-            enterDriftZone(nextDriftDir); 
+            driftZoneMode(nextDriftDir); 
         }
 
         else if ( mode == "GAMEOVER"){
@@ -118,8 +122,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Variable mode is invalid"); 
         }
 
-        //Lock X and Z axis, prevent player object wooble 
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
 
 
     }
@@ -136,6 +139,8 @@ public class PlayerController : MonoBehaviour
     {
         //Car moving forward 
         transform.position += forwardDirection * forwardSpeed * Time.deltaTime;
+
+
 
         //Left Right User input 
         userInputHo = Input.GetAxisRaw("Horizontal");
@@ -253,18 +258,38 @@ public class PlayerController : MonoBehaviour
     /// When player object contacts with an object 
     void OnCollisionEnter(Collision collision)
     {
-        
+        Debug.Log(collision.transform.name); 
+
+        //When player did not react to the driftZone
+        //Car keep going straight until game over  
+        if (collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
+        {
+            if(mode == "PREDRIFT"){
+                mode = "FORWARD";
+            }
+
+        }
+
+
         if (collision.transform.name == "Road" || collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
         {
+
+            Debug.Log(collision.transform.parent.name != "First Tile" );
+            Debug.Log(tileTrigger == true);
+
+
             if (collision.transform.parent.name != "First Tile" && tileTrigger == true) {
-
-
+                
                 tileController.nextTile();
                 StartCoroutine(RemoveTileRoad());
 
                 tileDestroyTime = Time.time;
 
+                Debug.Log("SPAWN NEW TILE"); 
                 currentInteractTile = collision.gameObject;
+
+                
+
             }
 
             if (collision.transform.name == "Road"){
@@ -273,16 +298,14 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //When player did not react to the driftZone
-        //Car keep going straight until game over  
-        if ( collision.transform.name == "R_Road Curve" && collision.transform.name == "L_Road Curve" && mode == "PREDRIFT"){
-            mode = "FORWARD"; 
-        }
+       
 
+        //Enter Predrift mode when enter drift zone 
         if ( collision.transform.name == "DriftZone(Clone)"){
             mode = "PREDRIFT"; 
         }
 
+        //Gameover when touches the ground 
         if(collision.transform.name == "Ground"){
             mode = "GAMEOVER"; 
         }
@@ -374,32 +397,31 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
-
-    void enterDriftZone(string nextTileDirection){
+    void driftZoneMode(string nextTileDirection){
 
         //Debug.Log(newSpeed);
         //Car slows down 
+
 
         if (newSpeed > turnSpeed)
         {
             newSpeed = newSpeed - 10;
         }
 
-
         //Find direction 
         float forwardDir = angleEnterDriftZone(currentInteractTile);
+
         //Rotote the player back to direction 
-        transform.Rotate(0, forwardDir, 0); 
+        transform.eulerAngles = new Vector3(0, forwardDir, 0);
+         
         //Car keep moving forward 
         transform.Translate(0, 0, Time.deltaTime * newSpeed); // move forward 
-
 
         //User input 
         userInputVer = Input.GetAxisRaw("Vertical");
 
         //If input is swipe down 
+        //Enter Drift Mode 
         if(userInputVer == -1 ){
 
             //Switch mode according to tile curve direction 
@@ -414,11 +436,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //When user swipe down
-        //Turn to the tile direction with gear one 
-        //Animation 
-        //Reduce car speed 
-
 
     }
 
@@ -426,21 +443,21 @@ public class PlayerController : MonoBehaviour
     //Return the angle player should turn to when enter drift zone
     private float angleEnterDriftZone(GameObject currentTile)
     {
-        Debug.Log(currentTile.transform.root.tag);
-        if (currentTile.transform.root.tag == "UP")
+
+        if (currentTile.transform.tag == "UP"  )
         {
 
             return 0;
         }
-        else if (currentTile.transform.root.tag == "RIGHT")
+        else if (currentTile.transform.tag == "RIGHT")
         {
             return 90;
         }
-        else if (currentTile.transform.root.tag == "DOWN")
+        else if (currentTile.transform.tag == "DOWN")
         {
             return 180;
         }
-        else if (currentTile.transform.root.tag == "LEFT")
+        else if (currentTile.transform.tag == "LEFT")
         {
             return -90;
         }

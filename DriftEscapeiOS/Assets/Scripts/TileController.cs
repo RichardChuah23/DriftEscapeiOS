@@ -272,7 +272,8 @@ public class TileController : MonoBehaviour {
         {
 
             //Declare a list of two possible tiles 
-            List<int> a_list = new List<int>() { 6, 4 };
+            //List<int> a_list = new List<int>() { 6, 4 };
+            List<int> a_list = new List<int>() { 4, 4 };
             index = a_list[Random.Range(0, 1)];
 
         }
@@ -455,7 +456,6 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
-        Debug.Log(activeTilesRoad.Count);
         Destroy(activeTilesRoad[0]);
         activeTilesRoad.RemoveAt(0);
 
@@ -464,7 +464,6 @@ public class TileController : MonoBehaviour {
 
 
 	public void DestroyTileDriftZone(){ 
-        Debug.Log(activeTileDrift.Count);
         Destroy(activeTileDrift[0]);
         activeTileDrift.RemoveAt(0);
 
