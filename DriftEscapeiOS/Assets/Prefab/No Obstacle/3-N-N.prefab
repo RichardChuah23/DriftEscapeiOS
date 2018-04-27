@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4126588844309016}
   m_Layer: 0
   m_Name: 3-N-N
-  m_TagString: Untagged
+  m_TagString: RIGHT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 4149220479057800}
   m_Layer: 0
   m_Name: R_Road
-  m_TagString: Untagged
+  m_TagString: DOWN
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 54149803076029810}
   m_Layer: 0
   m_Name: R_Road Curve
-  m_TagString: Untagged
+  m_TagString: RIGHT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,15 +162,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149632454579444}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1829.8441, y: 1996.7904, z: -626.4659}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2843.3484, y: -10.601074, z: -9931.818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4149220479057800}
   - {fileID: 4437209880486602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4149220479057800
 Transform:
   m_ObjectHideFlags: 1
