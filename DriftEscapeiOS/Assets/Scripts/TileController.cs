@@ -472,20 +472,22 @@ public class TileController : MonoBehaviour {
 
 	public void DestroyAllTiles()
 	{
-        Debug.Log("LEFT num " + activeTilesRoad.Count); 
 
         //Remove all road tiles 
 
-        for (int i = 0; i <= activeTilesRoad.Count; i++)
+        Debug.Log("Total: " + activeTilesRoad.Count);
+
+        for (int i = 0; i < activeTilesRoad.Count; i++)
         {
             
-            Debug.Log("LEFT num " + activeTilesRoad.Count); 
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
+            Debug.Log("LEFT num " + activeTilesRoad.Count); 
+
         }
 
         //Remove all Drift Tile 
-        for (int i = 0; i <= activeTileDrift.Count; i++)
+        for (int i = 0; i < activeTileDrift.Count; i++)
         {
 
 

@@ -508,7 +508,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646588821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &646588821
@@ -772,15 +783,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4350861149357760, guid: 1fc67577b64834efeb94d4ed09f3e928, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 460.4676
+      value: 355
       objectReference: {fileID: 0}
     - target: {fileID: 4350861149357760, guid: 1fc67577b64834efeb94d4ed09f3e928, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -10.601074
+      value: 582
       objectReference: {fileID: 0}
     - target: {fileID: 4350861149357760, guid: 1fc67577b64834efeb94d4ed09f3e928, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -9915.635
+      value: -11553
       objectReference: {fileID: 0}
     - target: {fileID: 4350861149357760, guid: 1fc67577b64834efeb94d4ed09f3e928, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1273,7 +1284,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4301235518147590, guid: aac75ce49f1074acd8a97db7579c4b62, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10372
       objectReference: {fileID: 0}
     - target: {fileID: 4301235518147590, guid: aac75ce49f1074acd8a97db7579c4b62, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1328,7 +1339,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1600232146}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 7.165314
   m_Height: 30.121098
   m_Direction: 2
@@ -1365,6 +1376,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!64 &1600232154
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600232146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 1c7707e8aff094f03929686d3fc90cc1, type: 3}
 --- !u!1 &1639877791 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 1c7707e8aff094f03929686d3fc90cc1, type: 3}
@@ -1450,13 +1475,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1672281684}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 377, z: -367}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 119.1, z: -539.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &1672281689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,7 +1827,7 @@ MonoBehaviour:
     Type1:
     - {fileID: 1849130456762560, guid: 1fc67577b64834efeb94d4ed09f3e928, type: 2}
     Type2:
-    - {fileID: 0}
+    - {fileID: 1432569336866754, guid: aac75ce49f1074acd8a97db7579c4b62, type: 2}
     Type3:
     - {fileID: 1149632454579444, guid: 4b0a3ce25b5e741c7a595923a2c5ca86, type: 2}
     Type4:

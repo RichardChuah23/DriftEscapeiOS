@@ -41,8 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private bool dzTrigger = true; 
     private bool tileTrigger = true;
-    private GameObject currentInteractTile; 
+    private GameObject currentInteractTile;
 
+    private float forwardDir = 0f;  
 
 
     void Start()
@@ -117,12 +118,12 @@ public class PlayerController : MonoBehaviour
         }
 
         else if ( mode == "GAMEOVER"){
-            gameController.GameOver(); 
+            
+            gameController.setGameOver(true);
+            turnGear = 0; 
         }else{
             Debug.Log("Variable mode is invalid"); 
         }
-
-
 
 
     }
@@ -138,8 +139,12 @@ public class PlayerController : MonoBehaviour
     void moveForward()
     {
         //Car moving forward 
-        transform.position += forwardDirection * forwardSpeed * Time.deltaTime;
 
+
+        //Rotote the player back to direction 
+        transform.eulerAngles = new Vector3(0, 0, 0);
+
+        transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
 
         //Left Right User input 
@@ -223,7 +228,7 @@ public class PlayerController : MonoBehaviour
         if (mode != "GAMEOVER")
         { 
             
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             tileController.DestroyTileRoad();
    
         }
@@ -235,7 +240,7 @@ public class PlayerController : MonoBehaviour
         dzTrigger = false; 
         if (mode != "GAMEOVER")
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             tileController.DestroyTileDriftZone();
         }
         dzTrigger = true; 
@@ -244,8 +249,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-
-
+        
         //Tells Tiles Manager to remove tile - Drift Zone 
         if (collision.transform.name == "DriftZone(Clone)" && dzTrigger == true)
         {
@@ -258,7 +262,6 @@ public class PlayerController : MonoBehaviour
     /// When player object contacts with an object 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.name); 
 
         //When player did not react to the driftZone
         //Car keep going straight until game over  
@@ -274,9 +277,6 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.name == "Road" || collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
         {
 
-            Debug.Log(collision.transform.parent.name != "First Tile" );
-            Debug.Log(tileTrigger == true);
-
 
             if (collision.transform.parent.name != "First Tile" && tileTrigger == true) {
                 
@@ -285,10 +285,7 @@ public class PlayerController : MonoBehaviour
 
                 tileDestroyTime = Time.time;
 
-                Debug.Log("SPAWN NEW TILE"); 
                 currentInteractTile = collision.gameObject;
-
-                
 
             }
 
@@ -399,7 +396,6 @@ public class PlayerController : MonoBehaviour
 
     void driftZoneMode(string nextTileDirection){
 
-        //Debug.Log(newSpeed);
         //Car slows down 
 
 
@@ -408,8 +404,10 @@ public class PlayerController : MonoBehaviour
             newSpeed = newSpeed - 10;
         }
 
-        //Find direction 
-        float forwardDir = angleEnterDriftZone(currentInteractTile);
+        if (currentInteractTile != null){
+            //Find direction 
+            forwardDir = angleEnterDriftZone(currentInteractTile);
+        }
 
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, forwardDir, 0);
@@ -433,6 +431,8 @@ public class PlayerController : MonoBehaviour
             {
                 mode = "RIGHT";
             }
+
+            turnGear = 0; 
         }
 
 
@@ -443,6 +443,7 @@ public class PlayerController : MonoBehaviour
     //Return the angle player should turn to when enter drift zone
     private float angleEnterDriftZone(GameObject currentTile)
     {
+
 
         if (currentTile.transform.tag == "UP"  )
         {
