@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private bool dzTrigger = true; 
     private bool tileTrigger = true;
-    private GameObject currentInteractTile;
+    private GameObject currentInteractRoadExitCollider;
 
     private float forwardDir = 0f;  
 
@@ -111,8 +111,9 @@ public class PlayerController : MonoBehaviour
             driftmode(mode);
         }
         else if(mode == "PREDRIFT"){
-
             nextDriftDir = tileController.getDriftDirection();
+            Debug.Log(nextDriftDir);
+
             //check next tile 
             driftZoneMode(nextDriftDir); 
         }
@@ -136,13 +137,22 @@ public class PlayerController : MonoBehaviour
         transform.position = pos; 
     }
 
-    void moveForward()
-    {
-        //Car moving forward 
-
-
+    public void resetPlayerRotation(){
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    void moveForward()
+    {
+        //Check which collider player collide with 
+        //left right or middle. 
+
+        //If middle 
+        //If Left 
+        //If Right 
+
+
+
 
         transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
@@ -228,7 +238,7 @@ public class PlayerController : MonoBehaviour
         if (mode != "GAMEOVER")
         { 
             
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
             tileController.DestroyTileRoad();
    
         }
@@ -237,65 +247,62 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator RemoveTileDrift()
     {
-        dzTrigger = false; 
         if (mode != "GAMEOVER")
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
             tileController.DestroyTileDriftZone();
         }
-        dzTrigger = true; 
     }
 
 
     private void OnCollisionExit(Collision collision)
     {
-        
-        //Tells Tiles Manager to remove tile - Drift Zone 
-        if (collision.transform.name == "DriftZone(Clone)" && dzTrigger == true)
-        {
-            StartCoroutine(RemoveTileDrift());
-        }
+
+
+
 
 	}
 
 
-    /// When player object contacts with an object 
-    void OnCollisionEnter(Collision collision)
+
+	/// When player object contacts with an object 
+	void OnCollisionEnter(Collision collision)
     {
 
         //When player did not react to the driftZone
         //Car keep going straight until game over  
-        if (collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
+        if (collision.transform.name == "Exit DriftZone Collider" )
         {
+
+
             if(mode == "PREDRIFT"){
                 mode = "FORWARD";
             }
+            StartCoroutine(RemoveTileDrift());
 
         }
 
-
-        if (collision.transform.name == "Road" || collision.transform.name == "R_Road Curve" || collision.transform.name == "L_Road Curve" )
+        //When car exit a tile 
+        if (collision.transform.name == "Enter Collider" )
         {
-
-
-            if (collision.transform.parent.name != "First Tile" && tileTrigger == true) {
+            
                 
                 tileController.nextTile();
                 StartCoroutine(RemoveTileRoad());
 
                 tileDestroyTime = Time.time;
 
-                currentInteractTile = collision.gameObject;
-
-            }
-
-            if (collision.transform.name == "Road"){
-                mode = "FORWARD"; 
-            }
+                currentInteractRoadExitCollider = collision.gameObject;
 
         }
 
-       
+
+
+        //If enters straight road 
+        if (collision.transform.name == "Road")
+        {
+            mode = "FORWARD";
+        }
 
         //Enter Predrift mode when enter drift zone 
         if ( collision.transform.name == "DriftZone(Clone)"){
@@ -397,16 +404,15 @@ public class PlayerController : MonoBehaviour
     void driftZoneMode(string nextTileDirection){
 
         //Car slows down 
-
-
         if (newSpeed > turnSpeed)
         {
             newSpeed = newSpeed - 10;
         }
 
-        if (currentInteractTile != null){
+
+        if (currentInteractRoadExitCollider != null){
             //Find direction 
-            forwardDir = angleEnterDriftZone(currentInteractTile);
+            forwardDir = angleEnterDriftZone(currentInteractRoadExitCollider);
         }
 
         //Rotote the player back to direction 

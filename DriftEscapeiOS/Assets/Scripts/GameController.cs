@@ -101,13 +101,9 @@ public class GameController : MonoBehaviour
 	private void Update()
 	{
 
-        Debug.Log(gameOver);
         if (gameOver == true && gameOverCalled == false) {
             
             GameOver(); 
-        }else{
-
-
         }
 	}
 
@@ -120,6 +116,10 @@ public class GameController : MonoBehaviour
         tileController.spawnFirstTwoTiles();
         //Set player back to origin point 
         playerController.setPlayerPos(new Vector3(0, 0, 0));
+
+        //Rotote the player back to direction 
+        playerController.resetPlayerRotation();
+
         //Move car forward 
         playerController.setMode("FORWARD");
 
@@ -127,7 +127,7 @@ public class GameController : MonoBehaviour
         //Done set up
         //Set up variable.s 
         gameOver = false;
-        gameOverCalled = true;
+        gameOverCalled = false;
         //Hide all game over buttons  
         hideGameOverbutton();
         
