@@ -42,6 +42,7 @@ public class TileController : MonoBehaviour {
 
 
     public ObjectList tileObjects ;
+    public GameObject firstTile; 
 
     private Vector3 currentTilePos;
     public float driftTileLength;
@@ -65,9 +66,9 @@ public class TileController : MonoBehaviour {
         restart = false; 
         currentTileIndex = 1;
 
+
         //Declare List 
         tilesPrefab = new List<List<GameObject>>();
-
         activeTilesRoad =  new List<GameObject>();
         activeTileDrift = new List<GameObject>(); 
 
@@ -106,8 +107,11 @@ public class TileController : MonoBehaviour {
 
 
          //Spawn the first two tile 
+
+
+
         //Find the direction of spawning 
-        GameObject tileSpawn = tilesPrefab[1][0]; 
+        GameObject tileSpawn = tilesPrefab[1][0];  
         tileSpawn = Instantiate(tileSpawn) as GameObject;
         tileSpawn.name = "First Tile";
         //In Hierachy, set it as child for Tile Manager
@@ -122,7 +126,7 @@ public class TileController : MonoBehaviour {
 
         //Second tile 
         //Find the direction of spawning 
-        tileSpawn = tilesPrefab[1][0]; 
+        tileSpawn = tilesPrefab[1][0];  
         tileSpawn = Instantiate(tileSpawn) as GameObject;
         //In Hierachy, set it as child for Tile Manager
         tileSpawn.transform.SetParent((transform));
@@ -197,9 +201,14 @@ public class TileController : MonoBehaviour {
             tileDriftSpawn.transform.position = newDPos;
             //rotate it if needed. 
             if(dirSpawn == "LEFT" || dirSpawn == "RIGHT"){
+                tileDriftSpawn.transform.Rotate(0, -90, 0); 
 
+            }else if(dirSpawn == "RIGHT"){
                 tileDriftSpawn.transform.Rotate(0, 90, 0); 
+
             }
+
+
 
             activeTileDrift.Add(tileDriftSpawn); 
 
@@ -472,20 +481,22 @@ public class TileController : MonoBehaviour {
 
 	public void DestroyAllTiles()
 	{
-        Debug.Log("LEFT num " + activeTilesRoad.Count); 
 
         //Remove all road tiles 
 
-        for (int i = 0; i <= activeTilesRoad.Count; i++)
+        Debug.Log("Total: " + activeTilesRoad.Count);
+
+        for (int i = 0; i < activeTilesRoad.Count; i++)
         {
             
-            Debug.Log("LEFT num " + activeTilesRoad.Count); 
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
+            Debug.Log("LEFT num " + activeTilesRoad.Count); 
+
         }
 
         //Remove all Drift Tile 
-        for (int i = 0; i <= activeTileDrift.Count; i++)
+        for (int i = 0; i < activeTileDrift.Count; i++)
         {
 
 
