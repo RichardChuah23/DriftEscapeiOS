@@ -12,33 +12,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 5
-  lastUpdatedAtString: 2018-05-01T16:14:56.6095210+10:00
-  initializedAtString: 2018-05-01T16:03:30.8789510+10:00
+  lastUpdatedAtString: 2018-05-02T23:14:23.8203430+10:00
+  initializedAtString: 2018-05-02T22:13:59.0441520+10:00
   entries:
-  - path: DriftEscapeiOS/Assets/Audio.meta
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Audio.meta
-    projectPath: Assets/Audio.meta
+  - path: DriftEscapeiOS/Assets/Scripts/MainMenuController.cs
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/MainMenuController.cs
+    projectPath: Assets/Scripts/MainMenuController.cs
     originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Assets/Prefab/Hazzard PotHole.meta
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Prefab/Hazzard
-      PotHole.meta
-    projectPath: Assets/Prefab/Hazzard PotHole.meta
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Assets/Shaders.meta
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Shaders.meta
-    projectPath: Assets/Shaders.meta
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Assets/Textures.meta
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Textures.meta
-    projectPath: Assets/Textures.meta
-    originalPath: 
-    status: 5
+    status: 3
     staged: 0
   - path: DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
@@ -46,9 +27,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/DriftEscapeiOS.sln
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/DriftEscapeiOS.sln
-    projectPath: DriftEscapeiOS.sln
+  - path: DriftEscapeiOS/DriftEscapeiOS.userprefs
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/DriftEscapeiOS.userprefs
+    projectPath: DriftEscapeiOS.userprefs
     originalPath: 
     status: 3
     staged: 0
@@ -70,12 +51,6 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
-    projectPath: Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ScriptAssemblies/Assembly-CSharp.dll
     projectPath: Library/ScriptAssemblies/Assembly-CSharp.dll
@@ -88,21 +63,27 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/ScriptAssemblies/BuiltinAssemblies.stamp
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ScriptAssemblies/BuiltinAssemblies.stamp
-    projectPath: Library/ScriptAssemblies/BuiltinAssemblies.stamp
-    originalPath: 
-    status: 3
-    staged: 0
   - path: DriftEscapeiOS/Library/assetDatabase3
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/assetDatabase3
     projectPath: Library/assetDatabase3
     originalPath: 
     status: 3
     staged: 0
+  - path: DriftEscapeiOS/Library/expandedItems
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/expandedItems
+    projectPath: Library/expandedItems
+    originalPath: 
+    status: 3
+    staged: 0
   - path: DriftEscapeiOS/Library/gfu/cache/branches.yaml
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/branches.yaml
     projectPath: Library/gfu/cache/branches.yaml
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+    projectPath: Library/gfu/cache/gitlog.yaml
     originalPath: 
     status: 3
     staged: 0
@@ -124,903 +105,225 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/00/00000000000000003000000000000000
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/00/00000000000000003000000000000000
-    projectPath: Library/metadata/00/00000000000000003000000000000000
+  - path: DriftEscapeiOS/Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
+    projectPath: Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
     originalPath: 
     status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65
-    projectPath: Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65.info
-    projectPath: Library/metadata/18/18da4b6a738584ff181e8f40fa74cf65.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928
-    projectPath: Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928.info
-    projectPath: Library/metadata/1f/1fc67577b64834efeb94d4ed09f3e928.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/26/265f537689ba84b67a1f868493ed5782
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/26/265f537689ba84b67a1f868493ed5782
-    projectPath: Library/metadata/26/265f537689ba84b67a1f868493ed5782
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/3b/3b6bc763bd7fc420ab0b66d91e9bddc1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/3b/3b6bc763bd7fc420ab0b66d91e9bddc1
-    projectPath: Library/metadata/3b/3b6bc763bd7fc420ab0b66d91e9bddc1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    projectPath: Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/48/48c8706737e0e42a29d20c49077ff9a7
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/48/48c8706737e0e42a29d20c49077ff9a7
-    projectPath: Library/metadata/48/48c8706737e0e42a29d20c49077ff9a7
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86
-    projectPath: Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86.info
-    projectPath: Library/metadata/4b/4b0a3ce25b5e741c7a595923a2c5ca86.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/52/52fb7a9bd1c5e4e88abb9ea8f1d19df0
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/52/52fb7a9bd1c5e4e88abb9ea8f1d19df0
-    projectPath: Library/metadata/52/52fb7a9bd1c5e4e88abb9ea8f1d19df0
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/7b/7b9c8304f519941b0889d56064df46a3
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/7b/7b9c8304f519941b0889d56064df46a3
-    projectPath: Library/metadata/7b/7b9c8304f519941b0889d56064df46a3
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57
-    projectPath: Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57.info
-    projectPath: Library/metadata/8b/8b68c8f7a60564680b9e327a902a6f57.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/94/94f71847469444d0ea64a60a9de238ab
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/94/94f71847469444d0ea64a60a9de238ab
-    projectPath: Library/metadata/94/94f71847469444d0ea64a60a9de238ab
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/94/94f71847469444d0ea64a60a9de238ab.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/94/94f71847469444d0ea64a60a9de238ab.info
-    projectPath: Library/metadata/94/94f71847469444d0ea64a60a9de238ab.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/97/97041892db6a946888c6c7d964b1ea48
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/97/97041892db6a946888c6c7d964b1ea48
-    projectPath: Library/metadata/97/97041892db6a946888c6c7d964b1ea48
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/a4/a449f4388a4fe4da689f4f0c4e2f58b6
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/a4/a449f4388a4fe4da689f4f0c4e2f58b6
-    projectPath: Library/metadata/a4/a449f4388a4fe4da689f4f0c4e2f58b6
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62
-    projectPath: Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62.info
-    projectPath: Library/metadata/aa/aac75ce49f1074acd8a97db7579c4b62.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/ac/acafbb0cba3ec4769a17c14e4d3bfdf5.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/ac/acafbb0cba3ec4769a17c14e4d3bfdf5.info
-    projectPath: Library/metadata/ac/acafbb0cba3ec4769a17c14e4d3bfdf5.info
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/c8/c81662ed944ea4d6089bbd70fc02a647
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/c8/c81662ed944ea4d6089bbd70fc02a647
-    projectPath: Library/metadata/c8/c81662ed944ea4d6089bbd70fc02a647
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/d3/d3bd104c76044434f845576d3305fc35.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/d3/d3bd104c76044434f845576d3305fc35.info
-    projectPath: Library/metadata/d3/d3bd104c76044434f845576d3305fc35.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2
-    projectPath: Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2.info
-    projectPath: Library/metadata/db/dbdfbaf28dcb24aa89ce544e2a94a2c2.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4
-    projectPath: Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4.info
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4.info
-    projectPath: Library/metadata/f3/f3d399eeeee6a4a1fbc6270f8aa7bba4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-083587192f3d24f7bb78b88e65e1637c
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-083587192f3d24f7bb78b88e65e1637c
-    projectPath: Temp/UnityTempFile-083587192f3d24f7bb78b88e65e1637c
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-087370ef2e44346628390ce282aa9101
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-087370ef2e44346628390ce282aa9101
-    projectPath: Temp/UnityTempFile-087370ef2e44346628390ce282aa9101
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-0c6b81a897a0545d680c4cdccbe52acd
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-0c6b81a897a0545d680c4cdccbe52acd
-    projectPath: Temp/UnityTempFile-0c6b81a897a0545d680c4cdccbe52acd
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-1265d79a6863a433bb8ee1b38ed647e7
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1265d79a6863a433bb8ee1b38ed647e7
-    projectPath: Temp/UnityTempFile-1265d79a6863a433bb8ee1b38ed647e7
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-18873000adf184d338ee464c00ecf10f
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-18873000adf184d338ee464c00ecf10f
-    projectPath: Temp/UnityTempFile-18873000adf184d338ee464c00ecf10f
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-19663e934399440e29b97b4831d55dac
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-19663e934399440e29b97b4831d55dac
-    projectPath: Temp/UnityTempFile-19663e934399440e29b97b4831d55dac
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-1c87671714d614a84a817212c570553b
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1c87671714d614a84a817212c570553b
-    projectPath: Temp/UnityTempFile-1c87671714d614a84a817212c570553b
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-1cdb456bb38344848a52e418f9aa99ed
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1cdb456bb38344848a52e418f9aa99ed
-    projectPath: Temp/UnityTempFile-1cdb456bb38344848a52e418f9aa99ed
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-1d55562c93e6048c7a172e30b3b3b912
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1d55562c93e6048c7a172e30b3b3b912
-    projectPath: Temp/UnityTempFile-1d55562c93e6048c7a172e30b3b3b912
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-2120bb31f76a144d3b4a91a736edf459
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-2120bb31f76a144d3b4a91a736edf459
-    projectPath: Temp/UnityTempFile-2120bb31f76a144d3b4a91a736edf459
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-2130da25802ed4380a91603f9265f864
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-2130da25802ed4380a91603f9265f864
-    projectPath: Temp/UnityTempFile-2130da25802ed4380a91603f9265f864
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-2edb609d3f2b54e45a4f05092e58f196
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-2edb609d3f2b54e45a4f05092e58f196
-    projectPath: Temp/UnityTempFile-2edb609d3f2b54e45a4f05092e58f196
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-37765503a5cf64c2bb7e1564ffbd92d6
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-37765503a5cf64c2bb7e1564ffbd92d6
-    projectPath: Temp/UnityTempFile-37765503a5cf64c2bb7e1564ffbd92d6
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-39acb52497cb24a8e9ec76bae26aea2f
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-39acb52497cb24a8e9ec76bae26aea2f
-    projectPath: Temp/UnityTempFile-39acb52497cb24a8e9ec76bae26aea2f
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-3a7f1a9b4e7654c9f8b0dd9a60aa2b3d
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-3a7f1a9b4e7654c9f8b0dd9a60aa2b3d
-    projectPath: Temp/UnityTempFile-3a7f1a9b4e7654c9f8b0dd9a60aa2b3d
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-3af7e54dc7bb94cbba51bb19c1f205f1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-3af7e54dc7bb94cbba51bb19c1f205f1
-    projectPath: Temp/UnityTempFile-3af7e54dc7bb94cbba51bb19c1f205f1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-3b4ea37422ac647c2a77c376ff968ea7
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-3b4ea37422ac647c2a77c376ff968ea7
-    projectPath: Temp/UnityTempFile-3b4ea37422ac647c2a77c376ff968ea7
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-3e795cb02d016418a8309f6f7dc8c3ff
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-3e795cb02d016418a8309f6f7dc8c3ff
-    projectPath: Temp/UnityTempFile-3e795cb02d016418a8309f6f7dc8c3ff
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-40407fc62da484f44a68a2e939db4f19
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-40407fc62da484f44a68a2e939db4f19
-    projectPath: Temp/UnityTempFile-40407fc62da484f44a68a2e939db4f19
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-499f13b5637024e1d8d7d6a06d43cf24
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-499f13b5637024e1d8d7d6a06d43cf24
-    projectPath: Temp/UnityTempFile-499f13b5637024e1d8d7d6a06d43cf24
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-4bccf9f2cf8c5432bb10353cd5c452f9
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-4bccf9f2cf8c5432bb10353cd5c452f9
-    projectPath: Temp/UnityTempFile-4bccf9f2cf8c5432bb10353cd5c452f9
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-4e1aa3653eb794de4b943063f4dabaa0
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-4e1aa3653eb794de4b943063f4dabaa0
-    projectPath: Temp/UnityTempFile-4e1aa3653eb794de4b943063f4dabaa0
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-4ea2f246e7fe04aa9a870c4a0b7a5ec2
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-4ea2f246e7fe04aa9a870c4a0b7a5ec2
-    projectPath: Temp/UnityTempFile-4ea2f246e7fe04aa9a870c4a0b7a5ec2
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-5180573e852d64c6ba68eb791e29a167
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-5180573e852d64c6ba68eb791e29a167
-    projectPath: Temp/UnityTempFile-5180573e852d64c6ba68eb791e29a167
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-522cb2f128e0b461cbebe1ae04494cb9
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-522cb2f128e0b461cbebe1ae04494cb9
-    projectPath: Temp/UnityTempFile-522cb2f128e0b461cbebe1ae04494cb9
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-57cf39dde435e46169855d07024d2d94
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-57cf39dde435e46169855d07024d2d94
-    projectPath: Temp/UnityTempFile-57cf39dde435e46169855d07024d2d94
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-588fd9b67bedc4a1c996f9f65abeb3e7
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-588fd9b67bedc4a1c996f9f65abeb3e7
-    projectPath: Temp/UnityTempFile-588fd9b67bedc4a1c996f9f65abeb3e7
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-598d2fec2bba44a3f89c13bf46c38945
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-598d2fec2bba44a3f89c13bf46c38945
-    projectPath: Temp/UnityTempFile-598d2fec2bba44a3f89c13bf46c38945
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-5a0378940a7a94b8a9b8deb72ca3de7a
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-5a0378940a7a94b8a9b8deb72ca3de7a
-    projectPath: Temp/UnityTempFile-5a0378940a7a94b8a9b8deb72ca3de7a
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-5c77aba1f1f9b4e9fb33a3d3b78f8a7d
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-5c77aba1f1f9b4e9fb33a3d3b78f8a7d
-    projectPath: Temp/UnityTempFile-5c77aba1f1f9b4e9fb33a3d3b78f8a7d
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-5e8452434f82d4ddc89cf67e47f61bba
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-5e8452434f82d4ddc89cf67e47f61bba
-    projectPath: Temp/UnityTempFile-5e8452434f82d4ddc89cf67e47f61bba
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-634b0875463af4ad0bc7d2f2dde00021
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-634b0875463af4ad0bc7d2f2dde00021
-    projectPath: Temp/UnityTempFile-634b0875463af4ad0bc7d2f2dde00021
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-6675171f64b8745019112a77a9ba8ae5
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6675171f64b8745019112a77a9ba8ae5
-    projectPath: Temp/UnityTempFile-6675171f64b8745019112a77a9ba8ae5
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-6880d5cd93c0a4a64b24a76869e01945
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6880d5cd93c0a4a64b24a76869e01945
-    projectPath: Temp/UnityTempFile-6880d5cd93c0a4a64b24a76869e01945
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-6ab25ab82fc35467c9ecb9e123a2a62e
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6ab25ab82fc35467c9ecb9e123a2a62e
-    projectPath: Temp/UnityTempFile-6ab25ab82fc35467c9ecb9e123a2a62e
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-6eb988c22e2e04baeb4175954ddeb24e
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6eb988c22e2e04baeb4175954ddeb24e
-    projectPath: Temp/UnityTempFile-6eb988c22e2e04baeb4175954ddeb24e
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7065ee5756ed5489e89949a912468028
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7065ee5756ed5489e89949a912468028
-    projectPath: Temp/UnityTempFile-7065ee5756ed5489e89949a912468028
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7133a674754cc41d4b21209a089187fa
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7133a674754cc41d4b21209a089187fa
-    projectPath: Temp/UnityTempFile-7133a674754cc41d4b21209a089187fa
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-75014637358774a859cbaf2829c4dee5
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-75014637358774a859cbaf2829c4dee5
-    projectPath: Temp/UnityTempFile-75014637358774a859cbaf2829c4dee5
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-75ece966f014749d68f06ea5edb4ea81
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-75ece966f014749d68f06ea5edb4ea81
-    projectPath: Temp/UnityTempFile-75ece966f014749d68f06ea5edb4ea81
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7b77c55d8b37e4da8b5d27abd803e2d6
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7b77c55d8b37e4da8b5d27abd803e2d6
-    projectPath: Temp/UnityTempFile-7b77c55d8b37e4da8b5d27abd803e2d6
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7ec46b33065914927bd98026cc0fe691
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7ec46b33065914927bd98026cc0fe691
-    projectPath: Temp/UnityTempFile-7ec46b33065914927bd98026cc0fe691
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7ffde097af9ff434795b32c76c353e9c
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7ffde097af9ff434795b32c76c353e9c
-    projectPath: Temp/UnityTempFile-7ffde097af9ff434795b32c76c353e9c
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-82063eadbc0da47a0a004293e9a0b1d1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-82063eadbc0da47a0a004293e9a0b1d1
-    projectPath: Temp/UnityTempFile-82063eadbc0da47a0a004293e9a0b1d1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-844fb80bf173a46fd941737cd16768b1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-844fb80bf173a46fd941737cd16768b1
-    projectPath: Temp/UnityTempFile-844fb80bf173a46fd941737cd16768b1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-86664f2000e634054993bc512a81b169
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-86664f2000e634054993bc512a81b169
-    projectPath: Temp/UnityTempFile-86664f2000e634054993bc512a81b169
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-8858480ce65d4482789e292f65e1e1e9
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-8858480ce65d4482789e292f65e1e1e9
-    projectPath: Temp/UnityTempFile-8858480ce65d4482789e292f65e1e1e9
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-8a37cbd4697724c0caeced71c483789f
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-8a37cbd4697724c0caeced71c483789f
-    projectPath: Temp/UnityTempFile-8a37cbd4697724c0caeced71c483789f
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-8ec35e1125f184e49a440d090fbeb71c
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-8ec35e1125f184e49a440d090fbeb71c
-    projectPath: Temp/UnityTempFile-8ec35e1125f184e49a440d090fbeb71c
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-8fdea776a047e4c7faf056c8c75fff5b
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-8fdea776a047e4c7faf056c8c75fff5b
-    projectPath: Temp/UnityTempFile-8fdea776a047e4c7faf056c8c75fff5b
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-900de3ac5dac649bbb602b1084695f42
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-900de3ac5dac649bbb602b1084695f42
-    projectPath: Temp/UnityTempFile-900de3ac5dac649bbb602b1084695f42
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-912c5e77ec02340978e2438a011badd2
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-912c5e77ec02340978e2438a011badd2
-    projectPath: Temp/UnityTempFile-912c5e77ec02340978e2438a011badd2
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-95f3ecb556cd7443996492f82a2729ad
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-95f3ecb556cd7443996492f82a2729ad
-    projectPath: Temp/UnityTempFile-95f3ecb556cd7443996492f82a2729ad
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-9c59a9ff387894a82b484551242aafbb
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9c59a9ff387894a82b484551242aafbb
-    projectPath: Temp/UnityTempFile-9c59a9ff387894a82b484551242aafbb
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-9c88a459066b144c9a3904179466522a
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9c88a459066b144c9a3904179466522a
-    projectPath: Temp/UnityTempFile-9c88a459066b144c9a3904179466522a
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-9d08d516e9c414224ad71d52258bd91b
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9d08d516e9c414224ad71d52258bd91b
-    projectPath: Temp/UnityTempFile-9d08d516e9c414224ad71d52258bd91b
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-9dd369b8a64f04f5d827847e742d8515
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9dd369b8a64f04f5d827847e742d8515
-    projectPath: Temp/UnityTempFile-9dd369b8a64f04f5d827847e742d8515
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-9f50adb1da4734ec4ad7da1110ac8eba
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9f50adb1da4734ec4ad7da1110ac8eba
-    projectPath: Temp/UnityTempFile-9f50adb1da4734ec4ad7da1110ac8eba
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-a06e8b541756443fb88cb2997ec27e55
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a06e8b541756443fb88cb2997ec27e55
-    projectPath: Temp/UnityTempFile-a06e8b541756443fb88cb2997ec27e55
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-a59dc950271bd402b9a32cac49a50f9a
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a59dc950271bd402b9a32cac49a50f9a
-    projectPath: Temp/UnityTempFile-a59dc950271bd402b9a32cac49a50f9a
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-a8b49f83b3f65417397c15b91b727b92
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a8b49f83b3f65417397c15b91b727b92
-    projectPath: Temp/UnityTempFile-a8b49f83b3f65417397c15b91b727b92
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-a99a450c85fc0417894382a2b2d43c48
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a99a450c85fc0417894382a2b2d43c48
-    projectPath: Temp/UnityTempFile-a99a450c85fc0417894382a2b2d43c48
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-a9af67902fcd04a17a4caa730434a4c1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a9af67902fcd04a17a4caa730434a4c1
-    projectPath: Temp/UnityTempFile-a9af67902fcd04a17a4caa730434a4c1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-ab085b7224eed440dbb51eaa7b6d95c7
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ab085b7224eed440dbb51eaa7b6d95c7
-    projectPath: Temp/UnityTempFile-ab085b7224eed440dbb51eaa7b6d95c7
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-abb35993b13ff409991615bd97d849a2
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-abb35993b13ff409991615bd97d849a2
-    projectPath: Temp/UnityTempFile-abb35993b13ff409991615bd97d849a2
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-ac52d170a4f3a4c90b450745750ea1dd
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ac52d170a4f3a4c90b450745750ea1dd
-    projectPath: Temp/UnityTempFile-ac52d170a4f3a4c90b450745750ea1dd
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-acd692252312c4e5dad35d2763cd7754
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-acd692252312c4e5dad35d2763cd7754
-    projectPath: Temp/UnityTempFile-acd692252312c4e5dad35d2763cd7754
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-ad1f46e850e934a89a459a7d89b8cf7f
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ad1f46e850e934a89a459a7d89b8cf7f
-    projectPath: Temp/UnityTempFile-ad1f46e850e934a89a459a7d89b8cf7f
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b05648b45760847afa23b03f437b7d9e
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b05648b45760847afa23b03f437b7d9e
-    projectPath: Temp/UnityTempFile-b05648b45760847afa23b03f437b7d9e
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b0d6a29032bea4b089c7d2cbbf7bceb6
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b0d6a29032bea4b089c7d2cbbf7bceb6
-    projectPath: Temp/UnityTempFile-b0d6a29032bea4b089c7d2cbbf7bceb6
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b5ef9b2a72fef4b52a8d2a862f45f218
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b5ef9b2a72fef4b52a8d2a862f45f218
-    projectPath: Temp/UnityTempFile-b5ef9b2a72fef4b52a8d2a862f45f218
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b771fe9b936524551b53c8a944dcc513
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b771fe9b936524551b53c8a944dcc513
-    projectPath: Temp/UnityTempFile-b771fe9b936524551b53c8a944dcc513
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b78eb3516bc744449bc24ec3898dc048
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b78eb3516bc744449bc24ec3898dc048
-    projectPath: Temp/UnityTempFile-b78eb3516bc744449bc24ec3898dc048
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-b835c8aea1077440fbb4f76fe4bd87ee
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b835c8aea1077440fbb4f76fe4bd87ee
-    projectPath: Temp/UnityTempFile-b835c8aea1077440fbb4f76fe4bd87ee
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-bc6618c36e88f45c4944b8db8fa3ddd9
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-bc6618c36e88f45c4944b8db8fa3ddd9
-    projectPath: Temp/UnityTempFile-bc6618c36e88f45c4944b8db8fa3ddd9
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-be87343e4a7e14eb7bbbb99318805ed5
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-be87343e4a7e14eb7bbbb99318805ed5
-    projectPath: Temp/UnityTempFile-be87343e4a7e14eb7bbbb99318805ed5
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c162fec0295c140bdb3cd1a891d6044f
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c162fec0295c140bdb3cd1a891d6044f
-    projectPath: Temp/UnityTempFile-c162fec0295c140bdb3cd1a891d6044f
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c1c0ef9c6e1d043c19989e33f3302dae
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c1c0ef9c6e1d043c19989e33f3302dae
-    projectPath: Temp/UnityTempFile-c1c0ef9c6e1d043c19989e33f3302dae
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c5d61a0607e1e4538a575f69c56a20b0
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c5d61a0607e1e4538a575f69c56a20b0
-    projectPath: Temp/UnityTempFile-c5d61a0607e1e4538a575f69c56a20b0
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c64e3e2d0e06c4d5b8b43bc9459ac0f2
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c64e3e2d0e06c4d5b8b43bc9459ac0f2
-    projectPath: Temp/UnityTempFile-c64e3e2d0e06c4d5b8b43bc9459ac0f2
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c7d45cad1b75b4fcc98c7cae7c9ee491
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c7d45cad1b75b4fcc98c7cae7c9ee491
-    projectPath: Temp/UnityTempFile-c7d45cad1b75b4fcc98c7cae7c9ee491
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-c892f628eaa43410f9e95f961893a7db
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-c892f628eaa43410f9e95f961893a7db
-    projectPath: Temp/UnityTempFile-c892f628eaa43410f9e95f961893a7db
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-cb97f228406f5444da0500afb78b14c4
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-cb97f228406f5444da0500afb78b14c4
-    projectPath: Temp/UnityTempFile-cb97f228406f5444da0500afb78b14c4
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-cc71393589a244ef7b4b80d1898e91cd
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-cc71393589a244ef7b4b80d1898e91cd
-    projectPath: Temp/UnityTempFile-cc71393589a244ef7b4b80d1898e91cd
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-ccb1fa579785546099dcd083dc4774a0
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ccb1fa579785546099dcd083dc4774a0
-    projectPath: Temp/UnityTempFile-ccb1fa579785546099dcd083dc4774a0
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-d25be9471e1ce40b3866f08584f10fb8
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-d25be9471e1ce40b3866f08584f10fb8
-    projectPath: Temp/UnityTempFile-d25be9471e1ce40b3866f08584f10fb8
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-d4982232049b049cfb6b3eb92850b5ac
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-d4982232049b049cfb6b3eb92850b5ac
-    projectPath: Temp/UnityTempFile-d4982232049b049cfb6b3eb92850b5ac
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-dc05782abab584501a3ff44e526ab799
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-dc05782abab584501a3ff44e526ab799
-    projectPath: Temp/UnityTempFile-dc05782abab584501a3ff44e526ab799
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-dc9fda3f719094ba29bec9d3cc8d4d60
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-dc9fda3f719094ba29bec9d3cc8d4d60
-    projectPath: Temp/UnityTempFile-dc9fda3f719094ba29bec9d3cc8d4d60
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-dde9dab7744f541b78ca755c34f07afb
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-dde9dab7744f541b78ca755c34f07afb
-    projectPath: Temp/UnityTempFile-dde9dab7744f541b78ca755c34f07afb
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-de5a74863a3354816adcaa296a2b9360
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-de5a74863a3354816adcaa296a2b9360
-    projectPath: Temp/UnityTempFile-de5a74863a3354816adcaa296a2b9360
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-de84ff805487a46da855d598a6a1c53b
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-de84ff805487a46da855d598a6a1c53b
-    projectPath: Temp/UnityTempFile-de84ff805487a46da855d598a6a1c53b
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-df0ac2025c58d4f27a7a0813fdc111de
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-df0ac2025c58d4f27a7a0813fdc111de
-    projectPath: Temp/UnityTempFile-df0ac2025c58d4f27a7a0813fdc111de
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e06a138810f084e91aa07cfb3b4e292c
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e06a138810f084e91aa07cfb3b4e292c
-    projectPath: Temp/UnityTempFile-e06a138810f084e91aa07cfb3b4e292c
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e06e554827f594c1ba260d701fbfdf2a
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e06e554827f594c1ba260d701fbfdf2a
-    projectPath: Temp/UnityTempFile-e06e554827f594c1ba260d701fbfdf2a
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e37e368a0283d47939508e32b7f2d28d
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e37e368a0283d47939508e32b7f2d28d
-    projectPath: Temp/UnityTempFile-e37e368a0283d47939508e32b7f2d28d
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e6671c4e878274befb6fa8a6f35032b1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e6671c4e878274befb6fa8a6f35032b1
-    projectPath: Temp/UnityTempFile-e6671c4e878274befb6fa8a6f35032b1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e6b0aabdc543b4448883e017506d6d45
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e6b0aabdc543b4448883e017506d6d45
-    projectPath: Temp/UnityTempFile-e6b0aabdc543b4448883e017506d6d45
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e7b1ba82a86a64348b8fc12c3eb25190
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e7b1ba82a86a64348b8fc12c3eb25190
-    projectPath: Temp/UnityTempFile-e7b1ba82a86a64348b8fc12c3eb25190
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-e94461b0eb25a4dd48ae81985299c4b8
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e94461b0eb25a4dd48ae81985299c4b8
-    projectPath: Temp/UnityTempFile-e94461b0eb25a4dd48ae81985299c4b8
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-ea0bafba2ab684087b31aef0698c6c61
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ea0bafba2ab684087b31aef0698c6c61
-    projectPath: Temp/UnityTempFile-ea0bafba2ab684087b31aef0698c6c61
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-f1ae1f4158621430988d05b3ec748431
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-f1ae1f4158621430988d05b3ec748431
-    projectPath: Temp/UnityTempFile-f1ae1f4158621430988d05b3ec748431
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-f413be1eea5b547b986b76f9463ed549
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-f413be1eea5b547b986b76f9463ed549
-    projectPath: Temp/UnityTempFile-f413be1eea5b547b986b76f9463ed549
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-f7c9ad9cf3cd34ce8ace88843ff73d02
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-f7c9ad9cf3cd34ce8ace88843ff73d02
-    projectPath: Temp/UnityTempFile-f7c9ad9cf3cd34ce8ace88843ff73d02
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-fa9738ebb4a714a72afa7bad921d48af
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-fa9738ebb4a714a72afa7bad921d48af
-    projectPath: Temp/UnityTempFile-fa9738ebb4a714a72afa7bad921d48af
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-fdab3bd708f1e412f9a80a90e29d2c79
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-fdab3bd708f1e412f9a80a90e29d2c79
-    projectPath: Temp/UnityTempFile-fdab3bd708f1e412f9a80a90e29d2c79
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-fe381528fb982446890c2cfb1da704d1
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-fe381528fb982446890c2cfb1da704d1
-    projectPath: Temp/UnityTempFile-fe381528fb982446890c2cfb1da704d1
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_bin/Debug/Assembly-CSharp.dll
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_bin/Debug/Assembly-CSharp.dll
-    projectPath: Temp/UnityVS_bin/Debug/Assembly-CSharp.dll
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_bin/Debug/Assembly-CSharp.pdb
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_bin/Debug/Assembly-CSharp.pdb
-    projectPath: Temp/UnityVS_bin/Debug/Assembly-CSharp.pdb
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_obj/Debug/Assembly-CSharp.dll
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_obj/Debug/Assembly-CSharp.dll
-    projectPath: Temp/UnityVS_obj/Debug/Assembly-CSharp.dll
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_obj/Debug/Assembly-CSharp.pdb
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_obj/Debug/Assembly-CSharp.pdb
-    projectPath: Temp/UnityVS_obj/Debug/Assembly-CSharp.pdb
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_obj/Debug/DriftEscapeiOS.csproj.CoreCompileInputs.cache
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_obj/Debug/DriftEscapeiOS.csproj.CoreCompileInputs.cache
-    projectPath: Temp/UnityVS_obj/Debug/DriftEscapeiOS.csproj.CoreCompileInputs.cache
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityVS_obj/Debug/DriftEscapeiOS.csprojResolveAssemblyReference.cache
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityVS_obj/Debug/DriftEscapeiOS.csprojResolveAssemblyReference.cache
-    projectPath: Temp/UnityVS_obj/Debug/DriftEscapeiOS.csprojResolveAssemblyReference.cache
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: DriftEscapeiOS/Library/CrashedAssetImports.txt
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/CrashedAssetImports.txt
-    projectPath: Library/CrashedAssetImports.txt
-    originalPath: 
-    status: 1
     staged: 0
   - path: DriftEscapeiOS/Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
     projectPath: Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
     originalPath: 
-    status: 1
-    staged: 0
-  - path: DriftEscapeiOS/Temp/UnityLockfile
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityLockfile
-    projectPath: Temp/UnityLockfile
-    originalPath: 
-    status: 1
+    status: 3
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-37b54e53042eb442b9180cf1961f0cdf
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-37b54e53042eb442b9180cf1961f0cdf
     projectPath: Temp/UnityTempFile-37b54e53042eb442b9180cf1961f0cdf
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-409759739f4674041a3051e8118f22f4
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-409759739f4674041a3051e8118f22f4
     projectPath: Temp/UnityTempFile-409759739f4674041a3051e8118f22f4
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-4154a1fa78830439cbc83d3606e09ec2
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-4154a1fa78830439cbc83d3606e09ec2
     projectPath: Temp/UnityTempFile-4154a1fa78830439cbc83d3606e09ec2
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-41c10809ea20742a5b256038ccf1dcc2
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-41c10809ea20742a5b256038ccf1dcc2
     projectPath: Temp/UnityTempFile-41c10809ea20742a5b256038ccf1dcc2
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-775e3a4386d994595929da0a688c2d02
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-775e3a4386d994595929da0a688c2d02
     projectPath: Temp/UnityTempFile-775e3a4386d994595929da0a688c2d02
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: DriftEscapeiOS/Temp/UnityTempFile-9ba4a712e616d40cfa8fce6b6219bc78
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-9ba4a712e616d40cfa8fce6b6219bc78
     projectPath: Temp/UnityTempFile-9ba4a712e616d40cfa8fce6b6219bc78
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-045e6c7c1018b4078abddf81e6eba1ee
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-045e6c7c1018b4078abddf81e6eba1ee
+    projectPath: Temp/UnityTempFile-045e6c7c1018b4078abddf81e6eba1ee
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-07529d3ef3cc343f387940e083d2ee45
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-07529d3ef3cc343f387940e083d2ee45
+    projectPath: Temp/UnityTempFile-07529d3ef3cc343f387940e083d2ee45
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-0c849adb315d3443990746adea1b7a53
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-0c849adb315d3443990746adea1b7a53
+    projectPath: Temp/UnityTempFile-0c849adb315d3443990746adea1b7a53
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-11259e6fb54dc4f45a2065ae68782eeb
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-11259e6fb54dc4f45a2065ae68782eeb
+    projectPath: Temp/UnityTempFile-11259e6fb54dc4f45a2065ae68782eeb
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-1c611662bf40747fdbc845cf8d950cb9
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1c611662bf40747fdbc845cf8d950cb9
+    projectPath: Temp/UnityTempFile-1c611662bf40747fdbc845cf8d950cb9
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-1f02016a4938045aabb925b345e736f6
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-1f02016a4938045aabb925b345e736f6
+    projectPath: Temp/UnityTempFile-1f02016a4938045aabb925b345e736f6
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-261af85c0682140dfb73b84b82f30c3a
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-261af85c0682140dfb73b84b82f30c3a
+    projectPath: Temp/UnityTempFile-261af85c0682140dfb73b84b82f30c3a
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-2a4f72f7cf0294f60ba116443ca28500
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-2a4f72f7cf0294f60ba116443ca28500
+    projectPath: Temp/UnityTempFile-2a4f72f7cf0294f60ba116443ca28500
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-2bd842ba9162b446e9c697d3f82fb947
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-2bd842ba9162b446e9c697d3f82fb947
+    projectPath: Temp/UnityTempFile-2bd842ba9162b446e9c697d3f82fb947
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-3df8e42bb5c854f36867a25cce48e471
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-3df8e42bb5c854f36867a25cce48e471
+    projectPath: Temp/UnityTempFile-3df8e42bb5c854f36867a25cce48e471
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-41944f9685e674436807a9c1e441aa5c
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-41944f9685e674436807a9c1e441aa5c
+    projectPath: Temp/UnityTempFile-41944f9685e674436807a9c1e441aa5c
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-5dc59af42f58d4dac9f530ce1b38256b
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-5dc59af42f58d4dac9f530ce1b38256b
+    projectPath: Temp/UnityTempFile-5dc59af42f58d4dac9f530ce1b38256b
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-634eb0a24c98c4813b99689c6fdc3ae1
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-634eb0a24c98c4813b99689c6fdc3ae1
+    projectPath: Temp/UnityTempFile-634eb0a24c98c4813b99689c6fdc3ae1
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-68a21ed9cec7e463db9d2f559dc336f5
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-68a21ed9cec7e463db9d2f559dc336f5
+    projectPath: Temp/UnityTempFile-68a21ed9cec7e463db9d2f559dc336f5
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-6b28e720f315747fba7a10275097703f
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-6b28e720f315747fba7a10275097703f
+    projectPath: Temp/UnityTempFile-6b28e720f315747fba7a10275097703f
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-79f37b56f86f343c1828211a7a998496
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-79f37b56f86f343c1828211a7a998496
+    projectPath: Temp/UnityTempFile-79f37b56f86f343c1828211a7a998496
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-802754ad542194254b165ae4e0a51498
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-802754ad542194254b165ae4e0a51498
+    projectPath: Temp/UnityTempFile-802754ad542194254b165ae4e0a51498
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-80d1d826eda8f41af86cc8f9f3c8c31d
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-80d1d826eda8f41af86cc8f9f3c8c31d
+    projectPath: Temp/UnityTempFile-80d1d826eda8f41af86cc8f9f3c8c31d
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-90d62c046b0a4416b85018fb9b4f55e4
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-90d62c046b0a4416b85018fb9b4f55e4
+    projectPath: Temp/UnityTempFile-90d62c046b0a4416b85018fb9b4f55e4
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-955879caade504b0bb659ccfb1b24a1e
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-955879caade504b0bb659ccfb1b24a1e
+    projectPath: Temp/UnityTempFile-955879caade504b0bb659ccfb1b24a1e
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-991afbad943074c70996ba72c42baedf
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-991afbad943074c70996ba72c42baedf
+    projectPath: Temp/UnityTempFile-991afbad943074c70996ba72c42baedf
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-a5e2a264008544614b7f1c80f1284c46
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-a5e2a264008544614b7f1c80f1284c46
+    projectPath: Temp/UnityTempFile-a5e2a264008544614b7f1c80f1284c46
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-b239346d2394d4c4eb62c27197d8f261
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b239346d2394d4c4eb62c27197d8f261
+    projectPath: Temp/UnityTempFile-b239346d2394d4c4eb62c27197d8f261
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-ce5211c9dacaf428887710a5b1bba05d
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ce5211c9dacaf428887710a5b1bba05d
+    projectPath: Temp/UnityTempFile-ce5211c9dacaf428887710a5b1bba05d
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-daf2d2fe222164fb8b30e7a1327ecb59
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-daf2d2fe222164fb8b30e7a1327ecb59
+    projectPath: Temp/UnityTempFile-daf2d2fe222164fb8b30e7a1327ecb59
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-e656288df04884d868fa43b1d34ffa77
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e656288df04884d868fa43b1d34ffa77
+    projectPath: Temp/UnityTempFile-e656288df04884d868fa43b1d34ffa77
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-eb897f6a314404f0f899c888ca510d82
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-eb897f6a314404f0f899c888ca510d82
+    projectPath: Temp/UnityTempFile-eb897f6a314404f0f899c888ca510d82
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-fb298d02b1df24b67ab674a60d745299
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-fb298d02b1df24b67ab674a60d745299
+    projectPath: Temp/UnityTempFile-fb298d02b1df24b67ab674a60d745299
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-fe9ee2bdd0241429c9b6856f26a19848
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-fe9ee2bdd0241429c9b6856f26a19848
+    projectPath: Temp/UnityTempFile-fe9ee2bdd0241429c9b6856f26a19848
     originalPath: 
     status: 1
     staged: 0
