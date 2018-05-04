@@ -371,6 +371,7 @@
   <ItemGroup>
     <None Include="Assets\Plugins\GitHub\Editor\CREDITS.txt" />
     <None Include="Assets\Plugins\GitHub\Editor\EULA.txt" />
+    <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\SimpleSky\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

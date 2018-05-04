@@ -43,8 +43,10 @@ public class PlayerController : MonoBehaviour
     private bool tileTrigger = true;
     private GameObject currentInteractRoadExitCollider;
 
-    private float forwardDir = 0f;  
+    private float forwardDir = 0f;
 
+    private Transform brakeFX;
+    private GameObject brakeFXGameObject; 
 
     void Start()
     {
@@ -75,7 +77,14 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Set up variables 
+        //FX 
+        brakeFX = transform.Find("FX_Tyre_Smoke");
+        Debug.Log(brakeFX.gameObject.name);
+        brakeFXGameObject = brakeFX.gameObject; 
+        brakeFXGameObject.SetActive(false);
+
+
+
         forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
         lastTime = Time.time;
@@ -127,6 +136,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    public float getForwardSpeed(){
+        return forwardSpeed; 
+    
     }
 
     public void setMode(string mode){
@@ -402,11 +416,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void driftZoneMode(string nextTileDirection){
-
+        brakeFXGameObject.SetActive(true);
         //Car slows down 
         if (newSpeed > turnSpeed)
         {
             newSpeed = newSpeed - 10;
+
         }
 
 
