@@ -47,10 +47,6 @@ public class GameController : MonoBehaviour
 
         //Locate player controller 
         GameObject playerControllerObject = GameObject.Find("Player");
-
-
-
-
         if (playerControllerObject != null)
         {
             //playerController = playerControllerObject.GetComponent<PlayerController>();
@@ -58,12 +54,15 @@ public class GameController : MonoBehaviour
 
 
         }
-
-        if (tileController == null)
+        if (playerController == null)
         {
             Debug.Log("Cannot find PLayerController script");
 
         }
+
+
+
+
 
 
         //Find Restart button and rewrite the button text and disable it 
@@ -74,7 +73,6 @@ public class GameController : MonoBehaviour
         btn.onClick.AddListener(RestartOnClick);
 
         gameObjRestart.SetActive(false);
-
 
 
     }

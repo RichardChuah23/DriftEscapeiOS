@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private bool gameOver;
     private GameController gameController;
     private TileController tileController;
+    private FXController fxController; 
+
     private string mode;
 
     public float t;
@@ -45,8 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private float forwardDir = 0f;
 
-    private Transform brakeFX;
-    private GameObject brakeFXGameObject; 
 
     void Start()
     {
@@ -77,11 +77,24 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //FX 
-        brakeFX = transform.Find("FX_Tyre_Smoke");
-        Debug.Log(brakeFX.gameObject.name);
-        brakeFXGameObject = brakeFX.gameObject; 
-        brakeFXGameObject.SetActive(false);
+        //Locate FX controller 
+        Transform fxTranform = transform.Find("FX");
+        GameObject fxControllerObject = fxTranform.gameObject;
+        if (fxControllerObject != null)
+        {
+            //playerController = playerControllerObject.GetComponent<PlayerController>();
+            fxController = fxControllerObject.GetComponentInChildren<FXController>();
+
+
+        }
+        if (fxController == null)
+        {
+            Debug.Log("Cannot find PLayerController script");
+
+        }
+
+
+        fxController.offTyreBrakeSmoke();
 
 
 
@@ -158,13 +171,6 @@ public class PlayerController : MonoBehaviour
 
     void moveForward()
     {
-        //Check which collider player collide with 
-        //left right or middle. 
-
-        //If middle 
-        //If Left 
-        //If Right 
-
 
 
 
@@ -198,7 +204,7 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(-50, 0f, 0f);
 
         //turn the car 
-        anim.SetTrigger("SwitchLeft");
+        //anim.SetTrigger("SwitchLeft");
 
         //Reset user input
         userInputHo = 0;
@@ -209,7 +215,7 @@ public class PlayerController : MonoBehaviour
     void switchRight()
     {
 
-        anim.SetTrigger("SwitchRight");
+        //anim.SetTrigger("SwitchRight");
         transform.position += new Vector3(50, 0f, 0f);
 
         //Reset user input
@@ -416,7 +422,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void driftZoneMode(string nextTileDirection){
-        brakeFXGameObject.SetActive(true);
+        fxController.onTyreBrakeSmoke();
         //Car slows down 
         if (newSpeed > turnSpeed)
         {

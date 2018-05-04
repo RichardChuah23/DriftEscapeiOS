@@ -28,10 +28,10 @@ public class simpleDrift : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //driftmode(); 
+        driftmode(); 
 
 
-        transform.Translate(Time.deltaTime * 100, 0, 0); // move forward 
+        transform.Translate(0, 0, Time.deltaTime * 100); // move forward 
 
 
 	}
