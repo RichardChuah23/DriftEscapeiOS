@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private bool gameOver;
     private GameController gameController;
     private TileController tileController;
-    private FXController fxController; 
+    private FXController fxController;
+    private AnimationController animController; 
 
     private string mode;
 
@@ -90,6 +91,23 @@ public class PlayerController : MonoBehaviour
         if (fxController == null)
         {
             Debug.Log("Cannot find PLayerController script");
+
+        }
+
+        //Locate Vehicle 
+        Transform vehicleTranform = transform.Find("Vehicle");
+        GameObject vehicleControllerObject = vehicleTranform.gameObject;
+        Debug.Log(vehicleControllerObject.name);
+        if (vehicleControllerObject != null)
+        {
+            //playerController = playerControllerObject.GetComponent<PlayerController>();
+            animController = vehicleControllerObject.GetComponentInChildren<AnimationController>();
+
+
+        }
+        if (animController == null)
+        {
+            Debug.Log("Cannot find Vehicle Controller script");
 
         }
 
@@ -205,6 +223,8 @@ public class PlayerController : MonoBehaviour
 
         //turn the car 
         //anim.SetTrigger("SwitchLeft");
+
+        animController.playSwitchLeft();
 
         //Reset user input
         userInputHo = 0;

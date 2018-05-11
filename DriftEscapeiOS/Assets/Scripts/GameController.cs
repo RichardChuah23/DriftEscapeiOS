@@ -20,10 +20,16 @@ public class GameController : MonoBehaviour
     private bool restartTrigger;
     private bool gameOverCalled; 
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
 
     // Use this for initialization
     void Start()
     {
+        
 
         gameOver = false;
         restart = false;
