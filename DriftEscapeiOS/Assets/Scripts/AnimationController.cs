@@ -11,6 +11,11 @@ public class AnimationController : MonoBehaviour
 
     }
 
+    public void playSwitchIdle()
+    {
+        anim.Play("Idle");
+    }
+
 
     public void playSwitchLeft()
     {
@@ -19,16 +24,18 @@ public class AnimationController : MonoBehaviour
 
     public void playSwitchRight()
     {
-
+        anim.Play("SwitchRight"); 
 
     }
 
     public void playDriftLeft(){ 
-    
+        anim.Play("DriftLeft"); 
     }
 
     public void playDriftRight(){ 
+        anim.Play("DriftRight"); 
     
     }
+
 }
 

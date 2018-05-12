@@ -221,9 +221,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position += new Vector3(-50, 0f, 0f);
 
-        //turn the car 
-        //anim.SetTrigger("SwitchLeft");
-
+        //play animation
         animController.playSwitchLeft();
 
         //Reset user input
@@ -237,6 +235,9 @@ public class PlayerController : MonoBehaviour
 
         //anim.SetTrigger("SwitchRight");
         transform.position += new Vector3(50, 0f, 0f);
+
+        //play animation
+        animController.playSwitchRight();
 
         //Reset user input
         userInputHo = 0;
@@ -473,6 +474,7 @@ public class PlayerController : MonoBehaviour
             if (nextTileDirection == "LEFT")
             {
                 mode = "LEFT";
+                animController.playDriftLeft();
             }
             else if (nextTileDirection == "RIGHT")
             {
