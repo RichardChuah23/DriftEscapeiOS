@@ -160,7 +160,6 @@ public class TileController : MonoBehaviour {
 
     public void nextTile(){
 
-
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex); 
          
@@ -206,6 +205,8 @@ public class TileController : MonoBehaviour {
             }else if(dirSpawn == "RIGHT"){
                 tileDriftSpawn.transform.Rotate(0, 90, 0); 
 
+            }else if(dirSpawn == "DOWN"){
+                tileDriftSpawn.transform.Rotate(0, -180, 0); 
             }
 
 
@@ -465,6 +466,7 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
+        
         Destroy(activeTilesRoad[0]);
         activeTilesRoad.RemoveAt(0);
 
@@ -482,16 +484,14 @@ public class TileController : MonoBehaviour {
 	public void DestroyAllTiles()
 	{
 
-        //Remove all road tiles 
+       
 
-        Debug.Log("Total: " + activeTilesRoad.Count);
 
         for (int i = 0; i < activeTilesRoad.Count; i++)
         {
             
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
-            Debug.Log("LEFT num " + activeTilesRoad.Count); 
 
         }
 

@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public float objectGravity; 
+    public float objectGravity;
     public float turnSpeed;
     public float forwardSpeed;
-    private float newSpeed; 
+    private float newSpeed;
     public float switchlaneSpeed;
     public float swithLaneCoolDown;
     private Vector3 forwardDirection;
@@ -17,14 +17,16 @@ public class PlayerController : MonoBehaviour
     private float userInputHo;
     private float userInputVer;
     private float lastTime;
-    private float tileDestroyTime; 
+    private float tileDestroyTime;
     private bool allowLeft;
     private bool allowRight;
     private bool gameOver;
     private GameController gameController;
     private TileController tileController;
     private FXController fxController;
-    private AnimationController animController; 
+    private AnimationController animController;
+    private string GameOverDriftDirection;
+
 
     private string mode;
 
@@ -35,23 +37,25 @@ public class PlayerController : MonoBehaviour
     private float turn1;
     private float turn2;
     private float turn3;
-    private int turnGear ;
+    private float offAngle; 
+    private int turnGear;
     private float inputHo;
     private float coolDown;
     private float lastTime2;
 
-    private string nextDriftDir; 
+    private string nextDriftDir;
 
-    private bool dzTrigger = true; 
+    private bool dzTrigger = true;
     private bool tileTrigger = true;
     private GameObject currentInteractRoadExitCollider;
 
     private float forwardDir = 0f;
+    private string animMode;
 
 
     void Start()
     {
-        
+
         //Locate game controller 
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
@@ -97,7 +101,6 @@ public class PlayerController : MonoBehaviour
         //Locate Vehicle 
         Transform vehicleTranform = transform.Find("Vehicle");
         GameObject vehicleControllerObject = vehicleTranform.gameObject;
-        Debug.Log(vehicleControllerObject.name);
         if (vehicleControllerObject != null)
         {
             //playerController = playerControllerObject.GetComponent<PlayerController>();
@@ -119,14 +122,15 @@ public class PlayerController : MonoBehaviour
         forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
         lastTime = Time.time;
-        tileDestroyTime = Time.time; 
+        tileDestroyTime = Time.time;
         allowLeft = true;
         allowRight = true;
         anim = GetComponent<Animator>();
         gameOver = false;
         mode = "FORWARD";
         turnGear = 0;
-        newSpeed = forwardSpeed; 
+        offAngle = 0;
+        newSpeed = forwardSpeed;
 
     }
 
@@ -146,43 +150,69 @@ public class PlayerController : MonoBehaviour
         {
             moveForward();
         }
-        else if ( mode ==   "LEFT" || mode == "RIGHT")
+        else if (mode == "LEFT" || mode == "RIGHT")
         {
             driftmode(mode);
         }
-        else if(mode == "PREDRIFT"){
+        else if (mode == "PREDRIFT")
+        {
             nextDriftDir = tileController.getDriftDirection();
-            Debug.Log(nextDriftDir);
 
             //check next tile 
-            driftZoneMode(nextDriftDir); 
+            driftZoneMode(nextDriftDir);
         }
 
-        else if ( mode == "GAMEOVER"){
-            
+        else if (mode == "GAMEOVER")
+        {   
+
+
+            if (GameOverDriftDirection == "LEFT")
+            {
+
+                offAngle = -2f;
+            }
+            else if (GameOverDriftDirection == "RIGHT")
+            {
+                offAngle = 2f;
+            }
+
+
+
+            if (turnSpeed != 0 ){
+                turnSpeed = turnSpeed - 5;
+                drift(turnSpeed, offAngle);
+            }
+
             gameController.setGameOver(true);
-            turnGear = 0; 
-        }else{
-            Debug.Log("Variable mode is invalid"); 
+            turnGear = 0;
+
+        }
+        else
+        {
+            Debug.Log("Variable mode is invalid");
         }
 
 
     }
 
-    public float getForwardSpeed(){
-        return forwardSpeed; 
-    
+    public float getForwardSpeed()
+    {
+        return forwardSpeed;
+
     }
 
-    public void setMode(string mode){
-        this.mode = mode; 
+    public void setMode(string mode)
+    {
+        this.mode = mode;
     }
 
-    public void setPlayerPos(Vector3 pos){
-        transform.position = pos; 
+    public void setPlayerPos(Vector3 pos)
+    {
+        transform.position = pos;
     }
 
-    public void resetPlayerRotation(){
+    public void resetPlayerRotation()
+    {
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
@@ -277,13 +307,13 @@ public class PlayerController : MonoBehaviour
     {
         tileTrigger = false;
         if (mode != "GAMEOVER")
-        { 
-            
+        {
+
             yield return new WaitForSeconds(2f);
             tileController.DestroyTileRoad();
-   
+
         }
-        tileTrigger = true; 
+        tileTrigger = true;
     }
 
     IEnumerator RemoveTileDrift()
@@ -302,14 +332,39 @@ public class PlayerController : MonoBehaviour
 
 
 
-	}
+    }
 
+
+    private void backToLane()
+    {
+        float playerPos = transform.position.x;
+
+        if (playerPos < -50)
+        {
+              
+
+        }
+        else if (playerPos > -50 && playerPos < 0)
+        {
+            
+        }
+        else if (playerPos >= 0 && playerPos < 50)
+        {
+        
+        }
+        else if (playerPos >= 50){
+
+
+        }
+
+
+    }
 
 
 	/// When player object contacts with an object 
 	void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log(collision.transform.name);
         //When player did not react to the driftZone
         //Car keep going straight until game over  
         if (collision.transform.name == "Exit DriftZone Collider" )
@@ -317,6 +372,15 @@ public class PlayerController : MonoBehaviour
 
 
             if(mode == "PREDRIFT"){
+
+                if(animMode == "DriftLeft"){
+                    animController.playDriftLeftToIdle(); 
+
+                }else if (animMode == "DriftRight"){
+                    animController.playDriftRightToIdle();
+                }
+
+                //Reattach car to lane 
                 mode = "FORWARD";
             }
             StartCoroutine(RemoveTileDrift());
@@ -326,14 +390,13 @@ public class PlayerController : MonoBehaviour
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider" )
         {
-            
-                
-                tileController.nextTile();
-                StartCoroutine(RemoveTileRoad());
 
-                tileDestroyTime = Time.time;
+            tileController.nextTile();
+            StartCoroutine(RemoveTileRoad());
 
-                currentInteractRoadExitCollider = collision.gameObject;
+            tileDestroyTime = Time.time;
+
+            currentInteractRoadExitCollider = collision.gameObject;
 
         }
 
@@ -342,7 +405,9 @@ public class PlayerController : MonoBehaviour
         //If enters straight road 
         if (collision.transform.name == "Road")
         {
+            
             mode = "FORWARD";
+
         }
 
         //Enter Predrift mode when enter drift zone 
@@ -352,10 +417,22 @@ public class PlayerController : MonoBehaviour
 
         //Gameover when touches the ground 
         if(collision.transform.name == "Ground"){
+
+
+            if(mode == "LEFT"){
+                GameOverDriftDirection = "LEFT";
+            }else if(mode == "RIGHT"){
+                GameOverDriftDirection = "RIGHT";
+            }
+
+
             mode = "GAMEOVER"; 
         }
 
+ 
     }
+
+
 
     void driftmode(string mode)
     {
@@ -442,14 +519,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    float slowDown(float currentSpeed, float desireSpeed){
+        if (currentSpeed > desireSpeed){
+
+            currentSpeed -= 10; 
+        }
+
+        return currentSpeed; 
+    }
+
     void driftZoneMode(string nextTileDirection){
         fxController.onTyreBrakeSmoke();
-        //Car slows down 
-        if (newSpeed > turnSpeed)
-        {
-            newSpeed = newSpeed - 10;
 
-        }
+
+
+        newSpeed = slowDown(newSpeed, turnSpeed); 
 
 
         if (currentInteractRoadExitCollider != null){
@@ -458,7 +542,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Rotote the player back to direction 
-        transform.eulerAngles = new Vector3(0, forwardDir, 0);
+        //transform.eulerAngles = new Vector3(0, forwardDir, 0);
          
         //Car keep moving forward 
         transform.Translate(0, 0, Time.deltaTime * newSpeed); // move forward 
@@ -469,16 +553,33 @@ public class PlayerController : MonoBehaviour
         //If input is swipe down 
         //Enter Drift Mode 
         if(userInputVer == -1 ){
-
             //Switch mode according to tile curve direction 
             if (nextTileDirection == "LEFT")
             {
+
+                if(animMode == "DriftRight"){
+                    animController.playDriftRightToLeft();
+
+                }else{
+                    animController.playDriftLeft();
+                }
+
                 mode = "LEFT";
-                animController.playDriftLeft();
+                animMode = "DriftLeft"; 
             }
             else if (nextTileDirection == "RIGHT")
             {
+
+                //Current mode is left. 
+                if(animMode == "DriftLeft"){
+                    animController.playDriftLeftToRight();
+                }else{
+                    animController.playDriftRight();
+                }
+
                 mode = "RIGHT";
+                animMode = "DriftRight";
+
             }
 
             turnGear = 0; 
