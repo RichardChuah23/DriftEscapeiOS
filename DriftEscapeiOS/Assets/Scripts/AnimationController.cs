@@ -69,13 +69,7 @@ public class AnimationController : MonoBehaviour
     }
 
 
-    public void playLeftSpin()
-    {
 
-
-        anim.Play("LeftSpin");
-
-    }
 
 }
 

@@ -114,10 +114,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
         fxController.offTyreBrakeSmoke();
-
-
 
         forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
@@ -137,9 +134,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-
-
         //Apply downward force on player Object 
         rb.AddForce(Vector3.down * objectGravity * rb.mass);
         //Lock X and Z axis, prevent player object wooble 
@@ -164,8 +158,7 @@ public class PlayerController : MonoBehaviour
 
         else if (mode == "GAMEOVER")
         {   
-
-
+            
             if (GameOverDriftDirection == "LEFT")
             {
 
@@ -364,9 +357,7 @@ public class PlayerController : MonoBehaviour
 	/// When player object contacts with an object 
 	void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.name);
-        //When player did not react to the driftZone
-        //Car keep going straight until game over  
+        //When player did not react to the driftZone, Car keep going straight until game over  
         if (collision.transform.name == "Exit DriftZone Collider" )
         {
 
@@ -405,9 +396,11 @@ public class PlayerController : MonoBehaviour
         //If enters straight road 
         if (collision.transform.name == "Road")
         {
-            
+            /*
+            //Add just car back to normal 
             mode = "FORWARD";
-
+            animController.playIdle(); 
+            */
         }
 
         //Enter Predrift mode when enter drift zone 
@@ -427,6 +420,19 @@ public class PlayerController : MonoBehaviour
 
 
             mode = "GAMEOVER"; 
+        }
+
+        //When car hits Lane Collider
+        // reposition car 
+        if(collision.transform.tag == "Lane Collider" ){
+
+            //reposition car 
+            transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            //remove all three lane collider
+            Debug.Log(collision.gameObject.transform.parent.name);
+            collision.gameObject.transform.parent.gameObject.SetActive(false) ; 
+
         }
 
  
@@ -529,9 +535,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void driftZoneMode(string nextTileDirection){
+        
         fxController.onTyreBrakeSmoke();
-
-
 
         newSpeed = slowDown(newSpeed, turnSpeed); 
 
@@ -583,6 +588,32 @@ public class PlayerController : MonoBehaviour
             }
 
             turnGear = 0; 
+        }
+
+
+        if (nextTileDirection == "FORWARD"){
+            
+            if(userInputVer == 1){
+
+                //Rotate car, look forward. 
+                mode = "FORWARD";
+
+                //player animation 
+                if (animMode == "DriftLeft"){
+                    animController.playDriftLeftToIdle(); 
+                    
+                }else if (animMode == "DriftRight"){
+
+                    animController.playDriftRightToIdle(); 
+                }
+                animMode = "IDLE"; 
+
+            }
+
+
+
+
+
         }
 
 

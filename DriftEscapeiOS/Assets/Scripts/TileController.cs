@@ -199,7 +199,7 @@ public class TileController : MonoBehaviour {
             //Position the new Drift zone tile
             tileDriftSpawn.transform.position = newDPos;
             //rotate it if needed. 
-            if(dirSpawn == "LEFT" || dirSpawn == "RIGHT"){
+            if(dirSpawn == "LEFT"){
                 tileDriftSpawn.transform.Rotate(0, -90, 0); 
 
             }else if(dirSpawn == "RIGHT"){
@@ -260,8 +260,9 @@ public class TileController : MonoBehaviour {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
-            index = a_list[Random.Range(0, 3)];
 
+            //index = a_list[Random.Range(0, 3)];
+            index = a_list[2];
 
         }
         if (currentTileIndex == 5)
