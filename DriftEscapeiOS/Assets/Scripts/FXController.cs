@@ -5,6 +5,7 @@ using UnityEngine;
 public class FXController : MonoBehaviour {
 
     private Transform brakeFX;
+    private GameObject brokeDownSmokeGameObject; 
     private GameObject brakeFXGameObject; 
 
     // Use this for initialization
@@ -13,6 +14,12 @@ public class FXController : MonoBehaviour {
         //Locate FX for tyre smoke 
         brakeFX = transform.Find("FX_Tyre_Smoke");
         brakeFXGameObject = brakeFX.gameObject;
+
+
+        //Locate FX for broke down Smoke 
+        Transform brokedownSmokeFX = transform.Find("FX_BrokeDown_Smoke");
+        brokeDownSmokeGameObject = brokedownSmokeFX.gameObject;
+                                    
 
        
 
@@ -33,6 +40,21 @@ public class FXController : MonoBehaviour {
         brakeFXGameObject.SetActive(false);
 
     }
+
+    public void onBrokeDownSmoke()
+    {
+
+        //FX
+        brokeDownSmokeGameObject.SetActive(true); 
+    }
+
+    public void offBrokeDownSmoke()
+    {
+
+        //FX
+        brokeDownSmokeGameObject.SetActive(false);
+    }
+
 
 
 }

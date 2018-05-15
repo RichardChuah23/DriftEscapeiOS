@@ -363,14 +363,14 @@ public class PlayerController : MonoBehaviour
 
 
             if(mode == "PREDRIFT"){
-
+                /*
                 if(animMode == "DriftLeft"){
                     animController.playDriftLeftToIdle(); 
 
                 }else if (animMode == "DriftRight"){
                     animController.playDriftRightToIdle();
                 }
-
+                */
                 //Reattach car to lane 
                 mode = "FORWARD";
             }
@@ -396,11 +396,9 @@ public class PlayerController : MonoBehaviour
         //If enters straight road 
         if (collision.transform.name == "Road")
         {
-            /*
-            //Add just car back to normal 
+            
             mode = "FORWARD";
-            animController.playIdle(); 
-            */
+
         }
 
         //Enter Predrift mode when enter drift zone 
@@ -417,6 +415,10 @@ public class PlayerController : MonoBehaviour
             }else if(mode == "RIGHT"){
                 GameOverDriftDirection = "RIGHT";
             }
+
+            //Control FX 
+            fxController.onBrokeDownSmoke();
+            fxController.offTyreBrakeSmoke();
 
 
             mode = "GAMEOVER"; 
@@ -596,7 +598,7 @@ public class PlayerController : MonoBehaviour
             if(userInputVer == 1){
 
                 //Rotate car, look forward. 
-                mode = "FORWARD";
+                //mode = "FORWARD";
 
                 //player animation 
                 if (animMode == "DriftLeft"){
