@@ -11,8 +11,6 @@ public class ObjectList // helper class to ensure we can edit the nested lists i
     public List<GameObject> Type3;
     public List<GameObject> Type4;
     public List<GameObject> Type5;
-
-
     public List<GameObject> Type6;
     public List<GameObject> Type7;
     public List<GameObject> Type8;
@@ -234,10 +232,12 @@ public class TileController : MonoBehaviour {
         if (currentTileIndex == 1 ){ 
 
             //Declare a list of two possible tiles  
-            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+            List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
-            List<int> a_list = new List<int>(){7,7};
-            return a_list[index];
+            //List<int> a_list = new List<int>(){7,7};
+            //return a_list[index];
+
+            return a_list[0];
 
         }
         if (currentTileIndex == 2)

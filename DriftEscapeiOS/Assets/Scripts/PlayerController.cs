@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float objectGravity;
     public float turnSpeed;
     public float forwardSpeed;
-    private float newSpeed;
+    private float currentSpeed;
     public float switchlaneSpeed;
     public float swithLaneCoolDown;
     private Vector3 forwardDirection;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
 
     private string mode;
+    private string previousMode; 
 
     public float t;
     Animator anim;
@@ -125,9 +126,10 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         gameOver = false;
         mode = "FORWARD";
+        previousMode = "NULL"; 
         turnGear = 0;
         offAngle = 0;
-        newSpeed = forwardSpeed;
+        currentSpeed = forwardSpeed;
 
     }
 
@@ -199,6 +201,10 @@ public class PlayerController : MonoBehaviour
         this.mode = mode;
     }
 
+    public string getMode(){
+        return mode; 
+    }
+
     public void setPlayerPos(Vector3 pos)
     {
         transform.position = pos;
@@ -243,6 +249,7 @@ public class PlayerController : MonoBehaviour
 
 
         transform.position += new Vector3(-50, 0f, 0f);
+
 
         //play animation
         animController.playSwitchLeft();
@@ -357,24 +364,17 @@ public class PlayerController : MonoBehaviour
 	/// When player object contacts with an object 
 	void OnCollisionEnter(Collision collision)
     {
-        //When player did not react to the driftZone, Car keep going straight until game over  
+        
         if (collision.transform.name == "Exit DriftZone Collider" )
         {
 
 
             if(mode == "PREDRIFT"){
-                /*
-                if(animMode == "DriftLeft"){
-                    animController.playDriftLeftToIdle(); 
-
-                }else if (animMode == "DriftRight"){
-                    animController.playDriftRightToIdle();
-                }
-                */
-                //Reattach car to lane 
-                mode = "FORWARD";
+                //GameOver when car hits the road and its still in predrift mode. 
+                mode = "GAMEOVER";
             }
             StartCoroutine(RemoveTileDrift());
+            collision.transform.gameObject.SetActive(false);
 
         }
 
@@ -389,9 +389,11 @@ public class PlayerController : MonoBehaviour
 
             currentInteractRoadExitCollider = collision.gameObject;
 
+            collision.transform.gameObject.SetActive(false);
+
+            collision.transform.gameObject.SetActive(false);
+
         }
-
-
 
         //If enters straight road 
         if (collision.transform.name == "Road")
@@ -403,13 +405,14 @@ public class PlayerController : MonoBehaviour
 
         //Enter Predrift mode when enter drift zone 
         if ( collision.transform.name == "DriftZone(Clone)"){
+            previousMode = mode; 
             mode = "PREDRIFT"; 
         }
 
         //Gameover when touches the ground 
         if(collision.transform.name == "Ground"){
 
-
+            Debug.Log("HIT GROUND!");
             if(mode == "LEFT"){
                 GameOverDriftDirection = "LEFT";
             }else if(mode == "RIGHT"){
@@ -430,9 +433,8 @@ public class PlayerController : MonoBehaviour
 
             //reposition car 
             transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            //transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             //remove all three lane collider
-            Debug.Log(collision.gameObject.transform.parent.name);
             collision.gameObject.transform.parent.gameObject.SetActive(false) ; 
 
         }
@@ -499,7 +501,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
         if (turnGear == 1)
         {
 
@@ -528,7 +529,8 @@ public class PlayerController : MonoBehaviour
     }
 
     float slowDown(float currentSpeed, float desireSpeed){
-        if (currentSpeed > desireSpeed){
+        
+        while (currentSpeed > desireSpeed){
 
             currentSpeed -= 10; 
         }
@@ -538,67 +540,87 @@ public class PlayerController : MonoBehaviour
 
     void driftZoneMode(string nextTileDirection){
         
-        fxController.onTyreBrakeSmoke();
+        if(previousMode == "FORWARD"){
+            
+            //Brake Smoke 
+            fxController.onTyreBrakeSmoke();
 
-        newSpeed = slowDown(newSpeed, turnSpeed); 
+            //Car keep moving forward, slowed down speed
+            transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
 
+            //Fishy  
+        }else{
+            //keep drifting until user respond 
+            drift(turnSpeed, turnGear);
 
-        if (currentInteractRoadExitCollider != null){
-            //Find direction 
-            forwardDir = angleEnterDriftZone(currentInteractRoadExitCollider);
         }
 
-        //Rotote the player back to direction 
-        //transform.eulerAngles = new Vector3(0, forwardDir, 0);
-         
-        //Car keep moving forward 
-        transform.Translate(0, 0, Time.deltaTime * newSpeed); // move forward 
+
+
 
         //User input 
         userInputVer = Input.GetAxisRaw("Vertical");
-
         //If input is swipe down 
-        //Enter Drift Mode 
-        if(userInputVer == -1 ){
+        //Enter Drift Mode
+        if (userInputVer == -1 && nextTileDirection != "FORWARD")
+        {
+
+
             //Switch mode according to tile curve direction 
             if (nextTileDirection == "LEFT")
             {
-
-                if(animMode == "DriftRight"){
+                //Switch to left mode 
+                previousMode = mode; 
+                mode = "LEFT";
+                //If the car is already drifting light
+                if (animMode == "DriftRight")
+                {
+                    //Turn car from Right to Left
                     animController.playDriftRightToLeft();
 
-                }else{
+                }
+                else
+                {
                     animController.playDriftLeft();
                 }
 
-                mode = "LEFT";
-                animMode = "DriftLeft"; 
+
+                //update animation mode 
+                animMode = "DriftLeft";
             }
             else if (nextTileDirection == "RIGHT")
             {
-
-                //Current mode is left. 
-                if(animMode == "DriftLeft"){
+                //Switch to Right Mode 
+                previousMode = mode; 
+                mode = "RIGHT";
+                //If the car is already drifting left 
+                if (animMode == "DriftLeft")
+                {
                     animController.playDriftLeftToRight();
-                }else{
+                }
+                else
+                {
                     animController.playDriftRight();
                 }
 
-                mode = "RIGHT";
+                //Update animation mode 
                 animMode = "DriftRight";
 
             }
-
-            turnGear = 0; 
+            Debug.Log(mode);
+            //Reset turn gear 
+            turnGear = 0;
         }
 
 
+        //Back to forward Tile 
         if (nextTileDirection == "FORWARD"){
-            
+            //Swipe Up
             if(userInputVer == 1){
 
-                //Rotate car, look forward. 
-                //mode = "FORWARD";
+
+                //player car rotate back to straight 
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
                 //player animation 
                 if (animMode == "DriftLeft"){
@@ -608,6 +630,9 @@ public class PlayerController : MonoBehaviour
 
                     animController.playDriftRightToIdle(); 
                 }
+
+                mode = "FORWARD";
+                previousMode = "FORWARD"; 
                 animMode = "IDLE"; 
 
             }
