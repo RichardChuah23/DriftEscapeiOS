@@ -11,8 +11,6 @@ public class ObjectList // helper class to ensure we can edit the nested lists i
     public List<GameObject> Type3;
     public List<GameObject> Type4;
     public List<GameObject> Type5;
-
-
     public List<GameObject> Type6;
     public List<GameObject> Type7;
     public List<GameObject> Type8;
@@ -160,7 +158,6 @@ public class TileController : MonoBehaviour {
 
     public void nextTile(){
 
-
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex); 
          
@@ -200,12 +197,14 @@ public class TileController : MonoBehaviour {
             //Position the new Drift zone tile
             tileDriftSpawn.transform.position = newDPos;
             //rotate it if needed. 
-            if(dirSpawn == "LEFT" || dirSpawn == "RIGHT"){
+            if(dirSpawn == "LEFT"){
                 tileDriftSpawn.transform.Rotate(0, -90, 0); 
 
             }else if(dirSpawn == "RIGHT"){
                 tileDriftSpawn.transform.Rotate(0, 90, 0); 
 
+            }else if(dirSpawn == "DOWN"){
+                tileDriftSpawn.transform.Rotate(0, -180, 0); 
             }
 
 
@@ -233,10 +232,12 @@ public class TileController : MonoBehaviour {
         if (currentTileIndex == 1 ){ 
 
             //Declare a list of two possible tiles  
-            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+            List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
-            List<int> a_list = new List<int>(){7,7};
-            return a_list[index];
+            //List<int> a_list = new List<int>(){7,7};
+            //return a_list[index];
+
+            return a_list[0];
 
         }
         if (currentTileIndex == 2)
@@ -259,8 +260,9 @@ public class TileController : MonoBehaviour {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
-            index = a_list[Random.Range(0, 3)];
 
+            //index = a_list[Random.Range(0, 3)];
+            index = a_list[2];
 
         }
         if (currentTileIndex == 5)
@@ -465,6 +467,7 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
+        
         Destroy(activeTilesRoad[0]);
         activeTilesRoad.RemoveAt(0);
 
@@ -482,16 +485,14 @@ public class TileController : MonoBehaviour {
 	public void DestroyAllTiles()
 	{
 
-        //Remove all road tiles 
+       
 
-        Debug.Log("Total: " + activeTilesRoad.Count);
 
         for (int i = 0; i < activeTilesRoad.Count; i++)
         {
             
             Destroy(activeTilesRoad[i]);
             activeTilesRoad.RemoveAt(i);
-            Debug.Log("LEFT num " + activeTilesRoad.Count); 
 
         }
 
