@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour {
 
+	private Transform carMenuGameObject;
+	public Camera mainCamera;
+	public Camera carMenuCamera;
+
+	void Start(){
+		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild(1); 
+		Camera carMenuCamera = GameObject.Find("Car_Menu Camera").GetComponent<Camera>();
+		Debug.Log (carMenuCamera.name);
+
+		carMenuCamera.enabled = false;
+	}
+
 	void Update() {
 		if(Input.GetMouseButtonDown(0)){
 
@@ -18,6 +30,9 @@ public class MainMenuController : MonoBehaviour {
 				Debug.Log("Hit " + hitInfo.transform.gameObject.name);
 				if (hitInfo.transform.gameObject.tag == "Player") {
 					Debug.Log ("It's working!");
+					carMenuGameObject.gameObject.SetActive (true);
+					mainCamera.gameObject.SetActive (false);
+					carMenuCamera.gameObject.SetActive (true);
 				} else {
 					Debug.Log ("It's NOT working!");
 				}
