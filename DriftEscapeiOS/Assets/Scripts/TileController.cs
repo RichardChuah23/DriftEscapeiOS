@@ -82,11 +82,8 @@ public class TileController : MonoBehaviour {
             Debug.Log("Cannot find GameController script");
         }
 
-
         //find Player object 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-
-
 
         spawnFirstTwoTiles(); 
 
@@ -235,9 +232,10 @@ public class TileController : MonoBehaviour {
             List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
             //List<int> a_list = new List<int>(){7,7};
-            //return a_list[index];
+            //List<int> a_list = new List<int>() { 1, 1 };
+            return a_list[index];
 
-            return a_list[0];
+
 
         }
         if (currentTileIndex == 2)

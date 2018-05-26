@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private string GameOverDriftDirection;
 
 
-    private string mode;
+    private string mode = "FORWARD";
     private string previousMode; 
 
     public float t;
@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     private float forwardDir = 0f;
     private string animMode;
+    private float laneAdjustment_x; 
+    private bool laneAdjustmentRequire = false;
+
+    private int onLaneNumber = 0; 
 
 
     void Start()
@@ -152,10 +156,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (mode == "PREDRIFT")
         {
+            laneAdjustmentRequire = false;
             nextDriftDir = tileController.getDriftDirection();
 
             //check next tile 
             driftZoneMode(nextDriftDir);
+        }else if(mode=="PREFORWARD")
+        {
+            preForward(); 
         }
 
         else if (mode == "GAMEOVER")
@@ -172,8 +180,8 @@ public class PlayerController : MonoBehaviour
             }
 
 
-
             if (turnSpeed != 0 ){
+
                 turnSpeed = turnSpeed - 5;
                 drift(turnSpeed, offAngle);
             }
@@ -216,11 +224,16 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
+    void preForward(){
+
+        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
+    }
+
     void moveForward()
     {
 
-
-
+ 
+       
         transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
 
@@ -241,7 +254,21 @@ public class PlayerController : MonoBehaviour
             switchRight();
         }
 
+        //If needed to adjust player position back to lane 
+        //Lerp towards that direction  
+        if(laneAdjustmentRequire == true){
+
+
+            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 10);
+
+            if(Mathf.FloorToInt(transform.position.x) ==  Mathf.FloorToInt(laneAdjustment_x)){
+                laneAdjustmentRequire = false;
+
+            }
+        }
+
     }
+
 
 
     void switchLeft()
@@ -258,6 +285,7 @@ public class PlayerController : MonoBehaviour
         userInputHo = 0;
         //Update cooldown
         lastTime = Time.time;
+        onLaneNumber -=1; 
     }
 
     void switchRight()
@@ -273,12 +301,14 @@ public class PlayerController : MonoBehaviour
         userInputHo = 0;
         //Update cooldown
         lastTime = Time.time;
+
+        onLaneNumber +=1; 
     }
 
     bool checkAllowLeft()
     {
 
-        if (transform.position.x <= -49.0f)
+        if (onLaneNumber == -1 || laneAdjustmentRequire == true )
         {
             return false;
         }
@@ -292,7 +322,7 @@ public class PlayerController : MonoBehaviour
     bool checkAllowRight()
     {
 
-        if (transform.position.x >= 49.0f)
+        if (onLaneNumber == 1 || laneAdjustmentRequire == true  )
         {
             return false;
         }
@@ -326,40 +356,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnCollisionExit(Collision collision)
-    {
-
-
-
-
-    }
-
-
-    private void backToLane()
-    {
-        float playerPos = transform.position.x;
-
-        if (playerPos < -50)
-        {
-              
-
-        }
-        else if (playerPos > -50 && playerPos < 0)
-        {
-            
-        }
-        else if (playerPos >= 0 && playerPos < 50)
-        {
-        
-        }
-        else if (playerPos >= 50){
-
-
-        }
-
-
-    }
-
 
 	/// When player object contacts with an object 
 	void OnCollisionEnter(Collision collision)
@@ -367,16 +363,27 @@ public class PlayerController : MonoBehaviour
         
         if (collision.transform.name == "Exit DriftZone Collider" )
         {
-
+            collision.transform.gameObject.SetActive(false);
 
             if(mode == "PREDRIFT"){
+                Debug.Log("MODE IN ON COLLISION! " + mode); 
                 //GameOver when car hits the road and its still in predrift mode. 
                 mode = "GAMEOVER";
+                Debug.Log("TOO SLOW EXIT PREDRIFT");
             }
             StartCoroutine(RemoveTileDrift());
             collision.transform.gameObject.SetActive(false);
 
         }
+
+        if (collision.transform.name == "Enter DriftZone Collider")
+        {
+            collision.transform.gameObject.SetActive(false);
+            //Enter Predrift mode when enter drift zone 
+            previousMode = mode;
+            mode = "PREDRIFT";
+        }
+
 
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider" )
@@ -394,7 +401,7 @@ public class PlayerController : MonoBehaviour
             collision.transform.gameObject.SetActive(false);
 
         }
-
+        /*
         //If enters straight road 
         if (collision.transform.name == "Road")
         {
@@ -402,12 +409,7 @@ public class PlayerController : MonoBehaviour
             mode = "FORWARD";
 
         }
-
-        //Enter Predrift mode when enter drift zone 
-        if ( collision.transform.name == "DriftZone(Clone)"){
-            previousMode = mode; 
-            mode = "PREDRIFT"; 
-        }
+        */
 
         //Gameover when touches the ground 
         if(collision.transform.name == "Ground"){
@@ -432,15 +434,39 @@ public class PlayerController : MonoBehaviour
         if(collision.transform.tag == "Lane Collider" ){
 
             //reposition car 
-            transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
-            //transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            //remove all three lane collider
-            collision.gameObject.transform.parent.gameObject.SetActive(false) ; 
+            //transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
+
+            laneAdjustmentRequire = true;
+            laneAdjustment_x = collision.transform.position.x; 
+
+
+            //Remove the lane collider 
+            collision.gameObject.transform.parent.gameObject.SetActive(false) ;
+
+
+            if(collision.transform.name == "Lane Collider L"){
+
+                onLaneNumber = -1;
+
+            }
+            if (collision.transform.name == "Lane Collider M")
+            {
+                onLaneNumber = 0;
+
+            }
+            if (collision.transform.name == "Lane Collider R")
+            {
+
+                onLaneNumber = 1;
+            }
 
         }
 
  
     }
+
+
+
 
 
 
@@ -548,7 +574,7 @@ public class PlayerController : MonoBehaviour
             //Car keep moving forward, slowed down speed
             transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
 
-            //Fishy  
+
         }else{
             //keep drifting until user respond 
             drift(turnSpeed, turnGear);
@@ -593,6 +619,7 @@ public class PlayerController : MonoBehaviour
                 //Switch to Right Mode 
                 previousMode = mode; 
                 mode = "RIGHT";
+                Debug.Log("Current mode ! " + mode);
                 //If the car is already drifting left 
                 if (animMode == "DriftLeft")
                 {
@@ -607,7 +634,7 @@ public class PlayerController : MonoBehaviour
                 animMode = "DriftRight";
 
             }
-            Debug.Log(mode);
+
             //Reset turn gear 
             turnGear = 0;
         }
@@ -631,18 +658,29 @@ public class PlayerController : MonoBehaviour
                     animController.playDriftRightToIdle(); 
                 }
 
-                mode = "FORWARD";
-                previousMode = "FORWARD"; 
+                mode = "PREFORWARD"; 
+                StartCoroutine(delayForward());
+
+                previousMode = mode; 
+
                 animMode = "IDLE"; 
 
             }
 
 
 
-
-
         }
 
+    }
+
+    IEnumerator delayForward()
+    {
+
+        yield return new WaitForSeconds(1f);
+        if(mode != "GAMEOVER"){
+
+            mode = "FORWARD";
+        }
 
 
     }

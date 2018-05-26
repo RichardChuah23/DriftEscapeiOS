@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    public Animator anim; 
+    public Animator anim;
+    public Transform target; 
     // Use this for initialization
     void Start()
     {
 
+    }
+
+    public bool isZeroRotation(){
+        Debug.Log(target.rotation.y);
+        if(target.rotation.y > -1 && target.rotation.y < 1){
+            return true; 
+        }else{
+            return false;
+        }
     }
 
     public void playIdle()
