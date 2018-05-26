@@ -25,12 +25,7 @@ public class SkyDomeController : MonoBehaviour {
     void LateUpdate()
     {
 
-        //Get new position 
-        z = player.transform.position.z + offset.z;
-        y = player.transform.position.y + offset.y;
-
-        //Camra always stays in center 
-        transform.position = new Vector3(0.0f, y, z);
+        transform.position = player.transform.position + offset; 
     }
 
 
