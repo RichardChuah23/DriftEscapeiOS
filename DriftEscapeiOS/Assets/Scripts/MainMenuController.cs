@@ -44,9 +44,11 @@ public class MainMenuController : MonoBehaviour {
 				if (hitInfo.transform.gameObject.tag == "Player") {
 					Debug.Log ("It's working!");
 
-					mainMenuGameObject.gameObject.SetActive (false);
-					scenary.SetActive (false);
-					carMenuGameObject.gameObject.SetActive (true);
+					SceneManager.LoadScene(0);
+
+					//mainMenuGameObject.gameObject.SetActive (false);
+					//scenary.SetActive (false);
+					//carMenuGameObject.gameObject.SetActive (true);
 				} else {
 					Debug.Log ("It's NOT working!");
 				}
