@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Locate FX controller 
-        Transform fxTranform = transform.Find("FX");
+        Transform fxTranform = transform.Find("Vehicle FX");
         GameObject fxControllerObject = fxTranform.gameObject;
         if (fxControllerObject != null)
         {
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
     void moveForward()
     {
 
- 
+
        
         transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
@@ -566,31 +566,32 @@ public class PlayerController : MonoBehaviour
 
     void driftZoneMode(string nextTileDirection){
         
-        if(previousMode == "FORWARD"){
-            
-            //Brake Smoke 
-            fxController.onTyreBrakeSmoke();
-
-            //Car keep moving forward, slowed down speed
-            transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
-
-
-        }else{
+        if(previousMode != "FORWARD"){
             //keep drifting until user respond 
             drift(turnSpeed, turnGear);
 
         }
 
-
-
+        if(previousMode == "FORWARD"){
+			transform.Translate(0, 0, Time.deltaTime * forwardSpeed);
+	
+        }
 
         //User input 
         userInputVer = Input.GetAxisRaw("Vertical");
+
         //If input is swipe down 
         //Enter Drift Mode
         if (userInputVer == -1 && nextTileDirection != "FORWARD")
         {
+            //If player came from forward tile. 
+            if(previousMode == "FORWARD"){
+                //Active Brake Smoke 
+                fxController.onTyreBrakeSmoke();
 
+                //Car slows down 
+                transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
+            }
 
             //Switch mode according to tile curve direction 
             if (nextTileDirection == "LEFT")
