@@ -53,6 +53,8 @@ public class TileController : MonoBehaviour {
     public string dirSpawn;
 
     private int newTileIndex;
+    private int previousTileIndex;
+    private int typeOfTileIndex;
 
 
 	// Use this for initialization
@@ -156,11 +158,24 @@ public class TileController : MonoBehaviour {
     public void nextTile(){
 
         //Find the direction of spawning 
-        dirSpawn = findSpawnDirection(currentTileIndex); 
-         
+        dirSpawn = findSpawnDirection(currentTileIndex);
+
         //Get next tile index  //Choose which tile to spawn 
+        previousTileIndex = newTileIndex; 
         newTileIndex = nextTileIndex(); 
-        GameObject tileRoadSpawn = tilesPrefab[newTileIndex][0];
+
+        GameObject tileRoadSpawn ;
+
+        if(previousTileIndex == 1){
+            tileRoadSpawn = tilesPrefab[newTileIndex][1];
+        }else{
+            tileRoadSpawn = tilesPrefab[newTileIndex][0];
+        }
+
+
+       
+
+
 
         //Does it need a Drift Enter Zone? 
         bool requireDriftZone = needDriftZone(currentTileIndex, newTileIndex);
@@ -232,7 +247,7 @@ public class TileController : MonoBehaviour {
             //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
             List<int> a_list = new List<int>(){7,7};
-            //List<int> a_list = new List<int>() { 1, 1 };
+            ///List<int> a_list = new List<int>() { 1, 1 };
             return a_list[index];
 
 

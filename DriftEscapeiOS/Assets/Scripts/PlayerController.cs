@@ -55,8 +55,10 @@ public class PlayerController : MonoBehaviour
     private float laneAdjustment_x; 
     private bool laneAdjustmentRequire = false;
 
-    private int onLaneNumber = 0; 
+    private int onLaneNumber = 0;
 
+    private int lerping =0  ;
+    private float wantedPosX;
 
     void Start()
     {
@@ -233,7 +235,6 @@ public class PlayerController : MonoBehaviour
     {
 
 
-       
         transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
 
@@ -243,23 +244,82 @@ public class PlayerController : MonoBehaviour
         //Check user allow to turn left and right 
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
-
+        /*
         //Moving Left and Right 
         if (userInputHo == -1.0 && Time.time - lastTime > swithLaneCoolDown && allowLeft)
         {
-            switchLeft();
+            wantedPosX = switchLeft();
         }
         else if (userInputHo == 1 && Time.time - lastTime > swithLaneCoolDown && allowRight)
         {
             switchRight();
         }
+		*/
+
+        //Moving Left and Right 
+        if (userInputHo == -1.0 && lerping == 0 && allowLeft)
+        {
+            wantedPosX = switchLeft();
+        }
+        else if (userInputHo == 1 && lerping == 0 && allowRight)
+        {
+            wantedPosX = switchRight();
+        }
+
+
+        if (lerping == -1){
+          
+            //Do left lerp 
+            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX,transform.position.y,transform.position.z), Time.deltaTime * 12);
+            /*
+            if (Mathf.FloorToInt(transform.position.x) == Mathf.FloorToInt(wantedPosX)){
+                lerping = 0;
+
+                Debug.Log("DONE !! ");
+            }
+            */
+
+            float diff = Mathf.Abs(transform.position.x - wantedPosX);
+            if (diff < 0.5)
+            {
+                lerping = 0;
+
+                Debug.Log("DONE !! ");
+            }
+
+        }
+
+        if (lerping == 1)
+        {
+
+            //Do left lerp 
+            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime  * 12);
+            /*
+            if (Mathf.FloorToInt(transform.position.x) == Mathf.FloorToInt(wantedPosX))
+            {
+                lerping = 0;
+
+                Debug.Log("DONE !! ");
+            }
+            */
+
+            float diff = Mathf.Abs(transform.position.x - wantedPosX)  ; 
+            if (diff < 0.5)
+            {
+                lerping = 0;
+
+                Debug.Log("DONE !! ");
+            }
+
+        }
+            
+
 
         //If needed to adjust player position back to lane 
         //Lerp towards that direction  
         if(laneAdjustmentRequire == true){
-
-
-            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 10);
+            
+            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 4);
 
             if(Mathf.FloorToInt(transform.position.x) ==  Mathf.FloorToInt(laneAdjustment_x)){
                 laneAdjustmentRequire = false;
@@ -271,38 +331,42 @@ public class PlayerController : MonoBehaviour
 
 
 
-    void switchLeft()
+    float switchLeft()
     {
 
-
-        transform.position += new Vector3(-50, 0f, 0f);
-
+        lerping = -1; 
+        //transform.position += new Vector3(-50, 0f, 0f);
 
         //play animation
-        animController.playSwitchLeft();
+        //animController.playSwitchLeft();
 
         //Reset user input
         userInputHo = 0;
         //Update cooldown
         lastTime = Time.time;
         onLaneNumber -=1; 
+
+        Vector3 wantedPos = transform.position + new Vector3(-40, 0, 0);
+
+        return wantedPos.x;
     }
 
-    void switchRight()
+    float switchRight()
     {
-
-        //anim.SetTrigger("SwitchRight");
-        transform.position += new Vector3(50, 0f, 0f);
-
         //play animation
-        animController.playSwitchRight();
+        //animController.playSwitchRight();
 
         //Reset user input
         userInputHo = 0;
+
         //Update cooldown
         lastTime = Time.time;
+        onLaneNumber +=1;
 
-        onLaneNumber +=1; 
+        lerping = 1; 
+        Vector3 wantedPos = transform.position + new Vector3(40, 0, 0);
+
+        return wantedPos.x;
     }
 
     bool checkAllowLeft()

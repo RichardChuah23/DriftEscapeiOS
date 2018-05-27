@@ -20,12 +20,16 @@ public class SkyDomeController : MonoBehaviour {
         transform.position = player.transform.position + offset;
 
 
+
     }
 
     void LateUpdate()
     {
 
-        transform.position = player.transform.position + offset; 
+        transform.position = player.transform.position + offset;
+
+        transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, Time.deltaTime * 1);
+
     }
 
 
