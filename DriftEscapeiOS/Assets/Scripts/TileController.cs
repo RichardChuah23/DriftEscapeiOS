@@ -160,19 +160,24 @@ public class TileController : MonoBehaviour {
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
+
+
         //Get next tile index  //Choose which tile to spawn 
         previousTileIndex = newTileIndex; 
         newTileIndex = nextTileIndex(); 
 
-        GameObject tileRoadSpawn ;
 
-        if(previousTileIndex == 1){
+
+        GameObject tileRoadSpawn;
+
+        if (previousTileIndex == 1 && newTileIndex == 1)
+        {
             tileRoadSpawn = tilesPrefab[newTileIndex][1];
-        }else{
+        }
+        else
+        {
             tileRoadSpawn = tilesPrefab[newTileIndex][0];
         }
-
-
        
 
 
@@ -247,7 +252,7 @@ public class TileController : MonoBehaviour {
             //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
             List<int> a_list = new List<int>(){7,7};
-            ///List<int> a_list = new List<int>() { 1, 1 };
+            //List<int> a_list = new List<int>() { 1, 1 };
             return a_list[index];
 
 

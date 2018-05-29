@@ -57,8 +57,10 @@ public class PlayerController : MonoBehaviour
 
     private int onLaneNumber = 0;
 
-    private int lerping =0  ;
+    private bool lerping = false  ;
     private float wantedPosX;
+
+    private Vector3 currentInteractingTileVector; 
 
     void Start()
     {
@@ -163,6 +165,9 @@ public class PlayerController : MonoBehaviour
 
             //check next tile 
             driftZoneMode(nextDriftDir);
+            lerping = false;
+
+
         }else if(mode=="PREFORWARD")
         {
             preForward(); 
@@ -226,10 +231,8 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    void preForward(){
 
-        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
-    }
+
 
     void moveForward()
     {
@@ -244,75 +247,23 @@ public class PlayerController : MonoBehaviour
         //Check user allow to turn left and right 
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
-        /*
+
         //Moving Left and Right 
         if (userInputHo == -1.0 && Time.time - lastTime > swithLaneCoolDown && allowLeft)
         {
+            ;
             wantedPosX = switchLeft();
         }
         else if (userInputHo == 1 && Time.time - lastTime > swithLaneCoolDown && allowRight)
         {
-            switchRight();
-        }
-		*/
-
-        //Moving Left and Right 
-        if (userInputHo == -1.0 && lerping == 0 && allowLeft)
-        {
-            wantedPosX = switchLeft();
-        }
-        else if (userInputHo == 1 && lerping == 0 && allowRight)
-        {
+            
             wantedPosX = switchRight();
         }
-
-
-        if (lerping == -1){
-          
-            //Do left lerp 
-            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX,transform.position.y,transform.position.z), Time.deltaTime * 12);
-            /*
-            if (Mathf.FloorToInt(transform.position.x) == Mathf.FloorToInt(wantedPosX)){
-                lerping = 0;
-
-                Debug.Log("DONE !! ");
-            }
-            */
-
-            float diff = Mathf.Abs(transform.position.x - wantedPosX);
-            if (diff < 0.5)
-            {
-                lerping = 0;
-
-                Debug.Log("DONE !! ");
-            }
-
-        }
-
-        if (lerping == 1)
-        {
-
-            //Do left lerp 
-            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime  * 12);
-            /*
-            if (Mathf.FloorToInt(transform.position.x) == Mathf.FloorToInt(wantedPosX))
-            {
-                lerping = 0;
-
-                Debug.Log("DONE !! ");
-            }
-            */
-
-            float diff = Mathf.Abs(transform.position.x - wantedPosX)  ; 
-            if (diff < 0.5)
-            {
-                lerping = 0;
-
-                Debug.Log("DONE !! ");
-            }
-
-        }
+		
+        if(lerping == true){
+			transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 3);
             
+        }
 
 
         //If needed to adjust player position back to lane 
@@ -330,11 +281,57 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    float getLerpWantedPos(string direction)
+    {
+        Vector3 wantedPos = new Vector3(0, 0, 0);
+
+
+        if(direction == "L"){
+
+
+
+            if (onLaneNumber == 0)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x - 50, 0, 0);
+
+            }
+            else if (onLaneNumber == 1)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x, 0, 0);
+
+            }
+            else
+            {
+                Debug.Log("Player lerping Error");
+            }
+        }
+
+        if(direction == "R"){
+            if (onLaneNumber == 0)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x + 50, 0, 0);
+
+            }
+            else if (onLaneNumber == -1)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x, 0, 0);
+
+            }
+            else
+            {
+                Debug.Log("Player lerping Error");
+            }
+
+        }
+       
+        return wantedPos.x;
+    }
 
     float switchLeft()
     {
+        float wantedPosX;
 
-        lerping = -1; 
+        wantedPosX = getLerpWantedPos("L");
         //transform.position += new Vector3(-50, 0f, 0f);
 
         //play animation
@@ -344,15 +341,19 @@ public class PlayerController : MonoBehaviour
         userInputHo = 0;
         //Update cooldown
         lastTime = Time.time;
-        onLaneNumber -=1; 
+        onLaneNumber -=1;
+        lerping = true; 
+       
 
-        Vector3 wantedPos = transform.position + new Vector3(-40, 0, 0);
-
-        return wantedPos.x;
+        return wantedPosX;
     }
+
+
 
     float switchRight()
     {
+        float wantedPosX;
+        wantedPosX = getLerpWantedPos("R");
         //play animation
         //animController.playSwitchRight();
 
@@ -362,11 +363,11 @@ public class PlayerController : MonoBehaviour
         //Update cooldown
         lastTime = Time.time;
         onLaneNumber +=1;
+        lerping = true; 
 
-        lerping = 1; 
-        Vector3 wantedPos = transform.position + new Vector3(40, 0, 0);
 
-        return wantedPos.x;
+
+        return wantedPosX;
     }
 
     bool checkAllowLeft()
@@ -453,6 +454,7 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.name == "Enter Collider" )
         {
 
+
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
 
@@ -460,8 +462,7 @@ public class PlayerController : MonoBehaviour
 
             currentInteractRoadExitCollider = collision.gameObject;
 
-            collision.transform.gameObject.SetActive(false);
-
+            currentInteractingTileVector = collision.transform.position;
             collision.transform.gameObject.SetActive(false);
 
         }
@@ -528,11 +529,6 @@ public class PlayerController : MonoBehaviour
 
  
     }
-
-
-
-
-
 
     void driftmode(string mode)
     {
@@ -709,8 +705,7 @@ public class PlayerController : MonoBehaviour
         if (nextTileDirection == "FORWARD"){
             //Swipe Up
             if(userInputVer == 1){
-
-
+                
                 //player car rotate back to straight 
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
@@ -737,6 +732,13 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    void preForward()
+    {
+        //Keep car moving 
+        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
+    }
+
 
     IEnumerator delayForward()
     {
