@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public Rigidbody rb;
+
+    //Player movement variable 
     public float objectGravity;
     public float turnSpeed;
     public float forwardSpeed;
@@ -14,112 +15,67 @@ public class PlayerController : MonoBehaviour
     public float swithLaneCoolDown;
     private Vector3 forwardDirection;
     private Vector3 horizontalDirection;
+	private string GameOverDriftDirection;
+    private string mode = "FORWARD";
+    private string previousMode; 
+
+    //Drift Variable 
+    private float turn1;
+    private float turn2;
+    private float turn3;
+    private float offAngle;
+    private int turnGear;
+    private float inputHo;
+    private float coolDown;
+    private float lastTime2;
+
+    //Switch lane variable 
     private float userInputHo;
     private float userInputVer;
     private float lastTime;
     private float tileDestroyTime;
     private bool allowLeft;
     private bool allowRight;
-    private bool gameOver;
-    private GameController gameController;
-    private TileController tileController;
-    private FXController fxController;
-    private AnimationController animController;
-    private string GameOverDriftDirection;
+    private float laneAdjustment_x;
+    private bool laneAdjustmentRequire = false;
+    private int onLaneNumber = 0;
+    private bool lerping = false;
+    private float wantedPosX;
+    private bool startTurning = false;
 
-
-    private string mode = "FORWARD";
-    private string previousMode; 
-
-    public float t;
-    Animator anim;
-
-    //Drift Variable 
-    private float turn1;
-    private float turn2;
-    private float turn3;
-    private float offAngle; 
-    private int turnGear;
-    private float inputHo;
-    private float coolDown;
-    private float lastTime2;
-
+    //Tile variable 
     private string nextDriftDir;
-
     private bool dzTrigger = true;
     private bool tileTrigger = true;
     private GameObject currentInteractRoadExitCollider;
+	private Vector3 currentInteractingTileVector; 
+	
 
-    private float forwardDir = 0f;
+    //GameController variable 
+    private bool gameOver;
+
+    //Others Controller variable 
+    private GameController gameController;
+    private TileController tileController;
+    private FXController fxController;
+    private DriftSmokeFX driftSmokeGameController;
+    private AnimationController animController;
+    private ScoreController scoreController; 
+    
+    //Animation
+    Animator anim;
+    //private float forwardDir = 0f;
     private string animMode;
-    private float laneAdjustment_x; 
-    private bool laneAdjustmentRequire = false;
 
-    private int onLaneNumber = 0; 
 
 
     void Start()
     {
+        locateAllController();
 
-        //Locate game controller 
-        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        if (gameControllerObject != null)
-        {
-            gameController = gameControllerObject.GetComponent<GameController>();
+        driftSmokeGameController.hardOffDriftSmoke();
+        offDriftFX();
 
-        }
-        else
-        {
-            Debug.Log("Cannot find GameController script");
-
-        }
-
-        //Locate tile Controller 
-        GameObject tileControllerObject = GameObject.FindWithTag("TileController");
-        if (tileControllerObject != null)
-        {
-            tileController = tileControllerObject.GetComponent<TileController>();
-
-        }
-        else
-        {
-            Debug.Log("Cannot find TileController script");
-
-        }
-
-        //Locate FX controller 
-        Transform fxTranform = transform.Find("FX");
-        GameObject fxControllerObject = fxTranform.gameObject;
-        if (fxControllerObject != null)
-        {
-            //playerController = playerControllerObject.GetComponent<PlayerController>();
-            fxController = fxControllerObject.GetComponentInChildren<FXController>();
-
-
-        }
-        if (fxController == null)
-        {
-            Debug.Log("Cannot find PLayerController script");
-
-        }
-
-        //Locate Vehicle 
-        Transform vehicleTranform = transform.Find("Vehicle");
-        GameObject vehicleControllerObject = vehicleTranform.gameObject;
-        if (vehicleControllerObject != null)
-        {
-            //playerController = playerControllerObject.GetComponent<PlayerController>();
-            animController = vehicleControllerObject.GetComponentInChildren<AnimationController>();
-
-
-        }
-        if (animController == null)
-        {
-            Debug.Log("Cannot find Vehicle Controller script");
-
-        }
-
-        fxController.offTyreBrakeSmoke();
 
         forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
         horizontalDirection = (new Vector3(44.90f, 0f, 0f));
@@ -138,6 +94,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     void FixedUpdate()
     {
         //Apply downward force on player Object 
@@ -148,10 +105,12 @@ public class PlayerController : MonoBehaviour
         //Check mode 
         if (mode == "FORWARD")
         {
+            offDriftFX();
             moveForward();
         }
         else if (mode == "LEFT" || mode == "RIGHT")
         {
+            
             driftmode(mode);
         }
         else if (mode == "PREDRIFT")
@@ -161,6 +120,9 @@ public class PlayerController : MonoBehaviour
 
             //check next tile 
             driftZoneMode(nextDriftDir);
+            lerping = false;
+
+
         }else if(mode=="PREFORWARD")
         {
             preForward(); 
@@ -187,6 +149,8 @@ public class PlayerController : MonoBehaviour
             }
 
             gameController.setGameOver(true);
+            fxController.onBrokeDownSmoke();
+            offDriftFX();
             turnGear = 0;
 
         }
@@ -197,6 +161,83 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    void locateAllController(){
+
+        //Locate FX controller 
+        driftSmokeGameController = transform.Find("FX_Tyre_Smoke").gameObject.GetComponentInChildren<DriftSmokeFX>();
+
+        Debug.Log(driftSmokeGameController.name);
+
+        
+        //Locate game controller 
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            gameController = gameControllerObject.GetComponent<GameController>();
+
+        }
+
+        //Locate tile Controller 
+        GameObject tileControllerObject = GameObject.FindWithTag("TileController");
+        if (tileControllerObject != null)
+        {
+            tileController = tileControllerObject.GetComponent<TileController>();
+
+        }
+
+        //Locate Coins Controller 
+        GameObject scoreControllerObject = GameObject.FindWithTag("ScoreController");
+        if (tileControllerObject != null)
+        {
+            scoreController = scoreControllerObject.GetComponent<ScoreController>();
+
+        }
+
+        //Locate FX controller 
+        Transform fxTranform = transform.Find("Vehicle/AE86");
+        GameObject fxControllerObject = fxTranform.gameObject;
+        if (fxControllerObject != null)
+        {
+
+            //playerController = playerControllerObject.GetComponent<PlayerController>();
+            fxController = fxControllerObject.GetComponentInChildren<FXController>();
+
+
+        }
+
+        //Locate Vehicle 
+        Transform vehicleTranform = transform.Find("Vehicle");
+        GameObject vehicleControllerObject = vehicleTranform.gameObject;
+        if (vehicleControllerObject != null)
+        {
+            //playerController = playerControllerObject.GetComponent<PlayerController>();
+            animController = vehicleControllerObject.GetComponentInChildren<AnimationController>();
+
+
+        }
+       
+
+
+
+    }
+
+    void onDriftFX()
+    {
+        driftSmokeGameController.onDriftSmoke();
+        fxController.onSkidMark();
+        fxController.onTyreSketch();
+    }
+
+    void offDriftFX()
+    {
+
+
+        driftSmokeGameController.offDriftSmoke();
+        fxController.offSkidMark();
+        fxController.offTyreSketch();
+    }
+
 
     public float getForwardSpeed()
     {
@@ -224,16 +265,13 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    void preForward(){
 
-        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
-    }
+
 
     void moveForward()
     {
 
- 
-       
+
         transform.Translate(0, 0, Time.deltaTime * forwardSpeed); // move forward
 
 
@@ -247,21 +285,30 @@ public class PlayerController : MonoBehaviour
         //Moving Left and Right 
         if (userInputHo == -1.0 && Time.time - lastTime > swithLaneCoolDown && allowLeft)
         {
-            switchLeft();
+            
+            wantedPosX = switchLeft();
         }
         else if (userInputHo == 1 && Time.time - lastTime > swithLaneCoolDown && allowRight)
         {
-            switchRight();
+            
+            wantedPosX = switchRight();
         }
+		
+        if(lerping == true){
+			transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 3);
+            
+        }
+
 
         //If needed to adjust player position back to lane 
         //Lerp towards that direction  
         if(laneAdjustmentRequire == true){
+            
+            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 4);
 
+            float diff = Mathf.Abs(transform.position.x - laneAdjustment_x); 
 
-            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 10);
-
-            if(Mathf.FloorToInt(transform.position.x) ==  Mathf.FloorToInt(laneAdjustment_x)){
+            if(diff < 1){
                 laneAdjustmentRequire = false;
 
             }
@@ -270,39 +317,93 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    void switchLeft()
+    float getLerpWantedPos(string direction)
     {
+        Vector3 wantedPos = new Vector3(0, 0, 0);
 
 
-        transform.position += new Vector3(-50, 0f, 0f);
+        if(direction == "L"){
 
 
-        //play animation
-        animController.playSwitchLeft();
 
-        //Reset user input
-        userInputHo = 0;
-        //Update cooldown
-        lastTime = Time.time;
-        onLaneNumber -=1; 
+            if (onLaneNumber == 0)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x - 50, 0, 0);
+
+            }
+            else if (onLaneNumber == 1)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x, 0, 0);
+
+            }
+            else
+            {
+                Debug.Log("Player lerping Error");
+            }
+        }
+
+        if(direction == "R"){
+            if (onLaneNumber == 0)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x + 50, 0, 0);
+
+            }
+            else if (onLaneNumber == -1)
+            {
+                wantedPos = new Vector3(currentInteractingTileVector.x, 0, 0);
+
+            }
+            else
+            {
+                Debug.Log("Player lerping Error");
+            }
+
+        }
+       
+        return wantedPos.x;
     }
 
-    void switchRight()
+    float switchLeft()
     {
 
-        //anim.SetTrigger("SwitchRight");
-        transform.position += new Vector3(50, 0f, 0f);
+        float wantedPosX = getLerpWantedPos("L");
+        //transform.position += new Vector3(-50, 0f, 0f);
 
         //play animation
-        animController.playSwitchRight();
+        //animController.playSwitchLeft();
 
         //Reset user input
         userInputHo = 0;
         //Update cooldown
         lastTime = Time.time;
+        onLaneNumber -=1;
+        lerping = true; 
+       
 
-        onLaneNumber +=1; 
+        return wantedPosX;
+    }
+
+
+
+    float switchRight()
+    {
+        
+        float wantedPosX = getLerpWantedPos("R");
+
+        //play animation
+        //animController.playSwitchRight();
+
+        //Reset user input
+        userInputHo = 0;
+
+        //Update cooldown
+        lastTime = Time.time;
+        onLaneNumber +=1;
+        lerping = true; 
+
+
+
+        return wantedPosX;
     }
 
     bool checkAllowLeft()
@@ -384,10 +485,18 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
+        if (collision.transform.name == "Coins")
+        {
+            scoreController.addCoins();
+            collision.transform.gameObject.SetActive(false);
+
+        }
+
 
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider" )
         {
+
 
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
@@ -396,20 +505,10 @@ public class PlayerController : MonoBehaviour
 
             currentInteractRoadExitCollider = collision.gameObject;
 
-            collision.transform.gameObject.SetActive(false);
-
+            currentInteractingTileVector = collision.transform.position;
             collision.transform.gameObject.SetActive(false);
 
         }
-        /*
-        //If enters straight road 
-        if (collision.transform.name == "Road")
-        {
-            
-            mode = "FORWARD";
-
-        }
-        */
 
         //Gameover when touches the ground 
         if(collision.transform.name == "Ground"){
@@ -422,8 +521,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //Control FX 
-            fxController.onBrokeDownSmoke();
-            fxController.offTyreBrakeSmoke();
+            offDriftFX();
 
 
             mode = "GAMEOVER"; 
@@ -438,7 +536,6 @@ public class PlayerController : MonoBehaviour
 
             laneAdjustmentRequire = true;
             laneAdjustment_x = collision.transform.position.x; 
-
 
             //Remove the lane collider 
             collision.gameObject.transform.parent.gameObject.SetActive(false) ;
@@ -464,11 +561,6 @@ public class PlayerController : MonoBehaviour
 
  
     }
-
-
-
-
-
 
     void driftmode(string mode)
     {
@@ -566,31 +658,33 @@ public class PlayerController : MonoBehaviour
 
     void driftZoneMode(string nextTileDirection){
         
-        if(previousMode == "FORWARD"){
-            
-            //Brake Smoke 
-            fxController.onTyreBrakeSmoke();
-
-            //Car keep moving forward, slowed down speed
-            transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
-
-
-        }else{
+        if(previousMode != "FORWARD"){
             //keep drifting until user respond 
             drift(turnSpeed, turnGear);
-
         }
 
-
-
+        if(previousMode == "FORWARD"){
+			transform.Translate(0, 0, Time.deltaTime * forwardSpeed);
+        }
 
         //User input 
         userInputVer = Input.GetAxisRaw("Vertical");
+
         //If input is swipe down 
         //Enter Drift Mode
         if (userInputVer == -1 && nextTileDirection != "FORWARD")
         {
 
+			//Active Drift FX
+            onDriftFX();
+
+
+            //If player came from forward tile. 
+            if(previousMode == "FORWARD"){
+
+                //Car slows down 
+                transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
+            }
 
             //Switch mode according to tile curve direction 
             if (nextTileDirection == "LEFT")
@@ -640,15 +734,17 @@ public class PlayerController : MonoBehaviour
         }
 
 
+
         //Back to forward Tile 
         if (nextTileDirection == "FORWARD"){
+
+
             //Swipe Up
             if(userInputVer == 1){
+                
 
 
-                //player car rotate back to straight 
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-
+  
                 //player animation 
                 if (animMode == "DriftLeft"){
                     animController.playDriftLeftToIdle(); 
@@ -668,10 +764,18 @@ public class PlayerController : MonoBehaviour
             }
 
 
-
         }
 
     }
+
+    void preForward()
+    {
+        //Keep car moving 
+        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime * 10);
+    }
+
 
     IEnumerator delayForward()
     {

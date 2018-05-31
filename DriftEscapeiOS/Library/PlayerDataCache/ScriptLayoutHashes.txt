@@ -2,6 +2,7 @@ iOS
 PlayerPath?
 /Users/richardchuah/Documents/Xcode/test1
 SceneListBegin?
+Assets/_Scenes/CarMenu.unity
 Assets/_Scenes/MainMenu.unity
 Assets/_Scenes/Main.unity
 SceneListEnd?
@@ -19,7 +20,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenuController
+0f48eec98483ec562906518ee27ca146 Assembly-CSharp.dll:.MainMenuController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayAd
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:SplineKitPro.SKPointNodeRoot
 02cdd5cf14b3bdf57bc8f926fde9dcd7 Assembly-CSharp.dll:.EllipseRenderer
@@ -90,7 +91,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.simpleDrift
 660984cb1187b9621cc9c97e564dc83c Assembly-CSharp.dll:SplineKitPro.SKBranchNode
 e3bf943193f30c0c7f78e18dfffe22fc Assembly-CSharp.dll:SplineKitPro.SKRotationNode
-b81a6253ef2b29e7781b4231e5076874 Assembly-CSharp.dll:.CameraController
+21b773e8df17a929712a41d2035ec6b6 Assembly-CSharp.dll:.CameraController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -121,7 +122,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
-998c570f84856acafa7bd7b04e94e163 Assembly-CSharp.dll:.AnimationController
+338ca67356c04a7187daea94c812ba92 Assembly-CSharp.dll:.AnimationController
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -180,7 +181,8 @@ bea1449c6c16053c1d23bd0d16fbfde9 Assembly-CSharp.dll:.GameController
 274df2bf2480d2a4d4e10f0594d677f9 Assembly-CSharp.dll:SplineKitPro.SKAnchorNode
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.nightday
 19522dcedcca5ee253565e9b90c6ff78 Assembly-CSharp.dll:SplineKitPro.SKScaleNode
-2b5bd81c259c691324a17af9a3e97e85 Assembly-CSharp.dll:.SkyDomeController
+967c1688c26ee735a3a7e0b4d6b88b42 Assembly-CSharp.dll:.SkyDomeController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DriftSmokeFX
 2b5bd81c259c691324a17af9a3e97e85 Assembly-CSharp.dll:.LightController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:SplineKitPro.SKBranchNodeRoot
 ca7b5259c43afe42445901a0e4387233 Assembly-CSharp.dll:SplineKitPro.SKAnimationCurveContainer

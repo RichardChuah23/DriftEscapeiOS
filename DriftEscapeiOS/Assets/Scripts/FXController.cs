@@ -4,42 +4,35 @@ using UnityEngine;
 
 public class FXController : MonoBehaviour {
 
-    private Transform brakeFX;
     private GameObject brokeDownSmokeGameObject; 
-    private GameObject brakeFXGameObject; 
+
+    private GameObject skidMarkGameObject;
+    private GameObject tyreSketchGameObject;
 
     // Use this for initialization
     void Start () {
 
-        //Locate FX for tyre smoke 
-        brakeFX = transform.Find("FX_Tyre_Smoke");
-        brakeFXGameObject = brakeFX.gameObject;
+
 
 
         //Locate FX for broke down Smoke 
         Transform brokedownSmokeFX = transform.Find("FX_BrokeDown_Smoke");
         brokeDownSmokeGameObject = brokedownSmokeFX.gameObject;
+
+        //Locate FX for SkidMark
+        Transform skidMarkGameFX = transform.Find("FX_SkidMark");
+        skidMarkGameObject = skidMarkGameFX.gameObject;
+
+        //Locate FX for SkidMark
+        Transform tyreSketchFX = transform.Find("FX_Tyre_RoadSketch");
+        tyreSketchGameObject = tyreSketchFX.gameObject;
                                     
 
        
 
     }
 
-    public void onTyreBrakeSmoke(){ 
 
-        //FX 
-        brakeFXGameObject.SetActive(true);
-    
-    }
-
-
-    public void offTyreBrakeSmoke()
-    {
-
-        //FX 
-        brakeFXGameObject.SetActive(false);
-
-    }
 
     public void onBrokeDownSmoke()
     {
@@ -53,6 +46,30 @@ public class FXController : MonoBehaviour {
 
         //FX
         brokeDownSmokeGameObject.SetActive(false);
+    }
+
+    public void onSkidMark()
+    {
+        //FX
+        skidMarkGameObject.SetActive(true);
+    }
+
+    public void offSkidMark()
+    {
+        //FX
+        skidMarkGameObject.SetActive(false);
+    }
+
+	public void onTyreSketch()
+	{
+        //FX
+        tyreSketchGameObject.SetActive(true);
+	}
+
+    public void offTyreSketch()
+    {
+        //FX
+        tyreSketchGameObject.SetActive(false);
     }
 
 

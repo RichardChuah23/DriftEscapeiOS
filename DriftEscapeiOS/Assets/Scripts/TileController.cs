@@ -53,6 +53,8 @@ public class TileController : MonoBehaviour {
     public string dirSpawn;
 
     private int newTileIndex;
+    private int previousTileIndex;
+    private int typeOfTileIndex;
 
 
 	// Use this for initialization
@@ -121,8 +123,9 @@ public class TileController : MonoBehaviour {
 
         //Second tile 
         //Find the direction of spawning 
-        tileSpawn = tilesPrefab[1][0];  
+        tileSpawn = tilesPrefab[1][1];  
         tileSpawn = Instantiate(tileSpawn) as GameObject;
+        tileSpawn.name = "Second Tile";
         //In Hierachy, set it as child for Tile Manager
         tileSpawn.transform.SetParent((transform));
         //Position  the new tile 
@@ -156,11 +159,29 @@ public class TileController : MonoBehaviour {
     public void nextTile(){
 
         //Find the direction of spawning 
-        dirSpawn = findSpawnDirection(currentTileIndex); 
-         
+        dirSpawn = findSpawnDirection(currentTileIndex);
+
+
+
         //Get next tile index  //Choose which tile to spawn 
+        previousTileIndex = newTileIndex; 
         newTileIndex = nextTileIndex(); 
-        GameObject tileRoadSpawn = tilesPrefab[newTileIndex][0];
+
+
+
+        GameObject tileRoadSpawn;
+
+        if (previousTileIndex == 1 && newTileIndex == 1)
+        {
+            tileRoadSpawn = tilesPrefab[newTileIndex][1];
+        }
+        else
+        {
+            tileRoadSpawn = tilesPrefab[newTileIndex][0];
+        }
+       
+
+
 
         //Does it need a Drift Enter Zone? 
         bool requireDriftZone = needDriftZone(currentTileIndex, newTileIndex);
@@ -229,10 +250,10 @@ public class TileController : MonoBehaviour {
         if (currentTileIndex == 1 ){ 
 
             //Declare a list of two possible tiles  
-            List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
             //List<int> a_list = new List<int>(){7,7};
-            //List<int> a_list = new List<int>() { 1, 1 };
+            List<int> a_list = new List<int>() { 1, 1 };
             return a_list[index];
 
 
@@ -259,8 +280,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
 
-            //index = a_list[Random.Range(0, 3)];
-            index = a_list[2];
+            index = a_list[Random.Range(0, 3)];
+            //index = a_list[2]; //For Debuggin
 
         }
         if (currentTileIndex == 5)
@@ -281,8 +302,8 @@ public class TileController : MonoBehaviour {
         {
 
             //Declare a list of two possible tiles 
-            //List<int> a_list = new List<int>() { 6, 4 };
-            List<int> a_list = new List<int>() { 4, 4 };
+            List<int> a_list = new List<int>() { 6, 4 }; //FOR DEBUGGING
+            //List<int> a_list = new List<int>() { 4, 4 };
             index = a_list[Random.Range(0, 1)];
 
         }
