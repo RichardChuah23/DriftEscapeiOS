@@ -7,92 +7,159 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour {
 
 	private Transform mainMenuGameObject;
-	private Transform carMenuGameObject;
-
-	private GameObject scenary;
+	private Transform carContainer;
 
 	public Camera mainMenuCamera;
-	public Camera carMenuCamera;
+	public float moveSpeed;
+	private float inputHorizontal; 
+
+	private string mode; 
 
 	AudioListener mainMenuCameraAudioLis;
-	AudioListener carMenuCameraAudioLis;
+
+
+	public string getMode(){
+		return mode; 
+	}
+
+	public void setMode(string value){
+		mode = value; 
+	}
+
+	/*public string Mode {
+		get { return mode; }
+		set { this.mode = mode; }
+	}*/
+
 
 	void Start(){
+
+		mode = "Main Menu";
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
-		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1); 
-
-		scenary = GameObject.Find ("Main Menu Scenary");
-
-		// Get cameras audio listener
+		//carContainer = GameObject.Find ("Main Menu Scenary").transform.GetChild (5);
 		mainMenuCameraAudioLis = mainMenuCamera.GetComponent<AudioListener> ();
-		carMenuCameraAudioLis = carMenuCamera.GetComponent<AudioListener> ();
-
-		// Disable car menu camera and audio listener
-		carMenuCamera.enabled = false;
-		carMenuCameraAudioLis.enabled = false;
 	}
 
 	void Update() {
-		if(Input.GetMouseButtonDown(0)){
-
-			Debug.Log ("Mouse is down");
-
-			RaycastHit hitInfo = new RaycastHit();
-			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-			if (hit) {
-				Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-				if (hitInfo.transform.gameObject.tag == "Player") {
-					Debug.Log ("It's working!");
-
-					SceneManager.LoadScene(0);
-
-					//mainMenuGameObject.gameObject.SetActive (false);
-					//scenary.SetActive (false);
-					//carMenuGameObject.gameObject.SetActive (true);
+		if (mode == "Main Menu") {
+			if(Input.GetMouseButtonDown(0)){
+				//Debug.Log ("Mouse is down");
+				RaycastHit hitInfo = new RaycastHit();
+				bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
+				if (hit) {
+					Debug.Log("Hit " + hitInfo.transform.gameObject.name);
+					if (hitInfo.transform.gameObject.tag == "Player") {
+						onCarMenu ();
+						offMainMenu ();
+						mode = "Car Menu";
+						Debug.Log ("It's working!");
+					} else {
+						Debug.Log ("It's NOT working!");
+					}
 				} else {
-					Debug.Log ("It's NOT working!");
+					Debug.Log("No hit");
 				}
-			} else {
-				Debug.Log("No hit");
 			}
 		}
-		switchCamera ();
-	}
 
-	void switchCamera () {
-		// Car Menu set active
-		if (carMenuGameObject.gameObject.activeInHierarchy){
-			Debug.Log ("Active");
-
-			// Enable car menu camera and audio listener
-			carMenuCamera.enabled = true;
-			carMenuCameraAudioLis.enabled = true;
-
-			// Disable main menu camera and audio listener
-			mainMenuCamera.enabled = false;
-			mainMenuCameraAudioLis.enabled = false;
-		} else {
-			Debug.Log ("Car_Menu NOT Active!");
-
-			mainMenuGameObject.gameObject.SetActive (true);
-			scenary.SetActive (true);
-
-			// Enable main menu camera and audio listener
-			mainMenuCamera.enabled = true;
-			mainMenuCameraAudioLis.enabled = true;
-
-			// Diable car menu camera and audio listener
-			carMenuCamera.enabled = false;
-			carMenuCameraAudioLis.enabled = false;
+			
+		/*if (Input.GetKey ("left")) {
+			print("left arrow key is held down");
+			//carContainer.transform.position += new Vector3 (0f, 0f, -50.5f);
+			//Debug.Log (carContainer.transform.position);
 		}
+
+		if (Input.GetKey ("right")) {
+
+
+			Vector3 wantedPos = carContainer.transform.position + new Vector3 (0f, 0f, 50.5f); 
+			print("right arrow key is held down");
+			//carContainer.transform.position = Vector3.Lerp (carContainer.transform.position, wantedPos, Time.deltaTime * moveSpeed);
+
+
+			carContainer.transform.position += new Vector3 (0f, 0f, 50.5f); 
+			Debug.Log (carContainer.transform.position);
+		}*/
+
+		/*inputHorizontal = Input.GetAxisRaw ("Horizontal");
+		Debug.Log (inputHorizontal);
+		if (inputHorizontal == 1) {
+			cameraSwipeRight ();
+		}		
+		if (inputHorizontal == -1) {
+			cameraSwipeLeft ();
+		}	*/
+
+	}
+	public void onMainMenu() {
+		mainMenuGameObject.Find ("Game_Title").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Play_Button").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Settings_Button").gameObject.SetActive (true);
 	}
 
-    public void ChangeScene (int changeTheScene){
+	public void offMainMenu() {
+		mainMenuGameObject.Find ("Game_Title").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Play_Button").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Settings_Button").gameObject.SetActive (false);
+	}
+
+	public void onCarMenu() {
+		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Left").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Right").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (true);
+	}	
+
+	public void offCarMenu() {
+		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Left").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Right").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (false);
+	}	
+
+	public void onSettingsMenu() {
+		carContainer.gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Sound_Label").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Sound_Toogle").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Settings_Back_Button").gameObject.SetActive (true);
+	}
+
+	public void offSettingsMenu() {
+		carContainer.gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Sound_Label").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Sound_Toogle").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Settings_Back_Button").gameObject.SetActive (false);
+	}
+    
+	public void ChangeScene (int changeTheScene){
         SceneManager.LoadScene(changeTheScene);
     }
 
 	public void facebook (){
 		Application.OpenURL ("https://www.facebook.com");
+	}
+
+
+	void cameraSwipeRight(){
+		mainMenuCamera.transform.position += new Vector3 (20, 0, 0);
+
+
+	}
+
+	void cameraSwipeLeft(){
+		mainMenuCamera.transform.position += new Vector3 (-20, 0, 0);
+
+
 	}
 
 
