@@ -161,19 +161,17 @@ public class TileController : MonoBehaviour {
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
-
-
         //Get next tile index  //Choose which tile to spawn 
         previousTileIndex = newTileIndex; 
         newTileIndex = nextTileIndex(); 
-
 
 
         GameObject tileRoadSpawn;
 
         if (previousTileIndex == 1 && newTileIndex == 1)
         {
-            tileRoadSpawn = tilesPrefab[newTileIndex][1];
+            int index = Random.Range(1, 4);
+            tileRoadSpawn = tilesPrefab[newTileIndex][index];
         }
         else
         {

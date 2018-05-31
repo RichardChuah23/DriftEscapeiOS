@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class CameraController : MonoBehaviour
 
 
     //TESTIN VAR
-
     public Transform target;
     public float distance ;
     public float height ;
@@ -28,10 +28,32 @@ public class CameraController : MonoBehaviour
     public float rotationDamping ;
 
 
+    //now fixed figures 80,40,5,3
+
+    //Camera Shake
+    CameraShakeController camShake;
+    private float shakeDuration;
+
+    //Heavy Shake
+    private float heavyShakeDuration_2 = 0f ;
+    private float heavyShakeDuration = 0.5f;
+    private float heavyShakeAmount = 15f ;
+    private float heavyShakeSpeed = 12f ;
+
+    //Light Shake 
+    private float lightShakeDuration_2 = 0f; 
+    private float lightShakeDuration = 0.05f;
+    private float lightShakeAmount = 5f;
+    private float lightShakeSpeed = 10f; 
 
     // Use this for initialization
     void Start()
     {
+
+        camShake = transform.GetComponent<CameraShakeController>(); 
+
+
+
 
         //Locate player controller 
         GameObject playerControllerObject = GameObject.Find("Player");
@@ -62,7 +84,14 @@ public class CameraController : MonoBehaviour
         }
 		*/
 
-        testing();
+
+        followTranform(80);
+
+
+        float userInputHo = Input.GetAxisRaw("Horizontal");
+
+        cameraHeavyShake();
+        cameraLightShake();
 
     }
 
@@ -121,7 +150,7 @@ public class CameraController : MonoBehaviour
     }
 
 
-    void testing(){
+    void followTranform(float distance){
         Vector3 wantedPosition;
         if (followBehind)
             wantedPosition = target.TransformPoint(0, height, -distance);
@@ -136,6 +165,43 @@ public class CameraController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
         }
         else transform.LookAt(target, target.forward);
+
+
+        cameraLightShake();
+
+    }
+
+
+    public void startLightShake(){
+
+        lightShakeDuration_2 = lightShakeDuration; 
+    }
+
+    public void startHeavyShake(){
+
+        heavyShakeDuration_2 = heavyShakeDuration; 
+    }
+
+
+    void cameraHeavyShake(){
+
+        if (heavyShakeDuration_2 > 0)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.position + Random.insideUnitSphere * heavyShakeAmount, Time.deltaTime * heavyShakeSpeed);
+            heavyShakeDuration_2 -= Time.deltaTime;
+        }
+    }
+
+    void cameraLightShake()
+    {
+
+        if (lightShakeDuration > 0)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, transform.position + Random.insideUnitSphere * lightShakeAmount, Time.deltaTime * lightShakeSpeed);
+            lightShakeDuration -= Time.deltaTime;
+        }
+
+
     }
 
 
