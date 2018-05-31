@@ -21,7 +21,7 @@ public class MainMenuController : MonoBehaviour {
 
 		mode = "Main Menu";
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
-		carContainer = GameObject.Find ("Main Menu Scenary").transform.GetChild (5);
+		//carContainer = GameObject.Find ("Main Menu Scenary").transform.GetChild (5);
 		mainMenuCameraAudioLis = mainMenuCamera.GetComponent<AudioListener> ();
 	}
 
@@ -46,7 +46,7 @@ public class MainMenuController : MonoBehaviour {
 			}
 		}
 			
-		if (Input.GetKey ("left")) {
+		/*if (Input.GetKey ("left")) {
 			print("left arrow key is held down");
 			//carContainer.transform.position += new Vector3 (0f, 0f, -50.5f);
 			//Debug.Log (carContainer.transform.position);
@@ -62,7 +62,7 @@ public class MainMenuController : MonoBehaviour {
 
 			carContainer.transform.position += new Vector3 (0f, 0f, 50.5f); 
 			Debug.Log (carContainer.transform.position);
-		}
+		}*/
 
 		/*inputHorizontal = Input.GetAxisRaw ("Horizontal");
 		Debug.Log (inputHorizontal);
@@ -90,6 +90,8 @@ public class MainMenuController : MonoBehaviour {
 		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Left").gameObject.SetActive (true);
+		mainMenuGameObject.Find ("Right").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (true);
 	}	
 
@@ -97,6 +99,8 @@ public class MainMenuController : MonoBehaviour {
 		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Left").gameObject.SetActive (false);
+		mainMenuGameObject.Find ("Right").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (false);
 	}	
 
