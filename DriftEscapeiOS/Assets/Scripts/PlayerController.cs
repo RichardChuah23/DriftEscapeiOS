@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody rb;
@@ -69,8 +70,12 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+
+
     void Start()
     {
+
         locateAllController();
 
         driftSmokeGameController.hardOffDriftSmoke();
@@ -294,8 +299,8 @@ public class PlayerController : MonoBehaviour
             wantedPosX = switchRight();
         }
 		
-        if(lerping == true){
-			transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 3);
+        if(lerping == true && laneAdjustmentRequire == false){
+			transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 6);
             
         }
 
@@ -304,11 +309,11 @@ public class PlayerController : MonoBehaviour
         //Lerp towards that direction  
         if(laneAdjustmentRequire == true){
             
-            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 4);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(laneAdjustment_x,transform.position.y,transform.position.z), Time.deltaTime * 1f * 10);
 
             float diff = Mathf.Abs(transform.position.x - laneAdjustment_x); 
 
-            if(diff < 1){
+            if(diff < 5){
                 laneAdjustmentRequire = false;
 
             }
@@ -496,8 +501,7 @@ public class PlayerController : MonoBehaviour
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider" )
         {
-
-
+            
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
 
@@ -522,7 +526,6 @@ public class PlayerController : MonoBehaviour
 
             //Control FX 
             offDriftFX();
-
 
             mode = "GAMEOVER"; 
         }
