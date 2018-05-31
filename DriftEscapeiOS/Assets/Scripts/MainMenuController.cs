@@ -17,6 +17,21 @@ public class MainMenuController : MonoBehaviour {
 
 	AudioListener mainMenuCameraAudioLis;
 
+
+	public string getMode(){
+		return mode; 
+	}
+
+	public void setMode(string value){
+		mode = value; 
+	}
+
+	/*public string Mode {
+		get { return mode; }
+		set { this.mode = mode; }
+	}*/
+
+
 	void Start(){
 
 		mode = "Main Menu";
@@ -26,25 +41,27 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	void Update() {
-		if(Input.GetMouseButtonDown(0)){
-
-			Debug.Log ("Mouse is down");
-
-			RaycastHit hitInfo = new RaycastHit();
-			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-			if (hit) {
-				Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-				if (hitInfo.transform.gameObject.tag == "Player") {
-					onCarMenu ();
-					offMainMenu ();
-					Debug.Log ("It's working!");
+		if (mode == "Main Menu") {
+			if(Input.GetMouseButtonDown(0)){
+				//Debug.Log ("Mouse is down");
+				RaycastHit hitInfo = new RaycastHit();
+				bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
+				if (hit) {
+					Debug.Log("Hit " + hitInfo.transform.gameObject.name);
+					if (hitInfo.transform.gameObject.tag == "Player") {
+						onCarMenu ();
+						offMainMenu ();
+						mode = "Car Menu";
+						Debug.Log ("It's working!");
+					} else {
+						Debug.Log ("It's NOT working!");
+					}
 				} else {
-					Debug.Log ("It's NOT working!");
+					Debug.Log("No hit");
 				}
-			} else {
-				Debug.Log("No hit");
 			}
 		}
+
 			
 		/*if (Input.GetKey ("left")) {
 			print("left arrow key is held down");

@@ -10,6 +10,8 @@ public class CarsCreation : MonoBehaviour {
 	private int counter;
 	private Transform carContainer;
 
+	private MainMenuController mainMenuController;
+
 	private void Start() {
 		carContainer = GameObject.Find ("CarsContainer").transform;
 		models = new List<GameObject> ();
@@ -25,10 +27,15 @@ public class CarsCreation : MonoBehaviour {
 				//t.gameObject.SetActive (false);
 			}
 		}
+
+
+		// Locate MainMenuController script
+		GameObject menuManager = GameObject.Find("MenuManager");
+		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
 	}
 
 	public void Update() {
-		//Debug.Log (counter);
+
 	}
 
 	public void Select (int index) {
@@ -44,7 +51,6 @@ public class CarsCreation : MonoBehaviour {
 	}
 
 	public void Left (int index) {
-		
 		counter += 1;
 		if (counter < models.Count) {
 			carContainer.transform.position += new Vector3 (-35f, 0f, 0f);
@@ -62,6 +68,12 @@ public class CarsCreation : MonoBehaviour {
 			carContainer.transform.position += new Vector3 (35f, 0f, 0f);
 		}
 		Debug.Log (counter);
+	}
+
+	public void Back () {
+		mainMenuController.setMode ("Main Menu");
+		mainMenuController.offCarMenu ();
+		mainMenuController.onMainMenu ();
 	}
 
 }
