@@ -107,8 +107,8 @@ public class MainMenuController : MonoBehaviour {
 		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Left").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Right").gameObject.SetActive (true);
+		//mainMenuGameObject.Find ("Left").gameObject.SetActive (true);
+		//mainMenuGameObject.Find ("Right").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (true);
 	}	
 
@@ -116,8 +116,8 @@ public class MainMenuController : MonoBehaviour {
 		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Left").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Right").gameObject.SetActive (false);
+		//mainMenuGameObject.Find ("Left").gameObject.SetActive (false);
+		//mainMenuGameObject.Find ("Right").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (false);
 	}	
 
