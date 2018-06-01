@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using EZCameraShake;
 
 public class CameraController : MonoBehaviour
 {
@@ -31,7 +30,6 @@ public class CameraController : MonoBehaviour
     //now fixed figures 80,40,5,3
 
     //Camera Shake
-    CameraShakeController camShake;
     private float shakeDuration;
 
     //Heavy Shake
@@ -41,18 +39,14 @@ public class CameraController : MonoBehaviour
     private float heavyShakeSpeed = 12f ;
 
     //Light Shake 
-    private float lightShakeDuration_2 = 0f; 
-    private float lightShakeDuration = 0.05f;
+    private float lightShakeDuration_2 = 0f;
+    private float lightShakeDuration = 0.2f;
     private float lightShakeAmount = 5f;
-    private float lightShakeSpeed = 10f; 
+    private float lightShakeSpeed = 3f; 
 
     // Use this for initialization
     void Start()
     {
-
-        camShake = transform.GetComponent<CameraShakeController>(); 
-
-
 
 
         //Locate player controller 
@@ -86,9 +80,6 @@ public class CameraController : MonoBehaviour
 
 
         followTranform(80);
-
-
-        float userInputHo = Input.GetAxisRaw("Horizontal");
 
         cameraHeavyShake();
         cameraLightShake();
@@ -195,10 +186,10 @@ public class CameraController : MonoBehaviour
     void cameraLightShake()
     {
 
-        if (lightShakeDuration > 0)
+        if (lightShakeDuration_2 > 0)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, transform.position + Random.insideUnitSphere * lightShakeAmount, Time.deltaTime * lightShakeSpeed);
-            lightShakeDuration -= Time.deltaTime;
+            lightShakeDuration_2 -= Time.deltaTime;
         }
 
 

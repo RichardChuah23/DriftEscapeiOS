@@ -61,7 +61,9 @@ public class PlayerController : MonoBehaviour
     private FXController fxController;
     private DriftSmokeFX driftSmokeGameController;
     private AnimationController animController;
-    private ScoreController scoreController; 
+    private ScoreController scoreController;
+    private CameraController cameraController;
+
     
     //Animation
     Animator anim;
@@ -70,7 +72,16 @@ public class PlayerController : MonoBehaviour
 
 
 
+    public void setUserInput(float userInpit, string dir ){
+        if(dir == "Ho"){
+			userInputHo = userInpit;
+            
+        }else if (dir == "Ver"){
 
+			userInputVer = userInpit; 
+
+        }
+    }
 
 
     void Start()
@@ -79,22 +90,10 @@ public class PlayerController : MonoBehaviour
         locateAllController();
 
         driftSmokeGameController.hardOffDriftSmoke();
-        offDriftFX();
 
 
-        forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
-        horizontalDirection = (new Vector3(44.90f, 0f, 0f));
-        lastTime = Time.time;
-        tileDestroyTime = Time.time;
-        allowLeft = true;
-        allowRight = true;
-        anim = GetComponent<Animator>();
-        gameOver = false;
-        mode = "FORWARD";
-        previousMode = "NULL"; 
-        turnGear = 0;
-        offAngle = 0;
-        currentSpeed = forwardSpeed;
+
+        resetGameInitialValue();
 
     }
 
@@ -167,19 +166,46 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void resetGameInitialValue(){
+        fxController.offBrokeDownSmoke();
+        animController.playIdle();
+        offDriftFX();
+        forwardDirection = (new Vector3(0.0f, 0.0f, 10f) - transform.position).normalized;
+        horizontalDirection = (new Vector3(44.90f, 0f, 0f));
+        transform.Rotate(0, 0, 0); // turn to 0 degree
+        lastTime = Time.time;
+        tileDestroyTime = Time.time;
+        allowLeft = true;
+        allowRight = true;
+        anim = GetComponent<Animator>();
+        gameOver = false;
+        mode = "FORWARD";
+        previousMode = "NULL";
+        turnSpeed = 250;
+        turnGear = 0;
+        offAngle = 0;
+        currentSpeed = forwardSpeed;
+    }
+
     void locateAllController(){
 
         //Locate FX controller 
         driftSmokeGameController = transform.Find("FX_Tyre_Smoke").gameObject.GetComponentInChildren<DriftSmokeFX>();
 
-        Debug.Log(driftSmokeGameController.name);
-
-        
+                
         //Locate game controller 
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
         {
             gameController = gameControllerObject.GetComponent<GameController>();
+
+        }
+
+        //Locate game controller 
+        GameObject cameraControllerObject = GameObject.FindWithTag("MainCamera");
+        if (cameraControllerObject != null)
+        {
+            cameraController = cameraControllerObject.GetComponent<CameraController>();
 
         }
 
@@ -193,8 +219,9 @@ public class PlayerController : MonoBehaviour
 
         //Locate Coins Controller 
         GameObject scoreControllerObject = GameObject.FindWithTag("ScoreController");
-        if (tileControllerObject != null)
+        if (scoreControllerObject != null)
         {
+            
             scoreController = scoreControllerObject.GetComponent<ScoreController>();
 
         }
@@ -269,8 +296,6 @@ public class PlayerController : MonoBehaviour
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
-
-
 
 
     void moveForward()
@@ -466,6 +491,16 @@ public class PlayerController : MonoBehaviour
 	/// When player object contacts with an object 
 	void OnCollisionEnter(Collision collision)
     {
+
+
+        //Shake camera when player hit's small road object
+        if (collision.transform.tag == "Small Road Object")
+        {
+            Debug.Log("Shake");
+            cameraController.startLightShake();
+
+        }
+        
         
         if (collision.transform.name == "Exit DriftZone Collider" )
         {
@@ -478,7 +513,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("TOO SLOW EXIT PREDRIFT");
             }
             StartCoroutine(RemoveTileDrift());
-            collision.transform.gameObject.SetActive(false);
+            //collision.transform.gameObject.SetActive(false);
 
         }
 
@@ -490,10 +525,10 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
-        if (collision.transform.name == "Coins")
+        if (collision.transform.tag == "Coins")
         {
             scoreController.addCoins();
-            collision.transform.gameObject.SetActive(false);
+            //collision.transform.gameObject.SetActive(false);
 
         }
 
@@ -510,7 +545,7 @@ public class PlayerController : MonoBehaviour
             currentInteractRoadExitCollider = collision.gameObject;
 
             currentInteractingTileVector = collision.transform.position;
-            collision.transform.gameObject.SetActive(false);
+            //collision.transform.gameObject.SetActive(false);
 
         }
 

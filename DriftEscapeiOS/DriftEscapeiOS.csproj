@@ -264,16 +264,11 @@
     <Compile Include="Assets\DriftTestFolder\Ellipse.cs" />
     <Compile Include="Assets\DriftTestFolder\EllipseRenderer.cs" />
     <Compile Include="Assets\DriftTestFolder\simpleDrift.cs" />
-    <Compile Include="Assets\EZ Camera Shake\Scripts\Utilities\CameraShakeInstance.cs" />
-    <Compile Include="Assets\EZ Camera Shake\Scripts\Utilities\CameraShakePresets.cs" />
-    <Compile Include="Assets\EZ Camera Shake\Scripts\Utilities\CameraShaker.cs" />
-    <Compile Include="Assets\EZ Camera Shake\Scripts\Utilities\CameraUtilities.cs" />
-    <Compile Include="Assets\Scripts\:Users:richardchuah:Documents:Github:DriftEscapeiOS:DriftEscapeiOS:Assets:EZ Camera Shake:Demo:ShakeDemo.cs" />
     <Compile Include="Assets\Scripts\AnimationController.cs" />
     <Compile Include="Assets\Scripts\buttonController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\CameraShakeController.cs" />
     <Compile Include="Assets\Scripts\CarsCreation.cs" />
+    <Compile Include="Assets\Scripts\CoinController.cs" />
     <Compile Include="Assets\Scripts\colliderBar.cs" />
     <Compile Include="Assets\Scripts\DriftSmokeFX.cs" />
     <Compile Include="Assets\Scripts\FXController.cs" />
@@ -284,7 +279,7 @@
     <Compile Include="Assets\Scripts\ObstacleController.cs" />
     <Compile Include="Assets\Scripts\PlayAd.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\scoreController.cs" />
+    <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\SkyDomeController.cs" />
     <Compile Include="Assets\Scripts\testDriftController.cs" />
     <Compile Include="Assets\Scripts\TileController.cs" />

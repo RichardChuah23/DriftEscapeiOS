@@ -250,8 +250,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles  
             //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
 
-            //List<int> a_list = new List<int>(){7,7};
-            List<int> a_list = new List<int>() { 1, 1 };
+            List<int> a_list = new List<int>(){7,7};
+            //List<int> a_list = new List<int>() { 1, 1 };
             return a_list[index];
 
 
