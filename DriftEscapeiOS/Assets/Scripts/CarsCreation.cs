@@ -37,27 +37,19 @@ public class CarsCreation : MonoBehaviour {
 
 		// Get the current position
 		carContainer = GameObject.Find ("CarsContainer").transform;
-		//position = carContainer.position;
 	}
 
 	public void Update() {
 		ChangingPosition();
 	}
-
-	/*public void Select (int index) {
-		if (index < 0 || index >= models.Count)
-			return;
-
-		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Untagged";
-		//models [selectionIndex].SetActive (false);
-		selectionIndex = index;
-		models [selectionIndex].SetActive (true);
-		selectedCarName = models [selectionIndex].gameObject.name.ToString();
-		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Player";
-	}*/
-
+		
+	/// <summary>
+	/// Changings the position.
+	/// Allow the user to swipe the cars left and right to select or change the model.
+	/// </summary>
 	public void ChangingPosition() {
 		position = carContainer.position;
+
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			counter += 1;
 			if (counter < models.Count) {
@@ -75,41 +67,29 @@ public class CarsCreation : MonoBehaviour {
 				newPosition = position + new Vector3 (35f, 0f, 0f);
 			}
 		}
+
 		carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
 	}
 
-
-
-	/*public void Left () {
-		counter += 1;
-		if (counter < models.Count) {
-			newPosition = position + new Vector3 (-35f, 0f, 0f);
-			//carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
-			Update();
-			position = newPosition;
-		} else {
-			counter -= 1;
-		}
-		Debug.Log (counter);
-	}
-
-	public void Right () {
-		counter -= 1;
-		if (counter < 0 ) {
-			counter = 0;
-		} else {
-			newPosition = position + new Vector3 (35f, 0f, 0f);
-			//carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
-			Update ();
-			position = newPosition;
-		}
-		Debug.Log (counter);
-	}*/
-
+	/// <summary>
+	/// Return to main menu
+	/// </summary>
 	public void Back () {
-		mainMenuController.setMode ("Main Menu");
+		mainMenuController.setMode ("Main");
 		mainMenuController.offCarMenu ();
 		mainMenuController.onMainMenu ();
 	}
 
 }
+
+/*public void Select (int index) {
+		if (index < 0 || index >= models.Count)
+			return;
+
+		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Untagged";
+		//models [selectionIndex].SetActive (false);
+		selectionIndex = index;
+		models [selectionIndex].SetActive (true);
+		selectedCarName = models [selectionIndex].gameObject.name.ToString();
+		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Player";
+	}*/
