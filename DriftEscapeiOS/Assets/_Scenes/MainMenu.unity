@@ -678,7 +678,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1163593932}
         m_MethodName: Right
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1007,7 +1007,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1163593932}
         m_MethodName: Left
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2985,6 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb93b830903c49a786b351831f658a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smooth: 2
 --- !u!1 &1204984146
 GameObject:
   m_ObjectHideFlags: 0
