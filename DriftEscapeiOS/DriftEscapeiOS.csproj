@@ -250,9 +250,6 @@
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/richardchuah/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>/Users/richardchuah/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -281,6 +278,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\SkyDomeController.cs" />
+    <Compile Include="Assets\Scripts\swipeController.cs" />
     <Compile Include="Assets\Scripts\testDriftController.cs" />
     <Compile Include="Assets\Scripts\TileController.cs" />
     <Compile Include="Assets\Scripts\vehicleController.cs" />
