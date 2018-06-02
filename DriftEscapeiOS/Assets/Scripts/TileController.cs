@@ -160,7 +160,7 @@ public class TileController : MonoBehaviour {
 
     public void nextTile(){
 
-
+        Debug.Log("I ran ");
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
@@ -251,11 +251,11 @@ public class TileController : MonoBehaviour {
         if (currentTileIndex == 1 ){ 
 
             //Declare a list of two possible tiles  
-            //List<int> a_list = new List<int>(){1,7};   //FOR DEBGGGING  ! 
+            List<int> a_list = new List<int>(){1,2,7};   //FOR DEBGGGING  ! 
 
             //List<int> a_list = new List<int>(){7,7};
-            List<int> a_list = new List<int>() { 1, 1 };
-            return a_list[index];
+            //List<int> a_list = new List<int>() { 1, 1 };
+            return a_list[Random.Range(0, 3)];
 
 
 
