@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class MainMenuController : MonoBehaviour {
 
@@ -75,7 +76,6 @@ public class MainMenuController : MonoBehaviour {
 
 	/// <summary>
 	/// Clicks the car.
-	/// 
 	/// Left button mouse down
 	/// Use Physics.Raycast to find which object is being clicked 
 	/// Allow to click any object in scene, since a single script attached to the camera does the job
@@ -106,6 +106,13 @@ public class MainMenuController : MonoBehaviour {
 			newPosition = zoomIn;
 		}
 		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
+	}
+
+	/// <summary>
+	/// Shows the ad.
+	/// </summary>
+	public void ShowAd () {
+		Advertisement.Show ();
 	}
 
 	/// <summary>
@@ -152,25 +159,3 @@ public class MainMenuController : MonoBehaviour {
 		settingsGameObject.gameObject.SetActive (false);
 	}
 }
-
-/*
-if (mode == "Main") {
-	if(Input.GetMouseButtonDown(0)){
-		Debug.Log ("Mouse is down");
-		RaycastHit hitInfo = new RaycastHit();
-		bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-		if (hit) {
-			Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-			if (hitInfo.transform.gameObject.tag == "Player") {
-				onCarMenu ();
-				offMainMenu ();
-				mode = "Car Menu";
-				Debug.Log ("It's working!");
-			} else {
-				Debug.Log ("It's NOT working!");
-			}
-		} else {
-			Debug.Log("No hit");
-		}
-	}
-} */
