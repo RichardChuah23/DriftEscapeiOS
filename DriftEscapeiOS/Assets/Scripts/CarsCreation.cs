@@ -7,8 +7,8 @@ public class CarsCreation : MonoBehaviour {
 	private List<GameObject> models;
 
 	// selected car -> index and name
-	private int selectionIndex; 
-	private string selectedCarName;
+	//private int selectionIndex; 
+	//private string selectedCarName;
 
 	// counter to prevent index out of bound
 	private int counter;
@@ -25,8 +25,8 @@ public class CarsCreation : MonoBehaviour {
 		foreach (Transform t in transform) {
 			models.Add (t.gameObject);
 			if (t.gameObject.tag == "Player") {
-				selectionIndex = models.Count - 1;
-				selectedCarName = models [selectionIndex].gameObject.name.ToString();
+				//selectionIndex = models.Count - 1;
+				//selectedCarName = models [selectionIndex].gameObject.name.ToString();
 				counter = models.Count - 1;
 			}
 		}
@@ -40,7 +40,9 @@ public class CarsCreation : MonoBehaviour {
 	}
 
 	public void Update() {
-		ChangingPosition();
+		if (mainMenuController.Mode == "Car") {
+			ChangingPosition();
+		}
 	}
 		
 	/// <summary>
@@ -53,7 +55,7 @@ public class CarsCreation : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			counter += 1;
 			if (counter < models.Count) {
-				newPosition = position + new Vector3 (-35f, 0f, 0f);
+				newPosition = position + new Vector3 (-38f, 0f, 0f);
 			} else {
 				counter -= 1;
 			}
@@ -64,7 +66,7 @@ public class CarsCreation : MonoBehaviour {
 			if (counter < 0 ) {
 				counter = 0;
 			} else {
-				newPosition = position + new Vector3 (35f, 0f, 0f);
+				newPosition = position + new Vector3 (38f, 0f, 0f);
 			}
 		}
 
@@ -75,9 +77,10 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to main menu
 	/// </summary>
 	public void Back () {
-		mainMenuController.setMode ("Main");
+		mainMenuController.Mode = "Main";
 		mainMenuController.offCarMenu ();
 		mainMenuController.onMainMenu ();
+		mainMenuController.setZoom(false);
 	}
 
 }

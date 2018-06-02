@@ -8,25 +8,43 @@ public class MainMenuController : MonoBehaviour {
 
 	private string mode; 
 	private Transform mainMenuGameObject;
-	private Transform carContainer;
+	private GameObject carsContainer;
 
 	public Camera mainMenuCamera;
 
+	Vector3 zoomOut = new Vector3 (0, 0, -16);
+	Vector3 zoomIn = new Vector3 (0, 0, 0);
+	private Vector3 newPosition;
+	public float smooth = 3; 
+	private bool isZoomed = false;
+
 	/// <summary>
-	/// Sets the mode.
+	/// Gets or sets the mode.
 	/// </summary>
-	/// <param name="value">Value.</param>
-	public void setMode(string value){
-		mode = value; 
+	/// <value>The mode.</value>
+	public string Mode{
+		get{ return mode;}
+		set{ mode = value;}
+	}
+
+	/// <summary>
+	/// Sets the zoom.
+	/// </summary>
+	/// <param name="zoom">If set to <c>true</c> zoom.</param>
+	public void setZoom(bool zoom){
+		isZoomed = zoom;
 	}
 
 	void Start(){
 		mode = "Main";
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
+		carsContainer = GameObject.Find ("CarsContainer");
+
 	}
 		
 	void Update() {
 		clickCar ();
+		cameraZooming();
 	}
 
 	/// <summary>
@@ -57,15 +75,29 @@ public class MainMenuController : MonoBehaviour {
 	public void clickCar(){
 		if (mode == "Main") {
 			if (Input.GetMouseButtonDown (0)) {
-				RaycastHit hitInfo = new RaycastHit();
-				bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
-				if (hitInfo.transform.gameObject.tag == "Player") {
+				RaycastHit hitInfo = new RaycastHit();  
+				if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && 
+					hitInfo.transform.gameObject.tag == "Player") {
 					onCarMenu ();
 					offMainMenu ();
-					mode = "Car Menu";
+					isZoomed = !isZoomed;
+					cameraZooming();
+					mode = "Car";
 				} 
 			}
 		}
+	}
+
+	/// <summary>
+	/// Cameras the zooming.
+	/// </summary>
+	public void cameraZooming(){
+		if (isZoomed) {
+			newPosition = zoomOut;
+		} else {
+			newPosition = zoomIn;
+		}
+		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
 	}
 
 	/// <summary>
@@ -110,7 +142,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Ons the settings menu.
 	/// </summary>
 	public void onSettingsMenu() {
-		carContainer.gameObject.SetActive (false);
+		carsContainer.SetActive (false);
 		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (true);
 		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (true);
@@ -123,7 +155,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Offs the settings menu.
 	/// </summary>
 	public void offSettingsMenu() {
-		carContainer.gameObject.SetActive (true);
+		carsContainer.SetActive (true);
 		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (false);
 		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (false);
