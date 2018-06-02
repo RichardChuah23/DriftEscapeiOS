@@ -78,9 +78,9 @@ public class CarsCreation : MonoBehaviour {
 	/// </summary>
 	public void Back () {
 		mainMenuController.Mode = "Main";
-		mainMenuController.offCarMenu ();
-		mainMenuController.onMainMenu ();
-		mainMenuController.setZoom(false);
+		mainMenuController.deactiveCarMenu ();
+		mainMenuController.activeMainMenu ();
+		mainMenuController.Zoom = false;
 	}
 
 }

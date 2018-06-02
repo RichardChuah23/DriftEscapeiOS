@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour {
 
 	private string mode; 
-	private Transform mainMenuGameObject;
+
 	private GameObject carsContainer;
+	private Transform mainMenuGameObject;
+	private Transform carMenuGameObject;
+	private Transform settingsGameObject;
 
 	public Camera mainMenuCamera;
 
@@ -26,20 +29,25 @@ public class MainMenuController : MonoBehaviour {
 		get{ return mode;}
 		set{ mode = value;}
 	}
-
+		
 	/// <summary>
-	/// Sets the zoom.
+	/// Gets or sets a value indicating whether this <see cref="MainMenuController"/> is zoom.
 	/// </summary>
-	/// <param name="zoom">If set to <c>true</c> zoom.</param>
-	public void setZoom(bool zoom){
-		isZoomed = zoom;
+	/// <value><c>true</c> if zoom; otherwise, <c>false</c>.</value>
+	public bool Zoom{
+		get{ return isZoomed;}
+		set{ isZoomed = value;}
 	}
+
+
 
 	void Start(){
 		mode = "Main";
-		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
-		carsContainer = GameObject.Find ("CarsContainer");
 
+		carsContainer = GameObject.Find ("CarsContainer");
+		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
+		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1);
+		settingsGameObject = GameObject.Find ("Canvas").transform.GetChild (2);
 	}
 		
 	void Update() {
@@ -78,8 +86,8 @@ public class MainMenuController : MonoBehaviour {
 				RaycastHit hitInfo = new RaycastHit();  
 				if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && 
 					hitInfo.transform.gameObject.tag == "Player") {
-					onCarMenu ();
-					offMainMenu ();
+					activeCarMenu ();
+					deactiveMainMenu ();
 					isZoomed = !isZoomed;
 					cameraZooming();
 					mode = "Car";
@@ -101,67 +109,47 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Ons the main menu.
+	/// Actives the main menu.
 	/// </summary>
-	public void onMainMenu() {
-		mainMenuGameObject.Find ("Game_Title").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Play_Button").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Settings_Button").gameObject.SetActive (true);
+	public void activeMainMenu() {
+		mainMenuGameObject.gameObject.SetActive (true);
 	}
 
 	/// <summary>
-	/// Offs the main menu.
+	/// Deactives the main menu.
 	/// </summary>
-	public void offMainMenu() {
-		mainMenuGameObject.Find ("Game_Title").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Play_Button").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Settings_Button").gameObject.SetActive (false);
+	public void deactiveMainMenu() {
+		mainMenuGameObject.gameObject.SetActive (false);
 	}
 
 	/// <summary>
-	/// Ons the car menu.
+	/// Actives the car menu.
 	/// </summary>
-	public void onCarMenu() {
-		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (true);
+	public void activeCarMenu() {
+		carMenuGameObject.gameObject.SetActive (true);
 	}	
 
 	/// <summary>
-	/// Offs the car menu.
+	/// Deactives the car menu.
 	/// </summary>
-	public void offCarMenu() {
-		mainMenuGameObject.Find ("Coin_Image").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Total_Coins").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Purchase_Button").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Car_Back_Button").gameObject.SetActive (false);
+	public void deactiveCarMenu() {
+		carMenuGameObject.gameObject.SetActive (false);
 	}	
 
 	/// <summary>
-	/// Ons the settings menu.
+	/// Actives the settings.
 	/// </summary>
-	public void onSettingsMenu() {
+	public void activeSettings() {
 		carsContainer.SetActive (false);
-		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Sound_Label").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Sound_Toogle").gameObject.SetActive (true);
-		mainMenuGameObject.Find ("Settings_Back_Button").gameObject.SetActive (true);
+		settingsGameObject.gameObject.SetActive (true);
 	}
 
 	/// <summary>
-	/// Offs the settings menu.
+	/// Deactives the settings.
 	/// </summary>
-	public void offSettingsMenu() {
+	public void deactiveSettings() {
 		carsContainer.SetActive (true);
-		mainMenuGameObject.Find ("Settings_Title").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Music_Label").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Music_Toogle").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Sound_Label").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Sound_Toogle").gameObject.SetActive (false);
-		mainMenuGameObject.Find ("Settings_Back_Button").gameObject.SetActive (false);
+		settingsGameObject.gameObject.SetActive (false);
 	}
 }
 
