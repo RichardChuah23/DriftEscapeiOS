@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
         //Check mode 
         if (mode == "FORWARD")
         {
+            //Off drift fx
             offDriftFX();
             moveForward();
         }
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (mode == "PREDRIFT")
         {
+            
             laneAdjustmentRequire = false;
             nextDriftDir = tileController.getDriftDirection();
 
@@ -125,24 +127,7 @@ public class PlayerController : MonoBehaviour
 
         else if (mode == "GAMEOVER")
         {   
-            /*
-            if (GameOverDriftDirection == "LEFT")
-            {
 
-                offAngle = -2f;
-            }
-            else if (GameOverDriftDirection == "RIGHT")
-            {
-                offAngle = 2f;
-            }
-
-
-            if (turnSpeed != 0 ){
-
-                turnSpeed = turnSpeed - 5;
-                drift(turnSpeed, offAngle);
-            }
-			*/
 
             if(gameOverReason == "Touches Ground" || gameOverReason == "Late Predrift"){
 
@@ -185,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
 
     private void gameOverTouchGround(){
-        Debug.Log("GG hit Gound");
+       
         if (gameOverTriggred == false){
             
 
@@ -234,7 +219,6 @@ public class PlayerController : MonoBehaviour
         allowRight = true;
         anim = GetComponent<Animator>();
         gameOverTriggred = false;
-
         previousMode = "NULL";
         turnSpeed = 250;
         forwardSpeed = 400;

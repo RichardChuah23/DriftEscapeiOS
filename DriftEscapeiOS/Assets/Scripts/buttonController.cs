@@ -33,4 +33,9 @@ public class buttonController : MonoBehaviour
         gameController.RestartOnClick(); 
     }
 
+    public void pauseButtonPressed()
+    {
+        gameController.PauseOnClick();  
+    }
+
 }
