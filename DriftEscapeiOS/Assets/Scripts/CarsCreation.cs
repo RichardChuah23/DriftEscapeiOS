@@ -80,7 +80,7 @@ public class CarsCreation : MonoBehaviour {
 		mainMenuController.Mode = "Main";
 		mainMenuController.deactiveCarMenu ();
 		mainMenuController.activeMainMenu ();
-		mainMenuController.Zoom = false;
+		mainMenuController.Zoom = "mainMenu";
 	}
 
 }
