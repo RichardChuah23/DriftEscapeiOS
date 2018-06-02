@@ -21,8 +21,8 @@ public class MainMenuController : MonoBehaviour {
 	Vector3 settings = new Vector3 (0, 0, 22);
 	private Vector3 newPosition;
 	public float smooth = 3; 
-	//private bool isZoomed = false;
 	private string zoom;
+	private string model;
 
 	/// <summary>
 	/// Gets or sets the mode.
@@ -34,20 +34,22 @@ public class MainMenuController : MonoBehaviour {
 	}
 		
 	/// <summary>
-	/// Gets or sets a value indicating whether this <see cref="MainMenuController"/> is zoom.
+	/// Gets or sets the zoom.
 	/// </summary>
-	/// <value><c>true</c> if zoom; otherwise, <c>false</c>.</value>
-	/*public bool Zoom{
-		get{ return isZoomed;}
-		set{ isZoomed = value;}
-	}*/
-
+	/// <value>The zoom.</value>
 	public string Zoom{
 		get{ return zoom;}
 		set{ zoom = value;}
 	}
 
-
+	/// <summary>
+	/// Gets or sets the model.
+	/// </summary>
+	/// <value>The model.</value>
+	public string Model{
+		get{ return model;}
+		set{ model = value;}
+	}
 
 	void Start(){
 		mode = "Main";
@@ -115,6 +117,7 @@ public class MainMenuController : MonoBehaviour {
 			newPosition = settings;
 		} else {
 			newPosition = mainMenu;
+			//carsContainer.gameObject.Find (Model);
 		}
 		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
 	}

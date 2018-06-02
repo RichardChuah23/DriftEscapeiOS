@@ -20,6 +20,8 @@ public class CarsCreation : MonoBehaviour {
 	private Vector3 newPosition;
 	public float smooth = 3; 
 
+	public swipeController swipeController;
+
 	private void Start() {
 		models = new List<GameObject> ();
 		foreach (Transform t in transform) {
@@ -52,7 +54,7 @@ public class CarsCreation : MonoBehaviour {
 	public void ChangingPosition() {
 		position = carContainer.position;
 
-		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+		if (Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) {
 			counter += 1;
 			if (counter < models.Count) {
 				newPosition = position + new Vector3 (-38f, 0f, 0f);
@@ -61,7 +63,7 @@ public class CarsCreation : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+		if (Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) {
 			counter -= 1;
 			if (counter < 0 ) {
 				counter = 0;
