@@ -16,11 +16,13 @@ public class MainMenuController : MonoBehaviour {
 
 	public Camera mainMenuCamera;
 
-	Vector3 zoomOut = new Vector3 (0, 0, -16);
-	Vector3 zoomIn = new Vector3 (0, 0, 0);
+	Vector3 mainMenu = new Vector3 (0, 0, 0);
+	Vector3 carMenu = new Vector3 (0, 0, -16);
+	Vector3 settings = new Vector3 (0, 0, 22);
 	private Vector3 newPosition;
 	public float smooth = 3; 
-	private bool isZoomed = false;
+	//private bool isZoomed = false;
+	private string zoom;
 
 	/// <summary>
 	/// Gets or sets the mode.
@@ -35,15 +37,21 @@ public class MainMenuController : MonoBehaviour {
 	/// Gets or sets a value indicating whether this <see cref="MainMenuController"/> is zoom.
 	/// </summary>
 	/// <value><c>true</c> if zoom; otherwise, <c>false</c>.</value>
-	public bool Zoom{
+	/*public bool Zoom{
 		get{ return isZoomed;}
 		set{ isZoomed = value;}
+	}*/
+
+	public string Zoom{
+		get{ return zoom;}
+		set{ zoom = value;}
 	}
 
 
 
 	void Start(){
 		mode = "Main";
+		zoom = "mainMenu";
 
 		carsContainer = GameObject.Find ("CarsContainer");
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
@@ -88,7 +96,8 @@ public class MainMenuController : MonoBehaviour {
 					hitInfo.transform.gameObject.tag == "Player") {
 					activeCarMenu ();
 					deactiveMainMenu ();
-					isZoomed = !isZoomed;
+					//isZoomed = !isZoomed;
+					zoom = "carMenu";
 					cameraZooming();
 					mode = "Car";
 				} 
@@ -100,10 +109,12 @@ public class MainMenuController : MonoBehaviour {
 	/// Cameras the zooming.
 	/// </summary>
 	public void cameraZooming(){
-		if (isZoomed) {
-			newPosition = zoomOut;
+		if (zoom == "carMenu") {
+			newPosition = carMenu;
+		} else if (zoom == "settings"){
+			newPosition = settings;
 		} else {
-			newPosition = zoomIn;
+			newPosition = mainMenu;
 		}
 		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
 	}
@@ -149,6 +160,7 @@ public class MainMenuController : MonoBehaviour {
 	public void activeSettings() {
 		carsContainer.SetActive (false);
 		settingsGameObject.gameObject.SetActive (true);
+		zoom = "settings";
 	}
 
 	/// <summary>
@@ -157,5 +169,6 @@ public class MainMenuController : MonoBehaviour {
 	public void deactiveSettings() {
 		carsContainer.SetActive (true);
 		settingsGameObject.gameObject.SetActive (false);
+		zoom = "mainMenu";
 	}
 }
