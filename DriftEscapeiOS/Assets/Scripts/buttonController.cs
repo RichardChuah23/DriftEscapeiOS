@@ -29,7 +29,7 @@ public class buttonController : MonoBehaviour
 	// Use this for initialization
 	public void restartButtonPressed()
     {
-        Debug.Log("Pressed");
+        
         gameController.RestartOnClick(); 
     }
 

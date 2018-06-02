@@ -8,17 +8,21 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
     public GameObject player;
-    public Button btnRestart;
-    private GameObject gameObjRestart;
     private bool gameOver;
     private bool restart;
+
+    //Restart button
+    public Button btnRestart;
+    private GameObject gameObjRestart;
+
+
 
 
     private TileController tileController;
     private PlayerController playerController;
 
     private bool restartTrigger;
-    private bool gameOverCalled; 
+    private bool gameOverCalled;
 
     void Awake()
     {
@@ -29,12 +33,12 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+
 
         gameOver = false;
         restart = false;
         restartTrigger = false;
-        gameOverCalled = false; 
+        gameOverCalled = false;
 
 
         //Locate game controller 
@@ -73,10 +77,11 @@ public class GameController : MonoBehaviour
 
         //Find Restart button and rewrite the button text and disable it 
         gameObjRestart = GameObject.Find("btnRestart");
-        //gameObjRestart.SetActive(false);
 
-        Button btn = btnRestart.GetComponent<Button>();
-        btn.onClick.AddListener(RestartOnClick);
+
+        //Restart
+        Button btnRestartbtn = btnRestart.GetComponent<Button>();
+        btnRestartbtn.onClick.AddListener(RestartOnClick);
 
         gameObjRestart.SetActive(false);
 
@@ -95,48 +100,53 @@ public class GameController : MonoBehaviour
         return gameOver;
     }
 
-    public void setGameOver(bool gameOver){
-        this.gameOver = gameOver; 
+    public void setGameOver(bool gameOver)
+    {
+        this.gameOver = gameOver;
 
     }
 
 
 
-	private void Update()
-	{
+    private void Update()
+    {
 
-        if (gameOver == true && gameOverCalled == false) {
-            
-            GameOver(); 
+        if (gameOver == true && gameOverCalled == false)
+        {
+
+            GameOver();
         }
-	}
+    }
 
 
-	public void RestartOnClick()
+    public void RestartOnClick()
     {
         //Delete all tile 
         tileController.DestroyAllTiles();
         //Spawn the first two tiles 
         tileController.spawnFirstTwoTiles();
         //Set player back to origin point 
-        playerController.setPlayerPos(new Vector3(0, 0, 0));
+        playerController.setPlayerPos(new Vector3(0, 4.8f, 0));
 
         //Rotote the player back to direction 
         playerController.resetPlayerRotation();
 
         //Move car forward 
-        playerController.setMode("FORWARD");
+        playerController.resetGameInitialValue();
 
 
         //Done set up
-        //Set up variable.s 
         gameOver = false;
         gameOverCalled = false;
         //Hide all game over buttons  
         hideGameOverbutton();
-        
+
 
     }
+
+
+
+
 
     private void hideGameOverbutton(){ 
         gameObjRestart.SetActive(false);
@@ -145,14 +155,13 @@ public class GameController : MonoBehaviour
     IEnumerator showGameOverButtons()
     {
 
-        restartTrigger = false;
         //Wait for 3s 
         yield return new WaitForSeconds(2f);
         //Show the button
         gameObjRestart.SetActive(true);
         //Set gameOver to true 
 
-        restartTrigger = true;
+
     }
 
 

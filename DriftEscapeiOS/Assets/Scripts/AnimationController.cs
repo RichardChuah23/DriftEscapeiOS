@@ -78,6 +78,14 @@ public class AnimationController : MonoBehaviour
 
     }
 
+    public void playSpinOff()
+    {
+
+
+        anim.Play("SpinOff");
+
+    }
+
 
 
 
