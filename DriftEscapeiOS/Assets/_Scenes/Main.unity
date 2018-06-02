@@ -12444,6 +12444,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1423960209}
   - component: {fileID: 1423960208}
+  - component: {fileID: 1423960211}
+  - component: {fileID: 1423960210}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -12460,11 +12462,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a2b09e35614a84d1c83c46e6f9ca1bb7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -12544,6 +12546,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1423960210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423960207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!320 &1423960211
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423960207}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 49d25215384c341b0850a98044d105cf, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114532080046624496, guid: 49d25215384c341b0850a98044d105cf, type: 2}
+    value: {fileID: 1423960207}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1472543740
 Prefab:
   m_ObjectHideFlags: 0
@@ -17155,6 +17192,7 @@ GameObject:
   - component: {fileID: 1639877792}
   - component: {fileID: 1639877794}
   - component: {fileID: 1639877795}
+  - component: {fileID: 1639877793}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -17177,6 +17215,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1639877793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639877791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54f414858f2442f18608938aa1782e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1639877794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17209,6 +17258,7 @@ MonoBehaviour:
   forwardSpeed: 500
   switchlaneSpeed: 0
   swithLaneCoolDown: 0.1
+  swipeController: {fileID: 1639877793}
 --- !u!4 &1670588451 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4191086090721342, guid: dbdfbaf28dcb24aa89ce544e2a94a2c2,

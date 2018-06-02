@@ -11,7 +11,9 @@ public class simpleDrift : MonoBehaviour {
     private int mode;
     private float inputHo;
     private float coolDown;
-    private float lastTime; 
+    private float lastTime;
+
+    public swipeController swipe;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +36,29 @@ public class simpleDrift : MonoBehaviour {
         transform.Translate(0, 0, Time.deltaTime * 100); // move forward 
 
 
+        if(swipe.Tap){
+            Debug.Log("T");
+        }
+
+        if (swipe.SwipeLeft)
+        {
+            Debug.Log("L");
+        }
+
+        if (swipe.SwipeRight)
+        {
+            Debug.Log("R");
+        }
+
+        if (swipe.SwipeUp)
+        {
+            Debug.Log("U");
+        }
+        if (swipe.SwipeDown)
+        {
+            Debug.Log("D");
+        }
+
 	}
 
     void driftmode(){ 
@@ -41,7 +66,7 @@ public class simpleDrift : MonoBehaviour {
         inputHo = Input.GetAxisRaw("Horizontal");
 
 
-        if (inputHo == 1 && Time.time - lastTime > coolDown && mode <= 2)
+        if (swipe.SwipeLeft )
         {
             mode++;
             lastTime = Time.time;
@@ -49,7 +74,7 @@ public class simpleDrift : MonoBehaviour {
         }
 
 
-        if (inputHo == -1 && Time.time - lastTime > coolDown && mode >= 1)
+        if (swipe.SwipeRight && Time.time - lastTime > coolDown && mode >= 1)
         {
             mode--;
             lastTime = Time.time;
