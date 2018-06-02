@@ -55,7 +55,7 @@ public class CarsCreation : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			counter += 1;
 			if (counter < models.Count) {
-				newPosition = position + new Vector3 (-35f, 0f, 0f);
+				newPosition = position + new Vector3 (-38f, 0f, 0f);
 			} else {
 				counter -= 1;
 			}
@@ -66,7 +66,7 @@ public class CarsCreation : MonoBehaviour {
 			if (counter < 0 ) {
 				counter = 0;
 			} else {
-				newPosition = position + new Vector3 (35f, 0f, 0f);
+				newPosition = position + new Vector3 (38f, 0f, 0f);
 			}
 		}
 
