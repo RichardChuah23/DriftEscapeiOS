@@ -126,18 +126,16 @@ public class GameController : MonoBehaviour
         //Spawn the first two tiles 
         tileController.spawnFirstTwoTiles();
         //Set player back to origin point 
-        playerController.setPlayerPos(new Vector3(0, 3.46f, 0));
+        playerController.setPlayerPos(new Vector3(0, 4.8f, 0));
 
         //Rotote the player back to direction 
         playerController.resetPlayerRotation();
 
         //Move car forward 
-
         playerController.resetGameInitialValue();
 
 
         //Done set up
-        //Set up variable.s 
         gameOver = false;
         gameOverCalled = false;
         //Hide all game over buttons  
@@ -157,14 +155,13 @@ public class GameController : MonoBehaviour
     IEnumerator showGameOverButtons()
     {
 
-        restartTrigger = false;
         //Wait for 3s 
         yield return new WaitForSeconds(2f);
         //Show the button
         gameObjRestart.SetActive(true);
         //Set gameOver to true 
 
-        restartTrigger = true;
+
     }
 
 

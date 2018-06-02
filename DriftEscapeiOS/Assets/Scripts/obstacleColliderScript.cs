@@ -35,7 +35,7 @@ public class obstacleColliderScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
 
-            Debug.Log("HIT !");
+
             cameraController.startHeavyShake();
 
         }
