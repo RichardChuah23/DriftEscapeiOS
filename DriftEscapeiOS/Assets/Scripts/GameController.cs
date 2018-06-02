@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public Button btnRestart;
     private GameObject gameObjRestart;
 
+    //Pause buitton
+    public Button btnPause;
+    private GameObject gameObjPause; 
 
 
 
@@ -71,17 +74,18 @@ public class GameController : MonoBehaviour
         }
 
 
-
-
-
-
         //Find Restart button and rewrite the button text and disable it 
         gameObjRestart = GameObject.Find("btnRestart");
+        gameObjPause = GameObject.Find("btnPause"); 
 
 
-        //Restart
+        //Restart Button
         Button btnRestartbtn = btnRestart.GetComponent<Button>();
         btnRestartbtn.onClick.AddListener(RestartOnClick);
+
+        //Pause Button
+        Button btnPausebtn = btnPause.GetComponent<Button>();
+        btnPausebtn.onClick.AddListener(PauseOnClick);
 
         gameObjRestart.SetActive(false);
 
@@ -142,6 +146,11 @@ public class GameController : MonoBehaviour
         hideGameOverbutton();
 
 
+    }
+
+    public void PauseOnClick(){
+
+        Debug.Log("Pressed");
     }
 
 
