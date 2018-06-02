@@ -365,6 +365,10 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
+
+        Debug.Log("Left " +swipeController.SwipeLeft);
+        Debug.Log("Right " +swipeController.SwipeRight);
+
         //Moving Left and Right 
         if (swipeController.SwipeLeft || userInputHo == -1.0)
         {
@@ -546,7 +550,7 @@ public class PlayerController : MonoBehaviour
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider")
         {
-
+            
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
 
@@ -694,7 +698,8 @@ public class PlayerController : MonoBehaviour
         inputHo = Input.GetAxisRaw("Horizontal");
 
         //Click Right
-        if (inputHo == 1 && Time.time - lastTime2 > coolDown && turnGear <= 3)
+        bool tmpBool = (swipeController.SwipeRight || inputHo == 1);
+        if ( tmpBool && Time.time - lastTime2 > coolDown && turnGear <= 3)
         {
             if (mode == "LEFT" && turnGear - 1 >= 0)
             {
@@ -711,7 +716,8 @@ public class PlayerController : MonoBehaviour
 
 
         //Click Left
-        if (inputHo == -1 && Time.time - lastTime2 > coolDown && turnGear >= 0)
+        tmpBool = (swipeController.SwipeLeft || inputHo == -1);
+        if (tmpBool && Time.time - lastTime2 > coolDown && turnGear >= 0)
         {
             if (mode == "LEFT" && (turnGear + 1) <= 3)
             {
@@ -813,6 +819,7 @@ public class PlayerController : MonoBehaviour
                 //Switch to left mode 
                 previousMode = mode;
                 mode = "LEFT";
+                turnGear = 0;
                 //If the car is already drifting light
                 if (animMode == "DriftRight")
                 {
@@ -834,7 +841,8 @@ public class PlayerController : MonoBehaviour
                 //Switch to Right Mode 
                 previousMode = mode;
                 mode = "RIGHT";
-                Debug.Log("Current mode ! " + mode);
+                turnGear = 0;
+
                 //If the car is already drifting left 
                 if (animMode == "DriftLeft")
                 {
@@ -851,7 +859,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //Reset turn gear 
-            turnGear = 0;
+            //turnGear = 0;
         }
 
 

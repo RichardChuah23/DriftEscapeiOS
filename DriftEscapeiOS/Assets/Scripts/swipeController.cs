@@ -63,7 +63,7 @@ public class swipeController : MonoBehaviour {
         if(isDragging){
 
             if(Input.touches.Length > 0 ){
-                swipeDelta = Input.touches[0].position = startTouch; 
+                swipeDelta = Input.touches[0].position - startTouch; 
             }else if(Input.GetMouseButton(0)){
                 swipeDelta = (Vector2)Input.mousePosition - startTouch; 
 
@@ -78,7 +78,8 @@ public class swipeController : MonoBehaviour {
             float x = swipeDelta.x;
             float y = swipeDelta.y; 
 
-            if(Mathf.Abs(x) > Mathf.Abs(y)){
+            if(Mathf.Abs(x) > Mathf.Abs(y))
+            {
 
                 if (x<0){
                     swipeLeft = true; 
@@ -95,12 +96,10 @@ public class swipeController : MonoBehaviour {
                     swipeUp = true;
                 }
             }
-
-
             Reset();
         }
 
-
+            
     }
 
 	private void Reset()
