@@ -7,8 +7,8 @@ public class CarsCreation : MonoBehaviour {
 	private List<GameObject> models;
 
 	// selected car -> index and name
-	private int selectionIndex; 
-	private string selectedCarName;
+	//private int selectionIndex; 
+	//private string selectedCarName;
 
 	// counter to prevent index out of bound
 	private int counter;
@@ -25,8 +25,8 @@ public class CarsCreation : MonoBehaviour {
 		foreach (Transform t in transform) {
 			models.Add (t.gameObject);
 			if (t.gameObject.tag == "Player") {
-				selectionIndex = models.Count - 1;
-				selectedCarName = models [selectionIndex].gameObject.name.ToString();
+				//selectionIndex = models.Count - 1;
+				//selectedCarName = models [selectionIndex].gameObject.name.ToString();
 				counter = models.Count - 1;
 			}
 		}
@@ -40,7 +40,9 @@ public class CarsCreation : MonoBehaviour {
 	}
 
 	public void Update() {
-		ChangingPosition();
+		if (mainMenuController.Mode == "Car") {
+			ChangingPosition();
+		}
 	}
 		
 	/// <summary>
@@ -75,9 +77,10 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to main menu
 	/// </summary>
 	public void Back () {
-		mainMenuController.setMode ("Main");
+		mainMenuController.Mode = "Main";
 		mainMenuController.offCarMenu ();
 		mainMenuController.onMainMenu ();
+		mainMenuController.setZoom(false);
 	}
 
 }

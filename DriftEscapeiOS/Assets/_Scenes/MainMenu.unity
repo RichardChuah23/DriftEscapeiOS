@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuCamera: {fileID: 443015211}
+  smooth: 3
 --- !u!4 &35445224
 Transform:
   m_ObjectHideFlags: 0
@@ -2535,7 +2536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.54200006, y: 0.91387564}
   m_AnchorMax: {x: 0.96400005, y: 0.9857513}
-  m_AnchoredPosition: {x: -0.2814026, y: -4.039734}
+  m_AnchoredPosition: {x: -0.28137207, y: -4.039734}
   m_SizeDelta: {x: 0.084198, y: -0.007446289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1042833195
@@ -2984,7 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb93b830903c49a786b351831f658a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 2
+  smooth: 3
 --- !u!1 &1204984146
 GameObject:
   m_ObjectHideFlags: 0
