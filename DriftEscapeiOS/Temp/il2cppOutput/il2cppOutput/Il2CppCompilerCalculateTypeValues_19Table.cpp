@@ -4099,16 +4099,20 @@ public:
 	Transform_t3600365921 * ___settingsGameObject_6;
 	// UnityEngine.Camera MainMenuController::mainMenuCamera
 	Camera_t4157153871 * ___mainMenuCamera_7;
-	// UnityEngine.Vector3 MainMenuController::zoomOut
-	Vector3_t3722313464  ___zoomOut_8;
-	// UnityEngine.Vector3 MainMenuController::zoomIn
-	Vector3_t3722313464  ___zoomIn_9;
+	// UnityEngine.Vector3 MainMenuController::mainMenu
+	Vector3_t3722313464  ___mainMenu_8;
+	// UnityEngine.Vector3 MainMenuController::carMenu
+	Vector3_t3722313464  ___carMenu_9;
+	// UnityEngine.Vector3 MainMenuController::settings
+	Vector3_t3722313464  ___settings_10;
 	// UnityEngine.Vector3 MainMenuController::newPosition
-	Vector3_t3722313464  ___newPosition_10;
+	Vector3_t3722313464  ___newPosition_11;
 	// System.Single MainMenuController::smooth
-	float ___smooth_11;
-	// System.Boolean MainMenuController::isZoomed
-	bool ___isZoomed_12;
+	float ___smooth_12;
+	// System.String MainMenuController::zoom
+	String_t* ___zoom_13;
+	// System.String MainMenuController::model
+	String_t* ___model_14;
 
 public:
 	inline static int32_t get_offset_of_mode_2() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___mode_2)); }
@@ -4165,44 +4169,62 @@ public:
 		Il2CppCodeGenWriteBarrier((&___mainMenuCamera_7), value);
 	}
 
-	inline static int32_t get_offset_of_zoomOut_8() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___zoomOut_8)); }
-	inline Vector3_t3722313464  get_zoomOut_8() const { return ___zoomOut_8; }
-	inline Vector3_t3722313464 * get_address_of_zoomOut_8() { return &___zoomOut_8; }
-	inline void set_zoomOut_8(Vector3_t3722313464  value)
+	inline static int32_t get_offset_of_mainMenu_8() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___mainMenu_8)); }
+	inline Vector3_t3722313464  get_mainMenu_8() const { return ___mainMenu_8; }
+	inline Vector3_t3722313464 * get_address_of_mainMenu_8() { return &___mainMenu_8; }
+	inline void set_mainMenu_8(Vector3_t3722313464  value)
 	{
-		___zoomOut_8 = value;
+		___mainMenu_8 = value;
 	}
 
-	inline static int32_t get_offset_of_zoomIn_9() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___zoomIn_9)); }
-	inline Vector3_t3722313464  get_zoomIn_9() const { return ___zoomIn_9; }
-	inline Vector3_t3722313464 * get_address_of_zoomIn_9() { return &___zoomIn_9; }
-	inline void set_zoomIn_9(Vector3_t3722313464  value)
+	inline static int32_t get_offset_of_carMenu_9() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___carMenu_9)); }
+	inline Vector3_t3722313464  get_carMenu_9() const { return ___carMenu_9; }
+	inline Vector3_t3722313464 * get_address_of_carMenu_9() { return &___carMenu_9; }
+	inline void set_carMenu_9(Vector3_t3722313464  value)
 	{
-		___zoomIn_9 = value;
+		___carMenu_9 = value;
 	}
 
-	inline static int32_t get_offset_of_newPosition_10() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___newPosition_10)); }
-	inline Vector3_t3722313464  get_newPosition_10() const { return ___newPosition_10; }
-	inline Vector3_t3722313464 * get_address_of_newPosition_10() { return &___newPosition_10; }
-	inline void set_newPosition_10(Vector3_t3722313464  value)
+	inline static int32_t get_offset_of_settings_10() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___settings_10)); }
+	inline Vector3_t3722313464  get_settings_10() const { return ___settings_10; }
+	inline Vector3_t3722313464 * get_address_of_settings_10() { return &___settings_10; }
+	inline void set_settings_10(Vector3_t3722313464  value)
 	{
-		___newPosition_10 = value;
+		___settings_10 = value;
 	}
 
-	inline static int32_t get_offset_of_smooth_11() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___smooth_11)); }
-	inline float get_smooth_11() const { return ___smooth_11; }
-	inline float* get_address_of_smooth_11() { return &___smooth_11; }
-	inline void set_smooth_11(float value)
+	inline static int32_t get_offset_of_newPosition_11() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___newPosition_11)); }
+	inline Vector3_t3722313464  get_newPosition_11() const { return ___newPosition_11; }
+	inline Vector3_t3722313464 * get_address_of_newPosition_11() { return &___newPosition_11; }
+	inline void set_newPosition_11(Vector3_t3722313464  value)
 	{
-		___smooth_11 = value;
+		___newPosition_11 = value;
 	}
 
-	inline static int32_t get_offset_of_isZoomed_12() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___isZoomed_12)); }
-	inline bool get_isZoomed_12() const { return ___isZoomed_12; }
-	inline bool* get_address_of_isZoomed_12() { return &___isZoomed_12; }
-	inline void set_isZoomed_12(bool value)
+	inline static int32_t get_offset_of_smooth_12() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___smooth_12)); }
+	inline float get_smooth_12() const { return ___smooth_12; }
+	inline float* get_address_of_smooth_12() { return &___smooth_12; }
+	inline void set_smooth_12(float value)
 	{
-		___isZoomed_12 = value;
+		___smooth_12 = value;
+	}
+
+	inline static int32_t get_offset_of_zoom_13() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___zoom_13)); }
+	inline String_t* get_zoom_13() const { return ___zoom_13; }
+	inline String_t** get_address_of_zoom_13() { return &___zoom_13; }
+	inline void set_zoom_13(String_t* value)
+	{
+		___zoom_13 = value;
+		Il2CppCodeGenWriteBarrier((&___zoom_13), value);
+	}
+
+	inline static int32_t get_offset_of_model_14() { return static_cast<int32_t>(offsetof(MainMenuController_t905567592, ___model_14)); }
+	inline String_t* get_model_14() const { return ___model_14; }
+	inline String_t** get_address_of_model_14() { return &___model_14; }
+	inline void set_model_14(String_t* value)
+	{
+		___model_14 = value;
+		Il2CppCodeGenWriteBarrier((&___model_14), value);
 	}
 };
 
@@ -4801,6 +4823,8 @@ public:
 	Vector3_t3722313464  ___newPosition_7;
 	// System.Single CarsCreation::smooth
 	float ___smooth_8;
+	// swipeController CarsCreation::swipeController
+	swipeController_t3639066566 * ___swipeController_9;
 
 public:
 	inline static int32_t get_offset_of_models_2() { return static_cast<int32_t>(offsetof(CarsCreation_t3747096859, ___models_2)); }
@@ -4860,6 +4884,15 @@ public:
 	inline void set_smooth_8(float value)
 	{
 		___smooth_8 = value;
+	}
+
+	inline static int32_t get_offset_of_swipeController_9() { return static_cast<int32_t>(offsetof(CarsCreation_t3747096859, ___swipeController_9)); }
+	inline swipeController_t3639066566 * get_swipeController_9() const { return ___swipeController_9; }
+	inline swipeController_t3639066566 ** get_address_of_swipeController_9() { return &___swipeController_9; }
+	inline void set_swipeController_9(swipeController_t3639066566 * value)
+	{
+		___swipeController_9 = value;
+		Il2CppCodeGenWriteBarrier((&___swipeController_9), value);
 	}
 };
 
@@ -8057,7 +8090,7 @@ extern const int32_t g_FieldOffsetTable1966[26] =
 	CameraController_t3346819214::get_offset_of_lightShakeSpeed_27(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1967 = { sizeof (CarsCreation_t3747096859), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1967[7] = 
+extern const int32_t g_FieldOffsetTable1967[8] = 
 {
 	CarsCreation_t3747096859::get_offset_of_models_2(),
 	CarsCreation_t3747096859::get_offset_of_counter_3(),
@@ -8066,6 +8099,7 @@ extern const int32_t g_FieldOffsetTable1967[7] =
 	CarsCreation_t3747096859::get_offset_of_position_6(),
 	CarsCreation_t3747096859::get_offset_of_newPosition_7(),
 	CarsCreation_t3747096859::get_offset_of_smooth_8(),
+	CarsCreation_t3747096859::get_offset_of_swipeController_9(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1968 = { sizeof (CoinController_t4170731786), -1, 0, 0 };
 extern const int32_t g_FieldOffsetTable1968[1] = 
@@ -8124,7 +8158,7 @@ extern const int32_t g_FieldOffsetTable1974[4] =
 	LightController_t480258428::get_offset_of_y_5(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1975 = { sizeof (MainMenuController_t905567592), -1, 0, 0 };
-extern const int32_t g_FieldOffsetTable1975[11] = 
+extern const int32_t g_FieldOffsetTable1975[13] = 
 {
 	MainMenuController_t905567592::get_offset_of_mode_2(),
 	MainMenuController_t905567592::get_offset_of_carsContainer_3(),
@@ -8132,11 +8166,13 @@ extern const int32_t g_FieldOffsetTable1975[11] =
 	MainMenuController_t905567592::get_offset_of_carMenuGameObject_5(),
 	MainMenuController_t905567592::get_offset_of_settingsGameObject_6(),
 	MainMenuController_t905567592::get_offset_of_mainMenuCamera_7(),
-	MainMenuController_t905567592::get_offset_of_zoomOut_8(),
-	MainMenuController_t905567592::get_offset_of_zoomIn_9(),
-	MainMenuController_t905567592::get_offset_of_newPosition_10(),
-	MainMenuController_t905567592::get_offset_of_smooth_11(),
-	MainMenuController_t905567592::get_offset_of_isZoomed_12(),
+	MainMenuController_t905567592::get_offset_of_mainMenu_8(),
+	MainMenuController_t905567592::get_offset_of_carMenu_9(),
+	MainMenuController_t905567592::get_offset_of_settings_10(),
+	MainMenuController_t905567592::get_offset_of_newPosition_11(),
+	MainMenuController_t905567592::get_offset_of_smooth_12(),
+	MainMenuController_t905567592::get_offset_of_zoom_13(),
+	MainMenuController_t905567592::get_offset_of_model_14(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize1976 = { sizeof (obstacleColliderScript_t2241789146), -1, 0, 0 };
 extern const int32_t g_FieldOffsetTable1976[1] = 

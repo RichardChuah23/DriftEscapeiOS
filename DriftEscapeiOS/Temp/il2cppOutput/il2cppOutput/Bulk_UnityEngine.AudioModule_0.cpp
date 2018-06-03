@@ -4714,6 +4714,15 @@ IL_000d:
 		return L_1;
 	}
 }
+// System.Void UnityEngine.AudioSource::set_mute(System.Boolean)
+extern "C"  void AudioSource_set_mute_m3553377094 (AudioSource_t3935305588 * __this, bool ___value0, const RuntimeMethod* method)
+{
+	typedef void (*AudioSource_set_mute_m3553377094_ftn) (AudioSource_t3935305588 *, bool);
+	static AudioSource_set_mute_m3553377094_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (AudioSource_set_mute_m3553377094_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AudioSource::set_mute(System.Boolean)");
+	_il2cpp_icall_func(__this, ___value0);
+}
 // System.Int32 UnityEngine.AudioSource::GetNumExtensionProperties()
 extern "C"  int32_t AudioSource_GetNumExtensionProperties_m1231815209 (AudioSource_t3935305588 * __this, const RuntimeMethod* method)
 {

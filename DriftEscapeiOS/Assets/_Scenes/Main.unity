@@ -16738,7 +16738,7 @@ MonoBehaviour:
   turnSpeed: 250
   forwardSpeed: 500
   switchlaneSpeed: 0
-  swithLaneCoolDown: 0.1
+  swithLaneCoolDown: 0.05
   swipeController: {fileID: 1639877793}
 --- !u!4 &1670588451 stripped
 Transform:
@@ -16865,7 +16865,7 @@ MonoBehaviour:
   target: {fileID: 1639877792}
   distance: 180
   height: 40
-  damping: 7
+  damping: 9
   smoothRotation: 1
   followBehind: 1
   rotationDamping: 3

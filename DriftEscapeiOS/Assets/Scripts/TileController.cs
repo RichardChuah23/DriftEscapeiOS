@@ -505,25 +505,29 @@ public class TileController : MonoBehaviour {
 	public void DestroyAllTiles()
 	{
 
-       
 
 
-        for (int i = 0; i < activeTilesRoad.Count; i++)
+        int numOfTiles = activeTilesRoad.Count; 
+        for (int i = 0; i < numOfTiles ; i++)
         {
             
-            Destroy(activeTilesRoad[i]);
-            activeTilesRoad.RemoveAt(i);
+            Destroy(activeTilesRoad[0]);
+            activeTilesRoad.RemoveAt(0);
 
         }
 
         //Remove all Drift Tile 
-        for (int i = 0; i < activeTileDrift.Count; i++)
+        int numOfTileDrift = activeTileDrift.Count;
+        for (int i = 0; i < numOfTileDrift; i++)
         {
 
 
-            Destroy(activeTileDrift[i]);
-            activeTileDrift.RemoveAt(i);
+            Destroy(activeTileDrift[0]);
+            activeTileDrift.RemoveAt(0);
         }
+
+
+
 	}
 
 

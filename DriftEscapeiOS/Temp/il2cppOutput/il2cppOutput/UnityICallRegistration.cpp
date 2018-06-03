@@ -462,6 +462,10 @@ void RegisterAllStrippedInternalCalls()
 		void Register_UnityEngine_AudioSource_INTERNAL_CALL_ReadExtensionPropertyName();
 		Register_UnityEngine_AudioSource_INTERNAL_CALL_ReadExtensionPropertyName();
 
+		//System.Void UnityEngine.AudioSource::set_mute(System.Boolean)
+		void Register_UnityEngine_AudioSource_set_mute();
+		Register_UnityEngine_AudioSource_set_mute();
+
 		//UnityEngine.AudioClip UnityEngine.AudioSource::get_clip()
 		void Register_UnityEngine_AudioSource_get_clip();
 		Register_UnityEngine_AudioSource_get_clip();

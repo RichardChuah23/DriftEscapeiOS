@@ -217,6 +217,8 @@ public class PlayerController : MonoBehaviour
 
     public void resetGameInitialValue()
     {
+
+        animMode = "IDLE";
         mode = "FORWARD";
         gameOverReason = "null";
         fxController.offBrokeDownSmoke();
@@ -688,7 +690,7 @@ public class PlayerController : MonoBehaviour
         {
 
             turn1 = -0.5f;
-            turn2 = -0.9f;
+            turn2 = -0.7f;
             turn3 = -1f;
 
         }
@@ -783,7 +785,7 @@ public class PlayerController : MonoBehaviour
         if (previousMode != "FORWARD")
         {
             //keep drifting until user respond 
-            drift(turnSpeed, turnGear);
+            driftmode(previousMode);
         }
 
         if (previousMode == "FORWARD")
@@ -796,7 +798,7 @@ public class PlayerController : MonoBehaviour
 
         //If input is swipe down 
         //Enter Drift Mode
-        bool tmpInput = (swipeController.SwipeDown || userInputVer == -1);
+        bool tmpInput = (swipeController.Tap || userInputVer == -1);
 
         if (tmpInput && nextTileDirection != "FORWARD")
         {
@@ -870,7 +872,7 @@ public class PlayerController : MonoBehaviour
 
 
             //Swipe Up
-            if (swipeController.SwipeUp || userInputVer == 1)
+            if (swipeController.Tap || userInputVer == 1)
             {
 
 

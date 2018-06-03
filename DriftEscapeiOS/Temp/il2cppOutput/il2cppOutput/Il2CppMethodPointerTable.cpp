@@ -9479,6 +9479,7 @@ extern "C" void AudioSource_get_clip_m1234340632 ();
 extern "C" void AudioSource_get_isPlaying_m1896551654 ();
 extern "C" void AudioSource_get_spatializeInternal_m2117549793 ();
 extern "C" void AudioSource_get_spatialize_m3609701298 ();
+extern "C" void AudioSource_set_mute_m3553377094 ();
 extern "C" void AudioSource_GetNumExtensionProperties_m1231815209 ();
 extern "C" void AudioSource_ReadExtensionName_m725112169 ();
 extern "C" void AudioSource_INTERNAL_CALL_ReadExtensionName_m36001502 ();
@@ -11958,8 +11959,10 @@ extern "C" void LightController_LateUpdate_m2644808465 ();
 extern "C" void MainMenuController__ctor_m3120332928 ();
 extern "C" void MainMenuController_get_Mode_m384099498 ();
 extern "C" void MainMenuController_set_Mode_m4000647204 ();
-extern "C" void MainMenuController_get_Zoom_m365841733 ();
-extern "C" void MainMenuController_set_Zoom_m2989183916 ();
+extern "C" void MainMenuController_get_Zoom_m2164468688 ();
+extern "C" void MainMenuController_set_Zoom_m3013331008 ();
+extern "C" void MainMenuController_get_Model_m1936707515 ();
+extern "C" void MainMenuController_set_Model_m3706352295 ();
 extern "C" void MainMenuController_Start_m4104189890 ();
 extern "C" void MainMenuController_Update_m2843325608 ();
 extern "C" void MainMenuController_ChangeScene_m3932812440 ();
@@ -12092,7 +12095,7 @@ extern "C" void vehicleController__ctor_m986570124 ();
 extern "C" void vehicleController_Start_m2893490184 ();
 extern "C" void vehicleController_Update_m3672760764 ();
 extern "C" void vehicleController_OnCollisionEnter_m4172225268 ();
-extern const Il2CppMethodPointer g_MethodPointers[12074] = 
+extern const Il2CppMethodPointer g_MethodPointers[12077] = 
 {
 	Locale_GetText_m3374010885,
 	Locale_GetText_m1601577974,
@@ -21555,6 +21558,7 @@ extern const Il2CppMethodPointer g_MethodPointers[12074] =
 	AudioSource_get_isPlaying_m1896551654,
 	AudioSource_get_spatializeInternal_m2117549793,
 	AudioSource_get_spatialize_m3609701298,
+	AudioSource_set_mute_m3553377094,
 	AudioSource_GetNumExtensionProperties_m1231815209,
 	AudioSource_ReadExtensionName_m725112169,
 	AudioSource_INTERNAL_CALL_ReadExtensionName_m36001502,
@@ -24034,8 +24038,10 @@ extern const Il2CppMethodPointer g_MethodPointers[12074] =
 	MainMenuController__ctor_m3120332928,
 	MainMenuController_get_Mode_m384099498,
 	MainMenuController_set_Mode_m4000647204,
-	MainMenuController_get_Zoom_m365841733,
-	MainMenuController_set_Zoom_m2989183916,
+	MainMenuController_get_Zoom_m2164468688,
+	MainMenuController_set_Zoom_m3013331008,
+	MainMenuController_get_Model_m1936707515,
+	MainMenuController_set_Model_m3706352295,
 	MainMenuController_Start_m4104189890,
 	MainMenuController_Update_m2843325608,
 	MainMenuController_ChangeScene_m3932812440,
