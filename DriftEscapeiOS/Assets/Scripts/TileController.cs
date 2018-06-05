@@ -160,7 +160,6 @@ public class TileController : MonoBehaviour {
 
     public void nextTile(){
 
-        Debug.Log("I ran ");
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
@@ -189,7 +188,6 @@ public class TileController : MonoBehaviour {
 
         //Find the position to spawn the tile 
         Vector3 newPos = findPosTile(dirSpawn, requireDriftZone);
-
 
         //Spawn the tile 
         tileRoadSpawn = Instantiate(tileRoadSpawn) as GameObject;
@@ -255,8 +253,8 @@ public class TileController : MonoBehaviour {
 
             //List<int> a_list = new List<int>(){7,7};
             //List<int> a_list = new List<int>() { 1, 1 };
-            return a_list[Random.Range(0, 3)];
-
+            //return a_list[Random.Range(0, 3)];
+            return a_list[0];
 
 
         }

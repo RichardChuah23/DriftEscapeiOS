@@ -212,12 +212,18 @@ public class PlayerController : MonoBehaviour
         offDriftFX();
         gameOverTriggred = true;
 
+        if (turnSpeed == 0 ){
+
+            //Fix car movement
+            transform.GetComponent<Rigidbody>().isKinematic = true; 
+        }
+
 
     }
 
     public void resetGameInitialValue()
     {
-
+        transform.GetComponent<Rigidbody>().isKinematic = false;
         animMode = "IDLE";
         mode = "FORWARD";
         gameOverReason = "null";
@@ -238,7 +244,11 @@ public class PlayerController : MonoBehaviour
         forwardSpeed = 400;
         turnGear = 0;
         offAngle = 0;
+        onLaneNumber = 0;
         currentSpeed = forwardSpeed;
+        laneAdjustmentRequire = false;
+        lerping = false;
+        startTurning = false;
     }
 
     void locateAllController()
@@ -325,7 +335,7 @@ public class PlayerController : MonoBehaviour
         fxController.offTyreSketch();
     }
 
-
+    #region Getters and Setters 
     public float getForwardSpeed()
     {
         return forwardSpeed;
@@ -347,6 +357,14 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     }
 
+    public void setPlayerYAxis(float degree){
+        transform.rotation = Quaternion.AngleAxis(degree, Vector3.up);
+    }
+
+    #endregion
+
+
+
     public void resetPlayerRotation()
     {
         //Rotote the player back to direction 
@@ -367,9 +385,6 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
-
-        Debug.Log("Left " +swipeController.SwipeLeft);
-        Debug.Log("Right " +swipeController.SwipeRight);
 
         //Moving Left and Right 
         if (swipeController.SwipeLeft || userInputHo == -1.0)
@@ -813,6 +828,9 @@ public class PlayerController : MonoBehaviour
 
                 //Car slows down 
                 transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
+
+                //Shake Camera 
+                cameraController.startLongLightShake();
             }
 
             //Switch mode according to tile curve direction 
@@ -975,8 +993,16 @@ public class PlayerController : MonoBehaviour
             offDriftFX();
             driftSmokeGameController.offDriftSmoke();
 
+
+            if(currentSpeed == 0 ){
+
+                //Fix the car movement; 
+                transform.GetComponent<Rigidbody>().isKinematic = true; 
+            }
+
         }
 
+   
 
 
 
