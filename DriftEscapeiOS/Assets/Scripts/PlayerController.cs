@@ -622,10 +622,11 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
+        Debug.Log(collision.transform.tag);
         if (collision.transform.tag == "Coins")
         {
             scoreController.addCoins();
-            //collision.transform.gameObject.SetActive(false);
+            collision.transform.gameObject.SetActive(false);
 
         }
 

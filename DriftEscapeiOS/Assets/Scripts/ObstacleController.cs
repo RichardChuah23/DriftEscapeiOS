@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour {
     public List<GameObject> readyObstacleList;
-    public GameObject obstcaleGameObj;
+  
     private int numOfObs; 
 
 	// Use this for initialization

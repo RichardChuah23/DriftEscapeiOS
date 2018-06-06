@@ -133,7 +133,7 @@ public class CameraController : MonoBehaviour
     IEnumerator beginMoveStartCamera()
     {
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         //Interpolated float result between min and max
         distance = Mathf.Lerp(distance_start, 80, t);
