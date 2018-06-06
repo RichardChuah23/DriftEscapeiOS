@@ -8,8 +8,14 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
     public GameObject player;
+    private SkyDomeController skyDomeController; 
+    public GameObject SkyDome;
     private bool gameOver;
     private bool restart;
+
+    //Cameracontroller 
+    private CameraController cameraController;
+    public GameObject MainCamera;
 
     //Restart button
     public Button btnRestart;
@@ -73,6 +79,11 @@ public class GameController : MonoBehaviour
 
         }
 
+        //Locate camera controller 
+        cameraController = MainCamera.GetComponent<CameraController>();
+
+        //Locata skydomeController 
+        skyDomeController = SkyDome.GetComponent<SkyDomeController>();
 
         //Find Restart button and rewrite the button text and disable it 
         gameObjRestart = GameObject.Find("btnRestart");
@@ -138,6 +149,11 @@ public class GameController : MonoBehaviour
         //Move car forward 
         playerController.resetGameInitialValue();
 
+        //Change Sky Dome colour;
+        skyDomeController.changeColor();
+
+        //Begin Starting Camera View; 
+        cameraController.setGameStartCameraView();
 
         //Done set up
         gameOver = false;

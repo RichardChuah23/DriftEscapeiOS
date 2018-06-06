@@ -160,26 +160,36 @@ public class TileController : MonoBehaviour {
 
     public void nextTile(){
 
-        Debug.Log("I ran ");
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
-        //Get next tile index  //Choose which tile to spawn 
+        //Get next tile index  //Choose which sub tile to spawn 
         previousTileIndex = newTileIndex; 
         newTileIndex = nextTileIndex(); 
 
 
         GameObject tileRoadSpawn;
 
+        //Doesnt need lane adjustment for straight road 
         if (previousTileIndex == 1 && newTileIndex == 1)
         {
             int index = Random.Range(1, 4);
             tileRoadSpawn = tilesPrefab[newTileIndex][index];
         }
-        else
+        else 
         {
-            tileRoadSpawn = tilesPrefab[newTileIndex][0];
+            if (newTileIndex == 1 ){
+                tileRoadSpawn = tilesPrefab[newTileIndex][0];
+            }else{
+
+                int index = Random.Range(0, tilesPrefab[newTileIndex].Count);
+                tileRoadSpawn = tilesPrefab[newTileIndex][index];
+            }
+
+
         }
+
+
        
 
 
@@ -189,7 +199,6 @@ public class TileController : MonoBehaviour {
 
         //Find the position to spawn the tile 
         Vector3 newPos = findPosTile(dirSpawn, requireDriftZone);
-
 
         //Spawn the tile 
         tileRoadSpawn = Instantiate(tileRoadSpawn) as GameObject;
@@ -251,14 +260,13 @@ public class TileController : MonoBehaviour {
         if (currentTileIndex == 1 ){ 
 
             //Declare a list of two possible tiles  
-            List<int> a_list = new List<int>(){1,2,7};   //FOR DEBGGGING  ! 
-
-            //List<int> a_list = new List<int>(){7,7};
-            //List<int> a_list = new List<int>() { 1, 1 };
-            return a_list[Random.Range(0, 3)];
+            List<int> a_list = new List<int>(){1,2,7};  
 
 
+            return a_list[Random.Range(1, 3)];
+            //return a_list[2];
 
+            //return a_list[Random.Range(0, 3)]; //ORI
         }
         if (currentTileIndex == 2)
         {
@@ -281,8 +289,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
 
-            index = a_list[Random.Range(0, 3)];
-            //index = a_list[2]; //For Debuggin
+            //index = a_list[Random.Range(0, 3)];//For Debuggin
+            index = a_list[2]; 
 
         }
         if (currentTileIndex == 5)
@@ -305,7 +313,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 6, 4 }; //FOR DEBUGGING
             //List<int> a_list = new List<int>() { 4, 4 };
-            index = a_list[Random.Range(0, 1)];
+            //index = a_list[Random.Range(0, 1)];
+            index = a_list[1];
 
         }
         if (currentTileIndex == 8)
@@ -321,6 +330,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
             index = a_list[Random.Range(0, 3)];
+
+
 
         }
 
@@ -505,25 +516,29 @@ public class TileController : MonoBehaviour {
 	public void DestroyAllTiles()
 	{
 
-       
 
 
-        for (int i = 0; i < activeTilesRoad.Count; i++)
+        int numOfTiles = activeTilesRoad.Count; 
+        for (int i = 0; i < numOfTiles ; i++)
         {
             
-            Destroy(activeTilesRoad[i]);
-            activeTilesRoad.RemoveAt(i);
+            Destroy(activeTilesRoad[0]);
+            activeTilesRoad.RemoveAt(0);
 
         }
 
         //Remove all Drift Tile 
-        for (int i = 0; i < activeTileDrift.Count; i++)
+        int numOfTileDrift = activeTileDrift.Count;
+        for (int i = 0; i < numOfTileDrift; i++)
         {
 
 
-            Destroy(activeTileDrift[i]);
-            activeTileDrift.RemoveAt(i);
+            Destroy(activeTileDrift[0]);
+            activeTileDrift.RemoveAt(0);
         }
+
+
+
 	}
 
 

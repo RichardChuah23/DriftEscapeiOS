@@ -73,7 +73,7 @@ public class swipeController : MonoBehaviour {
         }
 
         //Check if touch is crossing the dead zone
-        if(swipeDelta.magnitude >125 ){
+        if(swipeDelta.magnitude >90 ){
 
             float x = swipeDelta.x;
             float y = swipeDelta.y; 

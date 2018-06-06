@@ -5,29 +5,32 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public GameObject player;
-    public Vector3 offsetForward;
-    public Vector3 offsetDriftLeft;
-    public Vector3 offsetDriftRight;
+
+    //Player var
     public Rigidbody rb;
-    public float smoothSpeed ;
     private string playerMode; 
     private PlayerController playerController;
-    public Vector3 forwardPosition;
-    public Vector3 startPosition; 
+    private Vector3 startPosition; 
 
 
-    //TESTIN VAR
-    public Transform target;
-    public float distance ;
-    public float height ;
-    public float damping ;
+    //Camera effect var 
+    public ParticleSystem accelerateFX;
+
+    //Camera var 
     public bool smoothRotation = false ;
-    public bool followBehind ;
-    public float rotationDamping ;
+    public bool followBehind = true; 
+    public Transform target;
 
+    private float particleTime = 2.5f; 
+    public float distance = 80; 
+    public float distance_start = -180  ;
+    public float height_start = 15;
+    public float height = 35 ;
+    public float damping  = 3;
+    public float rotationDamping = 15 ;
 
-    //now fixed figures 80,40,5,3
+    private Vector3 start_offset ;
+    private Vector3 start_offset_start = new Vector3(17, 0f, 0f);
 
     //Camera Shake
     private float shakeDuration;
@@ -42,7 +45,12 @@ public class CameraController : MonoBehaviour
     private float lightShakeDuration_2 = 0f;
     private float lightShakeDuration = 0.2f;
     private float lightShakeAmount = 5f;
-    private float lightShakeSpeed = 3f; 
+    private float lightShakeSpeed = 3f;
+
+
+
+    private bool beginLerping = true;
+    private float t; 
 
     // Use this for initialization
     void Start()
@@ -58,93 +66,112 @@ public class CameraController : MonoBehaviour
         }
 
         //Set the camera at the first frame
-        transform.position = startPosition; 
+        transform.position = startPosition;
+
+
 
 
     }
+
+
 
     void FixedUpdate()
     {
 
         playerMode = playerController.getMode();
 
-        /*
-        if(playerMode == "FORWARD"){
-            forwardCamera();
+        if(beginLerping == true){
+
+            //Wait for 3 seconds and start 
+            distance = -180;
+            height = 15;
+            start_offset = new Vector3(17, 0f, 0f);
+          
+
+
+            StartCoroutine(beginMoveStartCamera());
+
         }
-        else{
 
-            driftCamera();
+
+        if(playerMode == "FORWARD" && beginLerping == false ){
+
+
+
+            if (particleTime > 0f) { 
+				accelerateFX.gameObject.SetActive(true);
+                //height = 20;
+                //damping = 5;
+                particleTime -= Time.deltaTime; 
+            }else
+            {
+                //damping = 3;
+                //height = 35;
+                accelerateFX.gameObject.SetActive(false);
+
+            }
+
+
+
+
+        }else{
+            damping = 3;
+
+            height = 35;
+            accelerateFX.gameObject.SetActive(false);
+            particleTime = 2.5f; 
         }
-		*/
 
 
-        followTranform(80);
+        followTranform(distance);
 
         cameraHeavyShake();
         cameraLightShake();
 
     }
 
+    IEnumerator beginMoveStartCamera()
+    {
 
+        yield return new WaitForSeconds(0.5f);
 
+        //Interpolated float result between min and max
+        distance = Mathf.Lerp(distance_start, 80, t);
+        height = Mathf.Lerp(height_start, 35, t);
 
-
-    void forwardCamera(){
-        
-        Vector3 wantedPosition;
-        if (followBehind)
-            wantedPosition = target.TransformPoint(0, height, -distance);
-        else
-            wantedPosition = target.TransformPoint(0, height, distance);
-
-        transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
-
-        if (smoothRotation)
-        {
-            Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
-        }
-        else transform.LookAt(target, target.forward);
-
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, 0);
+        start_offset.x = Mathf.Lerp(start_offset_start.x, 0, t);
       
-    }
 
+        // .. and increate the t interpolater
+        t += 0.2f * Time.deltaTime;
 
-    void driftCamera(){
-
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, 0);
-
-
-        
-        Vector3 wantedPosition;
-        if (followBehind)
-            wantedPosition = target.TransformPoint(0, height, -distance);
-        else
-            wantedPosition = target.TransformPoint(0, height, distance);
-
-        transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
-
-        if (smoothRotation)
+        if (t > 1)
         {
-            Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
+            beginLerping = false;
+
+
         }
-        else transform.LookAt(target, target.forward);
-
-
-
 
 
 
     }
 
+
+    public void setGameStartCameraView(){
+
+        transform.position = new Vector3(0f, 0f, 0f);
+        beginLerping = true; 
+        distance = -180;
+        height = 15;
+        start_offset = new Vector3(17, 0f, 0f);
+    }
 
     void followTranform(float distance){
+
+
         Vector3 wantedPosition;
         if (followBehind)
-            wantedPosition = target.TransformPoint(0, height, -distance);
+            wantedPosition = target.TransformPoint(0, height, -distance) + start_offset;
         else
             wantedPosition = target.TransformPoint(0, height, distance);
 
@@ -152,20 +179,28 @@ public class CameraController : MonoBehaviour
 
         if (smoothRotation)
         {
-            Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
+            Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up) ;
+
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
         }
         else transform.LookAt(target, target.forward);
 
 
-        cameraLightShake();
 
     }
+
+
 
 
     public void startLightShake(){
 
         lightShakeDuration_2 = lightShakeDuration; 
+    }
+
+    public void startLongLightShake()
+    {
+
+        lightShakeDuration_2 = 1.5f;
     }
 
     public void startHeavyShake(){
@@ -194,6 +229,8 @@ public class CameraController : MonoBehaviour
 
 
     }
+
+
 
 
 

@@ -212,11 +212,19 @@ public class PlayerController : MonoBehaviour
         offDriftFX();
         gameOverTriggred = true;
 
+        if (turnSpeed == 0 ){
+
+            //Fix car movement
+            transform.GetComponent<Rigidbody>().isKinematic = true; 
+        }
+
 
     }
 
     public void resetGameInitialValue()
     {
+        transform.GetComponent<Rigidbody>().isKinematic = false;
+        animMode = "IDLE";
         mode = "FORWARD";
         gameOverReason = "null";
         fxController.offBrokeDownSmoke();
@@ -236,7 +244,11 @@ public class PlayerController : MonoBehaviour
         forwardSpeed = 400;
         turnGear = 0;
         offAngle = 0;
+        onLaneNumber = 0;
         currentSpeed = forwardSpeed;
+        laneAdjustmentRequire = false;
+        lerping = false;
+        startTurning = false;
     }
 
     void locateAllController()
@@ -323,7 +335,7 @@ public class PlayerController : MonoBehaviour
         fxController.offTyreSketch();
     }
 
-
+    #region Getters and Setters 
     public float getForwardSpeed()
     {
         return forwardSpeed;
@@ -345,6 +357,14 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     }
 
+    public void setPlayerYAxis(float degree){
+        transform.rotation = Quaternion.AngleAxis(degree, Vector3.up);
+    }
+
+    #endregion
+
+
+
     public void resetPlayerRotation()
     {
         //Rotote the player back to direction 
@@ -365,9 +385,6 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
-
-        Debug.Log("Left " +swipeController.SwipeLeft);
-        Debug.Log("Right " +swipeController.SwipeRight);
 
         //Moving Left and Right 
         if (swipeController.SwipeLeft || userInputHo == -1.0)
@@ -605,10 +622,11 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
+        Debug.Log(collision.transform.tag);
         if (collision.transform.tag == "Coins")
         {
             scoreController.addCoins();
-            //collision.transform.gameObject.SetActive(false);
+            collision.transform.gameObject.SetActive(false);
 
         }
 
@@ -688,7 +706,7 @@ public class PlayerController : MonoBehaviour
         {
 
             turn1 = -0.5f;
-            turn2 = -0.9f;
+            turn2 = -0.7f;
             turn3 = -1f;
 
         }
@@ -783,7 +801,7 @@ public class PlayerController : MonoBehaviour
         if (previousMode != "FORWARD")
         {
             //keep drifting until user respond 
-            drift(turnSpeed, turnGear);
+            driftmode(previousMode);
         }
 
         if (previousMode == "FORWARD")
@@ -796,7 +814,7 @@ public class PlayerController : MonoBehaviour
 
         //If input is swipe down 
         //Enter Drift Mode
-        bool tmpInput = (swipeController.SwipeDown || userInputVer == -1);
+        bool tmpInput = (swipeController.Tap || userInputVer == -1);
 
         if (tmpInput && nextTileDirection != "FORWARD")
         {
@@ -811,6 +829,9 @@ public class PlayerController : MonoBehaviour
 
                 //Car slows down 
                 transform.Translate(0, 0, Time.deltaTime * turnSpeed); // move forward 
+
+                //Shake Camera 
+                cameraController.startLongLightShake();
             }
 
             //Switch mode according to tile curve direction 
@@ -870,7 +891,7 @@ public class PlayerController : MonoBehaviour
 
 
             //Swipe Up
-            if (swipeController.SwipeUp || userInputVer == 1)
+            if (swipeController.Tap || userInputVer == 1)
             {
 
 
@@ -973,8 +994,16 @@ public class PlayerController : MonoBehaviour
             offDriftFX();
             driftSmokeGameController.offDriftSmoke();
 
+
+            if(currentSpeed == 0 ){
+
+                //Fix the car movement; 
+                transform.GetComponent<Rigidbody>().isKinematic = true; 
+            }
+
         }
 
+   
 
 
 
