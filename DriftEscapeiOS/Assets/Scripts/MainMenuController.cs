@@ -9,7 +9,8 @@ public class MainMenuController : MonoBehaviour {
 
 	private string mode; 
 
-	private GameObject carsContainer;
+	private GameObject carsSelection;
+	private Transform carContainer;
 	private Transform mainMenuGameObject;
 	private Transform carMenuGameObject;
 	private Transform settingsGameObject;
@@ -20,9 +21,17 @@ public class MainMenuController : MonoBehaviour {
 	Vector3 carMenu = new Vector3 (0, 0, -16);
 	Vector3 settings = new Vector3 (0, 0, 22);
 	private Vector3 newPosition;
+
 	public float smooth = 3; 
 	private string zoom;
 	private string model;
+
+	private CarsCreation carsCreation;
+
+
+	private Transform carSelection;
+	public Vector3 position; 
+	private Vector3 selectedPosition;
 
 	/// <summary>
 	/// Gets or sets the mode.
@@ -55,10 +64,21 @@ public class MainMenuController : MonoBehaviour {
 		mode = "Main";
 		zoom = "mainMenu";
 
-		carsContainer = GameObject.Find ("CarsContainer");
+		selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
+
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
 		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1);
 		settingsGameObject = GameObject.Find ("Canvas").transform.GetChild (2);
+
+		carsSelection = GameObject.Find ("CarsSelection");
+		carContainer = GameObject.Find ("CarsSelection").transform;
+
+		carContainer.position = selectedPosition;
+
+		// Locate CarsCreation script
+		carsCreation = (CarsCreation) carsSelection.GetComponent(typeof(CarsCreation));
+	
+		Debug.Log("menucontroller= " + PlayerPrefs.GetInt ("CharacterSelected"));
 	}
 		
 	void Update() {
@@ -98,10 +118,12 @@ public class MainMenuController : MonoBehaviour {
 					hitInfo.transform.gameObject.tag == "Player") {
 					activeCarMenu ();
 					deactiveMainMenu ();
-					//isZoomed = !isZoomed;
 					zoom = "carMenu";
 					cameraZooming();
 					mode = "Car";
+					carsCreation.counter = PlayerPrefs.GetInt ("CharacterSelected");
+					//carContainer.transform.position = selectedPosition;
+					carContainer.position = selectedPosition;
 				} 
 			}
 		}
@@ -113,11 +135,10 @@ public class MainMenuController : MonoBehaviour {
 	public void cameraZooming(){
 		if (zoom == "carMenu") {
 			newPosition = carMenu;
-		} else if (zoom == "settings"){
+		} else if (zoom == "settings") {
 			newPosition = settings;
 		} else {
 			newPosition = mainMenu;
-			//carsContainer.gameObject.Find (Model);
 		}
 		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
 	}
@@ -161,7 +182,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Actives the settings.
 	/// </summary>
 	public void activeSettings() {
-		carsContainer.SetActive (false);
+		carsSelection.SetActive (false);
 		settingsGameObject.gameObject.SetActive (true);
 		zoom = "settings";
 	}
@@ -170,7 +191,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Deactives the settings.
 	/// </summary>
 	public void deactiveSettings() {
-		carsContainer.SetActive (true);
+		carsSelection.SetActive (true);
 		settingsGameObject.gameObject.SetActive (false);
 		zoom = "mainMenu";
 	}
