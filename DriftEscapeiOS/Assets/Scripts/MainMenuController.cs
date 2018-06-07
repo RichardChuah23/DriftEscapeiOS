@@ -7,31 +7,22 @@ using UnityEngine.Advertisements;
 
 public class MainMenuController : MonoBehaviour {
 
-	private string mode; 
-
 	private GameObject carsSelection;
-	private Transform carContainer;
+
 	private Transform mainMenuGameObject;
 	private Transform carMenuGameObject;
 	private Transform settingsGameObject;
 
 	public Camera mainMenuCamera;
 
+	private Vector3 newPosition;
 	Vector3 mainMenu = new Vector3 (0, 0, 0);
 	Vector3 carMenu = new Vector3 (0, 0, -16);
 	Vector3 settings = new Vector3 (0, 0, 22);
-	private Vector3 newPosition;
-
 	public float smooth = 3; 
+
+	private string mode; 
 	private string zoom;
-	private string model;
-
-	private CarsCreation carsCreation;
-
-
-	private Transform carSelection;
-	public Vector3 position; 
-	private Vector3 selectedPosition;
 
 	/// <summary>
 	/// Gets or sets the mode.
@@ -51,34 +42,15 @@ public class MainMenuController : MonoBehaviour {
 		set{ zoom = value;}
 	}
 
-	/// <summary>
-	/// Gets or sets the model.
-	/// </summary>
-	/// <value>The model.</value>
-	public string Model{
-		get{ return model;}
-		set{ model = value;}
-	}
-
 	void Start(){
 		mode = "Main";
 		zoom = "mainMenu";
-
-		selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
 
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
 		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1);
 		settingsGameObject = GameObject.Find ("Canvas").transform.GetChild (2);
 
 		carsSelection = GameObject.Find ("CarsSelection");
-		carContainer = GameObject.Find ("CarsSelection").transform;
-
-		carContainer.position = selectedPosition;
-
-		// Locate CarsCreation script
-		carsCreation = (CarsCreation) carsSelection.GetComponent(typeof(CarsCreation));
-	
-		Debug.Log("menucontroller= " + PlayerPrefs.GetInt ("CharacterSelected"));
 	}
 		
 	void Update() {
@@ -121,9 +93,6 @@ public class MainMenuController : MonoBehaviour {
 					zoom = "carMenu";
 					cameraZooming();
 					mode = "Car";
-					carsCreation.counter = PlayerPrefs.GetInt ("CharacterSelected");
-					//carContainer.transform.position = selectedPosition;
-					carContainer.position = selectedPosition;
 				} 
 			}
 		}
