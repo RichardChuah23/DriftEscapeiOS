@@ -100,13 +100,13 @@ public class CameraController : MonoBehaviour
 
             if (particleTime > 0f) { 
 				accelerateFX.gameObject.SetActive(true);
-                //height = 20;
-                //damping = 5;
+                height = 20;
+                damping = 5;
                 particleTime -= Time.deltaTime; 
             }else
             {
-                //damping = 3;
-                //height = 35;
+                damping = 3;
+                height = 35;
                 accelerateFX.gameObject.SetActive(false);
 
             }
@@ -117,7 +117,7 @@ public class CameraController : MonoBehaviour
         }else{
             damping = 3;
 
-            height = 35;
+            height = 45;
             accelerateFX.gameObject.SetActive(false);
             particleTime = 2.5f; 
         }
