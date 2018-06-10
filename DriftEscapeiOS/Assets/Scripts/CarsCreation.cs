@@ -4,71 +4,79 @@ using UnityEngine;
 
 public class CarsCreation : MonoBehaviour {
 
-	private List<GameObject> models;
+	private GameObject[] models;
 
-	// selected car -> index and name
-	//private int selectionIndex; 
-	//private string selectedCarName;
-
-	// counter to prevent index out of bound
-	private int counter;
+	private string mode = "car";
+	public int index; 
 
 	private Transform carContainer;
-	private MainMenuController mainMenuController;
 
 	private Vector3 position; 
 	private Vector3 newPosition;
+	private Vector3 selectedPosition; 
 	public float smooth = 3; 
 
 	public swipeController swipeController;
+	private MainMenuController mainMenuController;
 
-	private void Start() {
-		models = new List<GameObject> ();
-		foreach (Transform t in transform) {
-			models.Add (t.gameObject);
-			if (t.gameObject.tag == "Player") {
-				//selectionIndex = models.Count - 1;
-				//selectedCarName = models [selectionIndex].gameObject.name.ToString();
-				counter = models.Count - 1;
-			}
+	private void Awake() {
+		models = new GameObject[transform.childCount];
+
+		// Fill the array with our models
+		for (int i = 0; i < transform.childCount; i++)
+			models [i] = transform.GetChild (i).gameObject;
+
+		// Get the transform of this game object
+		carContainer = GameObject.Find ("CarsSelection").transform;
+
+		// Get the saved index
+		index = PlayerPrefs.GetInt ("CharacterSelected");
+
+		// Returned to the saved position
+		if (index > 0) {
+			selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
+			carContainer.transform.position = selectedPosition;
+			newPosition = selectedPosition;
 		}
 
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
 		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
-
-		// Get the current position
-		carContainer = GameObject.Find ("CarsContainer").transform;
 	}
 
 	public void Update() {
 		if (mainMenuController.Mode == "Car") {
-			ChangingPosition();
+			ChangingPosition ();
+		}
+
+		if (mode == "return") {
+			ReturnPosition ();
+			mode = "car";
 		}
 	}
 		
 	/// <summary>
 	/// Changings the position.
-	/// Allow the user to swipe the cars left and right to select or change the model.
+	/// Allow the user to swipe the cars left and right to select or change the cars model.
 	/// </summary>
 	public void ChangingPosition() {
 		position = carContainer.position;
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) {
-			counter += 1;
-			if (counter < models.Count) {
-				newPosition = position + new Vector3 (-38f, 0f, 0f);
+			index -= 1;
+			if (index < 0 ) {
+				index = 0;
 			} else {
-				counter -= 1;
+				newPosition = position + new Vector3 (38f, 0f, 0f);
 			}
 		}
 
 		if (Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) {
-			counter -= 1;
-			if (counter < 0 ) {
-				counter = 0;
+			index += 1;
+			if (index < models.Length) {
+				newPosition = position + new Vector3 (-38f, 0f, 0f);
 			} else {
-				newPosition = position + new Vector3 (38f, 0f, 0f);
+				index -= 1;
 			}
 		}
 
@@ -76,25 +84,46 @@ public class CarsCreation : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Return to main menu
+	/// Confirm this instance.
+	/// Save the selected model's information
+	/// Return to the main menu 
 	/// </summary>
-	public void Back () {
+	public void Confirm(){
+		// Save the selected model index and position x,y,z
+		PlayerPrefs.SetInt ("CharacterSelected", index);
+		PlayerPrefs.SetFloat ("PositionX", carContainer.transform.position.x);
+		PlayerPrefs.SetFloat ("PositionY", carContainer.transform.position.y);
+		PlayerPrefs.SetFloat ("PositionZ", carContainer.transform.position.z);
+
+		// Return to the main menu
 		mainMenuController.Mode = "Main";
 		mainMenuController.deactiveCarMenu ();
 		mainMenuController.activeMainMenu ();
 		mainMenuController.Zoom = "mainMenu";
 	}
 
+	/// <summary>
+	/// Return to main menu
+	/// </summary>
+	public void Back () {
+		mode = "return";
+
+		// Return to main menu
+		mainMenuController.Mode = "Main";
+		mainMenuController.deactiveCarMenu ();
+		mainMenuController.activeMainMenu ();
+		mainMenuController.Zoom = "mainMenu";
+
+	}
+
+	/// <summary>
+	/// Returns the position.
+	/// Return to the selected model index and position
+	/// </summary>
+	public void ReturnPosition(){
+		index = PlayerPrefs.GetInt ("CharacterSelected");
+		selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
+		carContainer.transform.position = selectedPosition;
+		newPosition = selectedPosition;
+	}
 }
-
-/*public void Select (int index) {
-		if (index < 0 || index >= models.Count)
-			return;
-
-		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Untagged";
-		//models [selectionIndex].SetActive (false);
-		selectionIndex = index;
-		models [selectionIndex].SetActive (true);
-		selectedCarName = models [selectionIndex].gameObject.name.ToString();
-		GameObject.Find ("CarsContainer").transform.Find(selectedCarName).tag = "Player";
-	}*/

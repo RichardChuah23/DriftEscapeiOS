@@ -7,22 +7,33 @@ using UnityEngine.Advertisements;
 
 public class MainMenuController : MonoBehaviour {
 
-	private string mode; 
+	private GameObject carsSelection;
 
-	private GameObject carsContainer;
 	private Transform mainMenuGameObject;
 	private Transform carMenuGameObject;
 	private Transform settingsGameObject;
 
 	public Camera mainMenuCamera;
 
+	private Vector3 newPosition;
 	Vector3 mainMenu = new Vector3 (0, 0, 0);
 	Vector3 carMenu = new Vector3 (0, 0, -16);
 	Vector3 settings = new Vector3 (0, 0, 22);
-	private Vector3 newPosition;
 	public float smooth = 3; 
+
+	private string mode; 
 	private string zoom;
-	private string model;
+
+	RectTransform drift;
+	RectTransform escape;
+	//The new position of the game title
+	Vector3 driftPosition = new Vector3 (0, 310, 0);
+	Vector3 escapePosition = new Vector3 (0, 220, 0);
+	// Reference value used for the Smoothdamp method
+	private Vector3 driftVelocity = Vector3.zero;
+	private Vector3 escapeVelocity = Vector3.zero;
+	// Smooth time
+	private float smoothTime = 0.5f;
 
 	/// <summary>
 	/// Gets or sets the mode.
@@ -42,28 +53,34 @@ public class MainMenuController : MonoBehaviour {
 		set{ zoom = value;}
 	}
 
-	/// <summary>
-	/// Gets or sets the model.
-	/// </summary>
-	/// <value>The model.</value>
-	public string Model{
-		get{ return model;}
-		set{ model = value;}
-	}
-
 	void Start(){
 		mode = "Main";
 		zoom = "mainMenu";
 
-		carsContainer = GameObject.Find ("CarsContainer");
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
 		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1);
 		settingsGameObject = GameObject.Find ("Canvas").transform.GetChild (2);
+
+		carsSelection = GameObject.Find ("CarsSelection");
+
+		// Get the RectTransform component
+		drift = mainMenuGameObject.transform.GetChild (0).GetComponent<RectTransform> ();
+		escape = mainMenuGameObject.transform.GetChild (1).GetComponent<RectTransform> ();
 	}
 		
 	void Update() {
+		titleAnimation ();
 		clickCar ();
 		cameraZooming();
+	}
+
+	/// <summary>
+	/// Titles the animation.
+	/// Update the localPosition towards the new Position
+	/// </summary>
+	public void titleAnimation(){
+		drift.localPosition = Vector3.SmoothDamp (drift.localPosition, driftPosition, ref driftVelocity, smoothTime);
+		escape.localPosition = Vector3.SmoothDamp (escape.localPosition, escapePosition, ref escapeVelocity, smoothTime);
 	}
 
 	/// <summary>
@@ -98,7 +115,6 @@ public class MainMenuController : MonoBehaviour {
 					hitInfo.transform.gameObject.tag == "Player") {
 					activeCarMenu ();
 					deactiveMainMenu ();
-					//isZoomed = !isZoomed;
 					zoom = "carMenu";
 					cameraZooming();
 					mode = "Car";
@@ -113,11 +129,10 @@ public class MainMenuController : MonoBehaviour {
 	public void cameraZooming(){
 		if (zoom == "carMenu") {
 			newPosition = carMenu;
-		} else if (zoom == "settings"){
+		} else if (zoom == "settings") {
 			newPosition = settings;
 		} else {
 			newPosition = mainMenu;
-			//carsContainer.gameObject.Find (Model);
 		}
 		mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth );
 	}
@@ -161,7 +176,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Actives the settings.
 	/// </summary>
 	public void activeSettings() {
-		carsContainer.SetActive (false);
+		carsSelection.SetActive (false);
 		settingsGameObject.gameObject.SetActive (true);
 		zoom = "settings";
 	}
@@ -170,7 +185,7 @@ public class MainMenuController : MonoBehaviour {
 	/// Deactives the settings.
 	/// </summary>
 	public void deactiveSettings() {
-		carsContainer.SetActive (true);
+		carsSelection.SetActive (true);
 		settingsGameObject.gameObject.SetActive (false);
 		zoom = "mainMenu";
 	}
