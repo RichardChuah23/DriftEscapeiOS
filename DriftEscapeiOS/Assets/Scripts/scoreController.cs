@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour {
 
-
+    private bool activeScore; 
     private float score;
     private int coins; 
     private float forwardSpeed;
@@ -29,20 +29,34 @@ public class ScoreController : MonoBehaviour {
         coins = 0; 
         forwardSpeed = playerController.getForwardSpeed(); 
 
+
 		
 	}
 	
 	// Update is called once per frame
     void Update () {
         
+
+        if ( activeScore == true){
+
+
+            score += 0.1f * forwardSpeed;
+        }
+
+
+
      
-        score += 0.1f * forwardSpeed; 
+
 
 	}
 
     public void addCoins(){
 
         coins += 1; 
+    }
+
+    public void setAddScore(bool activeScore  ){
+        this.activeScore = activeScore;  
     }
 
 

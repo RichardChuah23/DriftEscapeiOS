@@ -170,6 +170,9 @@ public class TileController : MonoBehaviour {
 
         GameObject tileRoadSpawn;
 
+
+
+        // Fix this confusing shit. 
         //Doesnt need lane adjustment for straight road 
         if (previousTileIndex == 1 && newTileIndex == 1)
         {
@@ -188,6 +191,8 @@ public class TileController : MonoBehaviour {
 
 
         }
+
+        //
 
 
        
@@ -330,9 +335,6 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
             index = a_list[Random.Range(0, 3)];
-
-
-
         }
 
 

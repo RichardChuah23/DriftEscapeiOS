@@ -50,7 +50,8 @@ public class CameraController : MonoBehaviour
 
 
     private bool beginLerping = true;
-    private float t; 
+    private float t;
+    public float startGameFocusDuration;
 
     // Use this for initialization
     void Start()
@@ -133,7 +134,7 @@ public class CameraController : MonoBehaviour
     IEnumerator beginMoveStartCamera()
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(startGameFocusDuration);
 
         //Interpolated float result between min and max
         distance = Mathf.Lerp(distance_start, 80, t);

@@ -19,16 +19,26 @@ public class GameController : MonoBehaviour
 
     //Restart button
     public Button btnRestart;
-    private GameObject gameObjRestart;
+    public GameObject gameObjRestart;
 
-    //Pause buitton
+    //Pause Button 
     public Button btnPause;
-    private GameObject gameObjPause; 
+    public GameObject gameObjPause; 
+
+    //Play Button 
+    public Button btnPlay;
+    public GameObject gameObjPlay; 
 
 
-
+    //Tile Controller 
     private TileController tileController;
+
+    //Player Controller 
     private PlayerController playerController;
+
+    //Score Controller 
+    private ScoreController scoreController; 
+    public GameObject gameObjScoreController; 
 
     private bool restartTrigger;
     private bool gameOverCalled;
@@ -73,22 +83,17 @@ public class GameController : MonoBehaviour
 
 
         }
-        if (playerController == null)
-        {
-            Debug.Log("Cannot find PLayerController script");
 
-        }
+
 
         //Locate camera controller 
         cameraController = MainCamera.GetComponent<CameraController>();
 
-        //Locata skydomeController 
+        //Locate skydomeController 
         skyDomeController = SkyDome.GetComponent<SkyDomeController>();
 
-        //Find Restart button and rewrite the button text and disable it 
-        gameObjRestart = GameObject.Find("btnRestart");
-        gameObjPause = GameObject.Find("btnPause"); 
-
+        //Locate ScoreController 
+        scoreController = gameObjScoreController.GetComponent<ScoreController>();
 
         //Restart Button
         Button btnRestartbtn = btnRestart.GetComponent<Button>();
@@ -98,7 +103,14 @@ public class GameController : MonoBehaviour
         Button btnPausebtn = btnPause.GetComponent<Button>();
         btnPausebtn.onClick.AddListener(PauseOnClick);
 
+        //Play Button  
+        Button btnPlaybtn = btnPlay.GetComponent<Button>();
+        btnPlaybtn.onClick.AddListener(PlayOnClick);
+
+
+
         gameObjRestart.SetActive(false);
+        gameObjPlay.SetActive(false);
 
 
     }
@@ -160,13 +172,38 @@ public class GameController : MonoBehaviour
         gameOverCalled = false;
         //Hide all game over buttons  
         hideGameOverbutton();
+        }
 
+
+    //Pause the game 
+    public void PauseOnClick(){
+       
+        //Change player mode
+        playerController.setMode("PAUSE");
+        //Deactive Score 
+        scoreController.setAddScore(false); 
+        //Deactivate Pause Button activate Play Button.
+        gameObjPlay.SetActive(true);
+        gameObjPause.SetActive(false);
+    
 
     }
 
-    public void PauseOnClick(){
 
-        Debug.Log("Pressed");
+
+    //Play the game 
+    public void PlayOnClick()
+    {
+
+
+        //Change Player Mode
+        playerController.setMode(playerController.getPreviousMode());
+        //Active Score 
+        scoreController.setAddScore(true);
+        //Deactive Play Button, Activate Pause Button
+        gameObjPlay.SetActive(false);
+        gameObjPause.SetActive(true);
+
     }
 
 
