@@ -50,7 +50,8 @@ public class CameraController : MonoBehaviour
 
 
     private bool beginLerping = true;
-    private float t; 
+    private float t;
+    public float startGameFocusDuration;
 
     // Use this for initialization
     void Start()
@@ -100,13 +101,13 @@ public class CameraController : MonoBehaviour
 
             if (particleTime > 0f) { 
 				accelerateFX.gameObject.SetActive(true);
-                //height = 20;
-                //damping = 5;
+                height = 20;
+                damping = 5;
                 particleTime -= Time.deltaTime; 
             }else
             {
-                //damping = 3;
-                //height = 35;
+                damping = 3;
+                height = 35;
                 accelerateFX.gameObject.SetActive(false);
 
             }
@@ -117,7 +118,7 @@ public class CameraController : MonoBehaviour
         }else{
             damping = 3;
 
-            height = 35;
+            height = 45;
             accelerateFX.gameObject.SetActive(false);
             particleTime = 2.5f; 
         }
@@ -133,7 +134,7 @@ public class CameraController : MonoBehaviour
     IEnumerator beginMoveStartCamera()
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(startGameFocusDuration);
 
         //Interpolated float result between min and max
         distance = Mathf.Lerp(distance_start, 80, t);

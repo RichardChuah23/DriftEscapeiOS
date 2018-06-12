@@ -170,6 +170,9 @@ public class TileController : MonoBehaviour {
 
         GameObject tileRoadSpawn;
 
+
+
+        // Fix this confusing shit. 
         //Doesnt need lane adjustment for straight road 
         if (previousTileIndex == 1 && newTileIndex == 1)
         {
@@ -188,6 +191,8 @@ public class TileController : MonoBehaviour {
 
 
         }
+
+        //
 
 
        
@@ -263,10 +268,10 @@ public class TileController : MonoBehaviour {
             List<int> a_list = new List<int>(){1,2,7};  
 
 
-            return a_list[Random.Range(1, 3)];
+            //return a_list[Random.Range(1, 3)];
             //return a_list[2];
 
-            //return a_list[Random.Range(0, 3)]; //ORI
+            return a_list[Random.Range(0, 3)]; //ORI
         }
         if (currentTileIndex == 2)
         {
@@ -289,8 +294,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
 
-            //index = a_list[Random.Range(0, 3)];//For Debuggin
-            index = a_list[2]; 
+            index = a_list[Random.Range(0, 3)];//For Debuggin
+            //index = a_list[2]; 
 
         }
         if (currentTileIndex == 5)
@@ -313,8 +318,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 6, 4 }; //FOR DEBUGGING
             //List<int> a_list = new List<int>() { 4, 4 };
-            //index = a_list[Random.Range(0, 1)];
-            index = a_list[1];
+            index = a_list[Random.Range(0, 1)];
+            //index = a_list[1];
 
         }
         if (currentTileIndex == 8)
@@ -330,9 +335,6 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
             index = a_list[Random.Range(0, 3)];
-
-
-
         }
 
 

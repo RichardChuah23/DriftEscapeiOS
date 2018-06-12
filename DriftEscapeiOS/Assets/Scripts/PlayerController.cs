@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private string GameOverDriftDirection;
     private string mode = "FORWARD";
     private string previousMode;
+    private float startGameMovementCoolDown ;
+    public float startGameMovementCoolDownDuration;
 
     //Drift Variable 
     private float turn1;
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     //private float forwardDir = 0f;
     private string animMode;
+
+
 
 
 
@@ -151,7 +155,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Variable mode is invalid");
+            Debug.Log("Variable mode is invalid || game Paused");
         }
 
 
@@ -249,6 +253,8 @@ public class PlayerController : MonoBehaviour
         laneAdjustmentRequire = false;
         lerping = false;
         startTurning = false;
+        startGameMovementCoolDown = Time.time;
+        startGameMovementCoolDownDuration = 1f;
     }
 
     void locateAllController()
@@ -344,7 +350,13 @@ public class PlayerController : MonoBehaviour
 
     public void setMode(string mode)
     {
+        previousMode = this.mode; 
         this.mode = mode;
+    }
+
+    public string getPreviousMode(){
+
+        return previousMode; 
     }
 
     public string getMode()
@@ -385,11 +397,15 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
+        if(swipeController.Tap){
+            mode = "GAMEOVER";
+        }
+
 
         //Moving Left and Right 
-        if (swipeController.SwipeLeft || userInputHo == -1.0)
+        if (swipeController.SwipeLeft || userInputHo == -1.0 )
         {
-            if (Time.time - lastTime > swithLaneCoolDown && allowLeft)
+            if (Time.time - lastTime > swithLaneCoolDown && allowLeft && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration) )
             {
 
                 wantedPosX = switchLeft();
@@ -398,7 +414,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (swipeController.SwipeRight || userInputHo == 1)
         {
-            if (Time.time - lastTime > swithLaneCoolDown && allowRight)
+            if (Time.time - lastTime > swithLaneCoolDown && allowRight && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration))
             {
                 wantedPosX = switchRight();
 
