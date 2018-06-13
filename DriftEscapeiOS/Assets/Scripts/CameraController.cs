@@ -81,46 +81,54 @@ public class CameraController : MonoBehaviour
 
         playerMode = playerController.getMode();
 
+        //Front Mode
         if(beginLerping == true){
 
             //Wait for 3 seconds and start 
             distance = -180;
             height = 15;
             start_offset = new Vector3(17, 0f, 0f);
-          
 
 
+            rotationDamping = 15;
             StartCoroutine(beginMoveStartCamera());
 
         }
 
-
+        //Forward Mode 
         if(playerMode == "FORWARD" && beginLerping == false ){
 
 
-
+            //Accelerating 
             if (particleTime > 0f) { 
 				accelerateFX.gameObject.SetActive(true);
-                height = 20;
+                height = 22;
                 damping = 5;
-                particleTime -= Time.deltaTime; 
+                particleTime -= Time.deltaTime;
+                StartCoroutine(delayResetRotationDamping());
             }else
             {
+                distance = -30;
                 damping = 3;
-                height = 35;
+                height = 40;
                 accelerateFX.gameObject.SetActive(false);
+
 
             }
 
 
 
 
-        }else{
+        //Drift Mode
+        }else if (playerMode == "LEFT" || playerMode == "RIGHT" || playerMode == "GAMEOVER"){
+            distance = 50;
             damping = 3;
-
+            rotationDamping = 15;
             height = 45;
             accelerateFX.gameObject.SetActive(false);
             particleTime = 2.5f; 
+        }else{
+            Debug.Log("Mode not valid");
         }
 
 
@@ -131,30 +139,43 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void resetCamera(){
+
+        rotationDamping = 15; 
+    }
+
     IEnumerator beginMoveStartCamera()
     {
 
         yield return new WaitForSeconds(startGameFocusDuration);
 
         //Interpolated float result between min and max
-        distance = Mathf.Lerp(distance_start, 80, t);
-        height = Mathf.Lerp(height_start, 35, t);
+        distance = Mathf.Lerp(distance_start, 35, t);
+        height = Mathf.Lerp(height_start, 22, t);
 
         start_offset.x = Mathf.Lerp(start_offset_start.x, 0, t);
-      
-
+  
         // .. and increate the t interpolater
         t += 0.2f * Time.deltaTime;
 
+
         if (t > 1)
         {
-            beginLerping = false;
+            
 
+            beginLerping = false;
 
         }
 
 
+    }
 
+    IEnumerator delayResetRotationDamping()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        rotationDamping = 1;
     }
 
 

@@ -56,9 +56,11 @@ public class TileController : MonoBehaviour {
     private int previousTileIndex;
     private int typeOfTileIndex;
 
+    private int numOfStraightTileNeeds; 
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 
         //Set value for variables 
         t = Time.time;
@@ -87,20 +89,11 @@ public class TileController : MonoBehaviour {
         //find Player object 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
-        spawnFirstTwoTiles(); 
+        spawnFirstTwoTiles();
+        numOfStraightTileNeeds = 0;
 
-	}
-
-	
-	// Update is called once per frame
-	void Update () {
-
- 
-
-
-
-	}
-
+    }
+   
 
     public void spawnFirstTwoTiles(){ 
 
@@ -163,41 +156,44 @@ public class TileController : MonoBehaviour {
         //Find the direction of spawning 
         dirSpawn = findSpawnDirection(currentTileIndex);
 
+
         //Get next tile index  //Choose which sub tile to spawn 
         previousTileIndex = newTileIndex; 
-        newTileIndex = nextTileIndex(); 
+        newTileIndex = nextTileIndex(numOfStraightTileNeeds);
 
 
+
+        //When return to straight road from curve road 
+        if (previousTileIndex != 1 && newTileIndex == 1 && numOfStraightTileNeeds == 0 )
+        {
+            
+            //Generate number of straightRoad needed 
+            numOfStraightTileNeeds = Random.Range(2, 5);
+        }
+
+
+
+
+        //Declare gameObject Variable 
         GameObject tileRoadSpawn;
 
 
-
-        // Fix this confusing shit. 
-        //Doesnt need lane adjustment for straight road 
-        if (previousTileIndex == 1 && newTileIndex == 1)
+        //Doesnt need lane adjustment for straight road
+        if(previousTileIndex == 1 && newTileIndex == 1 )
         {
-            int index = Random.Range(1, 4);
+            int index = Random.Range(1, tilesPrefab[newTileIndex].Count);
             tileRoadSpawn = tilesPrefab[newTileIndex][index];
         }
-        else 
+        //Require lane adjustment 
+        else if (newTileIndex == 1)
         {
-            if (newTileIndex == 1 ){
-                tileRoadSpawn = tilesPrefab[newTileIndex][0];
-            }else{
-
-                int index = Random.Range(0, tilesPrefab[newTileIndex].Count);
-                tileRoadSpawn = tilesPrefab[newTileIndex][index];
-            }
-
-
+            tileRoadSpawn = tilesPrefab[newTileIndex][0];
         }
-
-        //
-
-
-       
-
-
+        //Others tiles 
+        else{
+            int index = Random.Range(0, tilesPrefab[newTileIndex].Count);
+            tileRoadSpawn = tilesPrefab[newTileIndex][index];
+        }
 
         //Does it need a Drift Enter Zone? 
         bool requireDriftZone = needDriftZone(currentTileIndex, newTileIndex);
@@ -253,13 +249,18 @@ public class TileController : MonoBehaviour {
 
     }
 
-
     //Find the next possible tile to spawn, generate a random number, use it as index and find the tile. 
     //Return an index 
-    int nextTileIndex(){
+    int nextTileIndex(int numOfStraightTileNeeds){
+
+        if(numOfStraightTileNeeds > 0 ){
+
+            this.numOfStraightTileNeeds -= 1; 
+            return 1;
+            
+        }
 
 
-        int index = Random.Range(0, 2);
 
 
         if (currentTileIndex == 1 ){ 
@@ -267,18 +268,19 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles  
             List<int> a_list = new List<int>(){1,2,7};  
 
+            //return a_list[Random.Range(0, 3)]; //ORI
 
-            //return a_list[Random.Range(1, 3)];
-            //return a_list[2];
-
-            return a_list[Random.Range(0, 3)]; //ORI
+            return 2; //Curve
+            //return 1; //All Straight
         }
+
+
         if (currentTileIndex == 2)
         {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 3, 9 };
-            return a_list[index];
+            return a_list[Random.Range(0, 2)];
 
         }
         if (currentTileIndex == 3)
@@ -286,7 +288,7 @@ public class TileController : MonoBehaviour {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 5, 8 };
-            return a_list[index];
+            return a_list[Random.Range(0, 2)];
         }
         if (currentTileIndex == 4)
         {
@@ -294,8 +296,9 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
 
-            index = a_list[Random.Range(0, 3)];//For Debuggin
-            //index = a_list[2]; 
+            //index = a_list[Random.Range(0, 3)];//ORI
+            return a_list[2];
+
 
         }
         if (currentTileIndex == 5)
@@ -303,23 +306,23 @@ public class TileController : MonoBehaviour {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 4, 6 };
-            return a_list[index];
+            return a_list[Random.Range(0, 2)];
         }
         if (currentTileIndex == 6)
         {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 8, 5 };
-            return a_list[index];
+            return a_list[Random.Range(0, 2)];
         }
         if (currentTileIndex == 7)
         {
 
             //Declare a list of two possible tiles 
-            List<int> a_list = new List<int>() { 6, 4 }; //FOR DEBUGGING
-            //List<int> a_list = new List<int>() { 4, 4 };
-            index = a_list[Random.Range(0, 1)];
-            //index = a_list[1];
+            List<int> a_list = new List<int>() { 6, 4 };
+           
+            //index = a_list[Random.Range(0, 1)]; ORI
+            return a_list[1];
 
         }
         if (currentTileIndex == 8)
@@ -327,18 +330,20 @@ public class TileController : MonoBehaviour {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 3, 9 };
-            return a_list[index];
+            return a_list[Random.Range(0, 2)];
         }
         if (currentTileIndex == 9)
         {
 
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
-            index = a_list[Random.Range(0, 3)];
+            return  a_list[Random.Range(0, 3)];
         }
 
 
-        return index;
+        return 0;
+
+
 
 
 
@@ -508,15 +513,15 @@ public class TileController : MonoBehaviour {
     }
 
 
-	public void DestroyTileDriftZone(){ 
+    public void DestroyTileDriftZone(){ 
         Destroy(activeTileDrift[0]);
         activeTileDrift.RemoveAt(0);
 
     
     }
 
-	public void DestroyAllTiles()
-	{
+    public void DestroyAllTiles()
+    {
 
 
 
@@ -541,7 +546,7 @@ public class TileController : MonoBehaviour {
 
 
 
-	}
+    }
 
 
     //Returns Drift Direction 

@@ -677,6 +677,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1648390496597290, guid: aa76ed6313b77442b9e749b9af8ef397,
     type: 2}
   m_PrefabInternal: {fileID: 626790850}
+--- !u!1 &196324767 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1137465321659490, guid: 7c0c05fd578fc45219088ad56e776110,
+    type: 2}
+  m_PrefabInternal: {fileID: 1346348063}
 --- !u!1 &202664516 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1254634980678486, guid: 41d66ba32ab5c412f9ec4e03dbcddbea,
@@ -724,6 +729,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4300317141675540, guid: 8df8cb73a95cc48c7a648c1c42518ead, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64555297528400458, guid: 8df8cb73a95cc48c7a648c1c42518ead,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64530013812659614, guid: 8df8cb73a95cc48c7a648c1c42518ead,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9278,7 +9293,7 @@ MonoBehaviour:
   smoothRotation: 1
   followBehind: 1
   target: {fileID: 1639877792}
-  distance: 80
+  distance: -40
   distance_start: -180
   height_start: 15
   height: 35
@@ -9404,6 +9419,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4608051846243682, guid: 7959cd22ec3bd48fdb51fadd747e00b3,
     type: 2}
   m_PrefabInternal: {fileID: 895624322}
+--- !u!1 &1730736437 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1727791512862792, guid: 1fc44fc2a36744331a48c2844f63cd17,
+    type: 2}
+  m_PrefabInternal: {fileID: 486835962}
 --- !u!1001 &1739418172
 Prefab:
   m_ObjectHideFlags: 0
@@ -9530,6 +9550,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.646253, y: 11.099276, z: 29.3284}
   m_Center: {x: -0.5759692, y: 5.8471785, z: -0.90534973}
+--- !u!1 &1793613836 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1021597281802992, guid: 9bbd0a6c912f641ecaa2daea0d52c1d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1395926412}
 --- !u!4 &1799941036 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4624194110253822, guid: 6abe48ab172ce49fdb7b14414d58f9a2,
@@ -10111,6 +10136,9 @@ MonoBehaviour:
     - {fileID: 1983092604}
     - {fileID: 1488917117}
     - {fileID: 183800549}
+    - {fileID: 196324767}
+    - {fileID: 1793613836}
+    - {fileID: 1730736437}
     Type2:
     - {fileID: 1432569336866754, guid: aac75ce49f1074acd8a97db7579c4b62, type: 2}
     - {fileID: 966032330}
