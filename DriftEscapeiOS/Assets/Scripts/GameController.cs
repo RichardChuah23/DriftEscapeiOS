@@ -165,6 +165,7 @@ public class GameController : MonoBehaviour
         skyDomeController.changeColor();
 
         //Begin Starting Camera View; 
+        cameraController.resetCamera();
         cameraController.setGameStartCameraView();
 
         //Done set up

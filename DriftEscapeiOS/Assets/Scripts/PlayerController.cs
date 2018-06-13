@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private string GameOverDriftDirection;
     private string mode = "FORWARD";
     private string previousMode;
-    private float startGameMovementCoolDown ;
+    private float startGameMovementCoolDown;
     public float startGameMovementCoolDownDuration;
 
     //Drift Variable 
@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     private bool lerping = false;
     private float wantedPosX;
     private bool startTurning = false;
+
+    //Gameover Variable 
+    private float t;
 
     //Tile variable 
     private string nextDriftDir;
@@ -77,11 +80,6 @@ public class PlayerController : MonoBehaviour
     private string animMode;
 
 
-
-
-
-
-
     void Start()
     {
 
@@ -94,7 +92,6 @@ public class PlayerController : MonoBehaviour
         resetGameInitialValue();
 
     }
-
 
 
     void FixedUpdate()
@@ -135,8 +132,8 @@ public class PlayerController : MonoBehaviour
 
         else if (mode == "GAMEOVER")
         {
-
-
+            /*
+            //Game over reason 
             if (gameOverReason == "Touches Ground" || gameOverReason == "Late Predrift")
             {
 
@@ -144,27 +141,99 @@ public class PlayerController : MonoBehaviour
             }
             else if (gameOverReason == "Hit Big Obstacle")
             {
-                gameOverHitObstacle();
+                gameOverStraightHitObstacle();
 
             }
 
+			*/
 
+
+            if (gameOverReason == "STRAIGHT HIT")
+            {
+                gameOverStraightHitObstacle();
+            }
+            else if (gameOverReason == "DRIFT HIT")
+            {
+
+                gameOverDrifttHitObstacle();
+            }
+            else if (gameOverReason == "HIT GROUND")
+            {
+                gameOverTouchGround(); 
+            }
+            else if (gameOverReason == "LATE DRIFT")
+            {
+                gameOverLateDrift(); 
+            }
+            else if (gameOverReason == "EARLY DRIFT")
+            {
+                //Do Something 
+            }
 
             turnGear = 0;
 
         }
+        else if (mode == "PAUSED")
+        {
+            Debug.Log("GAME PAUSED");
+        }
         else
         {
-            Debug.Log("Variable mode is invalid || game Paused");
+            Debug.Log("Variable mode is invalid");
         }
 
 
     }
 
-    private void gameOverHitObstacle()
+    #region End Game Functions
+
+    private void gameOverDrifttHitObstacle()
     {
-        drift(currentSpeed, 0.03f);
-        StartCoroutine(delayStop());
+
+
+        float turnAngle = 0; 
+
+        if(previousMode == "LEFT"){
+
+            turnAngle = -3; 
+        }else{
+            turnAngle = 3;
+        }
+
+        if (t <= 1)
+        {
+
+            Debug.Log(Mathf.Lerp(turnSpeed, 0, t));
+            drift(Mathf.Lerp(turnSpeed, 0, t), turnAngle);
+            // .. and increate the t interpolater
+            t += 0.5f * Time.deltaTime;
+        }
+
+
+
+        if (t >= 1 && gameOverTriggred == false )
+        {
+            gameController.setGameOver(true);
+
+            Debug.Log("ON!");
+            fxController.onBrokeDownSmoke();
+            offDriftFX();
+            driftSmokeGameController.offDriftSmoke();
+            cameraController.startLightShake();
+            //Fix the car movement; 
+            transform.GetComponent<Rigidbody>().isKinematic = true;
+
+            gameOverTriggred = true;
+        }
+
+
+
+    }
+
+    private void gameOverStraightHitObstacle()
+    {
+        drift(currentSpeed, 0.02f);
+        StartCoroutine(delayStopForwardSpeed(0.5f,2f));
         if (gameOverTriggred == false)
         {
 
@@ -172,6 +241,26 @@ public class PlayerController : MonoBehaviour
 
 
             animController.playSpinOff();
+            fxController.onTyreSketch();
+            driftSmokeGameController.onDriftSmoke();
+
+
+        }
+        gameOverTriggred = true;
+
+    }
+
+    private void gameOverLateDrift()
+    {
+        
+
+        drift(currentSpeed, 0.02f);
+        StartCoroutine(delayStopForwardSpeed(0.5f, 1f));
+        if (gameOverTriggred == false)
+        {
+
+            cameraController.startLightShake();
+            animController.playDriftLeft();
             fxController.onTyreSketch();
             driftSmokeGameController.onDriftSmoke();
 
@@ -216,14 +305,17 @@ public class PlayerController : MonoBehaviour
         offDriftFX();
         gameOverTriggred = true;
 
-        if (turnSpeed == 0 ){
+        if (turnSpeed == 0)
+        {
 
             //Fix car movement
-            transform.GetComponent<Rigidbody>().isKinematic = true; 
+            transform.GetComponent<Rigidbody>().isKinematic = true;
         }
 
 
     }
+
+    #endregion 
 
     public void resetGameInitialValue()
     {
@@ -255,6 +347,8 @@ public class PlayerController : MonoBehaviour
         startTurning = false;
         startGameMovementCoolDown = Time.time;
         startGameMovementCoolDownDuration = 1f;
+        t = 0;
+
     }
 
     void locateAllController()
@@ -350,13 +444,14 @@ public class PlayerController : MonoBehaviour
 
     public void setMode(string mode)
     {
-        previousMode = this.mode; 
+        previousMode = this.mode;
         this.mode = mode;
     }
 
-    public string getPreviousMode(){
+    public string getPreviousMode()
+    {
 
-        return previousMode; 
+        return previousMode;
     }
 
     public string getMode()
@@ -369,7 +464,8 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     }
 
-    public void setPlayerYAxis(float degree){
+    public void setPlayerYAxis(float degree)
+    {
         transform.rotation = Quaternion.AngleAxis(degree, Vector3.up);
     }
 
@@ -382,6 +478,8 @@ public class PlayerController : MonoBehaviour
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
+
+
 
 
     void moveForward()
@@ -397,15 +495,17 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
+        /* GameOver when player tap screen outside drift zone 
         if(swipeController.Tap){
             mode = "GAMEOVER";
         }
 
+		*/
 
         //Moving Left and Right 
-        if (swipeController.SwipeLeft || userInputHo == -1.0 )
+        if (swipeController.SwipeLeft || userInputHo == -1.0)
         {
-            if (Time.time - lastTime > swithLaneCoolDown && allowLeft && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration) )
+            if (Time.time - lastTime > swithLaneCoolDown && allowLeft && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration))
             {
 
                 wantedPosX = switchLeft();
@@ -574,16 +674,33 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (collision.transform.tag == "Big Road Object")
+        if (collision.transform.tag == "Big Road Object" && mode == "FORWARD" )
         {
+            Debug.Log("Straight hit GG");
+            previousMode = mode;
             mode = "GAMEOVER";
-            gameOverReason = "Hit Big Obstacle";
+            gameOverReason = "STRAIGHT HIT";
+        }
+
+        if (collision.transform.tag == "Big Road Object"  )
+        {
+
+
+
+            if(mode == "LEFT" || mode == "RIGHT" ){
+                previousMode = mode;
+                mode = "GAMEOVER";
+                Debug.Log("Drift hit GG" + collision.transform.tag);
+
+                gameOverReason = "DRIFT HIT";
+            }
+
         }
 
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider")
         {
-            
+
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
 
@@ -613,7 +730,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (collision.transform.name == "Exit DriftZone Collider")
+        if (collision.transform.name == "Exit DriftZone Collider" && mode != "GAMEOVER")
         {
             collision.transform.gameObject.SetActive(false);
 
@@ -621,8 +738,9 @@ public class PlayerController : MonoBehaviour
             {
 
                 //GameOver when car hits the road and its still in predrift mode. 
+                previousMode = mode; 
                 mode = "GAMEOVER";
-                gameOverReason = "Late Predrift";
+                gameOverReason = "LATE DRIFT";
 
             }
             StartCoroutine(RemoveTileDrift());
@@ -630,7 +748,8 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (collision.transform.name == "Enter DriftZone Collider")
+
+        if (collision.transform.name == "Enter DriftZone Collider" && mode != "GAMEOVER")
         {
             collision.transform.gameObject.SetActive(false);
             //Enter Predrift mode when enter drift zone 
@@ -638,7 +757,6 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
-        Debug.Log(collision.transform.tag);
         if (collision.transform.tag == "Coins")
         {
             scoreController.addCoins();
@@ -650,9 +768,9 @@ public class PlayerController : MonoBehaviour
 
 
         //Gameover when touches the ground 
-        if (collision.transform.name == "Ground")
+        if (collision.transform.name == "Ground" && mode != "GAMEOVER")
         {
-            Debug.Log("GG hit Gound hihit");
+            
             if (mode == "LEFT")
             {
                 GameOverDriftDirection = "LEFT";
@@ -664,9 +782,9 @@ public class PlayerController : MonoBehaviour
 
             //Control FX 
             offDriftFX();
-
+            previousMode = mode;
             mode = "GAMEOVER";
-            gameOverReason = "Touches Ground";
+            gameOverReason = "HIT GROUND";
         }
 
 
@@ -708,6 +826,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
     void driftmode(string mode)
     {
 
@@ -733,7 +853,7 @@ public class PlayerController : MonoBehaviour
 
         //Click Right
         bool tmpBool = (swipeController.SwipeRight || inputHo == 1);
-        if ( tmpBool && Time.time - lastTime2 > coolDown && turnGear <= 3)
+        if (tmpBool && Time.time - lastTime2 > coolDown && turnGear <= 3)
         {
             if (mode == "LEFT" && turnGear - 1 >= 0)
             {
@@ -991,39 +1111,41 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator delayStop()
+    IEnumerator delayStopForwardSpeed(float slowDownSpeed, float delayTime)
     {
 
-        yield return new WaitForSeconds(3f);
+
+
+
+
+        yield return new WaitForSeconds(delayTime);
 
         if (mode == "GAMEOVER")
         {
+            currentSpeed = Mathf.Lerp(forwardSpeed, 0, t);
 
-            if (currentSpeed != 0)
+            // .. and increate the t interpolater
+            t += slowDownSpeed * Time.deltaTime;
+
+
+
+            if (currentSpeed == 0)
             {
-                currentSpeed = currentSpeed - 5;
-            }
-
-            Debug.Log("SET GAME OVER");
-            gameController.setGameOver(true);
-            fxController.onBrokeDownSmoke();
-            offDriftFX();
-            driftSmokeGameController.offDriftSmoke();
-
-
-            if(currentSpeed == 0 ){
+                gameController.setGameOver(true);
+                fxController.onBrokeDownSmoke();
+                offDriftFX();
+                driftSmokeGameController.offDriftSmoke();
 
                 //Fix the car movement; 
-                transform.GetComponent<Rigidbody>().isKinematic = true; 
+                transform.GetComponent<Rigidbody>().isKinematic = true;
             }
 
         }
-
-   
-
-
-
     }
+
+
+
+
 
     IEnumerator RemoveTileRoad()
     {
@@ -1047,6 +1169,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+
 }
 
