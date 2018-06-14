@@ -12,18 +12,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 5
-  lastUpdatedAtString: 2018-06-14T18:13:38.1663160+10:00
+  lastUpdatedAtString: 0001-01-01T00:00:00.0000000+00:00
   initializedAtString: 2018-06-14T18:13:35.4530930+10:00
   entries:
-  - path: DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
-    projectPath: Assets/_Scenes/MainMenu.unity
+  - path: DriftEscapeiOS/Assets/Font/Roboto-Bold SDF.asset
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Font/Roboto-Bold
+      SDF.asset
+    projectPath: Assets/Font/Roboto-Bold SDF.asset
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/CurrentLayout.dwlt
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/CurrentLayout.dwlt
-    projectPath: Library/CurrentLayout.dwlt
+  - path: DriftEscapeiOS/Assets/Scripts/MainMenuController.cs
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/MainMenuController.cs
+    projectPath: Assets/Scripts/MainMenuController.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
+    projectPath: Assets/_Scenes/MainMenu.unity
     originalPath: 
     status: 3
     staged: 0
@@ -51,93 +58,243 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
+  - path: DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitlog.yaml
+    projectPath: Library/gfu/cache/gitlog.yaml
+    originalPath: 
+    status: 3
+    staged: 0
   - path: DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
     fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gitstatusentries.yaml
     projectPath: Library/gfu/cache/gitstatusentries.yaml
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/gittrackingstatus.yaml
-    projectPath: Library/gfu/cache/gittrackingstatus.yaml
+  - path: DriftEscapeiOS/Library/metadata/ad/ad08ccdc8a5db4890827799a7b3ad942.info
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/ad/ad08ccdc8a5db4890827799a7b3ad942.info
+    projectPath: Library/metadata/ad/ad08ccdc8a5db4890827799a7b3ad942.info
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/gfu/cache/repoinfo.yaml
-    projectPath: Library/gfu/cache/repoinfo.yaml
+  - path: DriftEscapeiOS/Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
+    projectPath: Library/metadata/b8/b8d0d3f02517845febe866821b54d5ff
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/26/265f537689ba84b67a1f868493ed5782
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/26/265f537689ba84b67a1f868493ed5782
-    projectPath: Library/metadata/26/265f537689ba84b67a1f868493ed5782
+  - path: DriftEscapeiOS/Library/shadercompiler-UnityShaderCompiler0.log
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/shadercompiler-UnityShaderCompiler0.log
+    projectPath: Library/shadercompiler-UnityShaderCompiler0.log
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    projectPath: Library/metadata/47/472525c94a03c426fb7607f3d896a630
+  - path: DriftEscapeiOS/obj/Debug/Assembly-CSharp.csproj.FilesWrittenAbsolute.txt
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/obj/Debug/Assembly-CSharp.csproj.FilesWrittenAbsolute.txt
+    projectPath: obj/Debug/Assembly-CSharp.csproj.FilesWrittenAbsolute.txt
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
-    projectPath: Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
+  - path: DriftEscapeiOS/obj/Debug/Assembly-CSharp.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/obj/Debug/Assembly-CSharp.dll
+    projectPath: obj/Debug/Assembly-CSharp.dll
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
-    projectPath: Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
+  - path: DriftEscapeiOS/obj/Debug/Assembly-CSharp.dll.mdb
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/obj/Debug/Assembly-CSharp.dll.mdb
+    projectPath: obj/Debug/Assembly-CSharp.dll.mdb
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/c3/c359d4efb504d4cdc87f398b1e2d9502
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/c3/c359d4efb504d4cdc87f398b1e2d9502
-    projectPath: Library/metadata/c3/c359d4efb504d4cdc87f398b1e2d9502
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/metadata/f9/f91fc01397df240ef85d146f9a6661a3
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f9/f91fc01397df240ef85d146f9a6661a3
-    projectPath: Library/metadata/f9/f91fc01397df240ef85d146f9a6661a3
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/CrashedAssetImports.txt
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/CrashedAssetImports.txt
-    projectPath: Library/CrashedAssetImports.txt
+  - path: DriftEscapeiOS/Library/ShaderCache/4/4c9b15e0078262e01ce27411c2bcd590.bin
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ShaderCache/4/4c9b15e0078262e01ce27411c2bcd590.bin
+    projectPath: Library/ShaderCache/4/4c9b15e0078262e01ce27411c2bcd590.bin
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Library/EditorInstance.json
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/EditorInstance.json
-    projectPath: Library/EditorInstance.json
+  - path: DriftEscapeiOS/Library/ShaderCache/6/6c001f2e467966476321d482ff26654c.bin
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Library/ShaderCache/6/6c001f2e467966476321d482ff26654c.bin
+    projectPath: Library/ShaderCache/6/6c001f2e467966476321d482ff26654c.bin
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
-    projectPath: Temp/ProcessJobs/e9a6970f79cd12d8b075e7d72f1b07cb.bakert
+  - path: DriftEscapeiOS/Temp/UnityTempFile-dd6a19cd5d2df4b3989d031edbbceef1
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-dd6a19cd5d2df4b3989d031edbbceef1
+    projectPath: Temp/UnityTempFile-dd6a19cd5d2df4b3989d031edbbceef1
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityLockfile
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityLockfile
-    projectPath: Temp/UnityLockfile
+  - path: DriftEscapeiOS/Temp/UnityTempFile-ff9340a361cf8474782bf6d7e1a8698f
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-ff9340a361cf8474782bf6d7e1a8698f
+    projectPath: Temp/UnityTempFile-ff9340a361cf8474782bf6d7e1a8698f
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-0bf877336611640799bddf918e081908
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-0bf877336611640799bddf918e081908
-    projectPath: Temp/UnityTempFile-0bf877336611640799bddf918e081908
+  - path: DriftEscapeiOS/Temp/bin/Debug/Assembly-CSharp.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Assembly-CSharp.dll
+    projectPath: Temp/bin/Debug/Assembly-CSharp.dll
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7cab15741c32d416486f4d7aa1d7c0ef
-    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7cab15741c32d416486f4d7aa1d7c0ef
-    projectPath: Temp/UnityTempFile-7cab15741c32d416486f4d7aa1d7c0ef
+  - path: DriftEscapeiOS/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+    projectPath: Temp/bin/Debug/Assembly-CSharp.dll.mdb
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/ExCSS.Unity.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/ExCSS.Unity.dll
+    projectPath: Temp/bin/Debug/ExCSS.Unity.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/TextMeshPro-2017.2-Editor.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/TextMeshPro-2017.2-Editor.dll
+    projectPath: Temp/bin/Debug/TextMeshPro-2017.2-Editor.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/TextMeshPro-2017.2-Runtime.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/TextMeshPro-2017.2-Runtime.dll
+    projectPath: Temp/bin/Debug/TextMeshPro-2017.2-Runtime.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.Mdb.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.Mdb.dll
+    projectPath: Temp/bin/Debug/Unity.Cecil.Mdb.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.Pdb.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.Pdb.dll
+    projectPath: Temp/bin/Debug/Unity.Cecil.Pdb.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.Cecil.dll
+    projectPath: Temp/bin/Debug/Unity.Cecil.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.CecilTools.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.CecilTools.dll
+    projectPath: Temp/bin/Debug/Unity.CecilTools.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.DataContract.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.DataContract.dll
+    projectPath: Temp/bin/Debug/Unity.DataContract.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+    projectPath: Temp/bin/Debug/Unity.Legacy.NRefactory.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.SerializationLogic.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.SerializationLogic.dll
+    projectPath: Temp/bin/Debug/Unity.SerializationLogic.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.UNetWeaver.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.UNetWeaver.dll
+    projectPath: Temp/bin/Debug/Unity.UNetWeaver.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+    projectPath: Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEditor.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEditor.dll
+    projectPath: Temp/bin/Debug/UnityEditor.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Advertisements.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Advertisements.dll
+    projectPath: Temp/bin/Debug/UnityEngine.Advertisements.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Analytics.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Analytics.dll
+    projectPath: Temp/bin/Debug/UnityEngine.Analytics.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+    projectPath: Temp/bin/Debug/UnityEngine.GoogleAudioSpatializer.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.HoloLens.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.HoloLens.dll
+    projectPath: Temp/bin/Debug/UnityEngine.HoloLens.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Networking.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Networking.dll
+    projectPath: Temp/bin/Debug/UnityEngine.Networking.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Purchasing.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Purchasing.dll
+    projectPath: Temp/bin/Debug/UnityEngine.Purchasing.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+    projectPath: Temp/bin/Debug/UnityEngine.SpatialTracking.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.TestRunner.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.TestRunner.dll
+    projectPath: Temp/bin/Debug/UnityEngine.TestRunner.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Timeline.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.Timeline.dll
+    projectPath: Temp/bin/Debug/UnityEngine.Timeline.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.UI.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.UI.dll
+    projectPath: Temp/bin/Debug/UnityEngine.UI.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.UIAutomation.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.UIAutomation.dll
+    projectPath: Temp/bin/Debug/UnityEngine.UIAutomation.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/UnityEngine.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/UnityEngine.dll
+    projectPath: Temp/bin/Debug/UnityEngine.dll
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/bin/Debug/nunit.framework.dll
+    fullPath: /Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Temp/bin/Debug/nunit.framework.dll
+    projectPath: Temp/bin/Debug/nunit.framework.dll
     originalPath: 
     status: 1
     staged: 0

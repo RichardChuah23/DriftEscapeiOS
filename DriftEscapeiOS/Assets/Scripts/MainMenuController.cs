@@ -27,8 +27,8 @@ public class MainMenuController : MonoBehaviour {
 	RectTransform drift;
 	RectTransform escape;
 	//The new position of the game title
-	Vector3 driftPosition = new Vector3 (0, 310, 0);
-	Vector3 escapePosition = new Vector3 (0, 220, 0);
+	Vector3 driftPosition = new Vector3 (0, 325, 0);
+	Vector3 escapePosition = new Vector3 (0, 225, 0);
 	// Reference value used for the Smoothdamp method
 	private Vector3 driftVelocity = Vector3.zero;
 	private Vector3 escapeVelocity = Vector3.zero;
@@ -64,8 +64,8 @@ public class MainMenuController : MonoBehaviour {
 		carsSelection = GameObject.Find ("CarsSelection");
 
 		// Get the RectTransform component
-		drift = mainMenuGameObject.transform.GetChild (0).GetComponent<RectTransform> ();
-		escape = mainMenuGameObject.transform.GetChild (1).GetComponent<RectTransform> ();
+		drift = mainMenuGameObject.transform.GetChild (1).GetComponent<RectTransform> ();
+		escape = mainMenuGameObject.transform.GetChild (2).GetComponent<RectTransform> ();
 	}
 		
 	void Update() {
