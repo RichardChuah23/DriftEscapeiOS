@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private float inputHo;
     private float coolDown;
     private float lastTime2;
+    private bool readyDrift; 
 
     //Switch lane variable 
     private float userInputHo;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private AnimationController animController;
     private ScoreController scoreController;
     private CameraController cameraController;
+    private SoundEffectController soundEffectController; 
 
 
     //Swipe Controls 
@@ -167,7 +169,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (gameOverReason == "EARLY DRIFT")
             {
-                //Do Something 
+                gameOverEarlyDrift();
             }
 
             turnGear = 0;
@@ -230,6 +232,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// 
+    /// GameOver - player hits obstacle 
+    /// 
     private void gameOverStraightHitObstacle()
     {
         drift(currentSpeed, 0.02f);
@@ -250,27 +255,123 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Game over - player failed to tap drift 
+    /// </summary>
     private void gameOverLateDrift()
     {
         
+        float turnAngle = 0;
 
-        drift(currentSpeed, 0.02f);
-        StartCoroutine(delayStopForwardSpeed(0.5f, 1f));
-        if (gameOverTriggred == false)
+
+
+        if (t <= 1)
         {
+            if (GameOverDriftDirection == "RIGHT")
+            {
+                turnAngle = 2;
 
-            cameraController.startLightShake();
-            animController.playDriftLeft();
-            fxController.onTyreSketch();
+            }
+            else if (GameOverDriftDirection == "LEFT")
+            {
+                turnAngle = -2;
+            }
+            else if (GameOverDriftDirection == "FORWARD")
+            {
+                animController.playDriftRight();
+            }
+
             driftSmokeGameController.onDriftSmoke();
+            fxController.onSkidMark();
 
 
+            Debug.Log(Mathf.Lerp(turnSpeed, 0, t));
+            drift(Mathf.Lerp(turnSpeed, 0, t), turnAngle);
+            // .. and increate the t interpolater
+            t += 0.8f * Time.deltaTime;
         }
-        gameOverTriggred = true;
+
+
+        //When the car stops 
+        if (t >= 1 && gameOverTriggred == false)
+        {
+            gameController.setGameOver(true);
+
+            Debug.Log("ON!");
+            fxController.onBrokeDownSmoke();
+            offDriftFX();
+            driftSmokeGameController.offDriftSmoke();
+            cameraController.startLightShake();
+            //Fix the car movement; 
+            transform.GetComponent<Rigidbody>().isKinematic = true;
+
+            gameOverTriggred = true;
+        }
+
 
     }
 
 
+    private void gameOverEarlyDrift()
+    {
+
+        float turnAngle = 2;
+
+
+
+        if (t <= 1)
+        {
+            if (GameOverDriftDirection == "RIGHT")
+            {
+                turnAngle = 2;
+
+            }
+            else if (GameOverDriftDirection == "LEFT")
+            {
+                turnAngle = -2;
+            }
+            else if (GameOverDriftDirection == "FORWARD")
+            {
+                animController.playDriftRight();
+            }
+
+            driftSmokeGameController.onDriftSmoke();
+            fxController.onSkidMark();
+
+
+            if(GameOverDriftDirection == "FORWARD"){
+                drift(Mathf.Lerp(forwardSpeed, 0, t), turnAngle);
+            }else{
+                drift(Mathf.Lerp(turnSpeed, 0, t), turnAngle);
+            }
+
+            // .. and increate the t interpolater
+            t += 0.8f * Time.deltaTime;
+        }
+
+
+        //When the car stops 
+        if (t >= 1 && gameOverTriggred == false)
+        {
+            gameController.setGameOver(true);
+
+            Debug.Log("ON!");
+            fxController.onBrokeDownSmoke();
+            offDriftFX();
+            driftSmokeGameController.offDriftSmoke();
+            cameraController.startLightShake();
+            //Fix the car movement; 
+            transform.GetComponent<Rigidbody>().isKinematic = true;
+
+            gameOverTriggred = true;
+        }
+
+
+    }
+
+    /// <summary>
+    /// Game over - player rigitbody touches ground 
+    /// </summary>
     private void gameOverTouchGround()
     {
 
@@ -348,6 +449,7 @@ public class PlayerController : MonoBehaviour
         startGameMovementCoolDown = Time.time;
         startGameMovementCoolDownDuration = 1f;
         t = 0;
+        readyDrift = false;
 
     }
 
@@ -412,6 +514,13 @@ public class PlayerController : MonoBehaviour
             animController = vehicleControllerObject.GetComponentInChildren<AnimationController>();
 
 
+        }
+
+        //Locate Sound Manager 
+
+        GameObject soundControllerObject = GameObject.FindWithTag("SoundController"); 
+        if(soundControllerObject != null){
+            soundEffectController = soundControllerObject.GetComponent<SoundEffectController>();
         }
 
 
@@ -510,6 +619,9 @@ public class PlayerController : MonoBehaviour
 
                 wantedPosX = switchLeft();
             }
+
+
+
 
         }
         else if (swipeController.SwipeRight || userInputHo == 1)
@@ -613,7 +725,7 @@ public class PlayerController : MonoBehaviour
         onLaneNumber -= 1;
         lerping = true;
 
-
+        soundEffectController.playSwoosh();
         return wantedPosX;
     }
 
@@ -636,7 +748,7 @@ public class PlayerController : MonoBehaviour
         lerping = true;
 
 
-
+        soundEffectController.playSwoosh();
         return wantedPosX;
     }
 
@@ -737,14 +849,39 @@ public class PlayerController : MonoBehaviour
             if (mode == "PREDRIFT")
             {
 
+                if(previousMode == "LEFT"){
+                    GameOverDriftDirection = "LEFT";
+                }else if (previousMode == "RIGHT"){
+                    GameOverDriftDirection = "RIGHT";
+                }else if (previousMode == "FORWARD"){
+                    GameOverDriftDirection = "FORWARD";
+                }
+
                 //GameOver when car hits the road and its still in predrift mode. 
                 previousMode = mode; 
                 mode = "GAMEOVER";
                 gameOverReason = "LATE DRIFT";
 
+
+
             }
             StartCoroutine(RemoveTileDrift());
             //collision.transform.gameObject.SetActive(false);
+
+        }
+
+
+        if (collision.transform.name == "Ready Drift DriftZone Collider" && mode != "GAMEOVER")
+        {
+            collision.transform.gameObject.SetActive(false);
+            readyDrift = true; 
+        }
+
+        if (collision.transform.tag == "Coins")
+        {
+            scoreController.addCoins();
+            collision.transform.parent.gameObject.SetActive(false);
+            soundEffectController.playCoins();
 
         }
 
@@ -948,11 +1085,22 @@ public class PlayerController : MonoBehaviour
         //User input 
         userInputVer = Input.GetAxisRaw("Vertical");
 
+        //User input 
+        bool earlyDrift; 
+
+        if(swipeController.Tap == true && readyDrift == false){
+            GameOverDriftDirection = previousMode; 
+            previousMode = mode;
+            mode = "GAMEOVER";
+            gameOverReason = "EARLY DRIFT"; 
+
+        }
+
         //If input is swipe down 
         //Enter Drift Mode
         bool tmpInput = (swipeController.Tap || userInputVer == -1);
 
-        if (tmpInput && nextTileDirection != "FORWARD")
+        if (tmpInput && nextTileDirection != "FORWARD" && mode != "GAMEOVER")
         {
 
             //Active Drift FX
@@ -1020,19 +1168,13 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
         //Back to forward Tile 
-        if (nextTileDirection == "FORWARD")
+        if (nextTileDirection == "FORWARD" &&mode != "GAMEOVER")
         {
-
-
+            
             //Swipe Up
             if (swipeController.Tap || userInputVer == 1)
             {
-
-
-
-
                 //player animation 
                 if (animMode == "DriftLeft")
                 {

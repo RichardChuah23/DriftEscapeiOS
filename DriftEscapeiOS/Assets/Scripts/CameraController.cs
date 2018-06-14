@@ -117,8 +117,6 @@ public class CameraController : MonoBehaviour
             }
 
 
-
-
         //Drift Mode
         }else if (playerMode == "LEFT" || playerMode == "RIGHT" || playerMode == "GAMEOVER"){
             distance = 50;
