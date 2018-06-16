@@ -10,8 +10,11 @@ public class CameraController : MonoBehaviour
     public Rigidbody rb;
     private string playerMode; 
     private PlayerController playerController;
-    private Vector3 startPosition; 
+    private Vector3 startPosition;
 
+    //Sound Controller 
+    private SoundEffectController soundController; 
+    private bool soundPlaying = false ;
 
     //Camera effect var 
     public ParticleSystem accelerateFX;
@@ -69,7 +72,8 @@ public class CameraController : MonoBehaviour
         //Set the camera at the first frame
         transform.position = startPosition;
 
-
+        GameObject soundControllerObj = GameObject.FindWithTag("SoundController");
+        soundController = soundControllerObj.GetComponent<SoundEffectController>();
 
 
     }
@@ -84,14 +88,21 @@ public class CameraController : MonoBehaviour
         //Front Mode
         if(beginLerping == true){
 
-            //Wait for 3 seconds and start 
+            //Wait for n seconds and start 
             distance = -180;
             height = 15;
             start_offset = new Vector3(17, 0f, 0f);
 
 
             rotationDamping = 15;
+            if(soundPlaying == false){
+                
+				StartCoroutine(beginplayingAcceleratingSound());
+            }
             StartCoroutine(beginMoveStartCamera());
+
+
+
 
         }
 
@@ -101,17 +112,25 @@ public class CameraController : MonoBehaviour
 
             //Accelerating 
             if (particleTime > 0f) { 
+
 				accelerateFX.gameObject.SetActive(true);
                 height = 22;
                 damping = 5;
+
+
+
                 particleTime -= Time.deltaTime;
                 StartCoroutine(delayResetRotationDamping());
+                soundPlaying = false;
+
+
             }else
             {
                 distance = -30;
                 damping = 3;
                 height = 40;
-                accelerateFX.gameObject.SetActive(false);
+
+
 
 
             }
@@ -125,8 +144,6 @@ public class CameraController : MonoBehaviour
             height = 45;
             accelerateFX.gameObject.SetActive(false);
             particleTime = 2.5f; 
-        }else{
-            Debug.Log("Mode not valid");
         }
 
 
@@ -142,10 +159,30 @@ public class CameraController : MonoBehaviour
         rotationDamping = 15; 
     }
 
+    IEnumerator beginplayingAcceleratingSound(){
+        
+        yield return new WaitForSeconds(startGameFocusDuration - 0.2f);
+
+ 
+        if(soundPlaying == false){
+
+            Debug.Log("RUN");
+			soundController.playAccelerate();
+			soundPlaying = true;
+			
+
+        }    
+
+
+    }
+
     IEnumerator beginMoveStartCamera()
     {
 
         yield return new WaitForSeconds(startGameFocusDuration);
+
+
+
 
         //Interpolated float result between min and max
         distance = Mathf.Lerp(distance_start, 35, t);
@@ -154,7 +191,7 @@ public class CameraController : MonoBehaviour
         start_offset.x = Mathf.Lerp(start_offset_start.x, 0, t);
   
         // .. and increate the t interpolater
-        t += 0.2f * Time.deltaTime;
+        t += 0.5f * Time.deltaTime;
 
 
         if (t > 1)

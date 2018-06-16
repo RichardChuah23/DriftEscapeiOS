@@ -285,7 +285,6 @@ public class PlayerController : MonoBehaviour
             fxController.onSkidMark();
 
 
-            Debug.Log(Mathf.Lerp(turnSpeed, 0, t));
             drift(Mathf.Lerp(turnSpeed, 0, t), turnAngle);
             // .. and increate the t interpolater
             t += 0.8f * Time.deltaTime;
@@ -894,6 +893,7 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
+        /*
         if (collision.transform.tag == "Coins")
         {
             scoreController.addCoins();
@@ -901,6 +901,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
+		*/
 
 
 

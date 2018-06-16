@@ -18,6 +18,9 @@ public class SoundEffectController : MonoBehaviour {
     private AudioClip[] popList; 
     private AudioClip[] hWooshList;
 
+    private bool musicOn;
+    private bool fxOn; 
+
 
 	// Use this for initialization
     void Awake()
@@ -38,18 +41,45 @@ public class SoundEffectController : MonoBehaviour {
         popList = new AudioClip[] { pop1, pop2, pop3 };
         hWooshList = new AudioClip[] {hSwoosh1, hSwoosh2, hSwoosh3 };
 
+        musicOn = true;
+        fxOn = true; 
+
+    }
+
+
+
+    public void setFxOn(bool fxOn){
+        this.fxOn = fxOn;
+        
+    }
+
+    public void playMusic(){
+        musicSource.Play();
+        musicSource.loop = true;
+    }
+
+
+    public void stopMusic()
+    {
+        musicSource.Stop();
+       
     }
 
 
     //Used to play single sound clips.
     public void PlaySingle(AudioClip clip)
     {
-        //Set the clip of our efxSource audio source to the clip passed in as a parameter.
-        efxSource.clip = clip;
 
-        //Play the clip.
-        efxSource.Play();
-    }
+        if(fxOn== true){
+
+			//Set the clip of our efxSource audio source to the clip passed in as a parameter.
+			efxSource.clip = clip;
+			
+			//Play the clip.
+			efxSource.Play();
+		}
+
+        }
 
 
     public void playPop(){
@@ -106,3 +136,5 @@ public class SoundEffectController : MonoBehaviour {
         efxSource.Play();
     }
 }
+
+
