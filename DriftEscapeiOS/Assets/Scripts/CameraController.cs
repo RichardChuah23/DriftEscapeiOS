@@ -121,7 +121,7 @@ public class CameraController : MonoBehaviour
 
                 particleTime -= Time.deltaTime;
                 StartCoroutine(delayResetRotationDamping());
-                soundPlaying = false;
+
 
 
             }else
@@ -129,7 +129,7 @@ public class CameraController : MonoBehaviour
                 distance = -30;
                 damping = 3;
                 height = 40;
-
+                soundPlaying = false;
 
 
 
@@ -138,10 +138,16 @@ public class CameraController : MonoBehaviour
 
         //Drift Mode
         }else if (playerMode == "LEFT" || playerMode == "RIGHT" || playerMode == "GAMEOVER"){
+            
             distance = 50;
             damping = 3;
             rotationDamping = 15;
             height = 45;
+			
+
+
+
+
             accelerateFX.gameObject.SetActive(false);
             particleTime = 2.5f; 
         }
@@ -166,7 +172,6 @@ public class CameraController : MonoBehaviour
  
         if(soundPlaying == false){
 
-            Debug.Log("RUN");
 			soundController.playAccelerate();
 			soundPlaying = true;
 			
@@ -236,6 +241,7 @@ public class CameraController : MonoBehaviour
 
         if (smoothRotation)
         {
+            
             Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up) ;
 
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);

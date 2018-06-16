@@ -5,18 +5,22 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     public Animator anim;
-    public Transform target; 
+    public Transform target;
     // Use this for initialization
     void Start()
     {
 
     }
 
-    public bool isZeroRotation(){
+    public bool isZeroRotation()
+    {
         Debug.Log(target.rotation.y);
-        if(target.rotation.y > -1 && target.rotation.y < 1){
-            return true; 
-        }else{
+        if (target.rotation.y > -1 && target.rotation.y < 1)
+        {
+            return true;
+        }
+        else
+        {
             return false;
         }
     }
@@ -29,22 +33,24 @@ public class AnimationController : MonoBehaviour
 
     public void playSwitchLeft()
     {
-        anim.Play("SwitchLeft"); 
+        anim.Play("SwitchLeft");
     }
 
     public void playSwitchRight()
     {
-        anim.Play("SwitchRight"); 
+        anim.Play("SwitchRight");
 
     }
 
-    public void playDriftLeft(){ 
-        anim.Play("DriftLeft"); 
+    public void playDriftLeft()
+    {
+        anim.Play("DriftLeft");
     }
 
-    public void playDriftRight(){ 
-        anim.Play("DriftRight"); 
-    
+    public void playDriftRight()
+    {
+        anim.Play("DriftRight");
+
     }
 
     public void playDriftLeftToRight()
@@ -65,7 +71,7 @@ public class AnimationController : MonoBehaviour
     public void playDriftLeftToIdle()
     {
 
-  
+
         anim.Play("DriftLeftToIdle");
 
     }
@@ -86,8 +92,10 @@ public class AnimationController : MonoBehaviour
 
     }
 
-
-
+    public void playStartEngine()
+    {
+        anim.Play("StartEngine");
+    }
 
 }
 
