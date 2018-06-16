@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
 
 
         //Play Music
-        soundController.playMusic();
+        //soundController.playMusic();
 
         gameObjRestart.SetActive(false);
         gameObjPlay.SetActive(false);
@@ -194,7 +194,8 @@ public class GameController : MonoBehaviour
         gameObjPlay.SetActive(true);
         gameObjPause.SetActive(false);
 
-
+        //Testing 
+        //soundController.stopMusic();
     
 
     }
