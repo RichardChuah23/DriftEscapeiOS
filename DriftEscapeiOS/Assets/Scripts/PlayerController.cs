@@ -70,16 +70,25 @@ public class PlayerController : MonoBehaviour
     private AnimationController animController;
     private ScoreController scoreController;
     private CameraController cameraController;
-    private SoundEffectController soundEffectController; 
+    private SoundEffectController soundEffectController;
 
 
     //Swipe Controls 
     public swipeController swipeController;
+    private int touchSwipeHo;
+    private int touchTap ; 
+
 
     //Animation
     Animator anim;
     //private float forwardDir = 0f;
     private string animMode;
+
+    //Sound 
+    private bool gameOverSoundEffect = false; 
+
+
+
 
 
     void Start()
@@ -98,6 +107,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
+
+
         //Apply downward force on player Object 
         rb.AddForce(Vector3.down * objectGravity * rb.mass);
         //Lock X and Z axis, prevent player object wooble 
@@ -134,21 +146,8 @@ public class PlayerController : MonoBehaviour
 
         else if (mode == "GAMEOVER")
         {
-            /*
-            //Game over reason 
-            if (gameOverReason == "Touches Ground" || gameOverReason == "Late Predrift")
-            {
 
-                gameOverTouchGround();
-            }
-            else if (gameOverReason == "Hit Big Obstacle")
-            {
-                gameOverStraightHitObstacle();
-
-            }
-
-			*/
-
+            Debug.Log(gameOverReason + " GG!");
 
             if (gameOverReason == "STRAIGHT HIT")
             {
@@ -184,7 +183,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Variable mode is invalid");
         }
 
-
+        touchSwipeHo = 0;
+        touchTap = 0;
     }
 
     #region End Game Functions
@@ -577,6 +577,20 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(degree, Vector3.up);
     }
 
+    public void setTouchSwipeHorizontal(int input)
+    {
+        Debug.Log("SET");
+        this.touchSwipeHo = input;
+
+    }
+
+    public void setTouchTap(int input)
+    {
+        Debug.Log("SET TOUCH");
+        this.touchTap = input;
+
+    }
+
     #endregion
 
 
@@ -611,7 +625,10 @@ public class PlayerController : MonoBehaviour
 		*/
 
         //Moving Left and Right 
-        if (swipeController.SwipeLeft || userInputHo == -1.0)
+
+
+        //if (swipeController.SwipeLeft || userInputHo == -1.0)
+        if (touchSwipeHo == -1 || userInputHo == -1.0)
         {
             if (Time.time - lastTime > swithLaneCoolDown && allowLeft && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration))
             {
@@ -623,7 +640,8 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        else if (swipeController.SwipeRight || userInputHo == 1)
+        //else if (swipeController.SwipeRight || userInputHo == 1)
+        else if (touchSwipeHo == 1 || userInputHo == 1)
         {
             if (Time.time - lastTime > swithLaneCoolDown && allowRight && (Time.time - startGameMovementCoolDown > startGameMovementCoolDownDuration))
             {
@@ -634,7 +652,7 @@ public class PlayerController : MonoBehaviour
 
         if (lerping == true && laneAdjustmentRequire == false)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 6);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(wantedPosX, transform.position.y, transform.position.z), Time.deltaTime * 4);
 
         }
 
@@ -709,7 +727,7 @@ public class PlayerController : MonoBehaviour
 
     float switchLeft()
     {
-
+        Debug.Log("Switched Left once");
         float wantedPosX = getLerpWantedPos("L");
 
         //transform.position += new Vector3(-50, 0f, 0f);
@@ -787,7 +805,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.transform.tag == "Big Road Object" && mode == "FORWARD" )
         {
-            Debug.Log("Straight hit GG");
+            soundEffectController.playHit();
             previousMode = mode;
             mode = "GAMEOVER";
             gameOverReason = "STRAIGHT HIT";
@@ -797,7 +815,7 @@ public class PlayerController : MonoBehaviour
         {
 
 
-
+            soundEffectController.playHit();
             if(mode == "LEFT" || mode == "RIGHT" ){
                 previousMode = mode;
                 mode = "GAMEOVER";
@@ -825,22 +843,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-    }
-
-    /// When player object contacts with an object 
-    void OnCollisionEnter(Collision collision)
-    {
-
-
-        //Shake camera when player hit's small road object
-        if (collision.transform.tag == "Small Road Object")
-        {
-
-            cameraController.startLightShake();
-
-        }
-
-
         if (collision.transform.name == "Exit DriftZone Collider" && mode != "GAMEOVER")
         {
             collision.transform.gameObject.SetActive(false);
@@ -848,16 +850,21 @@ public class PlayerController : MonoBehaviour
             if (mode == "PREDRIFT")
             {
 
-                if(previousMode == "LEFT"){
+                if (previousMode == "LEFT")
+                {
                     GameOverDriftDirection = "LEFT";
-                }else if (previousMode == "RIGHT"){
+                }
+                else if (previousMode == "RIGHT")
+                {
                     GameOverDriftDirection = "RIGHT";
-                }else if (previousMode == "FORWARD"){
+                }
+                else if (previousMode == "FORWARD")
+                {
                     GameOverDriftDirection = "FORWARD";
                 }
 
                 //GameOver when car hits the road and its still in predrift mode. 
-                previousMode = mode; 
+                previousMode = mode;
                 mode = "GAMEOVER";
                 gameOverReason = "LATE DRIFT";
 
@@ -873,7 +880,7 @@ public class PlayerController : MonoBehaviour
         if (collision.transform.name == "Ready Drift DriftZone Collider" && mode != "GAMEOVER")
         {
             collision.transform.gameObject.SetActive(false);
-            readyDrift = true; 
+            readyDrift = true;
         }
 
         if (collision.transform.tag == "Coins")
@@ -901,7 +908,26 @@ public class PlayerController : MonoBehaviour
 
         }
 
-		*/
+        */
+
+
+    }
+
+    /// When player object contacts with an object 
+    void OnCollisionEnter(Collision collision)
+    {
+
+
+        //Shake camera when player hit's small road object
+        if (collision.transform.tag == "Small Road Object")
+        {
+
+            cameraController.startLightShake();
+
+        }
+
+
+
 
 
 
@@ -990,16 +1016,20 @@ public class PlayerController : MonoBehaviour
         inputHo = Input.GetAxisRaw("Horizontal");
 
         //Click Right
-        bool tmpBool = (swipeController.SwipeRight || inputHo == 1);
+        //bool tmpBool = (swipeController.SwipeRight || inputHo == 1);
+
+        bool tmpBool = (touchSwipeHo == 1  || inputHo == 1);
         if (tmpBool && Time.time - lastTime2 > coolDown && turnGear <= 3)
         {
             if (mode == "LEFT" && turnGear - 1 >= 0)
             {
                 turnGear--;
+                soundEffectController.playSwoosh();
             }
             else if (mode == "RIGHT" && turnGear + 1 <= 3)
             {
                 turnGear++;
+                soundEffectController.playSwoosh();
             }
 
             lastTime2 = Time.time;
@@ -1008,16 +1038,19 @@ public class PlayerController : MonoBehaviour
 
 
         //Click Left
-        tmpBool = (swipeController.SwipeLeft || inputHo == -1);
+        //tmpBool = (swipeController.SwipeLeft || inputHo == -1);
+        tmpBool = (touchSwipeHo == -1 || inputHo == -1);
         if (tmpBool && Time.time - lastTime2 > coolDown && turnGear >= 0)
         {
             if (mode == "LEFT" && (turnGear + 1) <= 3)
             {
                 turnGear++;
+                soundEffectController.playSwoosh();
             }
             else if (mode == "RIGHT" && turnGear - 1 >= 0)
             {
                 turnGear--;
+                soundEffectController.playSwoosh();
             }
             lastTime2 = Time.time;
 
@@ -1099,14 +1132,18 @@ public class PlayerController : MonoBehaviour
 
         //If input is swipe down 
         //Enter Drift Mode
-        bool tmpInput = (swipeController.Tap || userInputVer == -1);
+        //bool tmpInput = (swipeController.Tap || userInputVer == -1);
+        bool tmpInput = (touchTap == 1 || userInputVer == -1);
 
+        Debug.Log(tmpInput);
         if (tmpInput && nextTileDirection != "FORWARD" && mode != "GAMEOVER")
         {
 
             //Active Drift FX
             onDriftFX();
 
+            //Play sound 
+            soundEffectController.playHeaySwoosh();
 
             //If player came from forward tile. 
             if (previousMode == "FORWARD")
@@ -1117,6 +1154,7 @@ public class PlayerController : MonoBehaviour
 
                 //Shake Camera 
                 cameraController.startLongLightShake();
+
             }
 
             //Switch mode according to tile curve direction 
@@ -1164,8 +1202,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            //Reset turn gear 
-            //turnGear = 0;
+
         }
 
 
@@ -1174,6 +1211,7 @@ public class PlayerController : MonoBehaviour
         {
             
             //Swipe Up
+            //if (swipeController.Tap || userInputVer == 1)
             if (swipeController.Tap || userInputVer == 1)
             {
                 //player animation 

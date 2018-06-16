@@ -12,18 +12,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
+<<<<<<< HEAD
   lastUpdatedAtString: 2018-06-16T21:30:01.0918840+10:00
   initializedAtString: 2018-06-16T21:30:01.0918840+10:00
   localBranches: []
   remoteBranches: []
   remotes: []
+=======
+<<<<<<< HEAD
+  lastUpdatedAtString: 2018-06-16T12:49:29.8372750+10:00
+  initializedAtString: 2018-06-16T12:43:44.6114670+10:00
+=======
+<<<<<<< HEAD
+  lastUpdatedAtString: 2018-06-16T11:40:35.6358750+10:00
+  initializedAtString: 2018-06-16T11:39:27.7011470+10:00
+>>>>>>> e9ee6e647e80f15a4a3ea588350cf503e53d389d
+  localBranches:
+  - name: master
+    tracking: origin/master
+    isActive: 1
+  remoteBranches:
+<<<<<<< HEAD
+=======
+  - name: origin/HEAD
+    tracking: '[None]'
+    isActive: 0
+>>>>>>> e9ee6e647e80f15a4a3ea588350cf503e53d389d
+  - name: origin/master
+    tracking: '[None]'
+    isActive: 0
+  remotes:
+  - name: origin
+    url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+    login: 
+    user: 
+    host: 
+    function: 0
+    token: 
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+  lastUpdatedAtString: 2018-06-16T11:24:44.6247680+10:00
+  initializedAtString: 2018-06-16T11:24:44.6247680+10:00
+=======
+  lastUpdatedAtString: 2018-06-16T11:39:27.7011470+10:00
+  initializedAtString: 2018-06-16T11:39:27.7011470+10:00
+>>>>>>> e31e2c938a0e7a013d3a805f6cd095799efa6750
+  localBranches: []
+  remoteBranches: []
+  remotes: []
+>>>>>>> d5decd8b5d17ffedb1f4a80fa955d4b84ee12f20
+>>>>>>> e9ee6e647e80f15a4a3ea588350cf503e53d389d
+>>>>>>> 5959d5948dfdc7d938a9c47e6e4e90eee1d2ec1a
   localConfigBranches:
     keys: []
     values: []
   remoteConfigBranches:
+<<<<<<< HEAD
     keys: []
     subKeys: []
     subKeyValues: []
+=======
+    keys:
+    - origin
+    subKeys:
+    - Values:
+<<<<<<< HEAD
+      - master
+    subKeyValues:
+    - Values:
+=======
+      - HEAD
+      - master
+    subKeyValues:
+    - Values:
+      - name: HEAD
+        remote:
+          name: origin
+          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+>>>>>>> e9ee6e647e80f15a4a3ea588350cf503e53d389d
+      - name: master
+        remote:
+          name: origin
+          url: https://github.com/RichardChuah23/DriftEscapeiOS.git
+>>>>>>> 5959d5948dfdc7d938a9c47e6e4e90eee1d2ec1a
   configRemotes:
     keys: []
     values: []
