@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CarsCreation : MonoBehaviour {
 
 	private GameObject[] models;
 
 	private string mode = "car";
-	public int index; 
+	public int currentCarIndex;
+	public int carAvailability;
 
 	private Transform carContainer;
 
@@ -18,6 +21,9 @@ public class CarsCreation : MonoBehaviour {
 
 	public swipeController swipeController;
 	private MainMenuController mainMenuController;
+
+	public Button button; 
+	public TextMeshProUGUI text; 
 
 	private void Awake() {
 		models = new GameObject[transform.childCount];
@@ -30,10 +36,10 @@ public class CarsCreation : MonoBehaviour {
 		carContainer = GameObject.Find ("CarsSelection").transform;
 
 		// Get the saved index
-		index = PlayerPrefs.GetInt ("CharacterSelected");
+		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
 
 		// Returned to the saved position
-		if (index > 0) {
+		if (currentCarIndex > 0) {
 			selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
 			carContainer.transform.position = selectedPosition;
 			newPosition = selectedPosition;
@@ -42,6 +48,7 @@ public class CarsCreation : MonoBehaviour {
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
 		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
+
 	}
 
 	public void Update() {
@@ -53,6 +60,7 @@ public class CarsCreation : MonoBehaviour {
 			ReturnPosition ();
 			mode = "car";
 		}
+
 	}
 		
 	/// <summary>
@@ -63,24 +71,34 @@ public class CarsCreation : MonoBehaviour {
 		position = carContainer.position;
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) {
-			index -= 1;
-			if (index < 0 ) {
-				index = 0;
+			currentCarIndex -= 1;
+			if (currentCarIndex < 0 ) {
+				currentCarIndex = 0;
 			} else {
 				newPosition = position + new Vector3 (38f, 0f, 0f);
 			}
 		}
 
 		if (Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) {
-			index += 1;
-			if (index < models.Length) {
+			currentCarIndex += 1;
+			if (currentCarIndex < models.Length) {
 				newPosition = position + new Vector3 (-38f, 0f, 0f);
 			} else {
-				index -= 1;
+				currentCarIndex -= 1;
 			}
 		}
 
 		carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
+
+		if (currentCarIndex == PlayerPrefs.GetInt ("CharacterSelected")) {
+			Debug.Log (currentCarIndex +" = same");
+			button.gameObject.SetActive (false);
+		} else {
+			button.gameObject.SetActive (true);
+			text.text = "BUY";
+		}
+
+
 	}
 
 	/// <summary>
@@ -90,7 +108,7 @@ public class CarsCreation : MonoBehaviour {
 	/// </summary>
 	public void Confirm(){
 		// Save the selected model index and position x,y,z
-		PlayerPrefs.SetInt ("CharacterSelected", index);
+		PlayerPrefs.SetInt ("CharacterSelected", currentCarIndex);
 		PlayerPrefs.SetFloat ("PositionX", carContainer.transform.position.x);
 		PlayerPrefs.SetFloat ("PositionY", carContainer.transform.position.y);
 		PlayerPrefs.SetFloat ("PositionZ", carContainer.transform.position.z);
@@ -121,7 +139,7 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to the selected model index and position
 	/// </summary>
 	public void ReturnPosition(){
-		index = PlayerPrefs.GetInt ("CharacterSelected");
+		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
 		selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
 		carContainer.transform.position = selectedPosition;
 		newPosition = selectedPosition;
