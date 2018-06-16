@@ -38,7 +38,9 @@ public class GameController : MonoBehaviour
 
     //Score Controller 
     private ScoreController scoreController; 
-    public GameObject gameObjScoreController; 
+    public GameObject gameObjScoreController;
+    private SoundEffectController soundController;
+    public GameObject gameObjsoundController;
 
     private bool restartTrigger;
     private bool gameOverCalled;
@@ -52,7 +54,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        
 
         gameOver = false;
         restart = false;
@@ -95,6 +97,9 @@ public class GameController : MonoBehaviour
         //Locate ScoreController 
         scoreController = gameObjScoreController.GetComponent<ScoreController>();
 
+        //Locate SoundController
+        soundController = gameObjsoundController.GetComponent<SoundEffectController>();
+
         //Restart Button
         Button btnRestartbtn = btnRestart.GetComponent<Button>();
         btnRestartbtn.onClick.AddListener(RestartOnClick);
@@ -108,6 +113,8 @@ public class GameController : MonoBehaviour
         btnPlaybtn.onClick.AddListener(PlayOnClick);
 
 
+        //Play Music
+        soundController.playMusic();
 
         gameObjRestart.SetActive(false);
         gameObjPlay.SetActive(false);
@@ -173,7 +180,7 @@ public class GameController : MonoBehaviour
         gameOverCalled = false;
         //Hide all game over buttons  
         hideGameOverbutton();
-        }
+       }
 
 
     //Pause the game 
@@ -186,6 +193,8 @@ public class GameController : MonoBehaviour
         //Deactivate Pause Button activate Play Button.
         gameObjPlay.SetActive(true);
         gameObjPause.SetActive(false);
+
+
     
 
     }
