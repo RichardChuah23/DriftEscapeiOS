@@ -21,6 +21,7 @@ public class CarsCreation : MonoBehaviour {
 
 	public swipeController swipeController;
 	private MainMenuController mainMenuController;
+	private SoundEffectController soundEffectController;
 
 	public Button button; 
 	public TextMeshProUGUI text; 
@@ -48,6 +49,10 @@ public class CarsCreation : MonoBehaviour {
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
 		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
+
+		// Locate sound manager
+		GameObject soundManager = GameObject.Find("SoundManager");
+		soundEffectController = (SoundEffectController) soundManager.GetComponent(typeof(SoundEffectController));
 
 	}
 
@@ -91,7 +96,7 @@ public class CarsCreation : MonoBehaviour {
 		carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
 
 		if (currentCarIndex == PlayerPrefs.GetInt ("CharacterSelected")) {
-			Debug.Log (currentCarIndex +" = same");
+			//Debug.Log (currentCarIndex +" = same");
 			button.gameObject.SetActive (false);
 		} else {
 			button.gameObject.SetActive (true);
@@ -107,6 +112,9 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to the main menu 
 	/// </summary>
 	public void Confirm(){
+		//sound effect
+		soundEffectController.playPop ();
+
 		// Save the selected model index and position x,y,z
 		PlayerPrefs.SetInt ("CharacterSelected", currentCarIndex);
 		PlayerPrefs.SetFloat ("PositionX", carContainer.transform.position.x);
@@ -124,6 +132,7 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to main menu
 	/// </summary>
 	public void Back () {
+		soundEffectController.playPop ();
 		mode = "return";
 
 		// Return to main menu

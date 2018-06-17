@@ -35,6 +35,15 @@ public class MainMenuController : MonoBehaviour {
 	// Smooth time
 	private float smoothTime = 0.5f;
 
+
+	private SoundEffectController soundEffectController;
+	public Button musicToggleButton;
+	public Button soundToggleButton;
+	public Sprite musicOn;
+	public Sprite soundOn;
+	public Sprite musicOff;
+	public Sprite soundOff;
+
 	/// <summary>
 	/// Gets or sets the mode.
 	/// </summary>
@@ -66,6 +75,14 @@ public class MainMenuController : MonoBehaviour {
 		// Get the RectTransform component
 		drift = mainMenuGameObject.transform.GetChild (1).GetComponent<RectTransform> ();
 		escape = mainMenuGameObject.transform.GetChild (2).GetComponent<RectTransform> ();
+
+		// Locate sound manager
+		GameObject soundManager = GameObject.Find("SoundManager");
+		soundEffectController = (SoundEffectController) soundManager.GetComponent(typeof(SoundEffectController));
+
+		soundEffectController.playStartEngine ();
+		UpdateMusicToggle ();
+		UpdateSoundToggle ();
 	}
 		
 	void Update() {
@@ -73,6 +90,7 @@ public class MainMenuController : MonoBehaviour {
 		clickCar ();
 		cameraZooming();
 	}
+
 
 	/// <summary>
 	/// Titles the animation.
@@ -89,6 +107,7 @@ public class MainMenuController : MonoBehaviour {
 	/// </summary>
 	/// <param name="sceneBuildIndex">Scene build index.</param>
 	public void ChangeScene (int sceneBuildIndex){
+		soundEffectController.playPop ();
 		SceneManager.LoadScene(sceneBuildIndex);
     }
 
@@ -113,6 +132,7 @@ public class MainMenuController : MonoBehaviour {
 				RaycastHit hitInfo = new RaycastHit();  
 				if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) && 
 					hitInfo.transform.gameObject.tag == "Player") {
+					soundEffectController.playPop ();
 					activeCarMenu ();
 					deactiveMainMenu ();
 					zoom = "carMenu";
@@ -145,6 +165,48 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Music button.
+	/// </summary>
+	public void musicButton(){
+		soundEffectController.toggleMusic ();
+		UpdateMusicToggle ();
+	}
+
+	/// <summary>
+	/// Sound button.
+	/// </summary>
+	public void soundButton(){
+		soundEffectController.toggleSound ();
+		UpdateSoundToggle ();
+	}
+
+	/// <summary>
+	/// Updates the music toggle.
+	/// </summary>
+	void UpdateMusicToggle(){
+		if (PlayerPrefs.GetInt ("Music", 1) == 1) {
+			musicToggleButton.GetComponent<Image> ().sprite = musicOn;
+			musicToggleButton.GetComponent<Image> ().color = new Color32 (0, 204, 0, 255);
+		} else {
+			musicToggleButton.GetComponent<Image> ().sprite = musicOff;
+			musicToggleButton.GetComponent<Image> ().color = new Color32 (229, 0, 0, 255);
+		}
+	}
+
+	/// <summary>
+	/// Updates the sound toggle.
+	/// </summary>
+	void UpdateSoundToggle(){
+		if (PlayerPrefs.GetInt ("Sound", 1) == 1) {
+			soundToggleButton.GetComponent<Image> ().sprite = soundOn;
+			soundToggleButton.GetComponent<Image> ().color = new Color32 (0, 204, 0, 255);
+		} else {
+			soundToggleButton.GetComponent<Image> ().sprite = soundOff;
+			soundToggleButton.GetComponent<Image> ().color = new Color32 (229, 0, 0, 255);
+		}
+	}
+
+	/// <summary>
 	/// Actives the main menu.
 	/// </summary>
 	public void activeMainMenu() {
@@ -170,12 +232,14 @@ public class MainMenuController : MonoBehaviour {
 	/// </summary>
 	public void deactiveCarMenu() {
 		carMenuGameObject.gameObject.SetActive (false);
+		soundEffectController.playStartEngine ();
 	}	
 
 	/// <summary>
 	/// Actives the settings.
 	/// </summary>
 	public void activeSettings() {
+		soundEffectController.playPop ();
 		carsSelection.SetActive (false);
 		settingsGameObject.gameObject.SetActive (true);
 		zoom = "settings";
@@ -188,5 +252,6 @@ public class MainMenuController : MonoBehaviour {
 		carsSelection.SetActive (true);
 		settingsGameObject.gameObject.SetActive (false);
 		zoom = "mainMenu";
+		soundEffectController.playStartEngine ();
 	}
 }

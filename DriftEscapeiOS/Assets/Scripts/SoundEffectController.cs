@@ -31,17 +31,24 @@ public class SoundEffectController : MonoBehaviour {
     void Awake()
     {
         //Check if there is already an instance of SoundManager
-        if (instance == null)
+        //if (instance == null)
             //if not, set it to this.
-            instance = this;
+           // instance = this;
         //If instance already exists:
-        else if (instance != this)
+        //else if (instance != this)
             //Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
-            Destroy(gameObject);
+           //Destroy(gameObject);
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         //DontDestroyOnLoad(gameObject);
 
+		if (instance != null) {
+			Destroy (gameObject);
+		} else {
+			instance = this;
+			GameObject.DontDestroyOnLoad (gameObject);
+		}
+ 
         wooshList = new AudioClip[]{lSwoosh1, lSwoosh2, lSwoosh3, lSwoosh4};
         popList = new AudioClip[] { pop1, pop2, pop3 };
         hWooshList = new AudioClip[] {hSwoosh1, hSwoosh2, hSwoosh3 };
@@ -49,63 +56,24 @@ public class SoundEffectController : MonoBehaviour {
 
         //On FX 
         fxOn = true;
+        //musicSource.mute = true;
+        //MenuMusicSource.mute = true;
 
+		setMusicOnOff (PlayerPrefs.GetInt ("Music", 1));
+		soundOnOff = PlayerPrefs.GetInt("Sound",1);
+      }
 
-    
-        musicSource.mute = true;
-        MenuMusicSource.mute = true;
-
-
-        musicOnOff = PlayerPrefs.GetInt("Music",1);
-        soundOnOff = PlayerPrefs.GetInt("Sound",1);
-
-        if (musicOnOff == 0)
-        {
-            musicSource.mute = true;
-            MenuMusicSource.mute = true;
-           
-        }
-        else if (musicOnOff == 1)
-        {
-
-
-            if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                musicSource.mute = false;
-            }
-            else
-            {
-                MenuMusicSource.mute = false;
-            }
-
-
-        }
-
-
-
-    }
-
-	private void Update()
-	{
-		
-        if(musicOnOff == 0){
-            musicSource.mute = true;
-            MenuMusicSource.mute = true; 
-        }else if (musicOnOff == 1){
-
-		
-			if(SceneManager.GetActiveScene().buildIndex == 1 ){
-                musicSource.mute = false;
-			}else{
-                MenuMusicSource.mute = false;
+	private void Update() {
+		if (PlayerPrefs.GetInt ("Music", 1) == 1){
+			if (SceneManager.GetActiveScene ().buildIndex == 1) {
+				MenuMusicSource.mute = true;
+				musicSource.mute = false;
+			} else {
+				MenuMusicSource.mute = false;
+				musicSource.mute = true;
 			}
-			
-
-        }
-
+		}
 	}
-
-
     /*
 
     public void setFxOn(bool fxOn){
@@ -130,9 +98,40 @@ public class SoundEffectController : MonoBehaviour {
     }
 	*/
 
+	public void toggleMusic(){
+		if(PlayerPrefs.GetInt("Music",1) == 1){
+			PlayerPrefs.SetInt("Music",0);
+			setMusicOnOff (PlayerPrefs.GetInt ("Music", 1));
+		}else {
+			PlayerPrefs.SetInt("Music",1);
+			setMusicOnOff (PlayerPrefs.GetInt ("Music", 1));
+		}
+	}
+
+	public void toggleSound(){
+		if(PlayerPrefs.GetInt("Sound",1) == 1){
+			PlayerPrefs.SetInt("Sound",0);
+			setSoundOnOff (PlayerPrefs.GetInt ("Sound", 1));
+		}else {
+			PlayerPrefs.SetInt("Sound",1);
+			setSoundOnOff (PlayerPrefs.GetInt ("Sound", 1));
+		}
+	}
 
     public void setMusicOnOff(int input){
-        this.musicOnOff = input;        
+        this.musicOnOff = input;
+		if(musicOnOff == 0){
+			musicSource.mute = true;
+			MenuMusicSource.mute = true; 
+		} else if (musicOnOff == 1){
+			if(SceneManager.GetActiveScene().buildIndex == 1 ){
+				MenuMusicSource.mute = true;
+				musicSource.mute = false;
+			} else{
+				MenuMusicSource.mute = false;
+				musicSource.mute = true;
+			}
+		}
     }
 
     public void setSoundOnOff(int input){
@@ -141,28 +140,21 @@ public class SoundEffectController : MonoBehaviour {
 
 
     //Used to play single sound clips.
-    public void PlaySingle(AudioClip clip)
-    {
-
+    public void PlaySingle(AudioClip clip){
         if(soundOnOff== 1){
-
 			//Set the clip of our efxSource audio source to the clip passed in as a parameter.
 			efxSource.clip = clip;
-			
 			//Play the clip.
 			efxSource.Play();
 		}
-
     }
 
 
     public void playPop(){
-        
         PlaySingle(popList[Random.Range(0, popList.Length)]);
     }
 
     public void playSwoosh(){
-        
         PlaySingle(wooshList[Random.Range(0,wooshList.Length)]);
     }
 
@@ -172,21 +164,15 @@ public class SoundEffectController : MonoBehaviour {
 
     public void playCoins(){
         //PlaySingle(Coin);
-
-        if (fxOn == true)
-        {
-
+        if (fxOn == true){
             //Set the clip of our efxSource audio source to the clip passed in as a parameter.
             coinFXSource.clip = Coin;
-
             //Play the clip.
             coinFXSource.Play();
         }
-
     }
 
     public void playAccelerate(){
-
         PlaySingle(accelerate);
     }
 
