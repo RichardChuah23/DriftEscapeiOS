@@ -12,6 +12,15 @@ public class MainMenuController : MonoBehaviour {
 	private Transform mainMenuGameObject;
 	private Transform carMenuGameObject;
 	private Transform settingsGameObject;
+    private Transform purchaseGameObject;
+    private Transform shopGameObject;
+
+
+    //Shop gameobjects 
+    public GameObject shopMenuGameObject;
+    public GameObject smallCoinsCanvas;
+    public GameObject mediumCoinsCanvas;
+    public GameObject LargeCoinsCanvas; 
 
 	public Camera mainMenuCamera;
 
@@ -69,7 +78,8 @@ public class MainMenuController : MonoBehaviour {
 		mainMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (0);
 		carMenuGameObject = GameObject.Find ("Canvas").transform.GetChild (1);
 		settingsGameObject = GameObject.Find ("Canvas").transform.GetChild (2);
-
+        purchaseGameObject = GameObject.Find("Canvas").transform.GetChild(3);
+        shopGameObject = GameObject.Find("Canvas").transform.GetChild(4);
 		carsSelection = GameObject.Find ("CarsSelection");
 
 		// Get the RectTransform component
@@ -254,6 +264,55 @@ public class MainMenuController : MonoBehaviour {
 		zoom = "mainMenu";
 		soundEffectController.playStartEngine ();
 	}
+
+
+    public void activeShop(){
+        purchaseGameObject.gameObject.SetActive(false);
+        shopGameObject.gameObject.SetActive(true);
+    }
+
+    public void deactiveShop(){
+
+        purchaseGameObject.gameObject.SetActive(true);
+        shopGameObject.gameObject.SetActive(false);
+    }
+
+    public void activeShopMenu(){
+        shopMenuGameObject.SetActive(true);
+    }
+
+    public void deactiveShopMenu(){
+        shopMenuGameObject.SetActive(false);
+
+    }
+
+    public void activeSmallCoinsCanvas(){
+        smallCoinsCanvas.SetActive(true);
+    }
+
+    public void deactiveSmallCoinsCanvas(){
+        smallCoinsCanvas.SetActive(false);
+    }
+
+    public void activeMediumCoinsCanvas(){
+        mediumCoinsCanvas.SetActive(true);
+    }
+
+    public void deactiveMediumCoinsCanvas(){
+        mediumCoinsCanvas.SetActive(false);
+    }
+
+    public void activeLargeCoinsCanvas(){
+        LargeCoinsCanvas.SetActive(true);
+    }
+
+    public void deactiveLargeCoinsCanvas(){
+        LargeCoinsCanvas.SetActive(false);
+    }
+
+
+
+
 
 
 
