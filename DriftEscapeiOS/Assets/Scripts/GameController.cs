@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
@@ -14,18 +15,6 @@ public class GameController : MonoBehaviour {
     //Cameracontroller 
     private CameraController cameraController;
     public GameObject MainCamera;
-
-    //Restart button
-    public Button btnRestart;
-    public GameObject gameObjRestart;
-
-    //Pause Button 
-    //public Button btnPause;
-    //public GameObject gameObjPause; 
-
-    //Play Button 
-    //public Button btnPlay;
-    //public GameObject gameObjPlay; 
 
     //Tile Controller 
     private TileController tileController;
@@ -42,6 +31,7 @@ public class GameController : MonoBehaviour {
     private bool restartTrigger;
     private bool gameOverCalled;
 
+	// UI
 	public GameObject pauseButton;
 	public GameObject pauseMenuUI;
 	public GameObject gameOverUI;
@@ -85,11 +75,6 @@ public class GameController : MonoBehaviour {
 
         //Locate SoundController
         soundController = gameObjsoundController.GetComponent<SoundEffectController>();
-
-        //Restart Button
-        //Button btnRestartbtn = btnRestart.GetComponent<Button>();
-        //btnRestartbtn.onClick.AddListener(RestartOnClick);
-        //gameObjRestart.SetActive(false);
     }
 
     public bool isRestart(){
@@ -135,76 +120,82 @@ public class GameController : MonoBehaviour {
         cameraController.setGameStartCameraView();
 
         //Done set up
-        gameOver = false;
-        gameOverCalled = false;
+        //gameOver = false;
+        //gameOverCalled = false;
         //Hide all game over buttons  
-        //hideGameOverbutton();
+        //hideGameOverMenu();
+	}
+
+	/// <summary>
+	/// Pause game.
+	/// </summary>
+	public void Pause(){
+		//Change player mode
+		playerController.setMode("PAUSE");
+		//Deactive Score 
+		scoreController.setAddScore(false); 
+		// Activate Pause Menu
+		pauseMenuUI.SetActive(true);
+	}
+
+	/// <summary>
+	/// Resume game.
+	/// </summary>
+	public void Resume(){
+		//Change Player Mode
+		playerController.setMode(playerController.getPreviousMode());
+		//Active Score 
+		scoreController.setAddScore(true);
+		// Deactivate Pause Menu
+		pauseMenuUI.SetActive(false);
 	}
 
 	/// <summary>
 	/// Restart button on PauseMenu.
 	/// </summary>
 	public void RestartPause(){
+		// Restart game
 		Restart();
+		// Deactivate Pause Menu
 		pauseMenuUI.SetActive (false);
-		pauseButton.SetActive (true);
+	}
+
+	/// <summary>
+	/// Return to main menu.
+	/// </summary>
+	/// <param name="sceneBuildIndex">Scene build index.</param>
+	public void ReturnMainMenu(int sceneBuildIndex){
+		// Return to Main Menu
+		SceneManager.LoadScene(sceneBuildIndex);
 	}
 
 	/// <summary>
 	/// Restart button on GameOverMenu.
 	/// </summary>
 	public void RestartGameOver(){
+		// Restart game
 		Restart();
+		// Done set up
+		gameOver = false;
+		gameOverCalled = false;
+		// Deactivate GameOver Menu
 		gameOverUI.SetActive (false);
-		pauseButton.SetActive (true);
 	}
-
-    /// <summary>
-    /// Pause the game.
-    /// </summary>
-    public void Pause(){
-        //Change player mode
-        playerController.setMode("PAUSE");
-		//Deactive Score 
-        scoreController.setAddScore(false); 
-        
-		pauseMenuUI.SetActive(true);
-		gameObjRestart.SetActive (true);
-		pauseButton.SetActive (false);
-    }
-
-    /// <summary>
-    /// Resume the game.
-    /// </summary>
-    public void Resume(){
-        //Change Player Mode
-        playerController.setMode(playerController.getPreviousMode());
-        //Active Score 
-        scoreController.setAddScore(true);
-        
-		pauseMenuUI.SetActive(false);
-		pauseButton.SetActive (true);
-    }
-
-    private void hideGameOverbutton(){ 
-        gameObjRestart.SetActive(false);
-    }
+    
+	/*private void hideGameOverMenu(){ 
+		gameOverUI.SetActive (false);
+    }*/
 
     IEnumerator showGameOverButtons(){
         //Wait for 3s 
         yield return new WaitForSeconds(2f);
-        //Show the button
-		Debug.Log("LOL");
-        //gameObjRestart.SetActive(true);
-        //Set gameOver to true 
-		gameOverUI.SetActive(true);
-		Debug.Log ("test");
-		pauseButton.SetActive (false);
     }
 
     public void GameOver(){
         //Prevent calling GameOver multiple time 
         gameOverCalled = true; 
         StartCoroutine(showGameOverButtons()); 
+
+		gameOverUI.SetActive(true);
     }
 }
