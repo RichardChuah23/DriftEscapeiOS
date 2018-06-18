@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
-{
-
+public class GameController : MonoBehaviour {
     public static GameController instance;
     public GameObject player;
     private SkyDomeController skyDomeController; 
@@ -22,13 +20,12 @@ public class GameController : MonoBehaviour
     public GameObject gameObjRestart;
 
     //Pause Button 
-    public Button btnPause;
-    public GameObject gameObjPause; 
+    //public Button btnPause;
+    //public GameObject gameObjPause; 
 
     //Play Button 
-    public Button btnPlay;
-    public GameObject gameObjPlay; 
-
+    //public Button btnPlay;
+    //public GameObject gameObjPlay; 
 
     //Tile Controller 
     private TileController tileController;
@@ -45,17 +42,16 @@ public class GameController : MonoBehaviour
     private bool restartTrigger;
     private bool gameOverCalled;
 
-    void Awake()
-    {
+	public GameObject pauseButton;
+	public GameObject pauseMenuUI;
+	public GameObject gameOverUI;
+
+    void Awake(){
         Application.targetFrameRate = 60;
     }
 
-
     // Use this for initialization
-    void Start()
-    {
-        
-
+    void Start(){
         gameOver = false;
         restart = false;
         restartTrigger = false;
@@ -64,29 +60,19 @@ public class GameController : MonoBehaviour
 
         //Locate game controller 
         GameObject tileControllerObject = GameObject.Find("TileManager");
-        if (tileControllerObject != null)
-        {
+        if (tileControllerObject != null){
             tileController = tileControllerObject.GetComponent<TileController>();
-
         }
 
-        if (tileController == null)
-        {
+        if (tileController == null) {
             Debug.Log("Cannot find GameController script");
-
         }
 
         //Locate player controller 
         GameObject playerControllerObject = GameObject.Find("Player");
-        if (playerControllerObject != null)
-        {
-            //playerController = playerControllerObject.GetComponent<PlayerController>();
+        if (playerControllerObject != null){
             playerController = playerControllerObject.GetComponentInChildren<PlayerController>();
-
-
         }
-
-
 
         //Locate camera controller 
         cameraController = MainCamera.GetComponent<CameraController>();
@@ -101,60 +87,33 @@ public class GameController : MonoBehaviour
         soundController = gameObjsoundController.GetComponent<SoundEffectController>();
 
         //Restart Button
-        Button btnRestartbtn = btnRestart.GetComponent<Button>();
-        btnRestartbtn.onClick.AddListener(RestartOnClick);
-
-        //Pause Button
-        Button btnPausebtn = btnPause.GetComponent<Button>();
-        btnPausebtn.onClick.AddListener(PauseOnClick);
-
-        //Play Button  
-        Button btnPlaybtn = btnPlay.GetComponent<Button>();
-        btnPlaybtn.onClick.AddListener(PlayOnClick);
-
-
-        //Play Music
-        //soundController.playMusic();
-
-        gameObjRestart.SetActive(false);
-        gameObjPlay.SetActive(false);
-
-
+        //Button btnRestartbtn = btnRestart.GetComponent<Button>();
+        //btnRestartbtn.onClick.AddListener(RestartOnClick);
+        //gameObjRestart.SetActive(false);
     }
 
-    public bool isRestart()
-    {
+    public bool isRestart(){
         return restart;
     }
 
-
-    public bool isGameOver()
-    {
-
+    public bool isGameOver(){
         return gameOver;
     }
 
-    public void setGameOver(bool gameOver)
-    {
+    public void setGameOver(bool gameOver){
         this.gameOver = gameOver;
-
     }
 
-
-
-    private void Update()
-    {
-
-        if (gameOver == true && gameOverCalled == false)
-        {
-
-            GameOver();
+    private void Update(){
+        if (gameOver == true){
+             GameOver();
         }
     }
 
-
-    public void RestartOnClick()
-    {
+	/// <summary>
+	/// Restart the game.
+	/// </summary>
+    void Restart(){
         //Delete all tile 
         tileController.DestroyAllTiles();
         //Spawn the first two tiles 
@@ -179,75 +138,73 @@ public class GameController : MonoBehaviour
         gameOver = false;
         gameOverCalled = false;
         //Hide all game over buttons  
-        hideGameOverbutton();
-       }
+        //hideGameOverbutton();
+	}
 
+	/// <summary>
+	/// Restart button on PauseMenu.
+	/// </summary>
+	public void RestartPause(){
+		Restart();
+		pauseMenuUI.SetActive (false);
+		pauseButton.SetActive (true);
+	}
 
-    //Pause the game 
-    public void PauseOnClick(){
-       
+	/// <summary>
+	/// Restart button on GameOverMenu.
+	/// </summary>
+	public void RestartGameOver(){
+		Restart();
+		gameOverUI.SetActive (false);
+		pauseButton.SetActive (true);
+	}
+
+    /// <summary>
+    /// Pause the game.
+    /// </summary>
+    public void Pause(){
         //Change player mode
         playerController.setMode("PAUSE");
-        //Deactive Score 
+		//Deactive Score 
         scoreController.setAddScore(false); 
-        //Deactivate Pause Button activate Play Button.
-        gameObjPlay.SetActive(true);
-        gameObjPause.SetActive(false);
-
-        //Testing 
-        //soundController.stopMusic();
-    
-
+        
+		pauseMenuUI.SetActive(true);
+		gameObjRestart.SetActive (true);
+		pauseButton.SetActive (false);
     }
 
-
-
-    //Play the game 
-    public void PlayOnClick()
-    {
-
-
+    /// <summary>
+    /// Resume the game.
+    /// </summary>
+    public void Resume(){
         //Change Player Mode
         playerController.setMode(playerController.getPreviousMode());
         //Active Score 
         scoreController.setAddScore(true);
-        //Deactive Play Button, Activate Pause Button
-        gameObjPlay.SetActive(false);
-        gameObjPause.SetActive(true);
-
+        
+		pauseMenuUI.SetActive(false);
+		pauseButton.SetActive (true);
     }
-
-
-
-
 
     private void hideGameOverbutton(){ 
         gameObjRestart.SetActive(false);
     }
 
-    IEnumerator showGameOverButtons()
-    {
-
+    IEnumerator showGameOverButtons(){
         //Wait for 3s 
         yield return new WaitForSeconds(2f);
         //Show the button
-        gameObjRestart.SetActive(true);
+		Debug.Log("LOL");
+        //gameObjRestart.SetActive(true);
         //Set gameOver to true 
-
-
+		gameOverUI.SetActive(true);
+		Debug.Log ("test");
+		pauseButton.SetActive (false);
     }
-
 
     public void GameOver(){
-        
         //Prevent calling GameOver multiple time 
         gameOverCalled = true; 
-
-        //
         StartCoroutine(showGameOverButtons()); 
-
-
     }
-
-
 }

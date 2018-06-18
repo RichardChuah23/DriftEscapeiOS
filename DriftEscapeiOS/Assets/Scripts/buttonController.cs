@@ -8,34 +8,23 @@ public class buttonController : MonoBehaviour
     private GameController gameController;
 
 
-	private void Start()
-	{
-
-        //Locate game controller 
+	private void Start(){
+		//Locate game controller 
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
-        if (gameControllerObject != null)
-        {
+        if (gameControllerObject != null){
             gameController = gameControllerObject.GetComponent<GameController>();
-
-        }
-        else
-        {
+        } else{
             Debug.Log("Cannot find GameController script");
-
         }
-
 	}
 
 	// Use this for initialization
-	public void restartButtonPressed()
-    {
-        
-        gameController.RestartOnClick(); 
-    }
+	/*public void restartButtonPressed(){
+        gameController.Res; 
+    }*/
 
-    public void pauseButtonPressed()
-    {
-        gameController.PauseOnClick();  
+    public void pauseButtonPressed(){
+        gameController.Pause();  
     }
 
 }

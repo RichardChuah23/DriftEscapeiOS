@@ -28,20 +28,7 @@ public class SoundEffectController : MonoBehaviour {
     private int soundOnOff; 
 
 	// Use this for initialization
-    void Awake()
-    {
-        //Check if there is already an instance of SoundManager
-        //if (instance == null)
-            //if not, set it to this.
-           // instance = this;
-        //If instance already exists:
-        //else if (instance != this)
-            //Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
-           //Destroy(gameObject);
-
-        //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-        //DontDestroyOnLoad(gameObject);
-
+    void Awake(){
 		if (instance != null) {
 			Destroy (gameObject);
 		} else {
@@ -56,8 +43,6 @@ public class SoundEffectController : MonoBehaviour {
 
         //On FX 
         fxOn = true;
-        //musicSource.mute = true;
-        //MenuMusicSource.mute = true;
 
 		setMusicOnOff (PlayerPrefs.GetInt ("Music", 1));
 		soundOnOff = PlayerPrefs.GetInt("Sound",1);
@@ -74,30 +59,10 @@ public class SoundEffectController : MonoBehaviour {
 			}
 		}
 	}
-    /*
 
-    public void setFxOn(bool fxOn){
-        this.fxOn = fxOn;
-        
-    }
-
-    public void setMusicOn(bool input){
-        this.musicOn = input; 
-    }
-
-    public void playMusic(){
-        musicSource.Play();
-        musicSource.loop = true;
-    }
-
-
-    public void stopMusic()
-    {
-        musicSource.Stop();
-       
-    }
-	*/
-
+	/// <summary>
+	/// Toggles music.
+	/// </summary>
 	public void toggleMusic(){
 		if(PlayerPrefs.GetInt("Music",1) == 1){
 			PlayerPrefs.SetInt("Music",0);
@@ -108,6 +73,9 @@ public class SoundEffectController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Toggles sound.
+	/// </summary>
 	public void toggleSound(){
 		if(PlayerPrefs.GetInt("Sound",1) == 1){
 			PlayerPrefs.SetInt("Sound",0);
@@ -118,6 +86,10 @@ public class SoundEffectController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Sets music on off.
+	/// </summary>
+	/// <param name="input">Input.</param>
     public void setMusicOnOff(int input){
         this.musicOnOff = input;
 		if(musicOnOff == 0){
@@ -134,12 +106,18 @@ public class SoundEffectController : MonoBehaviour {
 		}
     }
 
+	/// <summary>
+	/// Sets sound on off.
+	/// </summary>
+	/// <param name="input">Input.</param>
     public void setSoundOnOff(int input){
         this.soundOnOff = input; 
     }
 
-
-    //Used to play single sound clips.
+	/// <summary>
+	/// play single sound clips.
+	/// </summary>
+	/// <param name="clip">Clip.</param>
     public void PlaySingle(AudioClip clip){
         if(soundOnOff== 1){
 			//Set the clip of our efxSource audio source to the clip passed in as a parameter.
@@ -149,19 +127,30 @@ public class SoundEffectController : MonoBehaviour {
 		}
     }
 
-
+	/// <summary>
+	/// Pop sound effect.
+	/// </summary>
     public void playPop(){
         PlaySingle(popList[Random.Range(0, popList.Length)]);
     }
 
+	/// <summary>
+	/// Swoosh sound effect.
+	/// </summary>
     public void playSwoosh(){
         PlaySingle(wooshList[Random.Range(0,wooshList.Length)]);
     }
 
+	/// <summary>
+	/// Heavy swoosh sound effect.
+	/// </summary>
     public void playHeaySwoosh(){
         PlaySingle(hWooshList[Random.Range(0, hWooshList.Length)]);
     }
 
+	/// <summary>
+	/// Coins sound effect.
+	/// </summary>
     public void playCoins(){
         //PlaySingle(Coin);
         if (fxOn == true){
@@ -172,35 +161,55 @@ public class SoundEffectController : MonoBehaviour {
         }
     }
 
+	/// <summary>
+	/// Accelerate sound effect.
+	/// </summary>
     public void playAccelerate(){
         PlaySingle(accelerate);
     }
 
+	/// <summary>
+	/// Start engine sound effect.
+	/// </summary>
     public void playStartEngine(){
         PlaySingle(startEngine);
     }
 
+	/// <summary>
+	/// Hon sound effect.
+	/// </summary>
     public void playHon(){
         PlaySingle(hon);
     }
-	
+
+	/// <summary>
+	/// Purchase sound effect.
+	/// </summary>
     public void playPurchased(){
         PlaySingle(purchased);
     }
 
+	/// <summary>
+	/// Skid sound effect.
+	/// </summary>
     public void playSkid(){
         efxSource.volume = 0.5f;
         PlaySingle(skid);
         efxSource.volume = 1f;
-
     }
 
+	/// <summary>
+	/// Hit sound effect.
+	/// </summary>
     public void playHit(){
         PlaySingle(hitList[Random.Range(0,hitList.Length)]); 
     }
 
-    public void RandomizeSfx(params AudioClip[] clips)
-    {
+	/// <summary>
+	/// Randomizes the sfx.
+	/// </summary>
+	/// <param name="clips">Clips.</param>
+    public void RandomizeSfx(params AudioClip[] clips){
         //Generate a random number between 0 and the length of our array of clips passed in.
         int randomIndex = Random.Range(0, clips.Length);
 
@@ -215,8 +224,5 @@ public class SoundEffectController : MonoBehaviour {
 
         //Play the clip.
         efxSource.Play();
-
     }
 }
-
-
