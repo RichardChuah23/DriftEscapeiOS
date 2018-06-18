@@ -15,9 +15,6 @@ public class ScoreController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-
-
         //Locate player controller 
         GameObject playerControllerObject = GameObject.Find("Player");
         if (playerControllerObject != null)
@@ -25,14 +22,9 @@ public class ScoreController : MonoBehaviour
             playerController = playerControllerObject.GetComponentInChildren<PlayerController>();
 
         }
-
-
         score = 0;
         coins = 0;
         forwardSpeed = playerController.getForwardSpeed();
-
-
-
     }
 
     // Update is called once per frame
@@ -50,8 +42,7 @@ public class ScoreController : MonoBehaviour
 
 
 
-
-
+	
     }
 
     public void addCoins()
