@@ -7,58 +7,66 @@ using UnityEngine.Advertisements;
 
 public class MainMenuController : MonoBehaviour
 {
+	private float smooth = 3;
+	private float smoothTime = 0.5f;
+	private string mode;
+	private string zoom;
 
-    private GameObject carsSelection;
+	/*
+	 * Camera
+	 * */
+	public Camera mainMenuCamera;
 
-    private Transform mainMenuGameObject;
-    
-    //private Transform purchaseGameObject;
-    private Transform shopGameObject;
+	/*
+	 * Canvas
+	 * */
+	public Button musicToggleButton;
+	public Button soundToggleButton;
+	public Sprite musicOn;
+	public Sprite soundOn;
+	public Sprite musicOff;
+	public Sprite soundOff;
 
-	// UI
+	/*
+	 * GameObject
+	 * */
+	public GameObject carsSelection;
 	public GameObject mainMenu;
 	public GameObject carMenu;
 	public GameObject settings;
 	public GameObject shopMenu;
+	public GameObject tutorialScrollView;
 
-
-    //Shop gameobjects
-    public GameObject shopMenuGameObject;
-    public GameObject smallCoinsCanvas;
-    public GameObject mediumCoinsCanvas;
-    public GameObject LargeCoinsCanvas;
-    public GameObject tutorialScrollView;
-
-    public Camera mainMenuCamera;
-
-    private Vector3 newPosition;
-	Vector3 mainMenuVector = new Vector3(0, 0, 0);
-	Vector3 carMenuVector = new Vector3(0, 0, -16);
-	Vector3 settingsVector = new Vector3(0, 0, 22);
-    public float smooth = 3;
-
-    private string mode;
-    private string zoom;
-
-    RectTransform drift;
-    RectTransform escape;
-    //The new position of the game title
-    Vector3 driftPosition = new Vector3(0, 325, 0);
-    Vector3 escapePosition = new Vector3(0, 225, 0);
-    // Reference value used for the Smoothdamp method
-    private Vector3 driftVelocity = Vector3.zero;
-    private Vector3 escapeVelocity = Vector3.zero;
-    // Smooth time
-    private float smoothTime = 0.5f;
-
-
+	/*
+	 * RectTransform
+	 * */
+	private RectTransform drift;
+	private RectTransform escape;
+    
+	/* 
+	 * Script
+	 * */
     private SoundEffectController soundEffectController;
-    public Button musicToggleButton;
-    public Button soundToggleButton;
-    public Sprite musicOn;
-    public Sprite soundOn;
-    public Sprite musicOff;
-    public Sprite soundOff;
+
+	/*
+	 * Transform
+	 * */
+	private Transform mainMenuGameObject;
+    
+	/*
+	 * Vector3
+	 * */
+	// The position for the camera in certain menu
+	private Vector3 newPosition;
+	private Vector3 mainMenuVector = new Vector3(0, 0, 0);
+	private Vector3 carMenuVector = new Vector3(0, 0, -16);
+	private Vector3 settingsVector = new Vector3(0, 0, 22);
+	// The new position of the game title
+	private Vector3 driftPosition = new Vector3(0, 325, 0);
+	private Vector3 escapePosition = new Vector3(0, 225, 0);
+	// Reference value used for the Smoothdamp method
+	private Vector3 driftVelocity = Vector3.zero;
+	private Vector3 escapeVelocity = Vector3.zero;
 
     /// <summary>
     /// Gets or sets the mode.
@@ -82,10 +90,8 @@ public class MainMenuController : MonoBehaviour
         mode = "Main";
         zoom = "mainMenu";
 
-        mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(0);
-        //purchaseGameObject = GameObject.Find("Canvas").transform.GetChild(3);
-        shopGameObject = GameObject.Find("Canvas").transform.GetChild(4);
-        carsSelection = GameObject.Find("CarsSelection");
+		// Get the tranform of MainMenu
+        mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(1);
 
         // Get the RectTransform component
         drift = mainMenuGameObject.transform.GetChild(1).GetComponent<RectTransform>();
@@ -167,13 +173,6 @@ public class MainMenuController : MonoBehaviour
             newPosition = mainMenuVector;
         }
         mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth);
-    }
-
-    /// <summary>
-    /// Shows the ad.
-    /// </summary>
-    public void ShowAd() {
-        Advertisement.Show();
     }
 
     /// <summary>
@@ -263,59 +262,29 @@ public class MainMenuController : MonoBehaviour
         zoom = "mainMenu";
         soundEffectController.playStartEngine();
     }
-		
+
+	/// <summary>
+	/// Opens shop.
+	/// </summary>
     public void openShop(){
-        //purchaseGameObject.gameObject.SetActive(false);
-        shopGameObject.gameObject.SetActive(true);
+		shopMenu.SetActive(true);
+		carMenu.SetActive (false);
     }
 
-    public void deactiveShop()
-    {
-
-        //purchaseGameObject.gameObject.SetActive(true);
-        shopGameObject.gameObject.SetActive(false);
+	/// <summary>
+	/// Closes shop.
+	/// </summary>
+    public void closeShop(){
+		shopMenu.SetActive (false);
+		carMenu.SetActive (true);
     }
 
-    public void activeShopMenu()
-    {
-        shopMenuGameObject.SetActive(true);
-    }
-
-    public void deactiveShopMenu()
-    {
-        shopMenuGameObject.SetActive(false);
-
-    }
-
-    public void activeSmallCoinsCanvas()
-    {
-        smallCoinsCanvas.SetActive(true);
-    }
-
-    public void deactiveSmallCoinsCanvas()
-    {
-        smallCoinsCanvas.SetActive(false);
-    }
-
-    public void activeMediumCoinsCanvas()
-    {
-        mediumCoinsCanvas.SetActive(true);
-    }
-
-    public void deactiveMediumCoinsCanvas()
-    {
-        mediumCoinsCanvas.SetActive(false);
-    }
-
-    public void activeLargeCoinsCanvas()
-    {
-        LargeCoinsCanvas.SetActive(true);
-    }
-
-    public void deactiveLargeCoinsCanvas()
-    {
-        LargeCoinsCanvas.SetActive(false);
-    }
+	/// <summary>
+	/// Shows the ad.
+	/// </summary>
+	public void ShowAd() {
+		Advertisement.Show();
+	}
 
     public void activeTutorialScrollView()
     {
