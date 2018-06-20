@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class MainMenuController : MonoBehaviour
 	public Sprite soundOn;
 	public Sprite musicOff;
 	public Sprite soundOff;
+	//public TextMeshProUGUI coinsText;
 
 	/*
 	 * GameObject
@@ -89,6 +91,8 @@ public class MainMenuController : MonoBehaviour
     void Start(){
         mode = "Main";
         zoom = "mainMenu";
+
+		//coinsText.text = CarsCreation.Instance.coins.ToString ();
 
 		// Get the tranform of MainMenu
         mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(2);

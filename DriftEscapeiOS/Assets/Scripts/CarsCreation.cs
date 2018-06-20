@@ -6,27 +6,56 @@ using TMPro;
 
 public class CarsCreation : MonoBehaviour {
 
-	private GameObject[] models;
+	private static CarsCreation instance;
+	public static CarsCreation Instance{get{ return instance;}}
 
+	private bool moving = false;
+	public float smooth = 1f;
+	public int currentCarIndex = 0;
+	public int coins = 0;
+	public int carAvailability = 1;
+	public float carPositionZ = 0;
 	private string mode = "car";
-	public int currentCarIndex;
-	public int carAvailability;
 
-	private Transform carContainer;
+	/*
+	 * Canvas
+	 * */
+	public TextMeshProUGUI coinsText;
+	public TextMeshProUGUI text;
 
-	private Vector3 position; 
-	private Vector3 newPosition;
-	private Vector3 selectedPosition; 
-	public float smooth = 3; 
+	/*
+	 * GameObject
+	 * */
+	private GameObject[] models;
+	public GameObject buyButton;
+	public GameObject confirmButton;
+	public GameObject GoImage;
+	public GameObject lockImage;
 
+
+	/*
+	 * Script
+	 * */
 	public swipeController swipeController;
 	private MainMenuController mainMenuController;
 	private SoundEffectController soundEffectController;
 
-	public Button button; 
-	public TextMeshProUGUI text; 
+	/*
+	 * Transform
+	 * */
+	private Transform carContainer;
+
+	/*
+	 * Vector3
+	 * */
+	private Vector3 position; 
+	private Vector3 newPosition;
+	private Vector3 selectedPosition; 
 
 	private void Awake() {
+		instance = this;
+		DontDestroyOnLoad (gameObject);
+
 		models = new GameObject[transform.childCount];
 
 		// Fill the array with our models
@@ -36,24 +65,36 @@ public class CarsCreation : MonoBehaviour {
 		// Get the transform of this game object
 		carContainer = GameObject.Find ("CarsSelection").transform;
 
-		// Get the saved index
-		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
+		if(PlayerPrefs.HasKey("CharacterSelected")){
+			// We had a previous session
+			currentCarIndex = PlayerPrefs.GetInt("CharacterSelected");
+			coins = PlayerPrefs.GetInt ("Coins");
+			carAvailability = PlayerPrefs.GetInt ("CarAvailability", 1);
+			carPositionZ = PlayerPrefs.GetFloat ("PositionZ");
+		} else{
+			Save ();
+		}
+
+		// Returned the saved total coins
+		coinsText.text = coins.ToString ();
 
 		// Returned to the saved position
 		if (currentCarIndex > 0) {
-			selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
+			selectedPosition = new Vector3 (carPositionZ, 0f, 0f);
 			carContainer.transform.position = selectedPosition;
 			newPosition = selectedPosition;
+			carPositionZ = PlayerPrefs.GetFloat ("PositionZ");
+		} else {
+			ReturnPosition ();
 		}
 
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
 		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
 
-		// Locate sound manager
+		// Locate SoundManager script
 		GameObject soundManager = GameObject.Find("SoundManager");
 		soundEffectController = (SoundEffectController) soundManager.GetComponent(typeof(SoundEffectController));
-
 	}
 
 	public void Update() {
@@ -73,37 +114,87 @@ public class CarsCreation : MonoBehaviour {
 	/// Allow the user to swipe the cars left and right to select or change the cars model.
 	/// </summary>
 	public void ChangingPosition() {
-		position = carContainer.position;
+		position = new Vector3(carPositionZ, 0f, 0f);
 
-		if (Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) {
+		if ((Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) && moving == false) {
 			currentCarIndex -= 1;
-			if (currentCarIndex < 0 ) {
+			carPositionZ += 40;
+			if (currentCarIndex < 0) {
 				currentCarIndex = 0;
+				carPositionZ -= 40;
 			} else {
-				newPosition = position + new Vector3 (38f, 0f, 0f);
+				StartCoroutine(wait());
+				newPosition = position + new Vector3 (40f, 0f, 0f);
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) {
+		if ((Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) && moving == false) {
 			currentCarIndex += 1;
+			carPositionZ -= 40;
 			if (currentCarIndex < models.Length) {
-				newPosition = position + new Vector3 (-38f, 0f, 0f);
+				StartCoroutine(wait()); 
+				newPosition = position + new Vector3 (-40f, 0f, 0f);
 			} else {
 				currentCarIndex -= 1;
+				carPositionZ += 40;
 			}
-		}
+		} 
 
-		carContainer.transform.position = Vector3.Lerp(position, newPosition, Time.deltaTime * smooth );
+		carContainer.transform.position = Vector3.Lerp(carContainer.transform.position, newPosition, Time.deltaTime * smooth );
 
-		if (currentCarIndex == PlayerPrefs.GetInt ("CharacterSelected")) {
-			//Debug.Log (currentCarIndex +" = same");
-			button.gameObject.SetActive (false);
+		if ((carAvailability & 1 << (currentCarIndex)) == 1 << currentCarIndex) {
+			// Have the car and is the selected car
+			if (currentCarIndex == PlayerPrefs.GetInt ("CharacterSelected")) {
+				buyButton.SetActive (false);
+				confirmButton.SetActive (false);
+				GoImage.SetActive (true);
+				lockImage.SetActive (false);
+			} else {
+				// Have the car and is NOT the selected car
+				buyButton.SetActive (false);
+				confirmButton.SetActive (true);
+				GoImage.SetActive (false);
+				lockImage.SetActive (false);
+			}
 		} else {
-			button.gameObject.SetActive (true);
-			text.text = "BUY";
+			// Do not have the car
+			buyButton.SetActive (true);
+			confirmButton.SetActive (false);
+			GoImage.SetActive (false);
+			lockImage.SetActive (true);
 		}
+	}
 
+	/// <summary>
+	/// Return to main menu
+	/// </summary>
+	public void Back () {
+		soundEffectController.playPop ();
+		mode = "return";
+		// Return to main menu
+		mainMenuController.Mode = "Main";
+		mainMenuController.closeCarMenu ();
+		mainMenuController.openMainMenu ();
+		mainMenuController.Zoom = "mainMenu";
+	}
 
+	/// <summary>
+	/// Buy this instance.
+	/// User perform buy action.
+	/// </summary>
+	public void Buy(){
+		//sound effect
+		soundEffectController.playPop ();
+		int cost = 10;
+		if (coins >= cost) {
+			coins -= cost;
+			carAvailability += 1 << currentCarIndex;
+			Save ();
+			coinsText.text = coins.ToString ();
+			GoImage.SetActive (true);
+			buyButton.SetActive (false);
+			lockImage.SetActive (false);
+		}
 	}
 
 	/// <summary>
@@ -114,13 +205,8 @@ public class CarsCreation : MonoBehaviour {
 	public void Confirm(){
 		//sound effect
 		soundEffectController.playPop ();
-
-		// Save the selected model index and position x,y,z
-		PlayerPrefs.SetInt ("CharacterSelected", currentCarIndex);
-		PlayerPrefs.SetFloat ("PositionX", carContainer.transform.position.x);
-		PlayerPrefs.SetFloat ("PositionY", carContainer.transform.position.y);
-		PlayerPrefs.SetFloat ("PositionZ", carContainer.transform.position.z);
-
+		// Save PlayerPrefs
+		Save ();
 		// Return to the main menu
 		mainMenuController.Mode = "Main";
 		mainMenuController.closeCarMenu ();
@@ -129,18 +215,13 @@ public class CarsCreation : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Return to main menu
+	/// Save PlayerPrefs.
 	/// </summary>
-	public void Back () {
-		soundEffectController.playPop ();
-		mode = "return";
-
-		// Return to main menu
-		mainMenuController.Mode = "Main";
-		mainMenuController.closeCarMenu ();
-		mainMenuController.openMainMenu ();
-		mainMenuController.Zoom = "mainMenu";
-
+	private void Save(){
+		PlayerPrefs.SetInt ("CharacterSelected", currentCarIndex);
+		PlayerPrefs.SetInt ("Coins", coins);
+		PlayerPrefs.SetInt ("CarAvailability", carAvailability);
+		PlayerPrefs.SetFloat ("PositionZ", carPositionZ);
 	}
 
 	/// <summary>
@@ -149,8 +230,15 @@ public class CarsCreation : MonoBehaviour {
 	/// </summary>
 	public void ReturnPosition(){
 		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
-		selectedPosition = new Vector3 (PlayerPrefs.GetFloat ("PositionX"), PlayerPrefs.GetFloat ("PositionY"), PlayerPrefs.GetFloat ("PositionZ"));
+		carPositionZ = PlayerPrefs.GetFloat ("PositionZ", carPositionZ);
+		selectedPosition = new Vector3 (carPositionZ, 0f, 0f);
 		carContainer.transform.position = selectedPosition;
 		newPosition = selectedPosition;
+	}
+
+	IEnumerator wait(){
+		moving = true;
+		yield return new WaitForSeconds (0.5f);
+		moving = false;
 	}
 }
