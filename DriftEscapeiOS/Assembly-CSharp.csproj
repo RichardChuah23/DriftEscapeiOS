@@ -97,10 +97,12 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LightController.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
+     <Compile Include="Assets\Scripts\MainMenuVehicleAnimation.cs" />
+     <Compile Include="Assets\Scripts\MyIAPManager.cs" />
      <Compile Include="Assets\Scripts\obstacleColliderScript.cs" />
      <Compile Include="Assets\Scripts\ObstacleController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\Purchase.cs" />
+     <Compile Include="Assets\Scripts\Purchaser.cs" />
      <Compile Include="Assets\Scripts\ScoreController.cs" />
      <Compile Include="Assets\Scripts\SkyDomeController.cs" />
      <Compile Include="Assets\Scripts\SoundEffectController.cs" />
@@ -170,6 +172,7 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
+     <None Include="Assets\Plugins\UnityPurchasing\script\link.xml" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
      <None Include="Assets\Plugins\GitHub\Editor\EULA.txt" />
  <Reference Include="UnityEngine.UI">
@@ -205,6 +208,36 @@
  <Reference Include="TextMeshPro-2017.2-Editor">
  <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Editor">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Purchasing.Common">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="Stores">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
+ </Reference>
+ <Reference Include="Apple">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
+ </Reference>
+ <Reference Include="Security">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
+ </Reference>
+ <Reference Include="FacebookStore">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
+ </Reference>
+ <Reference Include="Tizen">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/Bin/Tizen/Tizen.dll</HintPath>
+ </Reference>
+ <Reference Include="winrt">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
+ </Reference>
+ <Reference Include="ChannelPurchase">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityChannel/ChannelPurchase.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityStore">
+ <HintPath>/Users/peilingchan/Documents/GitHub/DriftEscapeiOS/DriftEscapeiOS/Assets/Plugins/UnityChannel/UnityStore.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/Users/peilingchan/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@1.0.7/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -214,6 +247,10 @@
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>/Users/peilingchan/Library/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{44E6DCFD-FD55-D3DD-DC23-076F7A78F28B}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

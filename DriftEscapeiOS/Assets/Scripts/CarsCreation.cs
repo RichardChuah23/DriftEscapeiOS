@@ -123,8 +123,8 @@ public class CarsCreation : MonoBehaviour {
 
 		// Return to the main menu
 		mainMenuController.Mode = "Main";
-		mainMenuController.deactiveCarMenu ();
-		mainMenuController.activeMainMenu ();
+		mainMenuController.closeCarMenu ();
+		mainMenuController.openMainMenu ();
 		mainMenuController.Zoom = "mainMenu";
 	}
 
@@ -137,8 +137,8 @@ public class CarsCreation : MonoBehaviour {
 
 		// Return to main menu
 		mainMenuController.Mode = "Main";
-		mainMenuController.deactiveCarMenu ();
-		mainMenuController.activeMainMenu ();
+		mainMenuController.closeCarMenu ();
+		mainMenuController.openMainMenu ();
 		mainMenuController.Zoom = "mainMenu";
 
 	}
