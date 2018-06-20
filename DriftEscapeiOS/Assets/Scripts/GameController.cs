@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour {
     private SoundEffectController soundController;
     public GameObject gameObjsoundController;
 
+    //Game Center
+    //public KTGameCenter gameCenterController; 
+
     private bool restartTrigger;
     private bool gameOverCalled;
 
@@ -40,8 +43,17 @@ public class GameController : MonoBehaviour {
         Application.targetFrameRate = 60;
     }
 
+    private void Update()
+    {
+        if (gameOver == true)
+        {
+            GameOver();
+        }
+    }
+
     // Use this for initialization
     void Start(){
+        
         gameOver = false;
         restart = false;
         restartTrigger = false;
@@ -89,11 +101,6 @@ public class GameController : MonoBehaviour {
         this.gameOver = gameOver;
     }
 
-    private void Update(){
-        if (gameOver == true){
-             GameOver();
-        }
-    }
 
 	/// <summary>
 	/// Restart the game.
@@ -119,11 +126,10 @@ public class GameController : MonoBehaviour {
         cameraController.resetCamera();
         cameraController.setGameStartCameraView();
 
-        //Done set up
-        //gameOver = false;
-        //gameOverCalled = false;
-        //Hide all game over buttons  
-        //hideGameOverMenu();
+        //Reset score
+        scoreController.resetScore();
+
+
 	}
 
 	/// <summary>
@@ -177,25 +183,48 @@ public class GameController : MonoBehaviour {
 		Restart();
 		// Done set up
 		gameOver = false;
-		gameOverCalled = false;
+        StartCoroutine(setGameOverCalled(false));
 		// Deactivate GameOver Menu
 		gameOverUI.SetActive (false);
 	}
     
-	/*private void hideGameOverMenu(){ 
-		gameOverUI.SetActive (false);
-    }*/
 
-    IEnumerator showGameOverButtons(){
+
+    IEnumerator gameOverprocedure(){
         //Wait for 3s 
         yield return new WaitForSeconds(2f);
+
+        if(gameOverCalled == false){
+           
+            //Show Game over GUI
+			gameOverUI.SetActive(true);
+
+            //Submit Score 
+            scoreController.submitScore();
+
+
+
+
+            gameOverCalled = true; 
+        }
+
+    }
+
+
+  
+
+    IEnumerator setGameOverCalled(bool gameOverCalled){
+        yield return new WaitForSeconds(2f);
+        this.gameOverCalled = gameOverCalled;
     }
 
     public void GameOver(){
         //Prevent calling GameOver multiple time 
-        gameOverCalled = true; 
-        StartCoroutine(showGameOverButtons()); 
+        if(gameOverCalled == false){
+            scoreController.setAddScore(false);
+			StartCoroutine(gameOverprocedure()); 
+        }
 
-		gameOverUI.SetActive(true);
+		
     }
 }

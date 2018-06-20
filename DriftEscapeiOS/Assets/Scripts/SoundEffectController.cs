@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SoundEffectController : MonoBehaviour {
 
 
-    public AudioSource efxSource, coinFXSource;                   //Drag a reference to the audio source which will play the sound effects.
+    public AudioSource efxSource, coinFXSource, multiplierSource, knockSoundSource;                   //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
     public AudioSource MenuMusicSource; 
     public static SoundEffectController instance = null;     //Allows other scripts to call functions from SoundManager.             
@@ -14,7 +14,7 @@ public class SoundEffectController : MonoBehaviour {
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
 
-    public AudioClip pop1,pop2,pop3, lSwoosh1, lSwoosh2, lSwoosh3, lSwoosh4, Coin, hSwoosh1, hSwoosh2, hSwoosh3, hon, startEngine, hit1, hit2, accelerate, purchased, skid;
+    public AudioClip pop1,pop2,pop3, lSwoosh1, lSwoosh2, lSwoosh3, lSwoosh4, Coin, hSwoosh1, hSwoosh2, hSwoosh3, hon, startEngine, hit1, hit2, accelerate, purchased, skid, multiplier, lostCombo, knock;
 
     private AudioClip[] wooshList;
     private AudioClip[] popList; 
@@ -161,6 +161,8 @@ public class SoundEffectController : MonoBehaviour {
         }
     }
 
+
+
 	/// <summary>
 	/// Accelerate sound effect.
 	/// </summary>
@@ -204,6 +206,61 @@ public class SoundEffectController : MonoBehaviour {
     public void playHit(){
         PlaySingle(hitList[Random.Range(0,hitList.Length)]); 
     }
+
+    public void playMultiplier(int pitch){
+        //PlaySingle(Coin);
+        if (fxOn == true)
+        {
+            //Set the clip of our efxSource audio source to the clip passed in as a parameter.
+            multiplierSource.clip = multiplier;
+
+            //Set the pitch of the audio source to the randomly chosen pitch.
+            multiplierSource.pitch = pitch;
+
+            //Play the clip.
+            multiplierSource.Play();
+
+           
+        }
+    }
+
+
+    public void playKnock()
+    {
+        //PlaySingle(Coin);
+        if (fxOn == true)
+        {
+
+
+            //Play the clip.
+            knockSoundSource.Play();
+
+
+        }
+    }
+
+
+    public void playLostMultiplier()
+    {
+        //PlaySingle(Coin);
+        if (fxOn == true)
+        {
+
+
+            float randomPitch = Random.Range(-1, 3);
+        
+            knockSoundSource.pitch = randomPitch; 
+
+            //Play the clip.
+            knockSoundSource.Play();
+
+
+        }
+    }
+
+
+
+
 
 	/// <summary>
 	/// Randomizes the sfx.

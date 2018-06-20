@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject LargeCoinsCanvas;
     public GameObject tutorialScrollView;
 
+
     public Camera mainMenuCamera;
 
     private Vector3 newPosition;
@@ -96,6 +97,7 @@ public class MainMenuController : MonoBehaviour
         soundEffectController = (SoundEffectController)soundManager.GetComponent(typeof(SoundEffectController));
 
         soundEffectController.playStartEngine();
+
         UpdateMusicToggle();
         UpdateSoundToggle();
     }
@@ -288,6 +290,7 @@ public class MainMenuController : MonoBehaviour
     {
         carMenuGameObject.gameObject.SetActive(false);
         soundEffectController.playStartEngine();
+
     }
 
     /// <summary>
