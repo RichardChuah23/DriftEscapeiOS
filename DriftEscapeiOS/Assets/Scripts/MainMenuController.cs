@@ -35,7 +35,7 @@ public class MainMenuController : MonoBehaviour
 	public GameObject carMenu;
 	public GameObject settings;
 	public GameObject shopMenu;
-	public GameObject tutorialScrollView;
+	public GameObject tutorialScreen;
 
 	/*
 	 * RectTransform
@@ -91,7 +91,7 @@ public class MainMenuController : MonoBehaviour
         zoom = "mainMenu";
 
 		// Get the tranform of MainMenu
-        mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(1);
+        mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(2);
 
         // Get the RectTransform component
         drift = mainMenuGameObject.transform.GetChild(1).GetComponent<RectTransform>();
@@ -267,16 +267,27 @@ public class MainMenuController : MonoBehaviour
 	/// Opens shop.
 	/// </summary>
     public void openShop(){
+		if (mode == "Main") 
+			mainMenu.SetActive (false);
+		
+		if (mode == "Car") 
+			carMenu.SetActive (false);
+		
+
 		shopMenu.SetActive(true);
-		carMenu.SetActive (false);
     }
 
 	/// <summary>
 	/// Closes shop.
 	/// </summary>
     public void closeShop(){
-		shopMenu.SetActive (false);
-		carMenu.SetActive (true);
+		if (mode == "Main")
+			mainMenu.SetActive (true);
+		
+		if (mode == "Car") 
+			carMenu.SetActive (true);
+		
+		shopMenu.SetActive(false);
     }
 
 	/// <summary>
@@ -286,14 +297,17 @@ public class MainMenuController : MonoBehaviour
 		Advertisement.Show();
 	}
 
-    public void activeTutorialScrollView()
-    {
-        tutorialScrollView.SetActive(true);
+	/// <summary>
+	/// Opens tutorial screen.
+	/// </summary>
+    public void openTutorialScreen(){
+		tutorialScreen.SetActive(true);
     }
 
-    public void deactiveTutorialScrollView()
-    {
-
-        tutorialScrollView.SetActive(false);
+	/// <summary>
+	/// Closes the tutorial screen.
+	/// </summary>
+	public void closeTutorialScreen(){
+		tutorialScreen.SetActive(false);
     }
 }
