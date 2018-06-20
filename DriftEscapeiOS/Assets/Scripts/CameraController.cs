@@ -131,7 +131,7 @@ public class CameraController : MonoBehaviour
                 height = 40;
                 soundPlaying = false;
 
-
+                accelerateFX.gameObject.SetActive(false);
 
             }
 
@@ -149,7 +149,7 @@ public class CameraController : MonoBehaviour
 
 
             accelerateFX.gameObject.SetActive(false);
-            particleTime = 2.5f; 
+            particleTime = 1.8f; 
         }
 
 

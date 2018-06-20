@@ -8,6 +8,49 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
+<<<<<<< HEAD
+
+    private GameObject carsSelection;
+
+    private Transform mainMenuGameObject;
+    private Transform carMenuGameObject;
+    private Transform settingsGameObject;
+    private Transform purchaseGameObject;
+    private Transform shopGameObject;
+
+
+    //Shop gameobjects 
+    public GameObject shopMenuGameObject;
+    public GameObject smallCoinsCanvas;
+    public GameObject mediumCoinsCanvas;
+    public GameObject LargeCoinsCanvas;
+    public GameObject tutorialScrollView;
+
+
+    public Camera mainMenuCamera;
+
+    private Vector3 newPosition;
+    Vector3 mainMenu = new Vector3(0, 0, 0);
+    Vector3 carMenu = new Vector3(0, 0, -16);
+    Vector3 settings = new Vector3(0, 0, 22);
+    public float smooth = 3;
+
+    private string mode;
+    private string zoom;
+
+    RectTransform drift;
+    RectTransform escape;
+    //The new position of the game title
+    Vector3 driftPosition = new Vector3(0, 325, 0);
+    Vector3 escapePosition = new Vector3(0, 225, 0);
+    // Reference value used for the Smoothdamp method
+    private Vector3 driftVelocity = Vector3.zero;
+    private Vector3 escapeVelocity = Vector3.zero;
+    // Smooth time
+    private float smoothTime = 0.5f;
+
+
+=======
 	private float smooth = 3;
 	private float smoothTime = 0.5f;
 	private string mode;
@@ -48,6 +91,7 @@ public class MainMenuController : MonoBehaviour
 	/* 
 	 * Script
 	 * */
+>>>>>>> faed1457dc921b1fe66be6e3def4529191fd633c
     private SoundEffectController soundEffectController;
 
 	/*
@@ -106,6 +150,7 @@ public class MainMenuController : MonoBehaviour
         soundEffectController = (SoundEffectController)soundManager.GetComponent(typeof(SoundEffectController));
 
         soundEffectController.playStartEngine();
+
         UpdateMusicToggle();
         UpdateSoundToggle();
     }
@@ -243,6 +288,7 @@ public class MainMenuController : MonoBehaviour
 		carMenu.SetActive (false);
 		mainMenu.SetActive (true);
         soundEffectController.playStartEngine();
+
     }
 
    	/// <summary>

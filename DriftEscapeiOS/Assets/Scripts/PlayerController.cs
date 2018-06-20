@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private ScoreController scoreController;
     private CameraController cameraController;
     private SoundEffectController soundEffectController;
+    public FireworksController fireWorksController;
 
 
     //Swipe Controls 
@@ -85,9 +86,13 @@ public class PlayerController : MonoBehaviour
     private string animMode;
 
     //Sound 
-    private bool gameOverSoundEffect = false; 
+    private bool gameOverSoundEffect = false;
 
+    //Vehicle Gameobject
+    public BoxCollider carBoxCollider;
 
+    //Perfect Drift 
+    private bool perfectDrift;
 
 
 
@@ -98,9 +103,9 @@ public class PlayerController : MonoBehaviour
 
         driftSmokeGameController.hardOffDriftSmoke();
 
-
-
         resetGameInitialValue();
+
+
 
     }
 
@@ -147,7 +152,7 @@ public class PlayerController : MonoBehaviour
         else if (mode == "GAMEOVER")
         {
 
-            Debug.Log(gameOverReason + " GG!");
+            Debug.Log("GAME OVER ! Game Over Reason : "  + gameOverReason );
 
             if (gameOverReason == "STRAIGHT HIT")
             {
@@ -205,7 +210,6 @@ public class PlayerController : MonoBehaviour
         if (t <= 1)
         {
 
-            Debug.Log(Mathf.Lerp(turnSpeed, 0, t));
             drift(Mathf.Lerp(turnSpeed, 0, t), turnAngle);
             // .. and increate the t interpolater
             t += 0.5f * Time.deltaTime;
@@ -296,7 +300,6 @@ public class PlayerController : MonoBehaviour
         {
             gameController.setGameOver(true);
 
-            Debug.Log("ON!");
             fxController.onBrokeDownSmoke();
             offDriftFX();
             driftSmokeGameController.offDriftSmoke();
@@ -354,7 +357,6 @@ public class PlayerController : MonoBehaviour
         {
             gameController.setGameOver(true);
 
-            Debug.Log("ON!");
             fxController.onBrokeDownSmoke();
             offDriftFX();
             driftSmokeGameController.offDriftSmoke();
@@ -449,6 +451,11 @@ public class PlayerController : MonoBehaviour
         startGameMovementCoolDownDuration = 1f;
         t = 0;
         readyDrift = false;
+        carBoxCollider.enabled = false;
+        scoreController.setAddScore(true);
+        perfectDrift = false;
+        scoreController.setScoreMultiplier(1);
+
 
     }
 
@@ -457,6 +464,11 @@ public class PlayerController : MonoBehaviour
 
         //Locate FX controller 
         driftSmokeGameController = transform.Find("FX_Tyre_Smoke").gameObject.GetComponentInChildren<DriftSmokeFX>();
+
+        //Car Box Collider. Find Vehicle's first child 
+        Transform vehicleTransfrom = GameObject.Find("Vehicle").transform.GetChild(0);
+        carBoxCollider = vehicleTransfrom.GetComponent<BoxCollider>();
+
 
 
         //Locate game controller 
@@ -586,7 +598,6 @@ public class PlayerController : MonoBehaviour
 
     public void setTouchTap(int input)
     {
-        Debug.Log("SET TOUCH");
         this.touchTap = input;
 
     }
@@ -801,6 +812,16 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        if (collision.transform.name == "Perfect Enter Collider" && mode == "PREDRIFT")
+        {
+            perfectDrift = true;
+        }
+
+
+        if (collision.transform.name == "Perfect Exit Collider" && mode != "GAMEOVER")
+        {
+            perfectDrift = false; 
+        }
 
 
         if (collision.transform.tag == "Big Road Object" && mode == "FORWARD" )
@@ -829,7 +850,6 @@ public class PlayerController : MonoBehaviour
         //When car exit a tile 
         if (collision.transform.name == "Enter Collider")
         {
-
             tileController.nextTile();
             StartCoroutine(RemoveTileRoad());
 
@@ -845,6 +865,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.transform.name == "Exit DriftZone Collider" && mode != "GAMEOVER")
         {
+            
             collision.transform.gameObject.SetActive(false);
 
             if (mode == "PREDRIFT")
@@ -862,6 +883,7 @@ public class PlayerController : MonoBehaviour
                 {
                     GameOverDriftDirection = "FORWARD";
                 }
+                soundEffectController.playHit();
 
                 //GameOver when car hits the road and its still in predrift mode. 
                 previousMode = mode;
@@ -883,13 +905,7 @@ public class PlayerController : MonoBehaviour
             readyDrift = true;
         }
 
-        if (collision.transform.tag == "Coins")
-        {
-            scoreController.addCoins();
-            collision.transform.parent.gameObject.SetActive(false);
-            soundEffectController.playCoins();
-
-        }
+ 
 
 
         if (collision.transform.name == "Enter DriftZone Collider" && mode != "GAMEOVER")
@@ -918,23 +934,33 @@ public class PlayerController : MonoBehaviour
     {
 
 
+
+
+
         //Shake camera when player hit's small road object
         if (collision.transform.tag == "Small Road Object")
         {
 
             cameraController.startLightShake();
+            soundEffectController.playKnock();
 
         }
 
 
 
+        if (collision.transform.tag == "Coins")
+        {
+            scoreController.addCoins();
+            collision.transform.parent.gameObject.SetActive(false);
+            soundEffectController.playCoins();
 
+        }
 
 
         //Gameover when touches the ground 
         if (collision.transform.name == "Ground" && mode != "GAMEOVER")
         {
-            
+            soundEffectController.playHit();
             if (mode == "LEFT")
             {
                 GameOverDriftDirection = "LEFT";
@@ -1122,6 +1148,7 @@ public class PlayerController : MonoBehaviour
         //User input 
         bool earlyDrift; 
 
+        //Game Over when player tap too early 
         if(swipeController.Tap == true && readyDrift == false){
             GameOverDriftDirection = previousMode; 
             previousMode = mode;
@@ -1130,14 +1157,21 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //If input is swipe down 
+        //If input is tap
         //Enter Drift Mode
-        //bool tmpInput = (swipeController.Tap || userInputVer == -1);
         bool tmpInput = (touchTap == 1 || userInputVer == -1);
 
-        Debug.Log(tmpInput);
         if (tmpInput && nextTileDirection != "FORWARD" && mode != "GAMEOVER")
         {
+
+            //If player in perfect drift zone. Get Bonus
+            if(perfectDrift == true){
+                scoreController.increaseMultiplier();
+                fireWorksController.playFireworks();
+            }else{
+                //Not Perfect, reset multiplier back to 1; 
+                scoreController.resetScoreMultiplier();
+            }
 
             //Active Drift FX
             onDriftFX();
@@ -1209,11 +1243,29 @@ public class PlayerController : MonoBehaviour
         //Back to forward Tile 
         if (nextTileDirection == "FORWARD" &&mode != "GAMEOVER")
         {
+
+
+ 
             
             //Swipe Up
             //if (swipeController.Tap || userInputVer == 1)
             if (swipeController.Tap || userInputVer == 1)
             {
+
+
+                //If player in perfect drift zone. Get Bonus
+                if (perfectDrift == true)
+                {
+                    scoreController.increaseMultiplier();
+                    fireWorksController.playFireworks();
+                }
+                else
+                {
+                    //Not Perfect, reset multiplier back to 1; 
+                    scoreController.resetScoreMultiplier();
+                }
+
+
                 //player animation 
                 if (animMode == "DriftLeft")
                 {
