@@ -158,9 +158,10 @@ public class MainMenuController : MonoBehaviour{
     public void clickCar(){
         if (mode == "Main"){
             if (Input.GetMouseButtonDown(0)){
+				
                 RaycastHit hitInfo = new RaycastHit();
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) &&
-                    hitInfo.transform.gameObject.tag == "Player"){
+					hitInfo.transform.gameObject.tag == "PlayerCar"){
                     soundEffectController.playPop();
                     openCarMenu();
                     zoom = "carMenu";
