@@ -505,8 +505,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //Locate FX controller 
-        Transform fxTranform = transform.Find("Vehicle/AE86");
-        GameObject fxControllerObject = fxTranform.gameObject;
+        //Transform fxTranform = transform.Find("Vehicle/AE86");
+        GameObject fxControllerObject = GameObject.FindWithTag("PlayerCurrentVehicle");
         if (fxControllerObject != null)
         {
 
