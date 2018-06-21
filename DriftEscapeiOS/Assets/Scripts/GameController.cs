@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
     private PlayerController playerController;
 
     //Score Controller 
-    private ScoreController scoreController; 
+    private ScoreController2 scoreController; 
     public GameObject gameObjScoreController;
     private SoundEffectController soundController;
     public GameObject gameObjsoundController;
@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour {
         skyDomeController = SkyDome.GetComponent<SkyDomeController>();
 
         //Locate ScoreController 
-        scoreController = gameObjScoreController.GetComponent<ScoreController>();
+        scoreController = gameObjScoreController.GetComponent<ScoreController2>();
 
         //Locate SoundController
         soundController = gameObjsoundController.GetComponent<SoundEffectController>();
@@ -201,10 +201,6 @@ public class GameController : MonoBehaviour {
 
             //Submit Score 
             scoreController.submitScore();
-
-
-
-
             gameOverCalled = true; 
         }
 
@@ -224,7 +220,5 @@ public class GameController : MonoBehaviour {
             scoreController.setAddScore(false);
 			StartCoroutine(gameOverprocedure()); 
         }
-
-		
     }
 }

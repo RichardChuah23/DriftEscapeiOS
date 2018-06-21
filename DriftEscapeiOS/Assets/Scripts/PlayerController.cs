@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private FXController fxController;
     private DriftSmokeFX driftSmokeGameController;
     private AnimationController animController;
-    private ScoreController scoreController;
+    private ScoreController2 scoreController;
     private CameraController cameraController;
     private SoundEffectController soundEffectController;
     public FireworksController fireWorksController;
@@ -500,7 +500,7 @@ public class PlayerController : MonoBehaviour
         if (scoreControllerObject != null)
         {
 
-            scoreController = scoreControllerObject.GetComponent<ScoreController>();
+            scoreController = scoreControllerObject.GetComponent<ScoreController2>();
 
         }
 

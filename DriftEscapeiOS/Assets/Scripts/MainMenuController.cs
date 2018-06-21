@@ -137,6 +137,7 @@ public class MainMenuController : MonoBehaviour{
     /// <param name="sceneBuildIndex">Scene build index.</param>
     public void ChangeScene(int sceneBuildIndex){
         soundEffectController.playPop();
+		mode = "Game";
         SceneManager.LoadScene(sceneBuildIndex);
     }
 

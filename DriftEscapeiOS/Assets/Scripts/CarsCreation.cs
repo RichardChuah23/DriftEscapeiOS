@@ -26,7 +26,7 @@ public class CarsCreation : MonoBehaviour {
 	/*
 	 * GameObject
 	 * */
-	private GameObject[] models;
+	public GameObject[] models;
 	public GameObject buyButton;
 	public GameObject confirmButton;
 	public GameObject GoImage;
@@ -49,7 +49,9 @@ public class CarsCreation : MonoBehaviour {
 	 * */
 	private Vector3 position; 
 	private Vector3 newPosition;
-	private Vector3 selectedPosition; 
+	private Vector3 selectedPosition;
+	private Vector3 mainMenuCarContainer = new Vector3(-120, 0, 0);
+	private Vector3 inGameCarContainer = new Vector3(-120, 200, 0);
 
 	private void Awake() {
 		instance = this;
@@ -104,6 +106,12 @@ public class CarsCreation : MonoBehaviour {
 		if (mode == "return") {
 			ReturnPosition ();
 			mode = "car";
+		}
+
+		if (mainMenuController.Mode == "Game") {
+			carContainer.transform.position = inGameCarContainer;
+		} else if (mainMenuController.Mode == "Main") {
+			carContainer.transform.position = mainMenuCarContainer;
 		}
 
 	}

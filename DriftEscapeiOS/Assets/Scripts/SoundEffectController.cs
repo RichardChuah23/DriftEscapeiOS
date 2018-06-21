@@ -29,13 +29,15 @@ public class SoundEffectController : MonoBehaviour {
 
 	// Use this for initialization
     void Awake(){
-		if (instance != null) {
+		/*if (instance != null) {
 			Destroy (gameObject);
 		} else {
 			instance = this;
 			GameObject.DontDestroyOnLoad (gameObject);
-		}
- 
+		}*/
+ 		
+		DontDestroyOnLoad (gameObject);
+
         wooshList = new AudioClip[]{lSwoosh1, lSwoosh2, lSwoosh3, lSwoosh4};
         popList = new AudioClip[] { pop1, pop2, pop3 };
         hWooshList = new AudioClip[] {hSwoosh1, hSwoosh2, hSwoosh3 };
