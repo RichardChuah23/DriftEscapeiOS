@@ -360,7 +360,7 @@ MonoBehaviour:
   carMenu: {fileID: 1274105728}
   settings: {fileID: 1608689685}
   shopMenu: {fileID: 788215530}
-  tutorialScreen: {fileID: 0}
+  tutorialScreen: {fileID: 1335524006}
 --- !u!4 &35445224
 Transform:
   m_ObjectHideFlags: 0
@@ -8252,6 +8252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   efxSource: {fileID: 1774560907}
   coinFXSource: {fileID: 1774560906}
+  multiplierSource: {fileID: 0}
+  knockSoundSource: {fileID: 0}
   musicSource: {fileID: 1774560908}
   MenuMusicSource: {fileID: 1774560905}
   lowPitchRange: 0.95
@@ -8274,6 +8276,9 @@ MonoBehaviour:
   accelerate: {fileID: 8300000, guid: f93c2658a600a42d68507e7f4cb00d59, type: 3}
   purchased: {fileID: 8300000, guid: db4aa00f7b7584b0eb9bb77c1cdd637b, type: 3}
   skid: {fileID: 8300000, guid: 3178071b2ceaa474b95ed171646ba6fd, type: 3}
+  multiplier: {fileID: 0}
+  lostCombo: {fileID: 0}
+  knock: {fileID: 0}
 --- !u!4 &1774560910
 Transform:
   m_ObjectHideFlags: 0

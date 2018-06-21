@@ -6,53 +6,10 @@ using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using TMPro;
 
-public class MainMenuController : MonoBehaviour
-{
-<<<<<<< HEAD
+public class MainMenuController : MonoBehaviour{
 
-    private GameObject carsSelection;
-
-    private Transform mainMenuGameObject;
-    private Transform carMenuGameObject;
-    private Transform settingsGameObject;
-    private Transform purchaseGameObject;
-    private Transform shopGameObject;
-
-
-    //Shop gameobjects 
-    public GameObject shopMenuGameObject;
-    public GameObject smallCoinsCanvas;
-    public GameObject mediumCoinsCanvas;
-    public GameObject LargeCoinsCanvas;
-    public GameObject tutorialScrollView;
-
-
-    public Camera mainMenuCamera;
-
-    private Vector3 newPosition;
-    Vector3 mainMenu = new Vector3(0, 0, 0);
-    Vector3 carMenu = new Vector3(0, 0, -16);
-    Vector3 settings = new Vector3(0, 0, 22);
-    public float smooth = 3;
-
-    private string mode;
-    private string zoom;
-
-    RectTransform drift;
-    RectTransform escape;
-    //The new position of the game title
-    Vector3 driftPosition = new Vector3(0, 325, 0);
-    Vector3 escapePosition = new Vector3(0, 225, 0);
-    // Reference value used for the Smoothdamp method
-    private Vector3 driftVelocity = Vector3.zero;
-    private Vector3 escapeVelocity = Vector3.zero;
-    // Smooth time
-    private float smoothTime = 0.5f;
-
-
-=======
-	private float smooth = 3;
-	private float smoothTime = 0.5f;
+	private float cameraSmoothTime = 3f;
+	private float titleSmoothTime = 0.5f;
 	private string mode;
 	private string zoom;
 
@@ -70,7 +27,6 @@ public class MainMenuController : MonoBehaviour
 	public Sprite soundOn;
 	public Sprite musicOff;
 	public Sprite soundOff;
-	//public TextMeshProUGUI coinsText;
 
 	/*
 	 * GameObject
@@ -85,20 +41,23 @@ public class MainMenuController : MonoBehaviour
 	/*
 	 * RectTransform
 	 * */
-	private RectTransform drift;
-	private RectTransform escape;
-    
+	RectTransform drift;
+	RectTransform escape;
+
 	/* 
 	 * Script
 	 * */
->>>>>>> faed1457dc921b1fe66be6e3def4529191fd633c
-    private SoundEffectController soundEffectController;
+	private SoundEffectController soundEffectController;
 
 	/*
 	 * Transform
 	 * */
 	private Transform mainMenuGameObject;
-    
+	private Transform carMenuGameObject;
+	private Transform settingsGameObject;
+	private Transform purchaseGameObject;
+	private Transform shopGameObject;
+
 	/*
 	 * Vector3
 	 * */
@@ -136,8 +95,6 @@ public class MainMenuController : MonoBehaviour
         mode = "Main";
         zoom = "mainMenu";
 
-		//coinsText.text = CarsCreation.Instance.coins.ToString ();
-
 		// Get the tranform of MainMenu
         mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(2);
 
@@ -149,10 +106,13 @@ public class MainMenuController : MonoBehaviour
         GameObject soundManager = GameObject.Find("SoundManager");
         soundEffectController = (SoundEffectController)soundManager.GetComponent(typeof(SoundEffectController));
 
+		// Update the music & sound according to the PlayerPrefs
+		UpdateMusicToggle();
+		UpdateSoundToggle();
+
+		// Play sound effect
         soundEffectController.playStartEngine();
 
-        UpdateMusicToggle();
-        UpdateSoundToggle();
     }
 
     void Update(){
@@ -166,8 +126,8 @@ public class MainMenuController : MonoBehaviour
     /// Update the localPosition towards the new Position
     /// </summary>
     public void titleAnimation() {
-        drift.localPosition = Vector3.SmoothDamp(drift.localPosition, driftPosition, ref driftVelocity, smoothTime);
-        escape.localPosition = Vector3.SmoothDamp(escape.localPosition, escapePosition, ref escapeVelocity, smoothTime);
+        drift.localPosition = Vector3.SmoothDamp(drift.localPosition, driftPosition, ref driftVelocity, titleSmoothTime);
+        escape.localPosition = Vector3.SmoothDamp(escape.localPosition, escapePosition, ref escapeVelocity, titleSmoothTime);
     }
 
     /// <summary>
@@ -221,7 +181,7 @@ public class MainMenuController : MonoBehaviour
         } else{
             newPosition = mainMenuVector;
         }
-        mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * smooth);
+        mainMenuCamera.transform.position = Vector3.Lerp(mainMenuCamera.transform.position, newPosition, Time.deltaTime * cameraSmoothTime);
     }
 
     /// <summary>

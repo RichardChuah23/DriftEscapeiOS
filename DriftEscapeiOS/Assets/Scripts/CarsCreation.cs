@@ -32,7 +32,6 @@ public class CarsCreation : MonoBehaviour {
 	public GameObject GoImage;
 	public GameObject lockImage;
 
-
 	/*
 	 * Script
 	 * */
