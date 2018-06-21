@@ -218,6 +218,8 @@ GameObject:
   - component: {fileID: 65634439647667402}
   - component: {fileID: 95457749765903612}
   - component: {fileID: 114530451278886800}
+  - component: {fileID: 114272189558642696}
+  - component: {fileID: 65348403895893454}
   m_Layer: 0
   m_Name: 4x4_pick_up
   m_TagString: Untagged
@@ -399,9 +401,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787147391138820}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
-  m_LocalPosition: {x: -43, y: -14.86, z: 40}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 91.5, y: -50.46, z: 40}
+  m_LocalScale: {x: 0.7000003, y: 0.7, z: 0.7000003}
   m_Children:
   - {fileID: 4904403133896100}
   - {fileID: 4713419463126722}
@@ -411,7 +413,7 @@ Transform:
   - {fileID: 4427706324301544}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4887632136525744
 Transform:
   m_ObjectHideFlags: 1
@@ -509,7 +511,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787147391138820}
   m_Mesh: {fileID: 4300000, guid: 68e929cb7edca40a29a3b40afeae0b21, type: 3}
---- !u!65 &65634439647667402
+--- !u!65 &65348403895893454
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -518,6 +520,18 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.000004, y: 17.999998, z: 32.000008}
+  m_Center: {x: 0, y: 9.000001, z: 3.0000007}
+--- !u!65 &65634439647667402
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787147391138820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.000002, y: 17.999998, z: 32.000008}
   m_Center: {x: 0, y: 8.999999, z: 3.0000007}
@@ -958,6 +972,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114272189558642696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1787147391138820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8153a87c58ed4446186718cd81a65423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokeDownSmokeGameObject: {fileID: 1535683376137574}
+  skidMarkGameObject: {fileID: 1081052304977724}
+  tyreSketchGameObject: {fileID: 1446473987989274}
 --- !u!114 &114530451278886800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1030,7 +1058,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 385445473
+  randomSeed: 671231343
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4391,7 +4419,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 272016965
+  randomSeed: 358870423
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11113,7 +11141,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1449883311
+  randomSeed: -2112335487
   InitialModule:
     serializedVersion: 3
     enabled: 1
