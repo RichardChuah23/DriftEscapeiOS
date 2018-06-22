@@ -126,9 +126,9 @@ public class CameraController : MonoBehaviour
 
             }else
             {
-                distance = -30;
+                distance = -25;
                 damping = 3;
-                height = 40;
+                height = 30;
                 soundPlaying = false;
 
                 accelerateFX.gameObject.SetActive(false);

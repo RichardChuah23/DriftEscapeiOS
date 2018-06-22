@@ -53,6 +53,19 @@ public class CarsCreation : MonoBehaviour {
 	private Vector3 mainMenuCarContainer = new Vector3(-120, 0, 0);
 	private Vector3 inGameCarContainer = new Vector3(-120, 200, 0);
 
+
+
+    /*
+    All Cars
+    0 Myvi 
+    1 AE86 
+    2 Pick Up
+    3 Police
+    4 Mazda R-7  
+    5 Muscle 
+    6 Ferarri 
+     */
+
 	private void Awake() {
 		instance = this;
 		DontDestroyOnLoad (gameObject);

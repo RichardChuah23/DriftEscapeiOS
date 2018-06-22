@@ -90,15 +90,20 @@ public class PlayerController : MonoBehaviour
 
     //Vehicle Gameobject
     public BoxCollider carBoxCollider;
+    private int currentVehicleIndex;
 
     //Perfect Drift 
     private bool perfectDrift;
 
 
+    //Gameobjects list for all vehicle 
+    public List<GameObject> carList ;
+
+
+
 
     void Start()
     {
-
         locateAllController();
 
         driftSmokeGameController.hardOffDriftSmoke();
@@ -419,8 +424,41 @@ public class PlayerController : MonoBehaviour
 
     #endregion 
 
+    private void refreshCharacterCar(){
+        
+        //Get player prefeab 
+        currentVehicleIndex = PlayerPrefs.GetInt("CharacterSelected");
+
+
+        //Deactive all car, active the selected one 
+        for (int i = 0; i < carList.Count; i ++ ){
+            
+            //Deactive all car box collider 
+            carList[i].transform.GetComponent<BoxCollider>().enabled = false;
+
+
+            //Deactive not selected car. Active selected car
+            if(i == currentVehicleIndex ){
+                Debug.Log("Set ACTIVE car number " + i + "Name : " + carList[i].name ); 
+                carList[i].SetActive(true);
+
+                //Set up new fx controller;
+                fxController = carList[i].GetComponentInChildren<FXController>();
+            }else{
+                carList[i].SetActive(false);
+            }
+
+
+
+
+        }
+
+    }
+
+
     public void resetGameInitialValue()
     {
+        refreshCharacterCar();
         transform.GetComponent<Rigidbody>().isKinematic = false;
         animMode = "IDLE";
         mode = "FORWARD";
@@ -438,8 +476,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         gameOverTriggred = false;
         previousMode = "NULL";
-        turnSpeed = 250;
-        forwardSpeed = 400;
+
+        forwardSpeed = 350;
+        turnSpeed = 200;
+
+
         turnGear = 0;
         offAngle = 0;
         onLaneNumber = 0;
@@ -451,10 +492,13 @@ public class PlayerController : MonoBehaviour
         startGameMovementCoolDownDuration = 1f;
         t = 0;
         readyDrift = false;
-        carBoxCollider.enabled = false;
+
         scoreController.setAddScore(true);
         perfectDrift = false;
         scoreController.setScoreMultiplier(1);
+
+
+
 
 
     }
@@ -465,9 +509,9 @@ public class PlayerController : MonoBehaviour
         //Locate FX controller 
         driftSmokeGameController = transform.Find("FX_Tyre_Smoke").gameObject.GetComponentInChildren<DriftSmokeFX>();
 
-        //Car Box Collider. Find Vehicle's first child 
-        Transform vehicleTransfrom = GameObject.Find("Vehicle").transform.GetChild(0);
-        carBoxCollider = vehicleTransfrom.GetComponent<BoxCollider>();
+
+        //Set up animation Controller 
+        animController = GameObject.Find("Vehicle").GetComponentInChildren<AnimationController>();
 
 
 
@@ -504,28 +548,9 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Locate FX controller 
-        //Transform fxTranform = transform.Find("Vehicle/AE86");
-        GameObject fxControllerObject = GameObject.FindWithTag("PlayerCurrentVehicle");
-        if (fxControllerObject != null)
-        {
-
-            //playerController = playerControllerObject.GetComponent<PlayerController>();
-            fxController = fxControllerObject.GetComponentInChildren<FXController>();
 
 
-        }
 
-        //Locate Vehicle 
-        Transform vehicleTranform = transform.Find("Vehicle");
-        GameObject vehicleControllerObject = vehicleTranform.gameObject;
-        if (vehicleControllerObject != null)
-        {
-            //playerController = playerControllerObject.GetComponent<PlayerController>();
-            animController = vehicleControllerObject.GetComponentInChildren<AnimationController>();
-
-
-        }
 
         //Locate Sound Manager 
 
@@ -562,6 +587,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void setForwardSpeed(float forwardSpeed){
+        this.forwardSpeed = forwardSpeed; 
+    }
+    public void setTurnSpeed(float turnSpeed){
+        this.turnSpeed = turnSpeed;
+    }
+
     public void setMode(string mode)
     {
         previousMode = this.mode;
@@ -591,7 +623,6 @@ public class PlayerController : MonoBehaviour
 
     public void setTouchSwipeHorizontal(int input)
     {
-        Debug.Log("SET");
         this.touchSwipeHo = input;
 
     }
@@ -604,15 +635,11 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-
-
     public void resetPlayerRotation()
     {
         //Rotote the player back to direction 
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
-
-
 
 
     void moveForward()
@@ -628,15 +655,6 @@ public class PlayerController : MonoBehaviour
         allowLeft = checkAllowLeft();
         allowRight = checkAllowRight();
 
-        /* GameOver when player tap screen outside drift zone 
-        if(swipeController.Tap){
-            mode = "GAMEOVER";
-        }
-
-		*/
-
-        //Moving Left and Right 
-
 
         //if (swipeController.SwipeLeft || userInputHo == -1.0)
         if (touchSwipeHo == -1 || userInputHo == -1.0)
@@ -646,8 +664,6 @@ public class PlayerController : MonoBehaviour
 
                 wantedPosX = switchLeft();
             }
-
-
 
 
         }
@@ -686,6 +702,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    #region Switch Lane Mechanism 
 
     float getLerpWantedPos(string direction)
     {
@@ -757,8 +774,6 @@ public class PlayerController : MonoBehaviour
         return wantedPosX;
     }
 
-
-
     float switchRight()
     {
 
@@ -807,9 +822,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    #endregion 
 
 
-
+    #region Collider 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.name == "Perfect Enter Collider" && mode == "PREDRIFT")
@@ -1016,7 +1032,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    #endregion
 
+    #region Drift
 
     void driftmode(string mode)
     {
@@ -1128,6 +1146,9 @@ public class PlayerController : MonoBehaviour
         return currentSpeed;
     }
 
+    #endregion
+
+    #region Drift Zone 
     void driftZoneMode(string nextTileDirection)
     {
 
@@ -1168,6 +1189,8 @@ public class PlayerController : MonoBehaviour
             if(perfectDrift == true){
                 scoreController.increaseMultiplier();
                 fireWorksController.playFireworks();
+                //SoundEffect 
+                soundEffectController.playMultiplier(scoreController.getMultiplier());
             }else{
                 //Not Perfect, reset multiplier back to 1; 
                 scoreController.resetScoreMultiplier();
@@ -1258,6 +1281,7 @@ public class PlayerController : MonoBehaviour
                 {
                     scoreController.increaseMultiplier();
                     fireWorksController.playFireworks();
+                    soundEffectController.playMultiplier(scoreController.getMultiplier());
                 }
                 else
                 {
@@ -1292,15 +1316,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void preForward()
-    {
-        //Keep car moving 
-        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime * 10);
-    }
-
-
     //Return the angle player should turn to when enter drift zone
     private float angleEnterDriftZone(GameObject currentTile)
     {
@@ -1330,6 +1345,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    #endregion
+
+    void preForward()
+    {
+        //Keep car moving 
+        transform.Translate(0, 0, Time.deltaTime * turnSpeed);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime * 10);
+    }
+
+
+
+
+    #region Courotine 
 
     IEnumerator delayForward()
     {
@@ -1402,6 +1432,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+    #endregion
 
 }
 

@@ -168,13 +168,15 @@ GameObject:
   - component: {fileID: 23379640568794250}
   - component: {fileID: 114407288234783110}
   - component: {fileID: 65540405582436330}
+  - component: {fileID: 114716388822307052}
+  - component: {fileID: 95224238947039950}
   m_Layer: 0
   m_Name: Myvii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1586045261348648
 GameObject:
   m_ObjectHideFlags: 1
@@ -282,7 +284,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568249853522628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4709601233016642}
@@ -520,6 +522,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14, y: 15, z: 21}
   m_Center: {x: 0, y: 7.5, z: 0.5}
+--- !u!95 &95224238947039950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568249853522628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d88d563e46aa4db8be10e0445c1dfe6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!96 &96020988947625496
 TrailRenderer:
   serializedVersion: 2
@@ -954,6 +973,18 @@ MonoBehaviour:
   brokeDownSmokeGameObject: {fileID: 1054075423729110}
   skidMarkGameObject: {fileID: 1020615987333430}
   tyreSketchGameObject: {fileID: 1084073254411120}
+--- !u!114 &114716388822307052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568249853522628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17695eb00e1b248a38a921d787d3e167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95224238947039950}
 --- !u!198 &198003242779852910
 ParticleSystem:
   m_ObjectHideFlags: 1
