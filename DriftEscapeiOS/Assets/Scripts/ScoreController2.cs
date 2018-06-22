@@ -47,8 +47,6 @@ public class ScoreController2 : MonoBehaviour {
 		}
 
 
-
-
 		score = 0;
 		coins = 0;
 		scoreMultiplier = 1; 
@@ -77,7 +75,7 @@ public class ScoreController2 : MonoBehaviour {
 		{
 
 
-			score += Mathf.FloorToInt(forwardSpeed/2)  *  scoreMultiplier ;
+			score += Mathf.FloorToInt(forwardSpeed/10)  *  scoreMultiplier ;
 
 			scoreText.SetText(score.ToString());
 			gameOverScoreText.SetText(score.ToString());
@@ -89,19 +87,12 @@ public class ScoreController2 : MonoBehaviour {
 		}
 
 
-
-
-
-
-
-
-
 	}
 
 
 	public void increaseMultiplier(){
 
-		if(scoreMultiplier <= 8 ){
+		if(scoreMultiplier < 6 ){
 			scoreMultiplier += 1; 
 
 			//GUI
@@ -109,8 +100,44 @@ public class ScoreController2 : MonoBehaviour {
 			playTextSize = true;
 			increaseTextSize();
 
-			//SoundEffect 
-			soundController.playMultiplier(scoreMultiplier);
+
+
+            //Set forward and turn speed
+            if (scoreMultiplier == 1)
+            {
+                playerController.setForwardSpeed(300);
+                playerController.setTurnSpeed(190);
+
+            }
+            else if (scoreMultiplier == 2)
+            {
+                playerController.setForwardSpeed(320);
+                playerController.setTurnSpeed(210);
+            }
+            else if (scoreMultiplier == 3)
+            {
+                playerController.setForwardSpeed(340);
+                playerController.setTurnSpeed(225);
+            }
+            else if (scoreMultiplier == 4)
+            {
+                playerController.setForwardSpeed(380);
+                playerController.setTurnSpeed(240);
+            }
+            else if (scoreMultiplier == 5)
+            {
+                playerController.setForwardSpeed(430);
+                playerController.setTurnSpeed(270);
+            }
+            else if (scoreMultiplier == 6)
+            {
+                playerController.setForwardSpeed(500);
+                playerController.setTurnSpeed(300);
+            }
+  
+
+
+
 		}
 
 
@@ -127,6 +154,8 @@ public class ScoreController2 : MonoBehaviour {
 			soundController.playLostMultiplier();
 		}
 
+        playerController.setForwardSpeed(300);
+        playerController.setTurnSpeed(190);
 
 		scoreMultiplier = 1;
 		Debug.Log("Bad Drift ! " + scoreMultiplier);
@@ -156,6 +185,10 @@ public class ScoreController2 : MonoBehaviour {
 	public int getScore(){
 		return score; 
 	}
+
+    public int getMultiplier(){
+        return scoreMultiplier;
+    }
 
 
 	public void resetScore()
@@ -192,7 +225,6 @@ public class ScoreController2 : MonoBehaviour {
 
 		// .. and increate the t interpolater
 		t += 0.9f * Time.deltaTime  ;
-
 
 
 		if (t > 1.0f)

@@ -106,11 +106,11 @@ GameObject:
   - component: {fileID: 114719206666342770}
   m_Layer: 0
   m_Name: AE86
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1466018923505754
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,8 +361,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336210045942060}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
-  m_LocalPosition: {x: -43, y: -15, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4996192145808054}
@@ -518,7 +518,7 @@ BoxCollider:
   m_GameObject: {fileID: 1336210045942060}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 17.000006, y: 11, z: 28.000008}
   m_Center: {x: -0.5000038, y: 5.500002, z: -1.0000002}
@@ -970,6 +970,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8153a87c58ed4446186718cd81a65423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokeDownSmokeGameObject: {fileID: 1466018923505754}
+  skidMarkGameObject: {fileID: 1270134293913870}
+  tyreSketchGameObject: {fileID: 1299232368918610}
 --- !u!114 &114719206666342770
 MonoBehaviour:
   m_ObjectHideFlags: 1

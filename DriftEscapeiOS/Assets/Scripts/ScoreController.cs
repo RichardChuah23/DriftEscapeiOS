@@ -43,8 +43,6 @@ public class ScoreController : MonoBehaviour
 
         }
 
-      
-
 
         score = 0;
         coins = 0;
@@ -85,14 +83,6 @@ public class ScoreController : MonoBehaviour
 
         }
 
-
-
-
-
-
-
-
-	
     }
 
 
