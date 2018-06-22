@@ -41,22 +41,13 @@ public class MainMenuController : MonoBehaviour{
 	/*
 	 * RectTransform
 	 * */
-	RectTransform drift;
-	RectTransform escape;
+	public RectTransform drift;
+	public RectTransform escape;
 
 	/* 
 	 * Script
 	 * */
 	private SoundEffectController soundEffectController;
-
-	/*
-	 * Transform
-	 * */
-	private Transform mainMenuGameObject;
-	private Transform carMenuGameObject;
-	private Transform settingsGameObject;
-	private Transform purchaseGameObject;
-	private Transform shopGameObject;
 
 	/*
 	 * Vector3
@@ -67,8 +58,8 @@ public class MainMenuController : MonoBehaviour{
 	private Vector3 carMenuVector = new Vector3(0, 0, -16);
 	private Vector3 settingsVector = new Vector3(0, 0, 22);
 	// The new position of the game title
-	private Vector3 driftPosition = new Vector3(0, 325, 0);
-	private Vector3 escapePosition = new Vector3(0, 225, 0);
+	private Vector3 driftPosition = new Vector3(0, 50, 0);
+	private Vector3 escapePosition = new Vector3(0, -50, 0);
 	// Reference value used for the Smoothdamp method
 	private Vector3 driftVelocity = Vector3.zero;
 	private Vector3 escapeVelocity = Vector3.zero;
@@ -95,13 +86,6 @@ public class MainMenuController : MonoBehaviour{
         mode = "Main";
         zoom = "mainMenu";
 
-		// Get the tranform of MainMenu
-        mainMenuGameObject = GameObject.Find("Canvas").transform.GetChild(2);
-
-        // Get the RectTransform component
-        drift = mainMenuGameObject.transform.GetChild(1).GetComponent<RectTransform>();
-        escape = mainMenuGameObject.transform.GetChild(2).GetComponent<RectTransform>();
-
         // Locate sound manager
         GameObject soundManager = GameObject.Find("SoundManager");
         soundEffectController = (SoundEffectController)soundManager.GetComponent(typeof(SoundEffectController));
@@ -112,7 +96,6 @@ public class MainMenuController : MonoBehaviour{
 
 		// Play sound effect
         soundEffectController.playStartEngine();
-
     }
 
     void Update(){
@@ -136,8 +119,11 @@ public class MainMenuController : MonoBehaviour{
     /// </summary>
     /// <param name="sceneBuildIndex">Scene build index.</param>
     public void ChangeScene(int sceneBuildIndex){
+		// Sound effect
         soundEffectController.playPop();
+		// Set the mode according to different scene or Menus
 		mode = "Game";
+		// Load scene
         SceneManager.LoadScene(sceneBuildIndex);
     }
 
@@ -158,11 +144,12 @@ public class MainMenuController : MonoBehaviour{
     public void clickCar(){
         if (mode == "Main"){
             if (Input.GetMouseButtonDown(0)){
-				
                 RaycastHit hitInfo = new RaycastHit();
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) &&
 					hitInfo.transform.gameObject.tag == "PlayerCar"){
+					// Sound effect
                     soundEffectController.playPop();
+					// Opens car menu
                     openCarMenu();
                     zoom = "carMenu";
                     cameraZooming();
@@ -257,21 +244,27 @@ public class MainMenuController : MonoBehaviour{
    	/// Opens settings.
    	/// </summary>
     public void openSettings(){
+		// Sound effect
         soundEffectController.playPop();
+		// Camera zooming
+		zoom = "settings";
         carsSelection.SetActive(false);
 		mainMenu.SetActive(false);
 		settings.SetActive(true);
-        zoom = "settings";
     }
 
     /// <summary>
     /// Closes settings.
     /// </summary>
     public void closeSettings(){
+		// Sound effect
+		soundEffectController.playPop();
+		// Camera zooming
+		zoom = "mainMenu";
 		carsSelection.SetActive (true);
 		mainMenu.SetActive (true);
 		settings.SetActive (false);
-        zoom = "mainMenu";
+        // Sound effect
         soundEffectController.playStartEngine();
     }
 
@@ -279,12 +272,13 @@ public class MainMenuController : MonoBehaviour{
 	/// Opens shop.
 	/// </summary>
     public void openShop(){
+		// Sound effect
+		soundEffectController.playPop();
 		if (mode == "Main") 
 			mainMenu.SetActive (false);
 		
 		if (mode == "Car") 
 			carMenu.SetActive (false);
-		
 
 		shopMenu.SetActive(true);
     }

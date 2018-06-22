@@ -51,7 +51,6 @@ public class CarsCreation : MonoBehaviour {
 	private Vector3 position; 
 	private Vector3 newPosition;
 	private Vector3 selectedPosition;
-	//private Vector3 mainMenuCarContainer = new Vector3(0, 0, 0);
 	private Vector3 inGameCarContainer = new Vector3(-120, 200, 0);
 
 	private void Awake() {
@@ -163,6 +162,7 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to main menu
 	/// </summary>
 	public void Back () {
+		// Sound effect
 		soundEffectController.playPop ();
 		// Returned to the saved position
 		ReturnPosition ();
