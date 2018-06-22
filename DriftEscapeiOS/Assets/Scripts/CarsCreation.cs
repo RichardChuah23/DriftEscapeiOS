@@ -10,12 +10,13 @@ public class CarsCreation : MonoBehaviour {
 	public static CarsCreation Instance{get{ return instance;}}
 
 	private bool moving = false;
+	// Vector3.Lerp smooth time
 	public float smooth = 1f;
+	// PlayerPrefs variables
 	public int currentCarIndex = 0;
 	public int coins = 0;
 	public int carAvailability = 1;
 	public float carPositionZ = 0;
-	private string mode = "car";
 
 	/*
 	 * Canvas
@@ -50,7 +51,6 @@ public class CarsCreation : MonoBehaviour {
 	private Vector3 position; 
 	private Vector3 newPosition;
 	private Vector3 selectedPosition;
-	private Vector3 mainMenuCarContainer = new Vector3(-120, 0, 0);
 	private Vector3 inGameCarContainer = new Vector3(-120, 200, 0);
 
 
@@ -92,16 +92,6 @@ public class CarsCreation : MonoBehaviour {
 		// Returned the saved total coins
 		coinsText.text = coins.ToString ();
 
-		// Returned to the saved position
-		if (currentCarIndex > 0) {
-			selectedPosition = new Vector3 (carPositionZ, 0f, 0f);
-			carContainer.transform.position = selectedPosition;
-			newPosition = selectedPosition;
-			carPositionZ = PlayerPrefs.GetFloat ("PositionZ");
-		} else {
-			ReturnPosition ();
-		}
-
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
 		mainMenuController = (MainMenuController) menuManager.GetComponent(typeof(MainMenuController));
@@ -116,15 +106,11 @@ public class CarsCreation : MonoBehaviour {
 			ChangingPosition ();
 		}
 
-		if (mode == "return") {
-			ReturnPosition ();
-			mode = "car";
-		}
-
 		if (mainMenuController.Mode == "Game") {
 			carContainer.transform.position = inGameCarContainer;
 		} else if (mainMenuController.Mode == "Main") {
-			carContainer.transform.position = mainMenuCarContainer;
+			// Returned to the saved position
+			ReturnPosition();
 		}
 
 	}
@@ -189,8 +175,10 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to main menu
 	/// </summary>
 	public void Back () {
+		// Sound effect
 		soundEffectController.playPop ();
-		mode = "return";
+		// Returned to the saved position
+		ReturnPosition ();
 		// Return to main menu
 		mainMenuController.Mode = "Main";
 		mainMenuController.closeCarMenu ();
@@ -205,7 +193,8 @@ public class CarsCreation : MonoBehaviour {
 	public void Buy(){
 		//sound effect
 		soundEffectController.playPop ();
-		int cost = 10;
+		int cost = 300;
+		// Can buy the car
 		if (coins >= cost) {
 			coins -= cost;
 			carAvailability += 1 << currentCarIndex;
@@ -248,7 +237,7 @@ public class CarsCreation : MonoBehaviour {
 	/// Returns the position.
 	/// Return to the selected model index and position
 	/// </summary>
-	public void ReturnPosition(){
+	private void ReturnPosition(){
 		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
 		carPositionZ = PlayerPrefs.GetFloat ("PositionZ", carPositionZ);
 		selectedPosition = new Vector3 (carPositionZ, 0f, 0f);
