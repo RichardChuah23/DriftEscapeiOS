@@ -268,9 +268,9 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles  
             List<int> a_list = new List<int>(){1,2,7};  
 
-            //return a_list[Random.Range(0, 3)]; //ORI
+            return a_list[Random.Range(0, 3)]; //ORI
 
-            return 2; //Curve
+            //return 2; //Curve
             //return 1; //All Straight
         }
 

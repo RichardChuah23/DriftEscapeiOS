@@ -587,6 +587,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public string getGameOverReason(){
+        return gameOverReason; 
+    }
+
     public void setForwardSpeed(float forwardSpeed){
         this.forwardSpeed = forwardSpeed; 
     }

@@ -51,6 +51,8 @@ public class SoundEffectController : MonoBehaviour {
       }
 
 	private void Update() {
+
+
 		if (PlayerPrefs.GetInt ("Music", 1) == 1){
 			if (SceneManager.GetActiveScene ().buildIndex == 1) {
 				MenuMusicSource.mute = true;
@@ -59,7 +61,21 @@ public class SoundEffectController : MonoBehaviour {
 				MenuMusicSource.mute = false;
 				musicSource.mute = true;
 			}
-		}
+
+            //If music if off 
+        }else if (PlayerPrefs.GetInt ("Music", 0) == 1 ){
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                MenuMusicSource.mute = true;
+                musicSource.mute = true;
+            }
+            else
+            {
+                MenuMusicSource.mute = true;
+                musicSource.mute = true;
+            }
+
+        }
 	}
 
 	/// <summary>

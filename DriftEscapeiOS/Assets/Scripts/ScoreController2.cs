@@ -105,13 +105,13 @@ public class ScoreController2 : MonoBehaviour {
             //Set forward and turn speed
             if (scoreMultiplier == 1)
             {
-                playerController.setForwardSpeed(300);
+                playerController.setForwardSpeed(320);
                 playerController.setTurnSpeed(190);
 
             }
             else if (scoreMultiplier == 2)
             {
-                playerController.setForwardSpeed(320);
+                playerController.setForwardSpeed(330);
                 playerController.setTurnSpeed(210);
             }
             else if (scoreMultiplier == 3)
@@ -122,17 +122,17 @@ public class ScoreController2 : MonoBehaviour {
             else if (scoreMultiplier == 4)
             {
                 playerController.setForwardSpeed(380);
-                playerController.setTurnSpeed(240);
+                playerController.setTurnSpeed(235);
             }
             else if (scoreMultiplier == 5)
             {
                 playerController.setForwardSpeed(430);
-                playerController.setTurnSpeed(270);
+                playerController.setTurnSpeed(245);
             }
             else if (scoreMultiplier == 6)
             {
                 playerController.setForwardSpeed(500);
-                playerController.setTurnSpeed(300);
+                playerController.setTurnSpeed(260);
             }
   
 
@@ -154,7 +154,7 @@ public class ScoreController2 : MonoBehaviour {
 			soundController.playLostMultiplier();
 		}
 
-        playerController.setForwardSpeed(300);
+        playerController.setForwardSpeed(320);
         playerController.setTurnSpeed(190);
 
 		scoreMultiplier = 1;

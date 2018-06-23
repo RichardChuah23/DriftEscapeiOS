@@ -32,7 +32,7 @@ public class ObstacleController : MonoBehaviour {
 
 
             //pick a random ready obstacle from the list. 
-            int rnd = Random.Range(0, 2);
+            int rnd = Random.Range(0, readyObstacleList.Count);
 
             //get the n gameobject
             GameObject obsSpawn = readyObstacleList[rnd];
