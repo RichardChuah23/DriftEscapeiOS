@@ -39,6 +39,12 @@ public class GameController : MonoBehaviour {
 	public GameObject pauseMenuUI;
 	public GameObject gameOverUI;
 
+    //Ads 
+    public AdsController adsController;
+    public int timesBeforeAds;
+    public int timesbeforeLongAds;
+
+
     void Awake(){
         Application.targetFrameRate = 60;
     }
@@ -130,6 +136,7 @@ public class GameController : MonoBehaviour {
         scoreController.resetScore();
 
 
+
 	}
 
 	/// <summary>
@@ -201,7 +208,36 @@ public class GameController : MonoBehaviour {
 
             //Submit Score 
             scoreController.submitScore();
-            gameOverCalled = true; 
+            gameOverCalled = true;
+
+            timesBeforeAds--; 
+
+            if(timesBeforeAds == 0 ){
+                //adsController.ShowDefaultAd("rewardedVideo");
+
+                //longads counter decreament 
+                timesbeforeLongAds--;
+
+                if (timesbeforeLongAds == 0)
+                {
+                    //play long ads 
+                    adsController.ShowDefaultAd("rewardedVideo");
+                    //Reset counter 
+                    timesbeforeLongAds = 3;
+
+                }
+                else{
+                    //Play short ads
+                    adsController.ShowDefaultAd("video");
+                }
+
+                //Reset counter 
+                timesBeforeAds = 3;
+
+            }
+            Debug.Log("Times before short Ads " + timesBeforeAds);
+            Debug.Log("Times before long Ads " + timesbeforeLongAds);
+
         }
 
     }
@@ -221,4 +257,6 @@ public class GameController : MonoBehaviour {
 			StartCoroutine(gameOverprocedure()); 
         }
     }
+
+
 }
