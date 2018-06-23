@@ -315,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964685377765782}
   m_LocalRotation: {x: -0.058911428, y: 0.03633402, z: -0.24774106, w: 0.96635073}
-  m_LocalPosition: {x: -93, y: 29, z: 29.59961}
+  m_LocalPosition: {x: -93, y: 29, z: -1.8}
   m_LocalScale: {x: 2.645515, y: 36.559322, z: 2.6455147}
   m_Children:
   - {fileID: 4818726567958496}
@@ -355,7 +355,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459660980536206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.200195, y: 14.239998, z: 25.7}
+  m_LocalPosition: {x: 15.200195, y: 14.239998, z: 37.4}
   m_LocalScale: {x: 285.9058, y: 5.382, z: 0.3372}
   m_Children: []
   m_Father: {fileID: 4477228248688322}
@@ -368,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566830533275788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.2, y: 14.239998, z: -25.6}
+  m_LocalPosition: {x: 15.2, y: 14.239998, z: -47.8}
   m_LocalScale: {x: 303.92673, y: 5.382, z: 0.3372}
   m_Children: []
   m_Father: {fileID: 4477228248688322}
@@ -381,7 +381,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361805309040664}
   m_LocalRotation: {x: -0, y: -0, z: 0.28514546, w: 0.95848435}
-  m_LocalPosition: {x: 105.5, y: 21, z: 29.59961}
+  m_LocalPosition: {x: 105.5, y: 21, z: -1.7998047}
   m_LocalScale: {x: 2.6455204, y: 36.559338, z: 2.64551}
   m_Children:
   - {fileID: 4170347881122458}
@@ -524,7 +524,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459660980536206}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -796,7 +796,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566830533275788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

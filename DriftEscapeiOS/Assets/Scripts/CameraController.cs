@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     //Sound Controller 
     private SoundEffectController soundController; 
     private bool soundPlaying = false ;
+    private bool accelerateSoundPlaying = false; 
 
     //Camera effect var 
     public ParticleSystem accelerateFX;
@@ -79,14 +80,14 @@ public class CameraController : MonoBehaviour
     }
 
 
-
     void FixedUpdate()
     {
 
         playerMode = playerController.getMode();
 
         //Front Mode
-        if(beginLerping == true){
+        if (beginLerping == true)
+        {
 
             //Wait for n seconds and start 
             distance = -180;
@@ -95,9 +96,10 @@ public class CameraController : MonoBehaviour
 
 
             rotationDamping = 15;
-            if(soundPlaying == false){
-                
-				StartCoroutine(beginplayingAcceleratingSound());
+            if (soundPlaying == false)
+            {
+
+                StartCoroutine(beginplayingAcceleratingSound());
             }
             StartCoroutine(beginMoveStartCamera());
 
@@ -107,16 +109,25 @@ public class CameraController : MonoBehaviour
         }
 
         //Forward Mode 
-        if(playerMode == "FORWARD" && beginLerping == false ){
+        if (playerMode == "FORWARD" && beginLerping == false)
+        {
 
 
             //Accelerating 
-            if (particleTime > 0f) { 
+            if (particleTime > 0f)
+            {
 
-				accelerateFX.gameObject.SetActive(true);
+                accelerateFX.gameObject.SetActive(true);
                 height = 22;
                 damping = 5;
 
+
+                if(soundPlaying == false){
+                    StartCoroutine(beginplayingAcceleratingSound());
+
+
+                }
+               
 
 
                 particleTime -= Time.deltaTime;
@@ -124,33 +135,42 @@ public class CameraController : MonoBehaviour
 
 
 
-            }else
+            }
+            else
             {
                 distance = -25;
                 damping = 3;
                 height = 30;
-                soundPlaying = false;
 
+  
                 accelerateFX.gameObject.SetActive(false);
 
             }
 
 
-        //Drift Mode
-        }else if (playerMode == "LEFT" || playerMode == "RIGHT" || playerMode == "GAMEOVER"){
-            
-            distance = 50;
-            damping = 3;
-            rotationDamping = 15;
-            height = 45;
-			
+            //Drift Mode
+        }
+        else if (playerMode == "LEFT" || playerMode == "RIGHT")
+        {
 
+            distance = 70;
+            damping = 6;
+            rotationDamping = 15;
+            height = 25;
+
+            soundPlaying = false;
 
 
 
             accelerateFX.gameObject.SetActive(false);
-            particleTime = 1.8f; 
+            particleTime = 1.8f;
         }
+        else if (playerMode == "GAMEOVER" && playerController.getGameOverReason() == "STRAIGHT HIT"){
+
+            rotationDamping = 2;
+
+        }
+    
 
 
         followTranform(distance);
@@ -160,62 +180,17 @@ public class CameraController : MonoBehaviour
 
     }
 
-    public void resetCamera(){
 
+
+
+
+
+
+
+	public void resetCamera(){
+        soundPlaying = false;
+        damping = 3; 
         rotationDamping = 15; 
-    }
-
-    IEnumerator beginplayingAcceleratingSound(){
-        
-        yield return new WaitForSeconds(startGameFocusDuration - 0.2f);
-
- 
-        if(soundPlaying == false){
-
-			soundController.playAccelerate();
-			soundPlaying = true;
-			
-
-        }    
-
-
-    }
-
-    IEnumerator beginMoveStartCamera()
-    {
-
-        yield return new WaitForSeconds(startGameFocusDuration);
-
-
-
-
-        //Interpolated float result between min and max
-        distance = Mathf.Lerp(distance_start, 35, t);
-        height = Mathf.Lerp(height_start, 22, t);
-
-        start_offset.x = Mathf.Lerp(start_offset_start.x, 0, t);
-  
-        // .. and increate the t interpolater
-        t += 0.5f * Time.deltaTime;
-
-
-        if (t > 1)
-        {
-            
-
-            beginLerping = false;
-
-        }
-
-
-    }
-
-    IEnumerator delayResetRotationDamping()
-    {
-
-        yield return new WaitForSeconds(1f);
-
-        rotationDamping = 1;
     }
 
 
@@ -253,6 +228,8 @@ public class CameraController : MonoBehaviour
     }
 
 
+
+    #region Camera Shake
 
 
     public void startLightShake(){
@@ -294,8 +271,67 @@ public class CameraController : MonoBehaviour
     }
 
 
+    #endregion
+
+
+    IEnumerator beginplayingAcceleratingSound()
+    {
+
+        yield return new WaitForSeconds(startGameFocusDuration - 0.2f);
+
+
+        if (soundPlaying == false)
+        {
+
+            soundController.playAccelerate();
+            soundPlaying = true;
+
+
+        }
+
+
+    }
+
+    #region Coroutine 
+
+    IEnumerator beginMoveStartCamera()
+    {
+
+        yield return new WaitForSeconds(startGameFocusDuration);
 
 
 
 
+        //Interpolated float result between min and max
+        distance = Mathf.Lerp(distance_start, 35, t);
+        height = Mathf.Lerp(height_start, 22, t);
+
+        start_offset.x = Mathf.Lerp(start_offset_start.x, 0, t);
+
+        // .. and increate the t interpolater
+        t += 0.5f * Time.deltaTime;
+
+
+        if (t > 1)
+        {
+
+
+            beginLerping = false;
+
+        }
+
+
+    }
+
+    IEnumerator delayResetRotationDamping()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        rotationDamping = 1;
+
+
+    }
+
+    #endregion
 }
