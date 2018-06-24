@@ -40,7 +40,7 @@ public class SoundEffectController : MonoBehaviour {
 			GameObject.DontDestroyOnLoad (gameObject);
 		}*/
  		
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 
         wooshList = new AudioClip[]{lSwoosh1, lSwoosh2, lSwoosh3, lSwoosh4};
         popList = new AudioClip[] { pop1, pop2, pop3 };
@@ -201,6 +201,7 @@ public class SoundEffectController : MonoBehaviour {
         if (soundOnOff == 1){
             //Set the clip of our efxSource audio source to the clip passed in as a parameter.
             coinFXSource.clip = Coin;
+            coinFXSource.pitch = 1;
             //Play the clip.
             coinFXSource.Play();
         }

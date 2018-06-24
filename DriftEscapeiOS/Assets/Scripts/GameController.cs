@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour {
         //Spawn the first two tiles 
         tileController.spawnFirstTwoTiles();
         //Set player back to origin point 
-        playerController.setPlayerPos(new Vector3(0, 4.8f, 0));
+        playerController.setPlayerPos(new Vector3(0, 5.5f, 0));
 
         //Rotote the player back to direction 
         playerController.resetPlayerRotation();

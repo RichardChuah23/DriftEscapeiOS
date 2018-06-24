@@ -56,7 +56,9 @@ public class TileController : MonoBehaviour {
     private int previousTileIndex;
     private int typeOfTileIndex;
 
-    private int numOfStraightTileNeeds; 
+    private int numOfStraightTileNeeds;
+
+    public PlayerController playerController; 
 
 
     // Use this for initialization
@@ -505,17 +507,24 @@ public class TileController : MonoBehaviour {
 
 
     public void DestroyTileRoad(){
-        
-        Destroy(activeTilesRoad[0]);
-        activeTilesRoad.RemoveAt(0);
 
+        if(playerController.getMode() != "GAMEOVER" && playerController.getMode() != "PAUSED"){
+
+			Destroy(activeTilesRoad[0]);
+			activeTilesRoad.RemoveAt(0);
+
+        }
+        
 
     }
 
 
-    public void DestroyTileDriftZone(){ 
-        Destroy(activeTileDrift[0]);
-        activeTileDrift.RemoveAt(0);
+    public void DestroyTileDriftZone(){
+        if (playerController.getMode() != "GAMEOVER" && playerController.getMode() != "PAUSED")
+        {
+            Destroy(activeTileDrift[0]);
+            activeTileDrift.RemoveAt(0);
+        }
 
     
     }

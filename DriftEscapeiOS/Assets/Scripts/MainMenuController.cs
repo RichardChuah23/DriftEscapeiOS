@@ -68,6 +68,10 @@ public class MainMenuController : MonoBehaviour{
 	private Vector3 driftVelocity = Vector3.zero;
 	private Vector3 escapeVelocity = Vector3.zero;
 
+
+    //Game Center
+    public KTGameCenter gameCenterController;
+
     /// <summary>
     /// Gets or sets the mode.
     /// </summary>
@@ -87,6 +91,9 @@ public class MainMenuController : MonoBehaviour{
     }
 
     void Start(){
+
+        Application.targetFrameRate = 60;
+
         mode = "Main";
         zoom = "mainMenu";
 
@@ -100,6 +107,10 @@ public class MainMenuController : MonoBehaviour{
 
 		// Play sound effect
         soundEffectController.playStartEngine();
+
+        //Game center set up
+        KTGameCenter.SharedCenter().Authenticate();
+
     }
 
     void Update(){
@@ -149,7 +160,6 @@ public class MainMenuController : MonoBehaviour{
         if (mode == "Main"){
             if (Input.GetMouseButtonDown(0)){
                 RaycastHit hitInfo = new RaycastHit();
-				Debug.Log ("testing");
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) &&
 					hitInfo.transform.gameObject.tag == "PlayerCar"){
 					// Sound effect
@@ -321,6 +331,12 @@ public class MainMenuController : MonoBehaviour{
         //Set player prefab AdsRemoved to 1(true)
         PlayerPrefs.SetInt("AdsRemoved", 1);
 
+    }
+
+    public void showLeaderBoard(){
+
+        //Show leader Board 
+        KTGameCenter.SharedCenter().ShowLeaderboard("ScoreLeaderBoard");
     }
 
 

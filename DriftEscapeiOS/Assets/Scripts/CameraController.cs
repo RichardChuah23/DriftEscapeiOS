@@ -57,6 +57,8 @@ public class CameraController : MonoBehaviour
     private float t;
     public float startGameFocusDuration;
 
+
+    public GameObject pauseGameObject;
     // Use this for initialization
     void Start()
     {
@@ -84,7 +86,7 @@ public class CameraController : MonoBehaviour
     {
 
         playerMode = playerController.getMode();
-
+        rotationDamping = 15;
         //Front Mode
         if (beginLerping == true)
         {
@@ -92,6 +94,8 @@ public class CameraController : MonoBehaviour
             //Wait for n seconds and start 
             distance = -180;
             height = 15;
+            damping = 5;
+            rotationDamping = 15;
             start_offset = new Vector3(17, 0f, 0f);
 
 
@@ -103,9 +107,12 @@ public class CameraController : MonoBehaviour
             }
             StartCoroutine(beginMoveStartCamera());
 
+            pauseGameObject.SetActive(false);
 
 
-
+        }
+        else{
+            pauseGameObject.SetActive(true);
         }
 
         //Forward Mode 
@@ -181,16 +188,10 @@ public class CameraController : MonoBehaviour
     }
 
 
-
-
-
-
-
-
 	public void resetCamera(){
         soundPlaying = false;
         damping = 3; 
-        rotationDamping = 1; 
+        rotationDamping = 15 ; 
     }
 
 
@@ -300,7 +301,7 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(startGameFocusDuration);
 
 
-
+        rotationDamping = 15;
 
         //Interpolated float result between min and max
         distance = Mathf.Lerp(distance_start, 35, t);

@@ -24,7 +24,8 @@ public class CarsCreation : MonoBehaviour {
 	 * Canvas
 	 * */
 	public TextMeshProUGUI coinsText;
-	public TextMeshProUGUI text;
+    public TextMeshProUGUI nameText;
+	public TextMeshProUGUI priceText;
 
 	/*
 	 * GameObject
@@ -68,8 +69,9 @@ public class CarsCreation : MonoBehaviour {
      */
 
 	private void Awake() {
+        
 		instance = this;
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 
 		models = new GameObject[transform.childCount];
 		// Fill the array with our models
@@ -152,6 +154,9 @@ public class CarsCreation : MonoBehaviour {
 
 		carContainer.transform.position = Vector3.Lerp(carContainer.transform.position, newPosition, Time.deltaTime * smooth );
 
+        string carName = getCarName(currentCarIndex);
+        nameText.text = carName.ToString(); 
+
 		if ((carAvailability & 1 << (currentCarIndex)) == 1 << currentCarIndex) {
 			// Have the car and is the selected car
 			if (currentCarIndex == PlayerPrefs.GetInt ("CharacterSelected")) {
@@ -169,6 +174,8 @@ public class CarsCreation : MonoBehaviour {
 		} else {
 			// Do not have the car
 			buyButton.SetActive (true);
+            int carPrice = getCarPrice(currentCarIndex);
+            priceText.text = carPrice.ToString(); 
 			confirmButton.SetActive (false);
 			GoImage.SetActive (false);
 			lockImage.SetActive (true);
@@ -197,7 +204,7 @@ public class CarsCreation : MonoBehaviour {
 	public void Buy(){
 		//sound effect
 		soundEffectController.playPop ();
-		int cost = 300;
+        int cost = getCarPrice(currentCarIndex);
 		// Can buy the car
 		if (coins >= cost) {
 			coins -= cost;
@@ -207,9 +214,14 @@ public class CarsCreation : MonoBehaviour {
 			GoImage.SetActive (true);
 			buyButton.SetActive (false);
 			lockImage.SetActive (false);
-		}
+        }else{
+            Debug.Log("Insufficient fund");
+        }
 	}
 
+    /// <summary>
+    /// Buy all the car.
+    /// </summary>
 	public void BuyAll(){
 		carAvailability = 255;
 		puchaseAllButton.SetActive (false);
@@ -245,6 +257,8 @@ public class CarsCreation : MonoBehaviour {
 		PlayerPrefs.SetInt ("Coins", coins);
 		PlayerPrefs.SetInt ("CarAvailability", carAvailability);
 		PlayerPrefs.SetFloat ("PositionZ", carPositionZ);
+
+
 	}
 
 	/// <summary>
@@ -268,4 +282,97 @@ public class CarsCreation : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		moving = false;
 	}
+
+   /// <summary>
+   /// Gets the name of the car.
+   /// </summary>
+   /// <returns>The car name.</returns>
+   /// <param name="carIndex">Car index.</param>
+    private string getCarName(int carIndex){
+        switch(carIndex){
+            case 0:
+                {
+                    return "YouVi";
+                    break;
+                }
+            case 1: {
+                    return "Drift Tractor";
+                    break;
+                }
+            case 2:
+                {
+                    return "Pick you up";
+                    break;
+                }
+            case 3:
+                {
+                    return "Tofo";
+                    break;
+                }
+            case 4:
+                {
+                    return "Cops";
+                    break;
+                }
+            case 5:
+                {
+                    return "Kito-Kato";
+                    break;
+                }
+            case 6:
+                {
+                    return "Mamascle";
+                    break;
+                }
+            case 7:
+                {
+                    return "Sonic";
+                    break;
+                }
+            default:
+                return "";
+        }
+    }
+
+    /// <summary>
+    /// Gets the car price.
+    /// </summary>
+    /// <returns>The car price.</returns>
+    /// <param name="carIndex">Car index.</param>
+    private int getCarPrice(int carIndex){
+        switch (carIndex){
+            case 1:{
+                    return 2000;
+                    break;
+                }
+            case 2:{
+                    return 5000;
+                    break;
+                }
+            case 3:{
+                    return 7000;
+                    break;
+                }
+            case 4:{
+                    return 10000;
+                    break;
+                }
+            case 5:{
+                    return 15000;
+                    break;
+                }
+            case 6:{
+                    return 20000;
+                    break;
+                }
+            case 7:{
+                    return 40000;
+                    break;
+                }
+            default:
+                return 9999999;
+
+        }
+
+    }
 }

@@ -449,9 +449,6 @@ public class PlayerController : MonoBehaviour
                 carList[i].SetActive(false);
             }
 
-
-
-
         }
 
     }
@@ -1046,17 +1043,17 @@ public class PlayerController : MonoBehaviour
 
         if (mode == "RIGHT")
         {
-            turn1 = 0.5f;
-            turn2 = 0.7f;
-            turn3 = 1f;
+            turn1 = 0.7f;
+            turn2 = 1.0f;
+            turn3 = 1.2f;
         }
 
         if (mode == "LEFT")
         {
 
-            turn1 = -0.5f;
-            turn2 = -0.7f;
-            turn3 = -1f;
+            turn1 = -0.7f;
+            turn2 = -1.0f;
+            turn3 = -1.2f;
 
         }
 
