@@ -68,10 +68,6 @@ public class MainMenuController : MonoBehaviour{
 	private Vector3 driftVelocity = Vector3.zero;
 	private Vector3 escapeVelocity = Vector3.zero;
 
-
-
-
-
     /// <summary>
     /// Gets or sets the mode.
     /// </summary>
@@ -110,9 +106,6 @@ public class MainMenuController : MonoBehaviour{
         titleAnimation();
         clickCar();
         cameraZooming();
-
-
-
     }
 
     /// <summary>
@@ -156,6 +149,7 @@ public class MainMenuController : MonoBehaviour{
         if (mode == "Main"){
             if (Input.GetMouseButtonDown(0)){
                 RaycastHit hitInfo = new RaycastHit();
+				Debug.Log ("testing");
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) &&
 					hitInfo.transform.gameObject.tag == "PlayerCar"){
 					// Sound effect

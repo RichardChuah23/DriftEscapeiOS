@@ -18,6 +18,8 @@ public class CarsCreation : MonoBehaviour {
 	public int carAvailability = 1;
 	public float carPositionZ = 0;
 
+	public BoxCollider currentBoxCollider;
+
 	/*
 	 * Canvas
 	 * */
@@ -32,6 +34,7 @@ public class CarsCreation : MonoBehaviour {
 	public GameObject confirmButton;
 	public GameObject GoImage;
 	public GameObject lockImage;
+	public GameObject puchaseAllButton;
 
 	/*
 	 * Script
@@ -53,8 +56,6 @@ public class CarsCreation : MonoBehaviour {
 	private Vector3 selectedPosition;
 	private Vector3 inGameCarContainer = new Vector3(-120, 200, 0);
 
-
-
     /*
     All Cars
     0 Myvi 
@@ -71,7 +72,6 @@ public class CarsCreation : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 
 		models = new GameObject[transform.childCount];
-
 		// Fill the array with our models
 		for (int i = 0; i < transform.childCount; i++)
 			models [i] = transform.GetChild (i).gameObject;
@@ -91,6 +91,11 @@ public class CarsCreation : MonoBehaviour {
 
 		// Returned the saved total coins
 		coinsText.text = coins.ToString ();
+
+		// Check the car availability
+		if (carAvailability == 255){
+			puchaseAllButton.SetActive (false);
+		}
 
 		// Locate MainMenuController script
 		GameObject menuManager = GameObject.Find("MenuManager");
@@ -112,7 +117,6 @@ public class CarsCreation : MonoBehaviour {
 			// Returned to the saved position
 			ReturnPosition();
 		}
-
 	}
 		
 	/// <summary>
@@ -206,6 +210,12 @@ public class CarsCreation : MonoBehaviour {
 		}
 	}
 
+	public void BuyAll(){
+		carAvailability = 255;
+		puchaseAllButton.SetActive (false);
+		PlayerPrefs.SetInt ("CarAvailability", carAvailability);
+	}
+
 	/// <summary>
 	/// Confirm this instance.
 	/// Save the selected model's information
@@ -227,6 +237,10 @@ public class CarsCreation : MonoBehaviour {
 	/// Save PlayerPrefs.
 	/// </summary>
 	private void Save(){
+		// Disbale the box collider for the previous selection
+		currentBoxCollider = models [PlayerPrefs.GetInt ("CharacterSelected")].gameObject.GetComponent<BoxCollider>();
+		currentBoxCollider.enabled = false;
+		// Save all the PlayerPrefs
 		PlayerPrefs.SetInt ("CharacterSelected", currentCarIndex);
 		PlayerPrefs.SetInt ("Coins", coins);
 		PlayerPrefs.SetInt ("CarAvailability", carAvailability);
@@ -238,6 +252,10 @@ public class CarsCreation : MonoBehaviour {
 	/// Return to the selected model index and position
 	/// </summary>
 	private void ReturnPosition(){
+		// Enable box collider for the selected car
+		currentBoxCollider = models [currentCarIndex].gameObject.GetComponent<BoxCollider>();
+		currentBoxCollider.enabled = true;
+		// Return to the correct position
 		currentCarIndex = PlayerPrefs.GetInt ("CharacterSelected");
 		carPositionZ = PlayerPrefs.GetFloat ("PositionZ", carPositionZ);
 		selectedPosition = new Vector3 (carPositionZ, 0f, 0f);
