@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
     public AdsController adsController;
     public int timesBeforeAds;
     public int timesbeforeLongAds;
+    public int adsRemoved; 
 
 
     void Awake(){
@@ -65,6 +66,8 @@ public class GameController : MonoBehaviour {
         restartTrigger = false;
         gameOverCalled = false;
 
+        //Get Player Prefab removeAds Var
+        adsRemoved = PlayerPrefs.GetInt("AdsRemoved",0); 
 
         //Locate game controller 
         GameObject tileControllerObject = GameObject.Find("TileManager");
@@ -210,33 +213,43 @@ public class GameController : MonoBehaviour {
             scoreController.submitScore();
             gameOverCalled = true;
 
-            timesBeforeAds--; 
 
-            if(timesBeforeAds == 0 ){
-                //adsController.ShowDefaultAd("rewardedVideo");
-
-                //longads counter decreament 
-                timesbeforeLongAds--;
-
-                if (timesbeforeLongAds == 0)
-                {
-                    //play long ads 
-                    adsController.ShowDefaultAd("rewardedVideo");
-                    //Reset counter 
-                    timesbeforeLongAds = 3;
-
-                }
-                else{
-                    //Play short ads
-                    adsController.ShowDefaultAd("video");
-                }
-
-                //Reset counter 
-                timesBeforeAds = 3;
-
+            //Run if ads is not removed
+            if(adsRemoved == 0){
+                
+				timesBeforeAds--; 
+				
+				if(timesBeforeAds == 0 ){
+					//adsController.ShowDefaultAd("rewardedVideo");
+					
+					//longads counter decreament 
+					timesbeforeLongAds--;
+					
+					if (timesbeforeLongAds == 0)
+					{
+						//play long ads 
+						adsController.ShowDefaultAd("rewardedVideo");
+						//Reset counter 
+						timesbeforeLongAds = 3;
+						
+					}
+					else{
+						//Play short ads
+						adsController.ShowDefaultAd("video");
+					}
+					
+					//Reset counter 
+					timesBeforeAds = 3;
+					
+				}
+				Debug.Log("Times before short Ads " + timesBeforeAds);
+				Debug.Log("Times before long Ads " + timesbeforeLongAds);
+            }else  if(adsRemoved == 1){
+                Debug.Log("No ads Required");
             }
-            Debug.Log("Times before short Ads " + timesBeforeAds);
-            Debug.Log("Times before long Ads " + timesbeforeLongAds);
+
+
+
 
         }
 
