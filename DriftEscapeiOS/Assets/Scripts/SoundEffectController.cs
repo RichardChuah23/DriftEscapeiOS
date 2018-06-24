@@ -198,7 +198,7 @@ public class SoundEffectController : MonoBehaviour {
 	/// </summary>
     public void playCoins(){
         //PlaySingle(Coin);
-        if (fxOn == true){
+        if (soundOnOff == 1){
             //Set the clip of our efxSource audio source to the clip passed in as a parameter.
             coinFXSource.clip = Coin;
             //Play the clip.

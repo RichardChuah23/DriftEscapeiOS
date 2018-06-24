@@ -7891,7 +7891,7 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 1137465321659490, guid: 7c0c05fd578fc45219088ad56e776110,
     type: 2}
-  m_PrefabInternal: {fileID: 1346348063}
+  m_PrefabInternal: {fileID: 2129945352}
 --- !u!1 &202664516 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1254634980678486, guid: 41d66ba32ab5c412f9ec4e03dbcddbea,
@@ -8070,7 +8070,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4300317141675540, guid: 8df8cb73a95cc48c7a648c1c42518ead, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4300317141675540, guid: 8df8cb73a95cc48c7a648c1c42518ead, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12518,7 +12518,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4249307838872098, guid: e780218c3e9484b6a972553425cc218c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4249307838872098, guid: e780218c3e9484b6a972553425cc218c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14904,7 +14904,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4975269645019990, guid: 4a7ac49d18809476fab09449777b2d2e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4975269645019990, guid: 4a7ac49d18809476fab09449777b2d2e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -20892,73 +20892,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4300317141675540, guid: 8df8cb73a95cc48c7a648c1c42518ead,
     type: 2}
   m_PrefabInternal: {fileID: 901252275}
---- !u!1001 &1346348063
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 342583995}
-    m_Modifications:
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.07304573
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -9536.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.0023920676
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.99999714
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
-        type: 2}
-      propertyPath: readyObstacleList.Array.data[0]
-      value: 
-      objectReference: {fileID: 849423750}
-    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
-        type: 2}
-      propertyPath: readyObstacleList.Array.data[1]
-      value: 
-      objectReference: {fileID: 1996264919}
-    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
-        type: 2}
-      propertyPath: readyObstacleList.Array.data[2]
-      value: 
-      objectReference: {fileID: 499147192}
-    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
-        type: 2}
-      propertyPath: readyObstacleList.Array.data[3]
-      value: 
-      objectReference: {fileID: 259003092}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1346348064 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110,
     type: 2}
-  m_PrefabInternal: {fileID: 1346348063}
+  m_PrefabInternal: {fileID: 2129945352}
 --- !u!1 &1354096965 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1423118183712852, guid: b22dd1fb42b9441e1b14e274d8492037,
@@ -21418,6 +21356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f13c4112fd4462a982214de8ae585e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardCoinsAmount: 0
+  coinText: {fileID: 0}
 --- !u!4 &1471914091
 Transform:
   m_ObjectHideFlags: 0
@@ -22206,7 +22146,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4876923067177978, guid: e9803b28d822040818bbe9cf5cf108bd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4876923067177978, guid: e9803b28d822040818bbe9cf5cf108bd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -27727,6 +27667,7 @@ MonoBehaviour:
   adsController: {fileID: 1471914090}
   timesBeforeAds: 1
   timesbeforeLongAds: 1
+  adsRemoved: 0
 --- !u!4 &2112358037
 Transform:
   m_ObjectHideFlags: 0
@@ -27786,6 +27727,68 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 637e749cd3a0d419793d050f8588f3e4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2129945352
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 342583995}
+    m_Modifications:
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.07304573
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9536.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.0023920676
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.99999714
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955352294591334, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
+        type: 2}
+      propertyPath: readyObstacleList.Array.data[0]
+      value: 
+      objectReference: {fileID: 849423750}
+    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
+        type: 2}
+      propertyPath: readyObstacleList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1996264919}
+    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
+        type: 2}
+      propertyPath: readyObstacleList.Array.data[2]
+      value: 
+      objectReference: {fileID: 499147192}
+    - target: {fileID: 114296220409890712, guid: 7c0c05fd578fc45219088ad56e776110,
+        type: 2}
+      propertyPath: readyObstacleList.Array.data[3]
+      value: 
+      objectReference: {fileID: 259003092}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7c0c05fd578fc45219088ad56e776110, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2130988706 stripped
 GameObject:

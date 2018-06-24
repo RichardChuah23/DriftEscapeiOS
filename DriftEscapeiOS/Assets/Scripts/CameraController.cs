@@ -120,7 +120,7 @@ public class CameraController : MonoBehaviour
                 accelerateFX.gameObject.SetActive(true);
                 height = 22;
                 damping = 5;
-
+                rotationDamping = 15;
 
                 if(soundPlaying == false){
                     StartCoroutine(beginplayingAcceleratingSound());
@@ -140,8 +140,8 @@ public class CameraController : MonoBehaviour
             {
                 distance = -25;
                 damping = 3;
-                height = 30;
-
+                height = 25;
+                rotationDamping = 1;
   
                 accelerateFX.gameObject.SetActive(false);
 
@@ -190,7 +190,7 @@ public class CameraController : MonoBehaviour
 	public void resetCamera(){
         soundPlaying = false;
         damping = 3; 
-        rotationDamping = 15; 
+        rotationDamping = 1; 
     }
 
 
