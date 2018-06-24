@@ -155,6 +155,7 @@ MonoBehaviour:
   tutorialScreen: {fileID: 1335524006}
   drift: {fileID: 1793249390}
   escape: {fileID: 2047116009}
+  adsController: {fileID: 581034170}
 --- !u!4 &35445224
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +359,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Text
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad08ccdc8a5db4890827799a7b3ad942, type: 2}
   m_sharedMaterial: {fileID: 21457240361036284, guid: ad08ccdc8a5db4890827799a7b3ad942,
@@ -427,9 +430,9 @@ MonoBehaviour:
   m_margin: {x: 59.645763, y: 0, z: 43.408848, w: 0}
   m_textInfo:
     textComponent: {fileID: 100888020}
-    characterCount: 4
+    characterCount: 1
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -1325,7 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 
+  productId: RemoveAds
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -2020,6 +2023,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2788,7 +2792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: 
+  productId: UnlockAllCars
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -2873,6 +2877,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 540147088}
+--- !u!1 &581034169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 581034171}
+  - component: {fileID: 581034170}
+  m_Layer: 0
+  m_Name: AdsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &581034170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581034169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f13c4112fd4462a982214de8ae585e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardCoinsAmount: 50
+  coinText: {fileID: 100888020}
+--- !u!4 &581034171
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581034169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &593479138
 Prefab:
   m_ObjectHideFlags: 0
@@ -3426,7 +3472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productId: 
-  buttonType: 0
+  buttonType: 1
   consumePurchase: 1
   onPurchaseComplete:
     m_PersistentCalls:
@@ -3784,9 +3830,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1c7707e8aff094f03929686d3fc90cc1, type: 3}
 --- !u!1 &814373890
@@ -4468,6 +4514,10 @@ Prefab:
     - target: {fileID: 1336210045942060, guid: 39cf7461b0c74421cb673962b068a26e, type: 2}
       propertyPath: m_TagString
       value: PlayerCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336210045942060, guid: 39cf7461b0c74421cb673962b068a26e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39cf7461b0c74421cb673962b068a26e, type: 2}
@@ -5688,8 +5738,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 35445223}
-        m_MethodName: ShowAd
+      - m_Target: {fileID: 581034170}
+        m_MethodName: ShowRewardedAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6068,7 +6118,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: $1.99
+  m_text: $2.99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad08ccdc8a5db4890827799a7b3ad942, type: 2}
   m_sharedMaterial: {fileID: 21457240361036284, guid: ad08ccdc8a5db4890827799a7b3ad942,
@@ -7690,6 +7740,10 @@ Prefab:
       propertyPath: m_TagString
       value: PlayerCar
       objectReference: {fileID: 0}
+    - target: {fileID: 1787147391138820, guid: bec00e028ff7c45f9ba2c84c8b8dcff2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bec00e028ff7c45f9ba2c84c8b8dcff2, type: 2}
   m_IsPrefabParent: 0
@@ -7751,9 +7805,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 68e929cb7edca40a29a3b40afeae0b21, type: 3}
 --- !u!1 &1719917291
@@ -8304,7 +8358,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a2b09e35614a84d1c83c46e6f9ca1bb7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b95c413d759284500bf3a5124f0d8341, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8495,7 +8549,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -9038,7 +9092,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: $0.99
+  m_text: $2.99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad08ccdc8a5db4890827799a7b3ad942, type: 2}
   m_sharedMaterial: {fileID: 21457240361036284, guid: ad08ccdc8a5db4890827799a7b3ad942,
@@ -9194,7 +9248,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 10
+  m_text: '50
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad08ccdc8a5db4890827799a7b3ad942, type: 2}
   m_sharedMaterial: {fileID: 21457240361036284, guid: ad08ccdc8a5db4890827799a7b3ad942,
@@ -9264,9 +9320,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1931136182}
-    characterCount: 2
+    characterCount: 3
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -9358,6 +9414,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18d9e12d42131514b88d9b8614d57fc7, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1970095046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1970095047}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1970095047
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1970095046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984828036
 GameObject:
   m_ObjectHideFlags: 0
@@ -9810,7 +9894,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

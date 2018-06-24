@@ -25,7 +25,11 @@ public class SoundEffectController : MonoBehaviour {
     private bool fxOn;
 
     private int musicOnOff;
-    private int soundOnOff; 
+    private int soundOnOff;
+
+
+    private bool mainMenuMusicIsPlaying = false;
+    private bool MainGameMusicIsPlaying = false;
 
 	// Use this for initialization
     void Awake(){
@@ -54,26 +58,49 @@ public class SoundEffectController : MonoBehaviour {
 
 
 		if (PlayerPrefs.GetInt ("Music", 1) == 1){
+
+            //In Main Game 
 			if (SceneManager.GetActiveScene ().buildIndex == 1) {
+
+                //Main Menu Music - OFF
+                MenuMusicSource.Stop();
 				MenuMusicSource.mute = true;
-				musicSource.mute = false;
+                mainMenuMusicIsPlaying = false;
+
+                //Main Music - ON 
+                if(MainGameMusicIsPlaying != true){
+
+					musicSource.Play();
+					musicSource.mute = false;
+                    MainGameMusicIsPlaying = true; 
+                    mainMenuMusicIsPlaying = false;
+				}
+
+
+                //In Menu 
 			} else {
-				MenuMusicSource.mute = false;
+                //Main Menu Music -  ON
+                if(mainMenuMusicIsPlaying != true){
+                    MenuMusicSource.Play();
+                    MenuMusicSource.mute = false;
+                    mainMenuMusicIsPlaying = true;
+
+                    MainGameMusicIsPlaying = false;
+
+                }
+
+
+                //Main Game Music - OFF
+                musicSource.Stop();
 				musicSource.mute = true;
 			}
 
-            //If music if off 
-        }else if (PlayerPrefs.GetInt ("Music", 0) == 1 ){
-            if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                MenuMusicSource.mute = true;
-                musicSource.mute = true;
-            }
-            else
-            {
-                MenuMusicSource.mute = true;
-                musicSource.mute = true;
-            }
+            //If music is off 
+        }else if (PlayerPrefs.GetInt ("Music", 0) == 0 ){
+            
+
+            musicSource.mute = true;
+            MenuMusicSource.mute = true;
 
         }
 	}

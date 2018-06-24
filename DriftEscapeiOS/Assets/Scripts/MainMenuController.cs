@@ -28,6 +28,7 @@ public class MainMenuController : MonoBehaviour{
 	public Sprite musicOff;
 	public Sprite soundOff;
 
+
 	/*
 	 * GameObject
 	 * */
@@ -49,6 +50,9 @@ public class MainMenuController : MonoBehaviour{
 	 * */
 	private SoundEffectController soundEffectController;
 
+    //Ads Controller 
+    public AdsController adsController;
+
 	/*
 	 * Vector3
 	 * */
@@ -63,6 +67,10 @@ public class MainMenuController : MonoBehaviour{
 	// Reference value used for the Smoothdamp method
 	private Vector3 driftVelocity = Vector3.zero;
 	private Vector3 escapeVelocity = Vector3.zero;
+
+
+
+
 
     /// <summary>
     /// Gets or sets the mode.
@@ -102,6 +110,9 @@ public class MainMenuController : MonoBehaviour{
         titleAnimation();
         clickCar();
         cameraZooming();
+
+
+
     }
 
     /// <summary>
@@ -296,12 +307,7 @@ public class MainMenuController : MonoBehaviour{
 		shopMenu.SetActive(false);
     }
 
-	/// <summary>
-	/// Shows the ad.
-	/// </summary>
-	public void ShowAd() {
-		Advertisement.Show();
-	}
+
 
 	/// <summary>
 	/// Opens tutorial screen.
@@ -316,4 +322,12 @@ public class MainMenuController : MonoBehaviour{
 	public void closeTutorialScreen(){
 		tutorialScreen.SetActive(false);
     }
+
+    public void removeAds(){
+        //Set player prefab AdsRemoved to 1(true)
+        PlayerPrefs.SetInt("AdsRemoved", 1);
+
+    }
+
+
 }
