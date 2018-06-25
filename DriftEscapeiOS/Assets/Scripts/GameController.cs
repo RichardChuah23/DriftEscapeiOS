@@ -60,6 +60,13 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start(){
+
+        //FOR SCREEN SHOOTING ! 
+
+        PlayerPrefs.SetInt("Coins", 1000000);
+
+
+        //FOR SCREEN SHOTTING; 
         
         gameOver = false;
         restart = false;

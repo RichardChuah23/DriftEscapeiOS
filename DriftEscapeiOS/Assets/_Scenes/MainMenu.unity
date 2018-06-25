@@ -2143,6 +2143,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3109,7 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f13c4112fd4462a982214de8ae585e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardCoinsAmount: 50
+  rewardCoinsAmount: 100
   coinText: {fileID: 100888020}
 --- !u!4 &581034171
 Transform:
@@ -7419,7 +7420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1608689686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9601,9 +9602,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '50
-
-'
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad08ccdc8a5db4890827799a7b3ad942, type: 2}
   m_sharedMaterial: {fileID: 21457240361036284, guid: ad08ccdc8a5db4890827799a7b3ad942,
@@ -9675,7 +9674,7 @@ MonoBehaviour:
     textComponent: {fileID: 1931136182}
     characterCount: 3
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 0
     wordCount: 1
     linkCount: 0
     lineCount: 1
