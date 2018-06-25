@@ -92,6 +92,13 @@ public class MainMenuController : MonoBehaviour{
 
     void Start(){
 
+        //FOR SCREEN SHOOTING ! 
+
+        PlayerPrefs.SetInt("Coins", 1000000);
+
+
+        //FOR SCREEN SHOTTING; 
+
         Application.targetFrameRate = 60;
 
         mode = "Main";

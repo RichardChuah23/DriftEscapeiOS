@@ -1202,7 +1202,7 @@ public class PlayerController : MonoBehaviour
             onDriftFX();
 
             //Play sound 
-            soundEffectController.playHeaySwoosh();
+            //soundEffectController.playHeaySwoosh();
 
             //If player came from forward tile. 
             if (previousMode == "FORWARD")

@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     public bool followBehind = true; 
     public Transform target;
 
-    private float particleTime = 2.5f; 
+    private float particleTime = 1.8f; 
     public float distance = 80; 
     public float distance_start = -180  ;
     public float height_start = 15;
@@ -105,6 +105,7 @@ public class CameraController : MonoBehaviour
 
                 StartCoroutine(beginplayingAcceleratingSound());
             }
+
             StartCoroutine(beginMoveStartCamera());
 
             pauseGameObject.SetActive(false);
@@ -193,6 +194,7 @@ public class CameraController : MonoBehaviour
         damping = 3; 
         rotationDamping = 15 ;
         beginLerping = true;
+        particleTime = 1.8f;
     }
 
 
