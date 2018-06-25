@@ -128,7 +128,7 @@ public class CarsCreation : MonoBehaviour {
 	public void ChangingPosition() {
 		position = new Vector3(carPositionZ, 0f, 0f);
 
-		if ((Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeLeft) && moving == false) {
+		if ((Input.GetKeyDown (KeyCode.LeftArrow) || swipeController.SwipeRight) && moving == false) {
 			currentCarIndex -= 1;
 			carPositionZ += 40;
 			if (currentCarIndex < 0) {
@@ -140,7 +140,7 @@ public class CarsCreation : MonoBehaviour {
 			}
 		}
 
-		if ((Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeRight) && moving == false) {
+		if ((Input.GetKeyDown (KeyCode.RightArrow) || swipeController.SwipeLeft) && moving == false) {
 			currentCarIndex += 1;
 			carPositionZ -= 40;
 			if (currentCarIndex < models.Length) {
