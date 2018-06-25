@@ -138,7 +138,7 @@ public class CameraController : MonoBehaviour
 
 
                 particleTime -= Time.deltaTime;
-                StartCoroutine(delayResetRotationDamping());
+                //StartCoroutine(delayResetRotationDamping());
 
 
 
@@ -191,7 +191,8 @@ public class CameraController : MonoBehaviour
 	public void resetCamera(){
         soundPlaying = false;
         damping = 3; 
-        rotationDamping = 15 ; 
+        rotationDamping = 15 ;
+        beginLerping = true;
     }
 
 

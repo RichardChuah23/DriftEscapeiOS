@@ -293,12 +293,7 @@ public class SoundEffectController : MonoBehaviour {
         {
 
 
-            float randomPitch = Random.Range(-1, 3);
-        
-            knockSoundSource.pitch = randomPitch; 
-
-            //Play the clip.
-            knockSoundSource.Play();
+            PlaySingle(lostCombo);
 
 
         }
