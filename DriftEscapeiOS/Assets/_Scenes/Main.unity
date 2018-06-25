@@ -22666,13 +22666,13 @@ MonoBehaviour:
   carBoxCollider: {fileID: 0}
   carList:
   - {fileID: 1076841253}
-  - {fileID: 1600232146}
+  - {fileID: 69811024}
   - {fileID: 72576295}
+  - {fileID: 1600232146}
   - {fileID: 1166867915}
   - {fileID: 855806251}
   - {fileID: 2130988706}
   - {fileID: 502239682}
-  - {fileID: 69811024}
 --- !u!4 &1670588451 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4422922866353810, guid: b560d49e98c124f74aa063c36d062dca,
@@ -27569,8 +27569,8 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1777536648}
   gameOverUI: {fileID: 805043199}
   adsController: {fileID: 1471914090}
-  timesBeforeAds: 1
-  timesbeforeLongAds: 1
+  timesBeforeAds: 3
+  timesbeforeLongAds: 3
   adsRemoved: 0
 --- !u!4 &2112358037
 Transform:
