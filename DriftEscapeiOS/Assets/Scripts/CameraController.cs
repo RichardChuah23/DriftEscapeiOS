@@ -92,9 +92,9 @@ public class CameraController : MonoBehaviour
         {
 
             //Wait for n seconds and start 
-            distance = -180;
+            distance = distance_start;
             height = 15;
-            damping = 5;
+            damping = 7;
             rotationDamping = 15;
             start_offset = new Vector3(17, 0f, 0f);
 
@@ -128,6 +128,8 @@ public class CameraController : MonoBehaviour
                 accelerateFX.gameObject.SetActive(true);
                 height = 22;
                 damping = 5;
+
+
                 rotationDamping = 15;
 
                 if(soundPlaying == false){
@@ -146,9 +148,9 @@ public class CameraController : MonoBehaviour
             }
             else
             {
-                distance = -25;
-                damping = 3;
-                height = 25;
+                distance = 30;
+                damping =7;
+                height = 30;
                 rotationDamping = 1;
   
                 accelerateFX.gameObject.SetActive(false);
@@ -176,6 +178,7 @@ public class CameraController : MonoBehaviour
         else if (playerMode == "GAMEOVER" && playerController.getGameOverReason() == "STRAIGHT HIT"){
 
             rotationDamping = 2;
+            damping = 2;
 
         }
     
@@ -202,7 +205,7 @@ public class CameraController : MonoBehaviour
 
         transform.position = new Vector3(0f, 0f, 0f);
         beginLerping = true; 
-        distance = -180;
+        distance = distance_start;
         height = 15;
         start_offset = new Vector3(17, 0f, 0f);
     }
