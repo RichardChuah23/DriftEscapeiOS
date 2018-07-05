@@ -303,9 +303,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DriftTestFolder\Ellipse.cs" />
-    <Compile Include="Assets\DriftTestFolder\EllipseRenderer.cs" />
-    <Compile Include="Assets\DriftTestFolder\simpleDrift.cs" />
     <Compile Include="Assets\FireworksController.cs" />
     <Compile Include="Assets\KTGameCenter\Standard Assets\KTGameCenter.cs" />
     <Compile Include="Assets\KTGameCenter\TestScripts\TestScriptKTGC.cs" />
@@ -357,12 +354,11 @@
     <Compile Include="Assets\Scripts\ObstacleController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Purchaser.cs" />
-    <Compile Include="Assets\Scripts\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\scoreController.cs" />
     <Compile Include="Assets\Scripts\ScoreController2.cs" />
     <Compile Include="Assets\Scripts\SkyDomeController.cs" />
     <Compile Include="Assets\Scripts\SoundEffectController.cs" />
     <Compile Include="Assets\Scripts\swipeController.cs" />
-    <Compile Include="Assets\Scripts\testDriftController.cs" />
     <Compile Include="Assets\Scripts\TileController.cs" />
     <Compile Include="Assets\Scripts\vehicleController.cs" />
     <Compile Include="Assets\SimpleSky\nightday.cs" />

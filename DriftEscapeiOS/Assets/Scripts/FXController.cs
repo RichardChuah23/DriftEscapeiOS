@@ -9,11 +9,32 @@ public class FXController : MonoBehaviour {
     public GameObject skidMarkGameObject;
     public GameObject tyreSketchGameObject;
 
+
+    //Signal Lights Controller; 
+    public GameObject leftSignal;
+    public GameObject rightSignal; 
+
     // Use this for initialization
     void Start () {
 
 
 
+    }
+
+    IEnumerable flashLeftSignal(){
+
+        while(true){
+            yield return new WaitForSeconds(0.2f);
+
+            if(leftSignal.active == true){
+                leftSignal.SetActive(false);
+
+            }else{
+                leftSignal.SetActive(true);
+            }
+
+
+        }
     }
 
 

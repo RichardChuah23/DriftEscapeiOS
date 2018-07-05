@@ -100,6 +100,10 @@ public class PlayerController : MonoBehaviour
     //Gameobjects list for all vehicle 
     public List<GameObject> carList ;
 
+    //Signal Lights Controller; 
+    public GameObject leftSignal;
+    public GameObject rightSignal; 
+
 
 
 
@@ -757,7 +761,6 @@ public class PlayerController : MonoBehaviour
 
     float switchLeft()
     {
-        Debug.Log("Switched Left once");
         float wantedPosX = getLerpWantedPos("L");
 
         //transform.position += new Vector3(-50, 0f, 0f);

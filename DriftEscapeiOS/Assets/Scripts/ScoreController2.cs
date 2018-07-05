@@ -30,7 +30,7 @@ public class ScoreController2 : MonoBehaviour {
 
 
 	//GameCenter 
-	public KTGameCenter gameCenterController;
+	private KTGameCenter gameCenterController;
 
 	//Sound Controller 
 	public SoundEffectController soundController;
@@ -38,6 +38,9 @@ public class ScoreController2 : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
+
+        gameCenterController = GameObject.Find("KTGameCenter").GetComponent<KTGameCenter>();
+
 		//Locate player controller 
 		GameObject playerControllerObject = GameObject.Find("Player");
 		if (playerControllerObject != null)
@@ -199,7 +202,10 @@ public class ScoreController2 : MonoBehaviour {
 	public void submitScore(){
 
 		//Submit to GameCenter
-		gameCenterController.SubmitScore(score, "ScoreLeaderBoard");
+		//gameCenterController.SubmitScore(score, "ScoreLeaderBoard");
+
+        KTGameCenter.SharedCenter().SubmitScore(score,"ScoreLeaderBoard");
+
 
 		if (score > currentHighScore) {
 			//Submit HighScore to player prefeb 

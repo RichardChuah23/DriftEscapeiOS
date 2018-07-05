@@ -70,7 +70,7 @@ public class MainMenuController : MonoBehaviour{
 
 
     //Game Center
-    public KTGameCenter gameCenterController;
+    //public KTGameCenter gameCenterController;
 
     /// <summary>
     /// Gets or sets the mode.
@@ -341,7 +341,7 @@ public class MainMenuController : MonoBehaviour{
     }
 
     public void showLeaderBoard(){
-
+        Debug.Log("Show Leader Board");
         //Show leader Board 
         KTGameCenter.SharedCenter().ShowLeaderboard("ScoreLeaderBoard");
     }

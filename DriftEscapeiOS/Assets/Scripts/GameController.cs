@@ -62,8 +62,7 @@ public class GameController : MonoBehaviour {
     void Start(){
 
         //FOR SCREEN SHOOTING ! 
-
-        PlayerPrefs.SetInt("Coins", 1000000);
+        //PlayerPrefs.SetInt("Coins", 1000000);
 
 
         //FOR SCREEN SHOTTING; 

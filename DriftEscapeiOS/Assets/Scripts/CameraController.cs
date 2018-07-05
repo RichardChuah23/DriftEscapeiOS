@@ -107,12 +107,13 @@ public class CameraController : MonoBehaviour
             }
 
             StartCoroutine(beginMoveStartCamera());
-
+            //Pause button deactive 
             pauseGameObject.SetActive(false);
 
 
         }
         else{
+            //Active pause button 
             pauseGameObject.SetActive(true);
         }
 
@@ -137,9 +138,7 @@ public class CameraController : MonoBehaviour
 
 
                 }
-               
-
-
+    
                 particleTime -= Time.deltaTime;
                 //StartCoroutine(delayResetRotationDamping());
 
@@ -183,8 +182,11 @@ public class CameraController : MonoBehaviour
         }
     
 
+        if(playerMode != "PAUSE"){
 
-        followTranform(distance);
+
+			followTranform(distance);
+        }
 
         cameraHeavyShake();
         cameraLightShake();
@@ -198,6 +200,7 @@ public class CameraController : MonoBehaviour
         rotationDamping = 15 ;
         beginLerping = true;
         particleTime = 1.8f;
+        t = 0;
     }
 
 
