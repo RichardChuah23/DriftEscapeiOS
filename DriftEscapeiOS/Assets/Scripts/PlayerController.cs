@@ -776,6 +776,10 @@ public class PlayerController : MonoBehaviour
         lerping = true;
 
         soundEffectController.playSwoosh();
+
+        //on signal lights 
+        fxController.onLeftSignal();
+
         return wantedPosX;
     }
 
@@ -795,6 +799,9 @@ public class PlayerController : MonoBehaviour
         onLaneNumber += 1;
         lerping = true;
 
+
+        //on signal lights
+        fxController.onRightSignal();
 
         soundEffectController.playSwoosh();
         return wantedPosX;
@@ -1081,6 +1088,8 @@ public class PlayerController : MonoBehaviour
                 soundEffectController.playSwoosh();
             }
 
+            fxController.onRightSignal();
+
             lastTime2 = Time.time;
 
         }
@@ -1101,6 +1110,10 @@ public class PlayerController : MonoBehaviour
                 turnGear--;
                 soundEffectController.playSwoosh();
             }
+
+            //Signal lights; 
+            fxController.onLeftSignal();
+
             lastTime2 = Time.time;
 
         }
