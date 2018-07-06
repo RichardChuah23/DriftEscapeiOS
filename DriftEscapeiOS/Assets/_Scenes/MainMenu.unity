@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d0d3f02517845febe866821b54d5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentBoxCollider: {fileID: 0}
   mainMenuCamera: {fileID: 443015211}
   musicToggleButton: {fileID: 1486260775}
   soundToggleButton: {fileID: 323529046}
@@ -2828,7 +2829,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4857,7 +4857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.8, y: -35.1}
+  m_AnchoredPosition: {x: 95, y: -35}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742639262
@@ -6534,11 +6534,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -7762,7 +7762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1274105729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11570,6 +11570,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1052253586910670, guid: e3141ed5af8384eb2a2cf58517c108ff, type: 2}
+      propertyPath: m_TagString
+      value: PlayerCar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3141ed5af8384eb2a2cf58517c108ff, type: 2}
   m_IsPrefabParent: 0
@@ -13675,11 +13679,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
