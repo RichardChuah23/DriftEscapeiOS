@@ -275,6 +275,7 @@ public class MainMenuController : MonoBehaviour{
     public void openCarMenu(){
 		carMenu.SetActive (true);
 		mainMenu.SetActive (false);
+		canvas = "other";
     }
 
    	/// <summary>
@@ -283,6 +284,7 @@ public class MainMenuController : MonoBehaviour{
 	public void closeCarMenu(){
 		carMenu.SetActive (false);
 		mainMenu.SetActive (true);
+		canvas = "main";
         soundEffectController.playStartEngine();
     }
 
@@ -320,12 +322,16 @@ public class MainMenuController : MonoBehaviour{
     public void openShop(){
 		// Sound effect
 		soundEffectController.playPop();
-		canvas = "other";
-		if (mode == "Main") 
+
+		if (mode == "Main") {
+			canvas = "other";
 			mainMenu.SetActive (false);
-		
-		if (mode == "Car") 
+		}
+			
+		if (mode == "Car") {
+			canvas = "other";
 			carMenu.SetActive (false);
+		}
 
 		shopMenu.SetActive(true);
     }
@@ -334,12 +340,19 @@ public class MainMenuController : MonoBehaviour{
 	/// Closes shop.
 	/// </summary>
     public void closeShop(){
-		canvas = "main";
-		if (mode == "Main")
+		// Sound effect
+		soundEffectController.playPop();
+
+		if (mode == "Main") {
+			canvas = "main";
 			mainMenu.SetActive (true);
-		
-		if (mode == "Car") 
+		}
+			
+		if (mode == "Car") {
+			canvas = "other";
 			carMenu.SetActive (true);
+		}
+			
 		
 		shopMenu.SetActive(false);
     }
@@ -348,6 +361,7 @@ public class MainMenuController : MonoBehaviour{
 	/// Opens tutorial screen.
 	/// </summary>
     public void openTutorialScreen(){
+		canvas = "other";
 		tutorialScreen.SetActive(true);
     }
 
@@ -355,20 +369,26 @@ public class MainMenuController : MonoBehaviour{
 	/// Closes the tutorial screen.
 	/// </summary>
 	public void closeTutorialScreen(){
+		canvas = "main";
 		tutorialScreen.SetActive(false);
     }
 
+	/// <summary>
+	/// Removes the ads.
+	/// </summary>
     public void removeAds(){
         //Set player prefab AdsRemoved to 1(true)
         PlayerPrefs.SetInt("AdsRemoved", 1);
 
     }
 
+	/// <summary>
+	/// Shows the leader board.
+	/// </summary>
     public void showLeaderBoard(){
         Debug.Log("Show Leader Board");
         //Show leader Board 
         KTGameCenter.SharedCenter().ShowLeaderboard("ScoreLeaderBoard");
     }
-
-
+		
 }

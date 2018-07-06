@@ -304,41 +304,41 @@ public class CarsCreation : MonoBehaviour {
             case 0:
                 {
                     return "YouVi";
-                    break;
+                    //break;
                 }
             case 1: {
                     return "Drift Tractor";
-                    break;
+                    //break;
                 }
             case 2:
                 {
                     return "Pick you up";
-                    break;
+                    //break;
                 }
             case 3:
                 {
                     return "Tofo";
-                    break;
+                    //break;
                 }
             case 4:
                 {
                     return "Cops";
-                    break;
+                    //break;
                 }
             case 5:
                 {
                     return "Kito-Kato";
-                    break;
+                    //break;
                 }
             case 6:
                 {
                     return "Mamascle";
-                    break;
+                    //break;
                 }
             case 7:
                 {
                     return "Sonic";
-                    break;
+                   // break;
                 }
             default:
                 return "";
@@ -354,31 +354,31 @@ public class CarsCreation : MonoBehaviour {
         switch (carIndex){
             case 1:{
                     return 2000;
-                    break;
+                    //break;
                 }
             case 2:{
                     return 5000;
-                    break;
+                    //break;
                 }
             case 3:{
                     return 7000;
-                    break;
+                    //break;
                 }
             case 4:{
                     return 10000;
-                    break;
+                    //break;
                 }
             case 5:{
                     return 15000;
-                    break;
+                    //break;
                 }
             case 6:{
                     return 20000;
-                    break;
+                    //break;
                 }
             case 7:{
                     return 40000;
-                    break;
+                    //break;
                 }
             default:
                 return 9999999;
