@@ -14,6 +14,8 @@ public class FXController : MonoBehaviour {
     public GameObject leftSignal;
     public GameObject rightSignal; 
 
+
+
     // Use this for initialization
     void Start () {
 
@@ -21,20 +23,45 @@ public class FXController : MonoBehaviour {
 
     }
 
-    IEnumerable flashLeftSignal(){
+	public void onLeftSignal()
+	{
+        
+        StartCoroutine(flashLeftSignal()); 
 
-        while(true){
-            yield return new WaitForSeconds(0.2f);
-
-            if(leftSignal.active == true){
-                leftSignal.SetActive(false);
-
-            }else{
-                leftSignal.SetActive(true);
-            }
+	}
 
 
-        }
+    public void onRightSignal()
+    {
+
+        StartCoroutine(flashRightSignal());
+
+    }
+
+
+    IEnumerator flashRightSignal()
+    {
+
+
+
+        rightSignal.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        rightSignal.SetActive(false);
+
+    }
+
+    IEnumerator flashLeftSignal(){
+
+
+            
+        leftSignal.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        leftSignal.SetActive(false);
+
     }
 
 

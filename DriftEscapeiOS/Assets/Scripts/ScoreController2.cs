@@ -39,7 +39,7 @@ public class ScoreController2 : MonoBehaviour {
 	void Start()
 	{
 
-        gameCenterController = GameObject.Find("KTGameCenter").GetComponent<KTGameCenter>();
+        //gameCenterController = GameObject.Find("KTGameCenter").GetComponent<KTGameCenter>();
 
 		//Locate player controller 
 		GameObject playerControllerObject = GameObject.Find("Player");
