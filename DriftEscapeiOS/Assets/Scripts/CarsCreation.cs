@@ -18,6 +18,9 @@ public class CarsCreation : MonoBehaviour {
 	public int carAvailability = 1;
 	public float carPositionZ = 0;
 
+	/*
+	 * BoxCollider
+	 * */
 	public BoxCollider currentBoxCollider;
 
 	/*
@@ -118,6 +121,14 @@ public class CarsCreation : MonoBehaviour {
 		} else if (mainMenuController.Mode == "Main") {
 			// Returned to the saved position
 			ReturnPosition();
+		}
+
+		if (mainMenuController.Canvas == "main") {
+			currentBoxCollider = models [PlayerPrefs.GetInt ("CharacterSelected")].gameObject.GetComponent<BoxCollider> ();
+			currentBoxCollider.enabled = true;
+		} else {
+			currentBoxCollider = models [PlayerPrefs.GetInt ("CharacterSelected")].gameObject.GetComponent<BoxCollider>();
+			currentBoxCollider.enabled = false;
 		}
 	}
 		

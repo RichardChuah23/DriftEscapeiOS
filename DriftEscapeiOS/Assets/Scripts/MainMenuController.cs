@@ -5,13 +5,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MainMenuController : MonoBehaviour{
 
 	private float cameraSmoothTime = 3f;
 	private float titleSmoothTime = 0.5f;
+	private string canvas = "main";
 	private string mode;
 	private string zoom;
+
+	/*
+	 * BoxCollider
+	 * */
+	public BoxCollider currentBoxCollider;
 
 	/*
 	 * Camera
@@ -27,7 +34,6 @@ public class MainMenuController : MonoBehaviour{
 	public Sprite soundOn;
 	public Sprite musicOff;
 	public Sprite soundOff;
-
 
 	/*
 	 * GameObject
@@ -49,8 +55,6 @@ public class MainMenuController : MonoBehaviour{
 	 * Script
 	 * */
 	private SoundEffectController soundEffectController;
-
-    //Ads Controller 
     public AdsController adsController;
 
 	/*
@@ -71,6 +75,15 @@ public class MainMenuController : MonoBehaviour{
 
     //Game Center
     //public KTGameCenter gameCenterController;
+
+	/// <summary>
+	/// Gets or sets a value indicating whether this instance canvas.
+	/// </summary>
+	/// <value><c>true</c> if this instance canvas; otherwise, <c>false</c>.</value>
+	public string Canvas{
+		get{ return canvas; }
+		set{ canvas = value; }
+	}
 
     /// <summary>
     /// Gets or sets the mode.
@@ -170,16 +183,28 @@ public class MainMenuController : MonoBehaviour{
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo) &&
 					hitInfo.transform.gameObject.tag == "PlayerCar"){
 					// Sound effect
-                    soundEffectController.playPop();
+					soundEffectController.playPop ();
 					// Opens car menu
-                    openCarMenu();
-                    zoom = "carMenu";
-                    cameraZooming();
-                    mode = "Car";
+					openCarMenu ();
+					zoom = "carMenu";
+					cameraZooming ();
+					mode = "Car";
                 }
             }
         }
     }
+
+	/// <summary>
+	/// Determines whether this instance is pointer over user interface object.
+	/// </summary>
+	/// <returns><c>true</c> if this instance is pointer over user interface object; otherwise, <c>false</c>.</returns>
+	private bool IsPointerOverUIObject(){
+		PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+		eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+		List<RaycastResult> results = new List<RaycastResult>();
+		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+		return results.Count > 0;
+	}
 
     /// <summary>
     /// Cameras the zooming.
@@ -252,14 +277,13 @@ public class MainMenuController : MonoBehaviour{
 		mainMenu.SetActive (false);
     }
 
-    /// <summary>
-    /// Deactives the car menu.
-    /// </summary>
+   	/// <summary>
+   	/// Closes the car menu.
+   	/// </summary>
 	public void closeCarMenu(){
 		carMenu.SetActive (false);
 		mainMenu.SetActive (true);
         soundEffectController.playStartEngine();
-
     }
 
    	/// <summary>
@@ -296,6 +320,7 @@ public class MainMenuController : MonoBehaviour{
     public void openShop(){
 		// Sound effect
 		soundEffectController.playPop();
+		canvas = "other";
 		if (mode == "Main") 
 			mainMenu.SetActive (false);
 		
@@ -309,6 +334,7 @@ public class MainMenuController : MonoBehaviour{
 	/// Closes shop.
 	/// </summary>
     public void closeShop(){
+		canvas = "main";
 		if (mode == "Main")
 			mainMenu.SetActive (true);
 		
@@ -317,8 +343,6 @@ public class MainMenuController : MonoBehaviour{
 		
 		shopMenu.SetActive(false);
     }
-
-
 
 	/// <summary>
 	/// Opens tutorial screen.
