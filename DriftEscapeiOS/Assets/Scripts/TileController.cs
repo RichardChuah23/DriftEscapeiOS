@@ -183,7 +183,7 @@ public class TileController : MonoBehaviour {
         //Doesnt need lane adjustment for straight road
         if(previousTileIndex == 1 && newTileIndex == 1 )
         {
-            int index = Random.Range(1, tilesPrefab[newTileIndex].Count);
+            int index = Random.Range(2, tilesPrefab[newTileIndex].Count);
             tileRoadSpawn = tilesPrefab[newTileIndex][index];
         }
         //Require lane adjustment 

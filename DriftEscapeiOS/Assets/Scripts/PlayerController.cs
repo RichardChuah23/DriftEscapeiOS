@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
     private void gameOverStraightHitObstacle()
     {
         drift(currentSpeed, 0.02f);
-        StartCoroutine(delayStopForwardSpeed(0.5f,2f));
+        StartCoroutine(delayStopForwardSpeed(0.5f,1f));
         if (gameOverTriggred == false)
         {
 
