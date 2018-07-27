@@ -1290,7 +1290,7 @@ public class PlayerController : MonoBehaviour
             
             //Swipe Up
             //if (swipeController.Tap || userInputVer == 1)
-            if (swipeController.Tap || userInputVer == 1)
+            if (tmpInput || userInputVer == 1)
             {
 
 

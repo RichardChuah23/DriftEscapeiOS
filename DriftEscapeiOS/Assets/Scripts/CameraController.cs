@@ -51,12 +51,9 @@ public class CameraController : MonoBehaviour
     private float lightShakeAmount = 5f;
     private float lightShakeSpeed = 3f;
 
-
-
     private bool beginLerping = true;
     private float t;
     public float startGameFocusDuration;
-
 
     public GameObject pauseGameObject;
     // Use this for initialization
