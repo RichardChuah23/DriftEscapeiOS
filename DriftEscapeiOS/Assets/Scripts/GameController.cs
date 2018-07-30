@@ -245,7 +245,7 @@ public class GameController : MonoBehaviour {
 					}
 					
 					//Reset counter 
-					timesBeforeAds = 3;
+					timesBeforeAds = 5;
 					
 				}
 				Debug.Log("Times before short Ads " + timesBeforeAds);

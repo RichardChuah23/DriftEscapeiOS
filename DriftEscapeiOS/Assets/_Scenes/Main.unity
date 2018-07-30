@@ -22667,7 +22667,7 @@ MonoBehaviour:
   height: 35
   damping: 3
   rotationDamping: 15
-  startGameFocusDuration: 0.5
+  startGameFocusDuration: 0.3
   pauseGameObject: {fileID: 1525153535}
 --- !u!1 &1689278573 stripped
 GameObject:
@@ -27439,7 +27439,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1777536648}
   gameOverUI: {fileID: 805043199}
   adsController: {fileID: 1471914090}
-  timesBeforeAds: 3
+  timesBeforeAds: 5
   timesbeforeLongAds: 3
   adsRemoved: 0
 --- !u!4 &2112358037
@@ -27736,6 +27736,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 526f0d8ec6d53407e80aa566e603a446, type: 2}
+    - target: {fileID: 1986229934643306, guid: 92a6b27227f284201ac5936a3cac249d, type: 2}
+      propertyPath: m_TagString
+      value: Arch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709655675859496, guid: 92a6b27227f284201ac5936a3cac249d, type: 2}
+      propertyPath: m_TagString
+      value: Arch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92a6b27227f284201ac5936a3cac249d, type: 2}
   m_IsPrefabParent: 0

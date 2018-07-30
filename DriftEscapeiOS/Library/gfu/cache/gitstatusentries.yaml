@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 5
-  lastUpdatedAtString: 0001-01-01T00:00:00.0000000+00:00
-  initializedAtString: 2018-07-27T16:31:31.2019030+10:00
+  lastUpdatedAtString: 2018-07-30T16:17:14.9904380+10:00
+  initializedAtString: 2018-07-30T15:41:00.7456030+10:00
   entries:
   - path: DriftEscapeiOS/.vs/DriftEscapeiOS/xs/UserPrefs.xml
     fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/.vs/DriftEscapeiOS/xs/UserPrefs.xml
@@ -21,16 +21,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Assets/Prefab/Tiles/1/1-O-C 3.prefab
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Prefab/Tiles/1/1-O-C
-      3.prefab
-    projectPath: Assets/Prefab/Tiles/1/1-O-C 3.prefab
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Assets/Scripts/CameraController.cs
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/CameraController.cs
-    projectPath: Assets/Scripts/CameraController.cs
+  - path: DriftEscapeiOS/Assets/Scripts/GameController.cs
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/GameController.cs
+    projectPath: Assets/Scripts/GameController.cs
     originalPath: 
     status: 3
     staged: 0
@@ -40,81 +33,21 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Assets/Scripts/TileController.cs
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/TileController.cs
-    projectPath: Assets/Scripts/TileController.cs
+  - path: DriftEscapeiOS/Assets/Scripts/ScoreController2.cs
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/ScoreController2.cs
+    projectPath: Assets/Scripts/ScoreController2.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: DriftEscapeiOS/Assets/Scripts/SoundEffectController.cs
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/Scripts/SoundEffectController.cs
+    projectPath: Assets/Scripts/SoundEffectController.cs
     originalPath: 
     status: 3
     staged: 0
   - path: DriftEscapeiOS/Assets/_Scenes/Main.unity
     fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/Main.unity
     projectPath: Assets/_Scenes/Main.unity
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Assets/_Scenes/MainMenu.unity
-    projectPath: Assets/_Scenes/MainMenu.unity
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/CurrentLayout.dwlt
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/CurrentLayout.dwlt
-    projectPath: Library/CurrentLayout.dwlt
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/EditorUserBuildSettings.asset
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/EditorUserBuildSettings.asset
-    projectPath: Library/EditorUserBuildSettings.asset
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/LastBuild.buildreport
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/LastBuild.buildreport
-    projectPath: Library/LastBuild.buildreport
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/LastSceneManagerSetup.txt
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/LastSceneManagerSetup.txt
-    projectPath: Library/LastSceneManagerSetup.txt
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/Data/Managed/Assembly-CSharp.dll
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/Data/Managed/Assembly-CSharp.dll
-    projectPath: Library/PlayerDataCache/Data/Managed/Assembly-CSharp.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/Data/globalgamemanagers
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/Data/globalgamemanagers
-    projectPath: Library/PlayerDataCache/Data/globalgamemanagers
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/Data/level0
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/Data/level0
-    projectPath: Library/PlayerDataCache/Data/level0
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/Data/level1
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/Data/level1
-    projectPath: Library/PlayerDataCache/Data/level1
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/Data/sharedassets1.assets
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/Data/sharedassets1.assets
-    projectPath: Library/PlayerDataCache/Data/sharedassets1.assets
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: DriftEscapeiOS/Library/PlayerDataCache/ScriptLayoutHashes.txt
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/PlayerDataCache/ScriptLayoutHashes.txt
-    projectPath: Library/PlayerDataCache/ScriptLayoutHashes.txt
     originalPath: 
     status: 3
     staged: 0
@@ -160,9 +93,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/00/00000000000000004000000000000000
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/00/00000000000000004000000000000000
-    projectPath: Library/metadata/00/00000000000000004000000000000000
+  - path: DriftEscapeiOS/Library/metadata/00/00000000000000003000000000000000
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/00/00000000000000003000000000000000
+    projectPath: Library/metadata/00/00000000000000003000000000000000
     originalPath: 
     status: 3
     staged: 0
@@ -172,29 +105,29 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/47/472525c94a03c426fb7607f3d896a630
-    projectPath: Library/metadata/47/472525c94a03c426fb7607f3d896a630
+  - path: DriftEscapeiOS/Library/metadata/6d/6d448d5b0ad624a93bae8a28ad9dbad2
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/6d/6d448d5b0ad624a93bae8a28ad9dbad2
+    projectPath: Library/metadata/6d/6d448d5b0ad624a93bae8a28ad9dbad2
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/69/697aa54936f8f4ae79cbeb81b7826ca0.info
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/69/697aa54936f8f4ae79cbeb81b7826ca0.info
-    projectPath: Library/metadata/69/697aa54936f8f4ae79cbeb81b7826ca0.info
+  - path: DriftEscapeiOS/Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
+    projectPath: Library/metadata/80/80dd9eac5bf8d423381b4f70451cd46b
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
-    projectPath: Library/metadata/9c/9c4fc543f1c764939915537cd35abd6e
+  - path: DriftEscapeiOS/Library/metadata/f9/f9a8f921442274352b7e7d53aa40af46
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/metadata/f9/f9a8f921442274352b7e7d53aa40af46
+    projectPath: Library/metadata/f9/f9a8f921442274352b7e7d53aa40af46
     originalPath: 
     status: 3
     staged: 0
-  - path: DriftEscapeiOS/Library/CrashedAssetImports.txt
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/CrashedAssetImports.txt
-    projectPath: Library/CrashedAssetImports.txt
+  - path: DriftEscapeiOS/ProjectSettings/TagManager.asset
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/ProjectSettings/TagManager.asset
+    projectPath: ProjectSettings/TagManager.asset
     originalPath: 
-    status: 1
+    status: 3
     staged: 0
   - path: DriftEscapeiOS/Library/EditorInstance.json
     fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Library/EditorInstance.json
@@ -220,21 +153,63 @@ MonoBehaviour:
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-0d482d8d939634c4e99a2c74c058cc72
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-0d482d8d939634c4e99a2c74c058cc72
-    projectPath: Temp/UnityTempFile-0d482d8d939634c4e99a2c74c058cc72
+  - path: DriftEscapeiOS/Temp/UnityTempFile-4d31798c423eb46e595d8c7e03564492
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-4d31798c423eb46e595d8c7e03564492
+    projectPath: Temp/UnityTempFile-4d31798c423eb46e595d8c7e03564492
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-35d2902548d1243dc81d1d0f7e788b03
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-35d2902548d1243dc81d1d0f7e788b03
-    projectPath: Temp/UnityTempFile-35d2902548d1243dc81d1d0f7e788b03
+  - path: DriftEscapeiOS/Temp/UnityTempFile-553930673febc43bba9857e35f5a1f86
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-553930673febc43bba9857e35f5a1f86
+    projectPath: Temp/UnityTempFile-553930673febc43bba9857e35f5a1f86
     originalPath: 
     status: 1
     staged: 0
-  - path: DriftEscapeiOS/Temp/UnityTempFile-7d1dd3f17b9cc4255932d41ea2203f8b
-    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-7d1dd3f17b9cc4255932d41ea2203f8b
-    projectPath: Temp/UnityTempFile-7d1dd3f17b9cc4255932d41ea2203f8b
+  - path: DriftEscapeiOS/Temp/UnityTempFile-63063d82f2d46433e9650010245ae46f
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-63063d82f2d46433e9650010245ae46f
+    projectPath: Temp/UnityTempFile-63063d82f2d46433e9650010245ae46f
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-63d59acab024249999313e2a49666c08
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-63d59acab024249999313e2a49666c08
+    projectPath: Temp/UnityTempFile-63d59acab024249999313e2a49666c08
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-98bd61cdd5afc4a61bf7ead464da7749
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-98bd61cdd5afc4a61bf7ead464da7749
+    projectPath: Temp/UnityTempFile-98bd61cdd5afc4a61bf7ead464da7749
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-b294e60a311b84aa7bd320cd6bc545a9
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-b294e60a311b84aa7bd320cd6bc545a9
+    projectPath: Temp/UnityTempFile-b294e60a311b84aa7bd320cd6bc545a9
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-dcebfd6428805451fa8e43cc4aa81ec4
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-dcebfd6428805451fa8e43cc4aa81ec4
+    projectPath: Temp/UnityTempFile-dcebfd6428805451fa8e43cc4aa81ec4
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-e510ede22fab840aaa5615976d2d21c3
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-e510ede22fab840aaa5615976d2d21c3
+    projectPath: Temp/UnityTempFile-e510ede22fab840aaa5615976d2d21c3
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-f17069a8f4c1c4d39968303fc6bf2513
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-f17069a8f4c1c4d39968303fc6bf2513
+    projectPath: Temp/UnityTempFile-f17069a8f4c1c4d39968303fc6bf2513
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: DriftEscapeiOS/Temp/UnityTempFile-f8f6b213ef73a4e56a4f0e4d53b45817
+    fullPath: /Users/richardchuah/Documents/Github/DriftEscapeiOS/DriftEscapeiOS/Temp/UnityTempFile-f8f6b213ef73a4e56a4f0e4d53b45817
+    projectPath: Temp/UnityTempFile-f8f6b213ef73a4e56a4f0e4d53b45817
     originalPath: 
     status: 1
     staged: 0

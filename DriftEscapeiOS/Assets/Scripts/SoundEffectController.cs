@@ -253,7 +253,7 @@ public class SoundEffectController : MonoBehaviour {
         PlaySingle(hitList[Random.Range(0,hitList.Length)]); 
     }
 
-    public void playMultiplier(int pitch){
+    public void playMultiplier(float pitch){
         //PlaySingle(Coin);
         if (fxOn == true)
         {
