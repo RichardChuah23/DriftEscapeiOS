@@ -95,7 +95,7 @@ public class ScoreController2 : MonoBehaviour {
 
 	public void increaseMultiplier(){
 
-		if(scoreMultiplier < 6 ){
+		if(scoreMultiplier < 7 ){
 			scoreMultiplier += 1; 
 
 			//GUI
@@ -136,6 +136,11 @@ public class ScoreController2 : MonoBehaviour {
             {
                 playerController.setForwardSpeed(500);
                 playerController.setTurnSpeed(260);
+            }
+            else if (scoreMultiplier == 7)
+            {
+                playerController.setForwardSpeed(510);
+                playerController.setTurnSpeed(275);
             }
   
 

@@ -183,7 +183,7 @@ public class TileController : MonoBehaviour {
         //Doesnt need lane adjustment for straight road
         if(previousTileIndex == 1 && newTileIndex == 1 )
         {
-            int index = Random.Range(1, tilesPrefab[newTileIndex].Count);
+            int index = Random.Range(2, tilesPrefab[newTileIndex].Count);
             tileRoadSpawn = tilesPrefab[newTileIndex][index];
         }
         //Require lane adjustment 
@@ -298,8 +298,9 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 2, 7,1 };
 
-            //index = a_list[Random.Range(0, 3)];//ORI
-            return a_list[2];
+            return a_list[Random.Range(0, 3)];//ORI
+
+            //return a_list[2];
 
 
         }
@@ -323,8 +324,8 @@ public class TileController : MonoBehaviour {
             //Declare a list of two possible tiles 
             List<int> a_list = new List<int>() { 6, 4 };
            
-            //index = a_list[Random.Range(0, 1)]; ORI
-            return a_list[1];
+            return a_list[Random.Range(0, 1)]; 
+            //return a_list[1];
 
         }
         if (currentTileIndex == 8)
@@ -344,9 +345,6 @@ public class TileController : MonoBehaviour {
 
 
         return 0;
-
-
-
 
 
     }

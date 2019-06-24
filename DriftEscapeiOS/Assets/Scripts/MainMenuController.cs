@@ -106,12 +106,10 @@ public class MainMenuController : MonoBehaviour{
     void Start(){
 
         //FOR SCREEN SHOOTING ! 
-
         //PlayerPrefs.SetInt("Coins", 1000000);
 
 
-        //FOR SCREEN SHOTTING; 
-
+     
         Application.targetFrameRate = 60;
 
         mode = "Main";
@@ -130,6 +128,16 @@ public class MainMenuController : MonoBehaviour{
 
         //Game center set up
         KTGameCenter.SharedCenter().Authenticate();
+
+
+        //If its player first time playing, show tutorial. 
+        int showedTutorial = PlayerPrefs.GetInt("tutorial", 0);
+        //If tutorial not opened before. 
+        if(showedTutorial == 0){
+            //open tutorial 
+            openTutorialScreen();
+        }
+
 
     }
 
@@ -371,6 +379,9 @@ public class MainMenuController : MonoBehaviour{
 	public void closeTutorialScreen(){
 		canvas = "main";
 		tutorialScreen.SetActive(false);
+
+        //set player prefab "tutorial" to one 
+        PlayerPrefs.SetInt("tutorial", 1);
     }
 
 	/// <summary>

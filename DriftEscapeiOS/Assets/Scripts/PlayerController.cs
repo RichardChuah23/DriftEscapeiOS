@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
     private void gameOverStraightHitObstacle()
     {
         drift(currentSpeed, 0.02f);
-        StartCoroutine(delayStopForwardSpeed(0.5f,2f));
+        StartCoroutine(delayStopForwardSpeed(0.5f,1f));
         if (gameOverTriggred == false)
         {
 
@@ -944,15 +944,7 @@ public class PlayerController : MonoBehaviour
             mode = "PREDRIFT";
         }
 
-        /*
-        if (collision.transform.tag == "Coins")
-        {
-            scoreController.addCoins();
-            collision.transform.gameObject.SetActive(false);
 
-        }
-
-        */
 
 
     }
@@ -963,7 +955,25 @@ public class PlayerController : MonoBehaviour
 
 
 
+        //Gameover when touches the ground 
+        if (collision.transform.tag == "Arch" && mode != "GAMEOVER")
+        {
+            soundEffectController.playHit();
+            if (mode == "LEFT")
+            {
+                GameOverDriftDirection = "LEFT";
+            }
+            else if (mode == "RIGHT")
+            {
+                GameOverDriftDirection = "RIGHT";
+            }
 
+            //Control FX 
+            offDriftFX();
+            previousMode = mode;
+            mode = "GAMEOVER";
+            gameOverReason = "HIT GROUND";
+        }
 
         //Shake camera when player hit's small road object
         if (collision.transform.tag == "Small Road Object")
@@ -1208,7 +1218,7 @@ public class PlayerController : MonoBehaviour
                 scoreController.increaseMultiplier();
                 fireWorksController.playFireworks();
                 //SoundEffect 
-                soundEffectController.playMultiplier(scoreController.getMultiplier());
+                soundEffectController.playMultiplier( scoreController.getMultiplier() - 0.5f);
             }else{
                 //Not Perfect, reset multiplier back to 1; 
                 scoreController.resetScoreMultiplier();
@@ -1290,7 +1300,7 @@ public class PlayerController : MonoBehaviour
             
             //Swipe Up
             //if (swipeController.Tap || userInputVer == 1)
-            if (swipeController.Tap || userInputVer == 1)
+            if (tmpInput || userInputVer == 1)
             {
 
 
